@@ -13,15 +13,15 @@
 			<article class="demo_block">
 				<h1>Simple demo with images</h1>
 					<ul id="demo1">
-						<li class="active"><a href="#slide1"><img src="img/demo1_1.jpg" alt="demo1_1"></a></li>
-						<li><a href="#slide2"><img src="img/demo1_2.jpg" alt="demo1_2"></a></li>
-						<li><a href="#slide3"><img src="img/demo1_3.jpg" alt="demo1_3"></a></li>
+						<li title="This is caption 1"><a href="#slide1"><img src="img/demo1_1.jpg"  alt="demo1_1"></a></li>
+						<li title="This is caption 2"><a href="#slide2"><img src="img/demo1_2.jpg"  alt="demo1_2"></a></li>
+						<li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="img/demo1_3.jpg"  alt="demo1_3"></a></li>
 					</ul>
 			</article>
 		</section>
 		<script>
 			$(function() {
-				$("#demo1").slippry();
+				var demo1 = $("#demo1").slippry();
 			});
 		</script>
 	</body>
