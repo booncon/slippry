@@ -1,0 +1,116 @@
+/* line 3, ../src/slippry.scss */
+.slippry_box {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+/* line 4, ../src/slippry.scss */
+.slippry_box * {
+  margin: 0;
+  padding: 0;
+}
+/* line 11, ../src/slippry.scss */
+.slippry_box .slippry_list {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+/* line 18, ../src/slippry.scss */
+.slippry_box .slippry_list li {
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+}
+/* line 22, ../src/slippry.scss */
+.slippry_box .slippry_list li.active {
+  z-index: 10;
+}
+/* line 25, ../src/slippry.scss */
+.slippry_box .slippry_list li a {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+}
+/* line 30, ../src/slippry.scss */
+.slippry_box .slippry_list li a img {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+}
+/* line 40, ../src/slippry.scss */
+.slippry_box:hover .controls {
+  display: block;
+}
+/* line 44, ../src/slippry.scss */
+.slippry_box .controls {
+  display: none;
+  list-style: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+}
+/* line 52, ../src/slippry.scss */
+.slippry_box .controls li {
+  position: absolute;
+  width: 10%;
+  min-width: 50px;
+  height: 20%;
+  z-index: 99;
+  margin-top: 30%;
+}
+/* line 59, ../src/slippry.scss */
+.slippry_box .controls li.slip_prev {
+  left: 0;
+  top: 0;
+}
+/* line 63, ../src/slippry.scss */
+.slippry_box .controls li.slip_next {
+  right: 0;
+  top: 0;
+}
+/* line 67, ../src/slippry.scss */
+.slippry_box .controls li a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: red;
+  text-indent: -9999px;
+  -webkit-background-size: 2em;
+  -moz-background-size: 2em;
+  -o-background-size: 2em;
+  background-size: 2em;
+}
+/* line 73, ../src/slippry.scss */
+.slippry_box .controls li a:link, .slippry_box .controls li a:visited {
+  opacity: 1.0;
+}
+/* line 76, ../src/slippry.scss */
+.slippry_box .controls li a:hover, .slippry_box .controls li a:focus {
+  opacity: 0.6;
+}
+/* line 83, ../src/slippry.scss */
+.slippry_box .stay {
+  width: 100%;
+}
+/* line 86, ../src/slippry.scss */
+.slippry_box .pager {
+  list-style: none;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 89, ../src/slippry.scss */
+.slippry_box .pager li {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  float: left;
+  margin: 0 1em 0 0;
+}

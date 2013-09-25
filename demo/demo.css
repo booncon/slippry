@@ -1,0 +1,13 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'source-sans-pro', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+.demo_wrapper {
+	width: 50%;
+	margin: 0 auto;
+}
+.demo_block {
+	width: 100%;
+}

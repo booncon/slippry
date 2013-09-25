@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>jQuery Boilerplate</title>
+		<title>slippry demo</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-		<script src="../dist/jquery.boilerplate.js"></script>
+		<script src="../src/slippry.js"></script>
+		<script src="//use.edgefonts.net/cabin;source-sans-pro:n2,i2,n3,n4,n6,n7,n9.js"></script>
+    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="../dist/slippry.css">
 	</head>
 	<body>
+		<section class="demo_wrapper">
+			<article class="demo_block">
+				<h1>Simple demo with images</h1>
+					<ul id="demo1">
+						<li class="active"><a href="#slide1"><img src="img/demo1_1.jpg" alt="demo1_1"></a></li>
+						<li><a href="#slide2"><img src="img/demo1_2.jpg" alt="demo1_2"></a></li>
+						<li><a href="#slide3"><img src="img/demo1_3.jpg" alt="demo1_3"></a></li>
+					</ul>
+			</article>
+		</section>
 		<script>
 			$(function() {
-				$("#element").defaultPluginName({
-					propertyName: "a custom value"
-				});
+				$("#demo1").slippry();
 			});
 		</script>
 	</body>
