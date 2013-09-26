@@ -11,17 +11,34 @@
 	<body>
 		<section class="demo_wrapper">
 			<article class="demo_block">
-				<h1>Simple demo with images</h1>
+				<h1>Simple demo with defualt setup</h1>
 					<ul id="demo1">
-						<li title="This is caption 1"><a href="#slide1"><img src="img/demo1_1.jpg"  alt="demo1_1"></a></li>
+						<li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="img/demo1_1.jpg"  alt="demo1_1"></a></li>
 						<li title="This is caption 2"><a href="#slide2"><img src="img/demo1_2.jpg"  alt="demo1_2"></a></li>
 						<li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="img/demo1_3.jpg"  alt="demo1_3"></a></li>
 					</ul>
 			</article>
 		</section>
+		<section class="demo_wrapper">
+			<article class="demo_block">
+				<h1>Demo with some options</h1>
+					<ul id="demo2">
+						<li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="img/demo1_1.jpg"  alt="demo1_1"></a></li>
+						<li title="This is caption 2" class="active"><a href="#slide2"><img src="img/demo1_2.jpg"  alt="demo1_2"></a></li>
+						<li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="img/demo1_3.jpg"  alt="demo1_3"></a></li>
+					</ul>
+					<div class="special_caption"></div>
+			</article>			
+		</section>		
 		<script>
 			$(function() {
 				var demo1 = $("#demo1").slippry();
+				var demo2 = $("#demo2").slippry({
+					loop: false,
+					transition: 'fade',
+					captions: 'below',
+					transTime: 800
+				});
 			});
 		</script>
 	</body>
