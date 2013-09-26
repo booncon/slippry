@@ -23,16 +23,19 @@
     usePager: true,
     prevText: 'Previous',
     nextText: 'Next',
+    transition: 'fade', // fade, slide, false, kenburns?
+    transClass: 'transition',
+    transTime: 1200,
     fillerClass: 'filler',
     adaptHeight: true,
     randomStart: false,
-    infinite: true, // implement hide controls on end
-    captions: 'overlay', //overlay, below, false
+    loop: true, // implement hide controls on end
+    captions: 'overlay', //overlay, below, false, custom?
     initSingle: false
   };
 
   $.fn.slippry = function (options) {
-    var slip, el, refresh, prepareFiller, setFillerProportions, init, goToSlide, initPager, initControls, initCaptions, updatePager;
+    var slip, el, refresh, prepareFiller, setFillerProportions, init, goToSlide, initPager, initControls, initCaptions, updatePager, doTransition, updateSlide;
 
     // reference to the object calling the function
     el = this;
@@ -61,7 +64,7 @@
       height = $slide.height();
       ratio = width / height;
       p_top = 1 / ratio * 100 + '%';  //cool intrinsic trick: http://alistapart.com/article/creating-intrinsic-ratios-for-video
-      $('.' + slip.settings.fillerClass, slip.vars.slideWrapper).css({paddingTop: p_top}); // resizing without the need of js, true responsiveness :)
+      $('.' + slip.settings.fillerClass, slip.vars.slideWrapper).css({paddingTop: p_top}); // resizing without the need of js, true responsiveness :)      
     };
 
     // prepares a div to occupy the needed space
@@ -100,33 +103,66 @@
       }
     };
 
+    updateSlide = function () {
+      $(slip.settings.elements, el).removeClass(slip.settings.activeClass);
+     
+      slip.vars.active.addClass(slip.settings.activeClass).removeClass(slip.settings.transClass);
+      prepareFiller();
+      updatePager();
+      if (slip.settings.captions !== false) {
+        $('.caption', slip.vars.slippryWrapper).text(slip.vars.active.attr('title'));
+      }
+      if (slip.settings.onSlideAfter !== undefined) {
+        slip.settings.onSlideAfter.call(slip.vars.active);
+      }
+    };
+
+    doTransition = function () {
+      if (slip.settings.onSlideBefore !== undefined) {
+        slip.settings.onSlideBefore.call(slip.vars.active);
+      }
+      if (slip.settings.transition !== false) {
+        if (slip.settings.transition === 'fade') {
+          slip.vars.old.addClass(slip.settings.transClass).stop().animate({
+            opacity: 0
+          }, slip.settings.transTime, function () {
+
+          });
+          slip.vars.active.addClass(slip.settings.transClass).css('opacity', 0).stop().animate({
+            opacity: 1
+          }, slip.settings.transTime, function () {
+            
+          });
+          updateSlide();
+        }
+      } else {
+        updateSlide();
+      }      
+    };
+
     goToSlide = function (slide) {
-      var $slides, count, current;
+      var $slides, count, current;      
       $slides = $(slip.settings.elements, el);
       count = $slides.length;
       current = $('.' + slip.settings.activeClass, el).index();
       if (slide === 'prev') {
         if (current > 0) {
           slide = current - 1;
-        } else if (slip.settings.infinite) {
+        } else if (slip.settings.loop) {
           slide = count - 1;
         }
       } else if (slide === 'next') {
         if (current < count - 1) {
           slide = current + 1;
-        } else if (slip.settings.infinite) {
+        } else if (slip.settings.loop) {
           slide = 0;
         }
       }
       if ((slide !== 'prev') && (slide !== 'next')) {
-        $(slip.settings.elements, el).removeClass(slip.settings.activeClass);
-        $($(slip.settings.elements, el)[slide]).addClass(slip.settings.activeClass);
+        slip.vars.old = slip.vars.active;
         slip.vars.active = $($(slip.settings.elements, el)[slide]);
-        updatePager();
-        if (slip.settings.captions !== false) {
-          $('.caption', slip.vars.slippryWrapper).text(slip.vars.active.attr('title'));
-        }
-      }
+        doTransition();
+      }      
     };
 
     initPager = function () {
@@ -165,7 +201,7 @@
         if (slip.settings.captions === 'overlay') {
           slip.vars.slideWrapper.append('<div class="caption_wrap"><div class="caption"></div></div>');
         } else if (slip.settings.captions === 'below') {
-          slip.vars.slippryWrapper.append('"<div class="caption" />');
+          slip.vars.slippryWrapper.append('<div class="caption" />');
         }
         $('.caption', slip.vars.slippryWrapper).text(slip.vars.active.attr('title'));
       }

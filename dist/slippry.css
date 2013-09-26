@@ -1,4 +1,4 @@
-/* line 4, ../src/slippry.scss */
+/* line 10, ../src/slippry.scss */
 .slippry_box * {
   margin: 0;
   padding: 0;
@@ -6,13 +6,13 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 9, ../src/slippry.scss */
+/* line 15, ../src/slippry.scss */
 .slippry_box .slide_box {
   position: relative;
   height: 100%;
   width: 100%;
 }
-/* line 13, ../src/slippry.scss */
+/* line 19, ../src/slippry.scss */
 .slippry_box .slide_box .slippry_list {
   width: 100%;
   height: 100%;
@@ -21,35 +21,41 @@
   padding: 0;
   overflow: hidden;
 }
-/* line 20, ../src/slippry.scss */
+/* line 26, ../src/slippry.scss */
 .slippry_box .slide_box .slippry_list li {
+  display: none;
   position: absolute;
   width: 100%;
   z-index: 9;
 }
-/* line 24, ../src/slippry.scss */
+/* line 28, ../src/slippry.scss */
+.slippry_box .slide_box .slippry_list li.active, .slippry_box .slide_box .slippry_list li.transition {
+  display: block;
+}
+/* line 34, ../src/slippry.scss */
 .slippry_box .slide_box .slippry_list li.active {
   z-index: 10;
 }
-/* line 27, ../src/slippry.scss */
+/* line 37, ../src/slippry.scss */
 .slippry_box .slide_box .slippry_list li a {
   margin: 0;
   padding: 0;
   display: block;
   width: 100%;
 }
-/* line 32, ../src/slippry.scss */
+/* line 42, ../src/slippry.scss */
 .slippry_box .slide_box .slippry_list li a img {
   margin: 0;
   padding: 0;
   display: block;
   width: 100%;
+  border: 0;
 }
-/* line 42, ../src/slippry.scss */
+/* line 53, ../src/slippry.scss */
 .slippry_box .slide_box:hover .controls {
   display: block;
 }
-/* line 46, ../src/slippry.scss */
+/* line 57, ../src/slippry.scss */
 .slippry_box .slide_box .controls {
   display: none;
   list-style: none;
@@ -59,57 +65,92 @@
   padding: 0;
   margin: 0;
 }
-/* line 54, ../src/slippry.scss */
+/* line 65, ../src/slippry.scss */
 .slippry_box .slide_box .controls li {
   position: absolute;
   width: 10%;
-  min-width: 50px;
-  height: 20%;
-  z-index: 99;
-  margin-top: 30%;
+  min-width: 4.2em;
+  height: 100%;
+  z-index: 33;
 }
-/* line 61, ../src/slippry.scss */
+/* line 71, ../src/slippry.scss */
 .slippry_box .slide_box .controls li.slip_prev {
   left: 0;
   top: 0;
 }
-/* line 65, ../src/slippry.scss */
+/* line 75, ../src/slippry.scss */
+.slippry_box .slide_box .controls li.slip_prev a:after {
+  background-position: -5% 0;
+}
+/* line 80, ../src/slippry.scss */
 .slippry_box .slide_box .controls li.slip_next {
   right: 0;
   top: 0;
 }
-/* line 69, ../src/slippry.scss */
+/* line 84, ../src/slippry.scss */
+.slippry_box .slide_box .controls li.slip_next a:after {
+  background-position: 105% 0;
+}
+/* line 89, ../src/slippry.scss */
 .slippry_box .slide_box .controls li a {
+  position: relative;
   width: 100%;
   height: 100%;
   display: block;
-  background-color: red;
   text-indent: -9999px;
-  -webkit-background-size: 2em;
-  -moz-background-size: 2em;
-  -o-background-size: 2em;
-  background-size: 2em;
 }
-/* line 75, ../src/slippry.scss */
+/* line 95, ../src/slippry.scss */
 .slippry_box .slide_box .controls li a:link, .slippry_box .slide_box .controls li a:visited {
-  opacity: 1.0;
+  opacity: 0.4;
 }
-/* line 78, ../src/slippry.scss */
+/* line 98, ../src/slippry.scss */
 .slippry_box .slide_box .controls li a:hover, .slippry_box .slide_box .controls li a:focus {
-  opacity: 0.6;
+  opacity: 0.8;
 }
-/* line 85, ../src/slippry.scss */
+/* line 101, ../src/slippry.scss */
+.slippry_box .slide_box .controls li a:after {
+  content: "";
+  background-image: url(arrows.svg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-align: center;
+  text-indent: 0;
+  line-height: 2.8em;
+  color: #111;
+  font-weight: 800;
+  position: absolute;
+  background-color: #fff;
+  width: 2.8em;
+  height: 2.8em;
+  left: 50%;
+  top: 50%;
+  margin-top: -1.4em;
+  margin-left: -1.4em;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 124, ../src/slippry.scss */
 .slippry_box .slide_box .filler {
   width: 100%;
+  -webkit-transition: padding 0.3s;
+  -moz-transition: padding 0.3s;
+  -o-transition: padding 0.3s;
+  transition: padding 0.3s;
 }
-/* line 88, ../src/slippry.scss */
+/* line 128, ../src/slippry.scss */
 .slippry_box .slide_box .caption_wrap {
   position: absolute;
   bottom: 2em;
   z-index: 12;
   left: 50%;
 }
-/* line 93, ../src/slippry.scss */
+/* line 133, ../src/slippry.scss */
 .slippry_box .slide_box .caption_wrap .caption {
   position: relative;
   left: -50%;
@@ -122,7 +163,7 @@
   -o-border-radius: 1.2em;
   border-radius: 1.2em;
 }
-/* line 103, ../src/slippry.scss */
+/* line 143, ../src/slippry.scss */
 .slippry_box .pager {
   display: block;
   width: 100%;
@@ -133,23 +174,28 @@
   *zoom: 1;
   text-align: center;
 }
-/* line 111, ../src/slippry.scss */
+/* line 151, ../src/slippry.scss */
 .slippry_box .pager li {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 1.2em;
+  height: 1.2em;
   margin: 0 1em 0 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
 }
-/* line 118, ../src/slippry.scss */
+/* line 158, ../src/slippry.scss */
 .slippry_box .pager li.active a {
-  background-color: red;
+  background-color: #e24b70;
 }
-/* line 122, ../src/slippry.scss */
+/* line 162, ../src/slippry.scss */
 .slippry_box .pager li a {
   width: 100%;
   height: 100%;
   display: block;
-  background-color: #111;
+  background-color: #cccccc;
   text-indent: -9999px;
   -webkit-background-size: 2em;
   -moz-background-size: 2em;
@@ -161,11 +207,11 @@
   -o-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 128, ../src/slippry.scss */
+/* line 168, ../src/slippry.scss */
 .slippry_box .pager li a:link, .slippry_box .pager li a:visited {
   opacity: 1.0;
 }
-/* line 131, ../src/slippry.scss */
+/* line 171, ../src/slippry.scss */
 .slippry_box .pager li a:hover, .slippry_box .pager li a:focus {
   opacity: 0.6;
 }

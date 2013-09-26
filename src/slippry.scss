@@ -1,5 +1,11 @@
 @import "compass";
 
+$color_high: #e24b70;
+$color_gray: #ccc;
+$controls_size: 2.8em;
+$pager_size: 1.2em;
+$trans_time: 0.3s;
+
 .slippry_box {
   * {
     margin: 0;
@@ -18,6 +24,10 @@
       padding: 0;
       overflow: hidden;
       li {
+        display: none;
+        &.active, &.transition {
+          display: block;
+        }
         position: absolute;
         width: 100%;
         z-index: 9;
@@ -34,6 +44,7 @@
             padding: 0;
             display: block;
             width: 100%;
+            border: 0;
           }
         }
       }
@@ -54,36 +65,65 @@
       li {
         position: absolute;
         width: 10%;
-        min-width: 50px;
-        height: 20%;
-        z-index: 99;
-        margin-top: 30%;
+        min-width: $controls_size * 1.5;
+        height: 100%;
+        z-index: 33;
         &.slip_prev {
           left: 0;
           top: 0;
+          a {
+            &:after {
+              background-position: -5% 0;
+            }
+          }
         }
         &.slip_next {
           right: 0;
           top: 0;
+          a {
+            &:after {
+              background-position: 105% 0;
+            }
+          }
         }
         a {
+          position: relative;
           width: 100%;
           height: 100%;
           display: block;
-          background-color: red;
           text-indent: -9999px;
           &:link, &:visited {
-            opacity: 1.0;
+            opacity: 0.4;
           }
           &:hover, &:focus {
-            opacity: 0.6;
+            opacity: 0.8;
           }
-          @include background-size(2em);
+          &:after {
+            content: "";
+            background-image: url(arrows.svg);
+            background-repeat: no-repeat;
+            @include background-size(cover);
+            text-align: center;
+            text-indent: 0;
+            line-height: $controls_size;
+            color: #111;
+            font-weight: 800;
+            position: absolute;
+            background-color: #fff;
+            width: $controls_size;
+            height: $controls_size;
+            left: 50%;
+            top: 50%;
+            margin-top: -$controls_size / 2;
+            margin-left: -$controls_size / 2;
+            @include border-radius(50%);
+          }
         }
       }  
     }
     .filler {
       width: 100%;
+      @include transition(padding $trans_time);
     }
     .caption_wrap {
       position: absolute;
@@ -110,20 +150,20 @@
     text-align: center;
     li {
       display: inline-block;
-      width: 20px;
-      height: 20px;
-      // float: left;
+      width: $pager_size;
+      height: $pager_size;
       margin: 0 1em 0 0;
+      @include border-radius(50%);
       &.active {
         a {
-          background-color: red;
+          background-color: $color_high;
         }
       }
       a {
         width: 100%;
         height: 100%;
         display: block;
-        background-color: #111;
+        background-color: $color_gray;
         text-indent: -9999px;
         &:link, &:visited {
           opacity: 1.0;
