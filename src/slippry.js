@@ -24,7 +24,7 @@
 
     // options
     adaptHeight: true, // height of the sliders adapts to current slide
-    randomStart: false, // start at a random position
+    start: 0, // num, random
     loop: true, // first -> last & last -> first arrows
     captions: 'overlay', // overlay, below, custom (selector), false
     initSingle: true, // initialise even if there is only one slide
@@ -42,12 +42,13 @@
     nextText: 'Next',
 
     // transitions
-    transition: 'slide', // fade, slide, false, kenburns?
+    transition: 'horizontal', // fade, horizontal, false, kenburns?
     transSpace: 0, // spacing between slides (in %)
     transClass: 'transition',
-    transTime: 1200, // time the transition takes
+    transTime: 1200, // time the transition takes (ms)
     transEase: 'swing', // easing to use in the animation
     continuous: true, // seamless first/ last transistion, only works with loop
+    useCSS: true, // true, false -> fallback to js if no browser support
 
     // callback functions
     onSlideBefore: function () { // before page transition starts
@@ -60,7 +61,7 @@
 
   $.fn.slippry = function (options) {
     var slip, el, refresh, prepareFiller, setFillerProportions, init, goToSlide,
-      initPager, initControls, initCaptions, updatePager, doTransition, updateSlide, updateControls, updatePos;
+      initPager, initControls, initCaptions, updatePager, doTransition, updateSlide, updateControls, updatePos, supports;
 
     // reference to the object calling the function
     el = this;
@@ -79,6 +80,26 @@
     // variable to access the slider settings across the plugin
     slip = {};
     slip.vars = {};
+
+    slip.vars.backup = this;
+
+    supports = (function () {  // Thanks! http://net.tutsplus.com/tutorials/html-css-techniques/quick-tip-detect-css-support-in-browsers-with-javascript/
+      var div = document.createElement('div'),
+        vendors = 'Khtml Ms O Moz Webkit'.split(' '),
+        len = vendors.length;
+      return function(prop) {
+        if (prop in div.style) return true;
+        prop = prop.replace(/^[a-z]/, function(val) {
+          return val.toUpperCase();
+        });      
+        while(len--) {
+         if ( vendors[len] + prop in div.style ) {
+          return true;
+         }
+        }
+        return false;
+      };
+    })();
 
     // sets the aspect ratio of the filler element
     setFillerProportions = function ($slide) {
@@ -152,9 +173,9 @@
 
     doTransition = function () {
       var pos, jump, old_left, old_pos;
-      slip.settings.onSlideBefore.call(slip.vars.active);
-      slip.vars.moving = true;
+      slip.settings.onSlideBefore.call(slip.vars.active);      
       if (slip.settings.transition !== false) {
+        slip.vars.moving = true;
         if (slip.settings.transition === 'fade') {
           slip.vars.old.addClass(slip.settings.transClass).stop().animate({
             opacity: 0
@@ -168,7 +189,7 @@
             $(this).removeClass(slip.settings.transClass);
           });
           updateSlide();
-        } else if (slip.settings.transition === 'slide') {
+        } else if (slip.settings.transition === 'horizontal') {
           pos = '-' + slip.vars.active.index() * (100 + slip.settings.transSpace) + '%';
           if (slip.settings.continuous) {
             if (slip.vars.jump && (slip.vars.trigger === 'controls')) {
@@ -186,16 +207,30 @@
             }
           }
           slip.vars.active.addClass(slip.settings.transClass);
-          el.stop().animate({
-            left: pos
-          }, slip.settings.transTime, slip.settings.transEase, function () {
-            if (jump) {
-              slip.vars.active.css('left', old_left);
-              el.css('left', old_pos);
-            }
-            slip.vars.moving = false;
-            return this;
-          });
+          if (slip.settings.useCSS) {
+            el.addClass('move');
+            el.css('left', pos);
+            el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+              el.removeClass('move'); // Thanks! http://blog.teamtreehouse.com/using-jquery-to-detect-when-css3-animations-and-transitions-end
+              if (jump) {
+                slip.vars.active.css('left', old_left);
+                el.css('left', old_pos);
+              }
+              slip.vars.moving = false;
+              return this;
+            });            
+          } else {
+            el.stop().animate({
+              left: pos
+            }, slip.settings.transTime, slip.settings.transEase, function () {
+              if (jump) {
+                slip.vars.active.css('left', old_left);
+                el.css('left', old_pos);
+              }
+              slip.vars.moving = false;
+              return this;
+            });
+          }  
           updateSlide();
         }
       } else {
@@ -290,9 +325,16 @@
 
     // initialises the slider, creates needed markup
     init = function () {
+      console.log(el);
+      console.log(slip.vars.backup);
       var start;
       slip.settings = $.extend({}, defaults, options);
       slip.vars.count = $(slip.settings.elements, el).length;
+      if (slip.settings.useCSS) {
+        if (!supports('transition')) {
+          slip.settings.useCSS = false;
+        }
+      }
       if ((slip.vars.count !== 1) || (slip.settings.initSingle)) {
         if ($('.' + slip.settings.activeClass, el).index() === -1) {
           if (slip.settings.randomStart) {
@@ -306,7 +348,7 @@
           slip.vars.active = $('.' + slip.settings.activeClass, el);
         }
         updatePos(slip.vars.active.index());
-        if (slip.settings.transition === 'slide') {
+        if (slip.settings.transition === 'horizontal') {
           $(slip.settings.elements, el).each(function () {
             $(this).css('left', $(this).index() * (100 + slip.settings.transSpace) + '%').addClass('slide');
           });
@@ -323,10 +365,12 @@
       }
     };
 
+    // re-initialize the whole plugin
     this.reset = function () {
-      console.log('reset');
-      // el.parent().parent().append(el).remove(el.parent()); // implement this properly todo : delete all the created objects
-      // init(); // re-initialise
+      var current;
+      current = slip.vars.slippryWrapper.before(slip.vars.backup);
+      current.prev().slippry(options);
+      slip.vars.slippryWrapper.remove(); // still needs fixes
     };
 
     init(); // on startup initialise the slider

@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="../dist/slippry.css">
 	</head>
 	<body>
+		<a href="#glob" class='prev'>Prev</a> / <a href="#glob" class='next'>Next</a> || <a href="#glob" class='reset'>Reset Demo #2</a>
 		<section class="demo_wrapper">
 			<article class="demo_block">
 				<h1>Simple demo with defualt setup</h1>
-					<ul id="demo1">
+					<ul id="demo1" class="multi">
 						<li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="img/demo1_1.jpg"  alt="demo1_1"></a></li>
 						<li title="This is caption 2"><a href="#slide2"><img src="img/demo1_2.jpg"  alt="demo1_2"></a></li>
 						<li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="img/demo1_3.jpg"  alt="demo1_3"></a></li>
@@ -22,9 +23,9 @@
 		<section class="demo_wrapper">
 			<article class="demo_block">
 				<h1>Demo with some options</h1>
-					<ul id="demo2">
+					<ul id="demo2" class="multi">
 						<li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="img/demo1_1.jpg"  alt="demo1_1"></a></li>
-						<li title="This is caption 2" class="active"><a href="#slide2"><img src="img/demo1_2.jpg"  alt="demo1_2"></a></li>
+						<li title="This is caption 2"><a href="#slide2"><img src="img/demo1_2.jpg"  alt="demo1_2"></a></li>
 						<li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="img/demo1_3.jpg"  alt="demo1_3"></a></li>
 					</ul>
 					<div class="special_caption"></div>
@@ -34,10 +35,21 @@
 			$(function() {
 				var demo1 = $("#demo1").slippry();
 				var demo2 = $("#demo2").slippry({
-					loop: false,
-					transition: 'fade',
-					captions: 'below',
-					transTime: 800
+					useCSS: false,
+					transTime: 740
+				});			
+
+				$('.prev').click(function () {
+					$('.slip_prev a').trigger('click');
+					return false;
+				});
+				$('.next').click(function () {
+					$('.slip_next a').trigger('click');
+					return false;
+				});
+				$('.reset').click(function () {
+					demo2.reset();
+					return false;
 				});
 			});
 		</script>
