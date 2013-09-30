@@ -29,6 +29,10 @@ $trans_ease: ease;
       }
     }
   }
+  visibility: visible;
+  &.loading {
+    visibility: hidden;
+  }
   .slide_box {
     position: relative;
     height: 100%;
@@ -146,7 +150,9 @@ $trans_ease: ease;
     }
     .filler {
       width: 100%;
-      @include transition(padding $filler_time $filler_ease);
+      &.ready {
+        @include transition(padding $filler_time $filler_ease);
+      }
     }
     .caption_wrap {
       position: absolute;

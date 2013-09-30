@@ -1,10 +1,12 @@
 /**
- * slippry v0.7 - Simple responsive content slider
+ * slippry v0.76 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
  *
  * Copyright 2013, booncon oy - http://booncon.com
+ *
+ * Thanks @ http://bxslider.com for some inspiration!
  *
  * Released under the MIT license - http://opensource.org/licenses/MIT
  */
@@ -21,10 +23,11 @@
     elements: 'li', // elments cointaining slide content
     activeClass: 'active', // class for current slide
     fillerClass: 'filler', // class for element that acts as intrinsic placholder
+    loadingClass: 'loading',
 
     // options
     adaptHeight: true, // height of the sliders adapts to current slide
-    start: 0, // num, random
+    start: 1, // num, random
     loop: true, // first -> last & last -> first arrows
     captions: 'overlay', // overlay, below, custom (selector), false
     initSingle: true, // initialise even if there is only one slide
@@ -60,8 +63,8 @@
   };
 
   $.fn.slippry = function (options) {
-    var slip, el, refresh, prepareFiller, setFillerProportions, init, goToSlide,
-      initPager, initControls, initCaptions, updatePager, doTransition, updateSlide, updateControls, updatePos, supports;
+    var slip, el, refresh, prepareFiller, setFillerProportions, init,
+      initPager, initControls, initCaptions, updatePager, doTransition, updateSlide, updateControls, updatePos, supports, preload, start;
 
     // reference to the object calling the function
     el = this;
@@ -85,30 +88,37 @@
 
     supports = (function () {  // Thanks! http://net.tutsplus.com/tutorials/html-css-techniques/quick-tip-detect-css-support-in-browsers-with-javascript/
       var div = document.createElement('div'),
-        vendors = 'Khtml Ms O Moz Webkit'.split(' '),
+        vendors = ['Khtml', 'Ms', 'O', 'Moz', 'Webkit'],
         len = vendors.length;
-      return function(prop) {
-        if (prop in div.style) return true;
-        prop = prop.replace(/^[a-z]/, function(val) {
-          return val.toUpperCase();
-        });      
-        while(len--) {
-         if ( vendors[len] + prop in div.style ) {
+      return function (prop) {
+        if (prop in div.style) {
           return true;
-         }
+        }
+        prop = prop.replace(/^[a-z]/, function (val) {
+          return val.toUpperCase();
+        });
+        while (len--) {
+          if (vendors[len] + prop in div.style) {
+            return true;
+          }
         }
         return false;
       };
-    })();
+    }());
 
     // sets the aspect ratio of the filler element
     setFillerProportions = function ($slide) {
-      var width, height, ratio, p_top;
+      var width, height, ratio, p_top, $filler;
       width = $slide.width();
       height = $slide.height();
       ratio = width / height;
       p_top = 1 / ratio * 100 + '%';  //cool intrinsic trick: http://alistapart.com/article/creating-intrinsic-ratios-for-video
-      $('.' + slip.settings.fillerClass, slip.vars.slideWrapper).css({paddingTop: p_top}); // resizing without the need of js, true responsiveness :)      
+      $filler = $('.' + slip.settings.fillerClass, slip.vars.slideWrapper);
+      $filler.css({paddingTop: p_top}); // resizing without the need of js, true responsiveness :)
+      if ($slide.get(0) === slip.vars.active.get(0)) {
+        console.log('same');
+        $filler.addClass('ready');
+      }
     };
 
     // prepares a div to occupy the needed space
@@ -168,12 +178,16 @@
 
     updateSlide = function () {
       refresh();
+      if (slip.vars.fresh) {
+        slip.vars.slippryWrapper.removeClass(slip.settings.loadingClass);
+        slip.vars.fresh = false;
+      }
       slip.settings.onSlideAfter.call(slip.vars.active);
     };
 
     doTransition = function () {
       var pos, jump, old_left, old_pos;
-      slip.settings.onSlideBefore.call(slip.vars.active);      
+      slip.settings.onSlideBefore.call(slip.vars.active);
       if (slip.settings.transition !== false) {
         slip.vars.moving = true;
         if (slip.settings.transition === 'fade') {
@@ -191,46 +205,51 @@
           updateSlide();
         } else if (slip.settings.transition === 'horizontal') {
           pos = '-' + slip.vars.active.index() * (100 + slip.settings.transSpace) + '%';
-          if (slip.settings.continuous) {
-            if (slip.vars.jump && (slip.vars.trigger === 'controls')) {
-              jump = true;
-              old_pos = pos;
-              if (slip.vars.first) {
-                old_left = 0;
-                slip.vars.active.css('left', slip.vars.count * (100 + slip.settings.transSpace) + '%');
-                pos = '-' + slip.vars.count * (100 + slip.settings.transSpace) + '%';
-              } else {
-                old_left = (slip.vars.count - 1) * (100 + slip.settings.transSpace) + '%';
-                slip.vars.active.css('left', -(100 + slip.settings.transSpace) + '%');
-                pos = (100 + slip.settings.transSpace) + '%';
+          if (slip.vars.fresh) {
+            el.css('left', pos);
+            slip.vars.moving = false;
+          } else {
+            if (slip.settings.continuous) {
+              if (slip.vars.jump && (slip.vars.trigger === 'controls')) {
+                jump = true;
+                old_pos = pos;
+                if (slip.vars.first) {
+                  old_left = 0;
+                  slip.vars.active.css('left', slip.vars.count * (100 + slip.settings.transSpace) + '%');
+                  pos = '-' + slip.vars.count * (100 + slip.settings.transSpace) + '%';
+                } else {
+                  old_left = (slip.vars.count - 1) * (100 + slip.settings.transSpace) + '%';
+                  slip.vars.active.css('left', -(100 + slip.settings.transSpace) + '%');
+                  pos = (100 + slip.settings.transSpace) + '%';
+                }
               }
             }
+            slip.vars.active.addClass(slip.settings.transClass);
+            if (slip.settings.useCSS) {
+              el.addClass('move');
+              el.css('left', pos);
+              el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+                el.removeClass('move'); // Thanks! http://blog.teamtreehouse.com/using-jquery-to-detect-when-css3-animations-and-transitions-end
+                if (jump) {
+                  slip.vars.active.css('left', old_left);
+                  el.css('left', old_pos);
+                }
+                slip.vars.moving = false;
+                return this;
+              });
+            } else {
+              el.stop().animate({
+                left: pos
+              }, slip.settings.transTime, slip.settings.transEase, function () {
+                if (jump) {
+                  slip.vars.active.css('left', old_left);
+                  el.css('left', old_pos);
+                }
+                slip.vars.moving = false;
+                return this;
+              });
+            }
           }
-          slip.vars.active.addClass(slip.settings.transClass);
-          if (slip.settings.useCSS) {
-            el.addClass('move');
-            el.css('left', pos);
-            el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-              el.removeClass('move'); // Thanks! http://blog.teamtreehouse.com/using-jquery-to-detect-when-css3-animations-and-transitions-end
-              if (jump) {
-                slip.vars.active.css('left', old_left);
-                el.css('left', old_pos);
-              }
-              slip.vars.moving = false;
-              return this;
-            });            
-          } else {
-            el.stop().animate({
-              left: pos
-            }, slip.settings.transTime, slip.settings.transEase, function () {
-              if (jump) {
-                slip.vars.active.css('left', old_left);
-                el.css('left', old_pos);
-              }
-              slip.vars.moving = false;
-              return this;
-            });
-          }  
           updateSlide();
         }
       } else {
@@ -248,7 +267,7 @@
       }
     };
 
-    goToSlide = function (slide) {
+    this.goToSlide = function (slide) {
       var current;
       if (!slip.vars.moving) {
         current = slip.vars.active.index();
@@ -289,7 +308,7 @@
         slip.vars.slippryWrapper.append(pager);
         $('.' + slip.settings.pagerClass + ' a', slip.vars.slippryWrapper).click(function () {
           slip.vars.trigger = 'pager';
-          goToSlide(parseInt(this.hash.split('#')[1], 10));
+          el.goToSlide(parseInt(this.hash.split('#')[1], 10));
           return false;
         });
         updatePager();
@@ -305,7 +324,7 @@
         );
         $('.' + slip.settings.controlClass + ' a', slip.vars.slippryWrapper).click(function () {
           slip.vars.trigger = 'controls';
-          goToSlide(this.hash.split('#')[1]);
+          el.goToSlide(this.hash.split('#')[1]);
           return false;
         });
         updateControls();
@@ -323,11 +342,38 @@
       }
     };
 
+    // actually show the first slide
+    start = function () {
+      // console.log('go');
+      el.goToSlide(slip.vars.active.index());
+    };
+
+    // wait for images, iframes to be loaded
+    preload = function (slides) {
+      var count, loop, elements;
+      elements = $('img, iframe', slides);
+      count = elements.length;
+      if (count === 0) {
+        start();
+        return;
+      }
+      loop = 0;
+      elements.each(function () {
+        $(this).one('load', function () {
+          if (++loop === count) {
+            start();
+          }
+        }).each(function () {
+          if (this.complete) {
+            $(this).load();            
+          }
+        });
+      });
+    };
+
     // initialises the slider, creates needed markup
     init = function () {
-      console.log(el);
-      console.log(slip.vars.backup);
-      var start;
+      var first;
       slip.settings = $.extend({}, defaults, options);
       slip.vars.count = $(slip.settings.elements, el).length;
       if (slip.settings.useCSS) {
@@ -337,17 +383,18 @@
       }
       if ((slip.vars.count !== 1) || (slip.settings.initSingle)) {
         if ($('.' + slip.settings.activeClass, el).index() === -1) {
-          if (slip.settings.randomStart) {
-            start = Math.round(Math.random() * (slip.vars.count - 1));
+          if (slip.settings.start === 'random') {
+            first = Math.round(Math.random() * (slip.vars.count - 1));
+          } else if (slip.settings.start > 0 && slip.settings.start < slip.vars.count) {
+            first = slip.settings.start - 1;
           } else {
-            start = 0;
+            first = 0;
           }
-          $($(slip.settings.elements, el)[start]).addClass(slip.settings.activeClass);
-          slip.vars.active = $($(slip.settings.elements, el)[start]);
+          $($(slip.settings.elements, el)[first]).addClass(slip.settings.activeClass);
+          slip.vars.active = $($(slip.settings.elements, el)[first]);
         } else {
           slip.vars.active = $('.' + slip.settings.activeClass, el);
         }
-        updatePos(slip.vars.active.index());
         if (slip.settings.transition === 'horizontal') {
           $(slip.settings.elements, el).each(function () {
             $(this).css('left', $(this).index() * (100 + slip.settings.transSpace) + '%').addClass('slide');
@@ -355,11 +402,12 @@
         }
         el.addClass(slip.settings.boxClass).wrap(slip.settings.slippryWrapper).wrap(slip.settings.slideWrapper);
         slip.vars.slideWrapper = el.parent();
-        slip.vars.slippryWrapper = slip.vars.slideWrapper.parent();
+        slip.vars.slippryWrapper = slip.vars.slideWrapper.parent().addClass(slip.settings.loadingClass);
+        slip.vars.fresh = true;
         initControls();
         initPager();
         initCaptions();
-        refresh();
+        preload($(slip.settings.elements, el));
       } else {
         return this;
       }
