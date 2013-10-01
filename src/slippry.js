@@ -53,6 +53,10 @@
     continuous: true, // seamless first/ last transistion, only works with loop
     useCSS: true, // true, false -> fallback to js if no browser support
 
+    //slideshow
+    auto: true,
+    pause: 5000,
+
     // callback functions
     onSlideBefore: function () { // before page transition starts
       return this;
@@ -63,7 +67,7 @@
   };
 
   $.fn.slippry = function (options) {
-    var slip, el, refresh, prepareFiller, setFillerProportions, init,
+    var slip, el, refresh, prepareFiller, setFillerProportions, init, initSlideshow, startSlideshow,
       initPager, initControls, initCaptions, updatePager, doTransition, updateSlide, updateControls, updatePos, supports, preload, start;
 
     // reference to the object calling the function
@@ -176,11 +180,22 @@
       }
     };
 
+    startSlideshow = function () {
+      slip.vars.timer = setInterval( function() { el.goToSlide('next'); }, slip.settings.pause );
+    };
+
+    initSlideshow = function () {
+
+    };
+
     updateSlide = function () {
       refresh();
       if (slip.vars.fresh) {
         slip.vars.slippryWrapper.removeClass(slip.settings.loadingClass);
         slip.vars.fresh = false;
+        if (slip.settings.auto) {
+          startSlideshow();
+        }
       }
       slip.settings.onSlideAfter.call(slip.vars.active);
     };
