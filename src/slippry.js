@@ -46,16 +46,16 @@
 
     // transitions
     transition: 'horizontal', // fade, horizontal, false, kenburns?
-    transSpace: 0, // spacing between slides (in %)
-    transClass: 'transition',
+    transSpace: 0, // spacing between slides (in % [of which element?])
+    transClass: 'transition', // [Class applied to [element] when a transition is taking place.]
     transTime: 1200, // time the transition takes (ms)
-    transEase: 'swing', // easing to use in the animation
+    transEase: 'swing', // easing to use in the animation [(see... [jquery www])]
     continuous: true, // seamless first/ last transistion, only works with loop
-    useCSS: true, // true, false -> fallback to js if no browser support
+    useCSS: false, // true, false -> fallback to js if no browser support
 
     //slideshow
     auto: true,
-    pause: 5000,
+    pause: 500,
 
     // callback functions
     onSlideBefore: function () { // before page transition starts
@@ -388,6 +388,7 @@
 
     // initialises the slider, creates needed markup
     init = function () {
+      console.log('init');
       var first;
       slip.settings = $.extend({}, defaults, options);
       slip.vars.count = $(slip.settings.elements, el).length;
