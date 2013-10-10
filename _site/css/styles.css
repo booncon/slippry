@@ -1,0 +1,127 @@
+/**
+ * Site: Slippry
+ * Description: A responsive slider by booncon.
+ * Author: Lukas Hafner
+ * Company: booncon oy
+ * Url: rockets.booncon.com
+ */
+/* 1. Variables */
+/* 2. Resets */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0b1 | 201101 
+   NOTE: WORK IN PROGRESS
+   USE WITH CAUTION AND TEST WITH ABANDON */
+/* line 37, ../scss/styles.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 48, ../scss/styles.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 51, ../scss/styles.scss */
+body {
+  line-height: 1;
+}
+
+/* line 54, ../scss/styles.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 57, ../scss/styles.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 61, ../scss/styles.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* remember to define visible focus styles! 
+:focus {
+  outline: ?????;
+} */
+/* remember to highlight inserts somehow! */
+/* line 72, ../scss/styles.scss */
+ins {
+  text-decoration: none;
+}
+
+/* line 75, ../scss/styles.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* line 79, ../scss/styles.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Defaults */
+/* line 86, ../scss/styles.scss */
+body {
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 96%;
+  margin: 0 auto;
+}
+
+/* line 93, ../scss/styles.scss */
+h1 {
+  font-size: 2em;
+}
+
+/* line 94, ../scss/styles.scss */
+h2 {
+  font-size: 1.66em;
+}
+
+/* line 95, ../scss/styles.scss */
+h3 {
+  font-size: 1.33em;
+}
+
+/* line 96, ../scss/styles.scss */
+h4 {
+  font-size: 1.1em;
+}
+
+/* line 97, ../scss/styles.scss */
+h5 {
+  font-size: 0.87em;
+}
+
+/* line 98, ../scss/styles.scss */
+h6 {
+  font-size: 0.63em;
+}
+
+/* Header */
+/* Content */
+/* Footer */
