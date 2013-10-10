@@ -1,0 +1,131 @@
+/**
+ * Site: Slippry
+ * Description: A responsive slider by booncon.
+ * Author: Lukas Hafner
+ * Company: booncon oy
+ * Url: rockets.booncon.com
+ */
+
+/* 1. Variables */
+$bc-rk-blue: #31ACE2;
+$bc-grey: #3B454F;
+$white: #fff;
+$black: #000;
+
+$sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif: Georgia, Times, serif;
+$base-font-size: 14px;
+
+/* 2. Resets */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0b1 | 201101 
+   NOTE: WORK IN PROGRESS
+   USE WITH CAUTION AND TEST WITH ABANDON */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* remember to define visible focus styles! 
+:focus {
+  outline: ?????;
+} */
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Defaults */
+
+body {
+  font-size: $base-font-size;
+  font-family: $sans-serif;
+  width: 96%;
+  margin: 0 auto;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.66em; }
+h3 { font-size: 1.33em; }
+h4 { font-size: 1.1em; }
+h5 { font-size: 0.87em; }
+h6 { font-size: 0.63em; }
+
+/* Header */
+
+#header {
+  // //color: $white;
+  // a {
+  //   //color: $white;
+  //   text-decoration: none;
+  //   &:hover {
+  //     //color: $white;
+  //   }
+  // }
+  // #logo-link,
+  // #main-menu {
+  //   display: inline-block;
+  // }
+  // #site-name {
+    
+  // }
+  // #main-menu {
+  //   list-style: none;
+  //   float: right;
+  //   li {
+  //     display: inline-block;
+  //   }
+  // }
+}
+
+
+/* Content */
+
+
+/* Footer */
