@@ -1,0 +1,117 @@
+---
+layout: default
+title: Examples - Shop product display - Slippry - A responsive slider by booncon.
+---
+<section class="shop">
+  <h2 class="restricted-width">Shop</h2>
+  <section id="shop-demo">
+    <article title="Product 1">
+      <div class="image-content"><img src="/images/image-2.jpg" alt="demo1_2" class="product-image"></div>
+      <div class="product-info">
+        <p>This picture is the most amazing thing in the world. You can see the white, black and some other colours that are present. Everyone wants this photo, so much so that this paragraph was made so vague that it should steer your car away from the trees where birds are making a perfect nest.</p>
+        <a href="#!" class="button-link more-info">More information</a><a href="#!" class="button-link buy-now">Buy now</a>
+      </div>
+    </article>
+    <article title="Product 2">
+      <div class="image-content"><img src="/images/image-2.jpg" alt="demo1_2" class="product-image"></div>
+      <div class="product-info">
+        <p>This picture is the most amazing thing in the world. You can see the white, black and some other colours that are present. Everyone wants this photo, so much so that this paragraph was made so vague that it should steer your car away from the trees where birds are making a perfect nest.</p>
+        <a href="#!" class="button-link more-info">More information</a><a href="#!" class="button-link buy-now">Buy now</a>
+      </div>
+    </article>
+    <article title="Product 3">
+      <div class="image-content"><img src="/images/image-2.jpg" alt="demo1_2" class="product-image"></div>
+      <div class="product-info">
+        <p>This picture is the most amazing thing in the world. You can see the white, black and some other colours that are present. Everyone wants this photo, so much so that this paragraph was made so vague that it should steer your car away from the trees where birds are making a perfect nest.</p>
+        <a href="#!" class="button-link more-info">More information</a><a href="#!" class="button-link buy-now">Buy now</a>
+      </div>
+    </article>
+    <article title="Product 4">
+      <div class="image-content"><img src="/images/image-2.jpg" alt="demo1_2" class="product-image"></div>
+      <div class="product-info">
+        <p>This picture is the most amazing thing in the world. You can see the white, black and some other colours that are present. Everyone wants this photo, so much so that this paragraph was made so vague that it should steer your car away from the trees where birds are making a perfect nest.</p>
+        <a href="#!" class="button-link more-info">More information</a><a href="#!" class="button-link buy-now">Buy now</a>
+      </div>
+    </article>
+  </section>
+  <h2 class="product-name"></h2>
+</section>
+
+<section class="markup restricted-width">
+  <h3>HTML Markup</h3>
+  <code>
+    <pre>
+&lt;section id="shop-demo"&gt;
+  &lt;article title="Product 1"&gt;
+    &lt;div class="image-content"&gt;&lt;img src="/images/image-2.jpg" alt="demo1_2" class="product-image"&gt;&lt;/div&gt;
+    &lt;div class="product-info"&gt;
+      &lt;p&gt;This picture is the most amazing thing in the world. You can see the white, black and some other colours that are present. Everyone wants this photo, so much so that this paragraph was made so vague that it should steer your car away from the trees where birds are making a perfect nest.&lt;/p&gt;
+      &lt;a href="#!" class="button-link more-info"&gt;More information&lt;/a&gt;&lt;a href="#!" class="button-link buy-now"&gt;Buy now&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  &lt;article title="Product 2"&gt;
+    &lt;div class="image-content"&gt;&lt;img src="/images/image-2.jpg" alt="demo1_2" class="product-image"&gt;&lt;/div&gt;
+    &lt;div class="product-info"&gt;
+      &lt;p&gt;This picture is the most amazing thing in the world. You can see the white, black and some other colours that are present. Everyone wants this photo, so much so that this paragraph was made so vague that it should steer your car away from the trees where birds are making a perfect nest.&lt;/p&gt;
+      &lt;a href="#!" class="button-link more-info"&gt;More information&lt;/a&gt;&lt;a href="#!" class="button-link buy-now"&gt;Buy now&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  &lt;article title="Product 3"&gt;
+    &lt;div class="image-content"&gt;&lt;img src="/images/image-2.jpg" alt="demo1_2" class="product-image"&gt;&lt;/div&gt;
+    &lt;div class="product-info"&gt;
+      &lt;p&gt;This picture is the most amazing thing in the world. You can see the white, black and some other colours that are present. Everyone wants this photo, so much so that this paragraph was made so vague that it should steer your car away from the trees where birds are making a perfect nest.&lt;/p&gt;
+      &lt;a href="#!" class="button-link more-info"&gt;More information&lt;/a&gt;&lt;a href="#!" class="button-link buy-now"&gt;Buy now&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  &lt;article title="Product 4"&gt;
+    &lt;div class="image-content"&gt;&lt;img src="/images/image-2.jpg" alt="demo1_2" class="product-image"&gt;&lt;/div&gt;
+    &lt;div class="product-info"&gt;
+      &lt;p&gt;This picture is the most amazing thing in the world. You can see the white, black and some other colours that are present. Everyone wants this photo, so much so that this paragraph was made so vague that it should steer your car away from the trees where birds are making a perfect nest.&lt;/p&gt;
+      &lt;a href="#!" class="button-link more-info"&gt;More information&lt;/a&gt;&lt;a href="#!" class="button-link buy-now"&gt;Buy now&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/section&gt;
+&lt;h2 class="product-name"&gt;&lt;/h2&gt;</pre>
+  </code>
+</section>
+
+<section class="jquery restricted-width">
+  <h3>jQuery</h3>
+  <code>
+    <pre>
+jQuery('#shop-demo').slippry({
+  // general elements &amp; wrapper
+  slippryWrapper: '&lt;div class="slippry_box shop-slider" /&gt;',
+  elements: 'article',
+
+  // options
+  adaptHeight: false,
+  start: 2,
+  loop: false,
+  captions: 'custom',
+  captionsClass: 'product-name',
+
+  // pager
+  usePager: false,
+
+  // transitions
+  slideMargin: 20,
+  useCSS: true,
+
+  //slideshow
+  auto: false,
+});
+    </pre>
+  </code>
+</section>
+
+<section class="css restricted-width">
+  <h3>CSS</h3>
+  <code>
+    <pre>
+
+    </pre>
+  </code>
+</section>
+
+{% include example-blocks.html %}

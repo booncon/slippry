@@ -3,41 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <title>Examples - Slippry - A responsive slider by booncon.</title>
+  <script src="//use.edgefonts.net/cabin:n4,i4,n7,i7;source-sans-pro:n3,i3.js"></script>
   <link rel="stylesheet" href="/css/styles.css" />
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="/js/slippry.js"></script>
+  <script src="/js/slippry.min.js"></script>
   <script src="/js/scripts.js"></script>
 </head>
 <body>
-  <header id="header" >
+  <header id="header">
   <div class="restricted-width">
-    <a href="" id="logo-link"><h1 id="site-name">Slippry</h1></a>
+    <h1 id="site-name"><a href="/" id="logo-link">Slippry</a></h1>
+    <a href="https://github.com/booncon/slippry" class="github-link"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
     <nav id="main-menu">
-      <li><a href="/settings">Settings</a></li>
-      <li><a href="/examples">Examples</a></li>
-      <li><a href="">Download</a></li>
+      <li><a href="/settings" class="button-link">Settings</a></li>
+      <li><a href="/examples" class="button-link">Examples</a></li>
+      <li><a href="https://www.github.com/booncon/slippry/archive/master.zip" title="Download this repository as a zip file" rel="nofollow" class="button-link">Download</a></li>
     </nav>
   </div>
-  <a href="https://github.com/booncon/slippry"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 </header>
   
-  <section>
-Slippry.
-The stuff you need without the stuff you don't.
+  <section class="restricted-width">
+  <h2 class="page-title">Inspiration you say? Have a look at some of these examples.</h2>
+  <p>We think Slippry is a pretty customisable slider, so we've included some (slightly random) combinations of options and the function settings and CSS (if applicable) to recreate them.</p>
+  <p>Have you customised Slippry in an awesome way? Let us know at <a href="mailto:slippry@booncon.com">slippry (at) booncon.com</a>! We love to see what people do with Slippry.</p>
 </section>
 
-<section>
-  <div>
-Responsive. Industry buzzword overkill? Almost certainly. Although it turns out finding a truly responsive slider isn't that easy…
-</div>
-
-<div>CSS & jQuery. Support your grandad's computer or only your hip friends?</div>
-
-<div>Complex? Nahhh. Just need a slider that works out of the box? Slippry can do that. The provided SASS stylesheet and script options means you can have a beautifully minimal slider working in no time. </div>
-
+<section class="restricted-width example-tiles">
+<a class="tile" href="out-of-the-box">Out-of-the-box</a><a class="tile" href="pictures">Pictures</a><a class="tile" href="portfolio">Portfolio</a><a class="tile" href="news">News</a><a class="tile" href="shop">Shop</a><a class="tile" href="css-vs-jquery">CSS vs jQuery</a></section>
   
-  <footer id="footer">
-  A booncon ROCKETS creation. &copy; booncon oy
+  <footer id="footer" class="full-width">
+  <div class="made-with">Made with<br> love by</div><a href="http://www.booncon.com" class="block-link"><img src="/images/logo_bc-rockets.svg" class="rockets-logo"/></a>
 </footer>
 </body>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Examples - Slippry - A responsive slider by booncon.</title>
+  <script src="//use.edgefonts.net/cabin:n4,i4,n7,i7;source-sans-pro:n3,i3.js"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/js/slippry.min.js"></script>
+  <script src="/js/scripts.js"></script>
+</head>
+<body>
+  <header id="header">
+  <div class="restricted-width">
+    <h1 id="site-name"><a href="/" id="logo-link">Slippry</a></h1>
+    <a href="https://github.com/booncon/slippry" class="github-link"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <nav id="main-menu">
+      <li><a href="/settings" class="button-link">Settings</a></li>
+      <li><a href="/examples" class="button-link">Examples</a></li>
+      <li><a href="https://www.github.com/booncon/slippry/archive/master.zip" title="Download this repository as a zip file" rel="nofollow" class="button-link">Download</a></li>
+    </nav>
+  </div>
+</header>
+  
+  <section class="restricted-width default">
+  <h2>Out-of-the-box</h2>
+  <p>This is what you will get with the default implementation of Slippry and using the default CSS supplied.</p>
+  <ul id="out-of-the-box-demo">
+    <li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="/images/image-1.jpg" alt="demo1_1"></a></li>
+    <li title="This is caption 2"><a href="#slide2"><img src="/images/image-2.jpg"  alt="demo1_2"></a></li>
+    <li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="/images/image-3.jpg" alt="demo1_3"></a></li>
+    <li title="And this is some very long caption for slide 4."><a href="#slide4"><img src="/images/image-4.jpg" alt="demo1_4"></a></li>
+  </ul>
+</section>
+
+<section class="markup restricted-width">
+  <h3>HTML Markup</h3>
+  <code>
+    <pre>
+&lt;ul id="out-of-the-box-demo"&gt;
+  &lt;li title="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
+    &lt;a href="#slide1"&gt;
+      &lt;img src="/images/image-1.jpg" alt="demo1_1"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="This is caption 2"&gt;
+    &lt;a href="#slide2"&gt;
+      &lt;img src="/images/image-2.jpg"  alt="demo1_2"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="And this is some very long caption for slide 3. Yes, really long."&gt;
+    &lt;a href="#slide3"&gt;
+      &lt;img src="/images/image-3.jpg" alt="demo1_3"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="And this is some very long caption for slide 4."&gt;
+    &lt;a href="#slide4"&gt;
+      &lt;img src="/images/image-4.jpg" alt="demo1_4"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+  </code>
+</section>
+
+<section class="jquery restricted-width">
+  <h3>jQuery</h3>
+  <code>
+    <pre>
+jQuery('#out-of-the-box-demo').slippry();</pre>
+  </code>
+</section>
+
+<section class="css restricted-width">
+  <h3>CSS</h3>
+  <code>
+    <pre>
+
+    </pre>
+  </code>
+</section>
+
+<section class="restricted-width example-tiles">
+<a class="tile" href="/examples/out-of-the-box">Out-of-the-box</a><a class="tile" href="/examples/pictures">Pictures</a><a class="tile" href="/examples/portfolio">Portfolio</a><a class="tile" href="/examples/news">News</a><a class="tile" href="/examples/shop">Shop</a><a class="tile" href="/examples/css-vs-jquery">CSS vs jQuery</a></section>
+  
+  <footer id="footer" class="full-width">
+  <div class="made-with">Made with<br> love by</div><a href="http://www.booncon.com" class="block-link"><img src="/images/logo_bc-rockets.svg" class="rockets-logo"/></a>
+</footer>
+</body>
+</html>

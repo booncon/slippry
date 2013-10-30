@@ -8,15 +8,20 @@
 
 @import "slippry";
 
+
 /* 1. Variables */
 $bc-rk-blue: #31ACE2;
 $bc-grey: #3B454F;
 $white: #fff;
-$black: #000;
+$black: #202123;
+$body-text: #777;
+$link-color: $black;
+$link-hover: #444;
 
-$sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$sans-serif: 'Cabin', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$title-fonts: source-sans-pro, Verdana, sans-serif;
 $serif: Georgia, Times, serif;
-$base-font-size: 14px;
+$base-font-size: 16px;
 
 /* 2. Resets */
 
@@ -24,6 +29,10 @@ $base-font-size: 14px;
    v2.0b1 | 201101 
    NOTE: WORK IN PROGRESS
    USE WITH CAUTION AND TEST WITH ABANDON */
+
+* {
+  @include box-sizing(border-box);
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -51,9 +60,10 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 body {
-  line-height: 1;
+  line-height: 1.48;
+  -webkit-font-smoothing: antialiased;
 }
-ol, ul {
+/* ol, */ ul {
   list-style: none;
 }
 blockquote, q {
@@ -88,8 +98,32 @@ table {
 body {
   font-size: $base-font-size;
   font-family: $sans-serif;
-  width: 96%;
+  background-color: #f5f5f5;// */lighten($bc-grey, 60%);
   margin: 0 auto;
+  color: $body-text;
+}
+
+div {
+  vertical-align: top;
+}
+
+p {
+  display: block;
+  margin: 1em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.5;
+  font-weight: 300;
+  margin: 0.5em 0;
+  font-family: $title-fonts;
+  color: $black;//$bc-grey;
+  a {
+  color: $link-color;//$bc-grey;//$bc-rk-blue;
+    &:hover {
+      color: $link-hover;
+    }
+  }
 }
 
 h1 { font-size: 2em; }
@@ -99,35 +133,424 @@ h4 { font-size: 1.1em; }
 h5 { font-size: 0.87em; }
 h6 { font-size: 0.63em; }
 
+.full-width {
+  //width: 100%;
+}
+
+.restricted-width {
+  @media only screen and (min-width: 1180px) {
+    max-width: 1180px;
+  }
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2%;
+}
+
+a.button-link {
+  display: inline-block;
+  color: $white;
+  background-color: $bc-rk-blue;
+  padding: 0.25em 0.5em;// 0.15em;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  vertical-align: text-bottom;
+  &:hover {
+    background-color: darken($bc-rk-blue, 10%);
+    color: $white;
+  }
+}
+
+section {
+  margin: 0 0 1em;
+}
+
+a {
+  color: $link-color;
+  &:hover {
+    color: $link-hover;
+  }
+}
+
+/* End resets */
+
 /* Header */
 
 #header {
-  // //color: $white;
-  // a {
-  //   //color: $white;
-  //   text-decoration: none;
-  //   &:hover {
-  //     //color: $white;
-  //   }
-  // }
-  // #logo-link,
-  // #main-menu {
-  //   display: inline-block;
-  // }
-  // #site-name {
-    
-  // }
-  // #main-menu {
-  //   list-style: none;
-  //   float: right;
-  //   li {
-  //     display: inline-block;
-  //   }
-  // }
+  @include clearfix;
+  a {
+    text-decoration: none;
+    &.logo-link:hover {
+      color: $link-hover;
+    }
+  }
+  #site-name {
+    font-size: 2em;
+    //display: inline-block;
+    padding: 0.75em 0;
+    float: left;
+  }
+  nav {
+    float: right;
+    display: inline-block;
+    margin: 3em 0;
+    li {
+      display: inline-block;
+    }
+    padding-right: 149px;
+    @media only screen and (min-width: 1480px) {
+      padding-right: 0;
+    }
+  }
+  .github-link {
+    //float: right;
+    img {
+      position: absolute; 
+      top: 0; 
+      right: 0; 
+      border: 0;
+    }
+  }
 }
 
 
 /* Content */
 
+.third {
+  width: 33%;
+  display: inline-block;
+  &:nth-child(1) { padding-right: 1em; }
+  &:nth-child(2) { padding: 0 0.5em; }
+  &:nth-child(3) { padding-left: 1em; }
+}
 
+a.github-download {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0.25em auto;
+  display: block;
+  width: 12em;
+}
+
+.big-number {
+  font-size: 6em;
+  font-weight: 700;
+  float: left;
+  margin-right: 0.25em;
+  display: block;
+  height: 100%;
+  line-height: 0.8;
+  //margin: 0.16667em 0.25em 0.16667em 0;
+  clear: left;
+  display: none;
+}
+.get-started {
+  @include clearfix;
+  margin: 1em 0;
+  h3, code, div {
+    //margin-left: 5em;
+  }
+  h3 {
+    margin-top: 0;//display: inline-block;
+  }
+}
+
+code {
+  // font-size: 12px;
+  //border: 1px solid grey;
+  font-family: monospace;
+  padding: 0.5em;
+  display: block;
+  //width: 100%;
+  //margin: 0 1em;
+  background-color: lighten($bc-grey,60%);//$white;
+  color: $bc-grey;
+  whitespace: pre;
+  overflow-x: auto;
+  &.inline {
+    background-color: transparent;
+    display: inline;
+    border: 0;
+    padding: 0;
+    color: $bc-grey;
+    margin: 0;
+    // font-size: 16px;
+  }
+}
 /* Footer */
+
+#footer {
+  background-color: $white;
+  padding-top: 2em;
+  padding-bottom: 1em;
+  color: $bc-grey;
+  //font-size: em;
+  text-align: center;
+  .made-with {
+    display: inline-block;
+    margin-right: 0.5em;
+    //vertical-align: text-bottom;
+  }
+  .block-link {
+    display: inline-block;
+  }
+  .rockets-logo {
+    height: 4em;
+    margin-top: -0.5em;
+  }
+}
+
+/* Settings */
+
+section.settings {
+  h4 {
+    margin-top: 1.5em;
+  }
+  h3 {
+    margin-top: 2em;
+    border-bottom: 1px solid lighten($bc-grey,50%);
+  }
+}
+
+/* Examples */
+
+.example-tiles {
+  .tile {
+    display: inline-block;
+    padding: 0.8em 1em;
+    background-color: $bc-rk-blue;
+    color: $white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-family: $title-fonts;
+    width: 100%;
+    margin: 1% 0;
+    text-align: center;
+    @media only screen and (min-width: 411px) {
+      width: 49%;
+      &:nth-child(2n+1) {
+        margin: 1% 1% 1% 0;
+      }
+      &:nth-child(2n+2) {
+        margin: 1% 0 1% 1%;
+      }
+    }
+    @media only screen and (min-width: 631px) {
+      width: 32%;
+      &:nth-child(3n+1) {
+        margin: 1% 1% 1% 0;
+      }
+      &:nth-child(3n+2) {
+        margin: 1%;
+      }
+      &:nth-child(3n+3) {
+        margin: 1% 0 1% 1%;
+      }
+    }
+    &:hover {
+      background-color: darken($bc-rk-blue, 10%);
+      color: $white;
+    }
+  }
+}
+
+/* Out-of-the-box */
+
+.default {
+  // None requires
+}
+
+/* Pictures */
+
+.pictures {
+  // None required.
+}
+
+/* Portfolio */
+
+.portfolio {
+  .pager {
+    margin: 1.5em 0;
+  }
+  .external-captions {
+    background-color: #fff;
+    padding: 1em;
+  }
+}
+
+/* News */
+
+.news-slider {
+  /* Style the actual content */
+  .text-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255,255,255,0.9);
+    padding: 1em;
+    width: 30%;
+    height: 100%;
+    p {
+      margin: 1em 0;  
+    }
+    a.button-link {
+      padding: 0.25em 0.5em;
+      float: right;
+    }
+  }
+  .image-content {
+    line-height: 0; // Stops strange 6px gap at bottom of div.  
+    img {
+      max-width: 100%;
+    }
+  }
+  .pager { /* change the pager */ // This should be changed to a custom class to completely override the pager, but have to wait for fix so active class is applied to li items when UL has a custom class.
+    text-align: right;
+    li {
+      margin: 0 0 0 1em;
+      @include border-radius(0);
+      a {
+        text-indent: 9999px;
+        @include border-radius(0);
+      }
+    }    
+  }
+}
+
+/* Shop */
+
+.shop-slider {
+  overflow: hidden;
+  .slide_box {
+    overflow: visible;
+    width: 100%;
+    @media only screen and (min-width: 401px) {
+      min-width: 400px;
+      max-width: 590px;
+      width: 50%;
+    }
+    .controls {    
+      @media only screen and (max-width: 500px) {
+        li {
+          min-width: 2.4em;
+          a:after {
+            line-height: 1.4em;
+            height: 1.4em;
+            width: 1.4em;
+            margin-top: -0.7em;
+            margin-left: -0.7em;
+          }
+        }
+      }
+      @media only screen and (min-width: 501px) {
+        li {
+          width: 100%;
+          &.slip_prev {
+            left: -100%;
+          }
+          &.slip_next {
+            right: -100%;
+          }
+          a:after {
+            background-image: none;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+  article {
+    opacity: 0.6;
+    @include transition(opacity 1s);
+    .product-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      padding: 1em;
+      @media only screen and (max-width: 500px) {
+        padding: 1em 2.4em;
+      }
+      p {
+        margin-bottom: 1em;
+      }
+      p, .button-link {
+        opacity: 0;
+        //@include transition(opacity 1s);
+      }
+      .button-link {
+        position: absolute;
+        bottom: 1em;
+      }
+      .buy-now {
+        right: 1em;
+        @media only screen and (max-width: 500px) {
+          right: 2.4em;
+        }
+      }
+      .more-info {
+        left: 1em;
+        @media only screen and (max-width: 500px) {
+          left: 2.4em;
+        }
+      }
+    }
+    .image-content {
+      line-height: 0;
+      .product-image {
+        max-width: 100%;
+        //@include transition(opacity 1s);
+      }
+    }
+    &.active {
+      opacity: 1;
+      //@include transition(opacity 1s);
+      .buy-now {
+        opacity: 1;
+        //@include transition(opacity 1s);
+      }
+      &:hover {
+        .product-image {
+          opacity: 0.2;
+          //@include transition(opacity 1s);
+        }
+        .product-info {
+          p, .button-link {
+            opacity: 1;
+            //@include transition(opacity 1s);
+          }
+        }
+      }
+      &.transition {
+        //@include transition(opacity 1s);
+      }
+    }
+    // Bulk add transitions:
+    .product-info p, 
+    .product-info .button-link,
+    .product-image,
+    &.active,
+    &.active .buy-now,
+    &.active:hover .product-image,
+    &.active:hover .product-info p,
+    &.active:hover .product-info .button-link,
+    &.active.transition {
+      @include transition(opacity 1s);
+    }
+  }
+}
+.product-name, 
+.shop-slider .slide_box {
+  width: 100%;
+  @media only screen and (min-width: 401px) {
+    min-width: 400px;
+    max-width: 590px;
+    width: 50%;
+  }
+  margin-left: auto;
+  margin-right: auto;
+}

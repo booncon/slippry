@@ -1,0 +1,82 @@
+---
+layout: default
+title: Examples - Picture slider with Ken Burns effect - Slippry - A responsive slider by booncon.
+---
+<section class="restricted-width pictures">
+  <h2>Picture slider with a Ken Burns effect</h2>
+  <p>In this example we have selected the 'Ken Burns' transition type, and increased the zoom factor. Since we want this to focus on images, we've disabled the pager and controls. Also note that even though captions have been included in the HTML Markup, we have disabled the captions also, so they don't show regardless.
+  </p>
+  <ul id="pictures-demo">
+    <li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="/images/image-1.jpg" alt="demo1_1"></a></li>
+    <li title="This is caption 2"><a href="#slide2"><img src="/images/image-2.jpg"  alt="demo1_2"></a></li>
+    <li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="/images/image-3.jpg" alt="demo1_3"></a></li>
+    <li title="And this is some very long caption for slide 4."><a href="#slide4"><img src="/images/image-4.jpg" alt="demo1_4"></a></li>
+  </ul>
+</section>
+
+<section class="markup restricted-width">
+  <h3>HTML Markup</h3>
+  <code>
+    <pre>
+&lt;ul id="pictures-demo"&gt;
+  &lt;li title="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
+    &lt;a href="#slide1"&gt;
+      &lt;img src="/images/image-1.jpg" alt="demo1_1"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="This is caption 2"&gt;
+    &lt;a href="#slide2"&gt;
+      &lt;img src="/images/image-2.jpg" alt="demo1_2"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="And this is some very long caption for slide 3. Yes, really long."&gt;
+    &lt;a href="#slide3"&gt;
+      &lt;img src="/images/image-3.jpg" alt="demo1_3"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="And this is some very long caption for slide 4."&gt;
+    &lt;a href="#slide4"&gt;
+      &lt;img src="/images/image-4.jpg" alt="demo1_4"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+  </code>
+</section>
+
+<section class="jquery restricted-width">
+  <h3>jQuery</h3>
+  <code>
+    <pre>
+jQuery('#pictures-demo').slippry({
+  // general elements &amp; wrapper
+  slippryWrapper: '&lt;div class="slippry_box pictures-slider" /&gt;',
+
+  // options
+  adaptHeight: false,
+  captions: false,
+
+  // pager
+  usePager: false,
+  
+  // controls
+  useControls: false,
+
+  // transitions
+  transition: 'kenburns',
+  kenZoom: 1.4,
+  transTime: 2000,
+});</pre>
+  </code>
+</section>
+
+<section class="css restricted-width">
+  <h3>CSS</h3>
+  <code>
+    <pre>
+
+    </pre>
+  </code>
+</section>
+
+{% include example-blocks.html %}

@@ -1,2 +1,2 @@
-#exclude: [scss]
+exclude: ['config.rb']
 baseurl: /slippry

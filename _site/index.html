@@ -3,62 +3,121 @@
 <head>
   <meta charset="utf-8" />
   <title>Slippry - A responsive slider by booncon.</title>
+  <script src="//use.edgefonts.net/cabin:n4,i4,n7,i7;source-sans-pro:n3,i3.js"></script>
   <link rel="stylesheet" href="/css/styles.css" />
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="/js/slippry.js"></script>
+  <script src="/js/slippry.min.js"></script>
   <script src="/js/scripts.js"></script>
 </head>
 <body>
-  <header id="header" >
+  <header id="header">
   <div class="restricted-width">
-    <a href="" id="logo-link"><h1 id="site-name">Slippry</h1></a>
+    <h1 id="site-name"><a href="/" id="logo-link">Slippry</a></h1>
+    <a href="https://github.com/booncon/slippry" class="github-link"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
     <nav id="main-menu">
-      <li><a href="/settings">Settings</a></li>
-      <li><a href="/examples">Examples</a></li>
-      <li><a href="">Download</a></li>
+      <li><a href="/settings" class="button-link">Settings</a></li>
+      <li><a href="/examples" class="button-link">Examples</a></li>
+      <li><a href="https://www.github.com/booncon/slippry/archive/master.zip" title="Download this repository as a zip file" rel="nofollow" class="button-link">Download</a></li>
     </nav>
   </div>
-  <a href="https://github.com/booncon/slippry"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 </header>
   
-  <section id="slippry-slider" class="full-width"></section>
-
-<section class="download">
-  <a href="" class="github-download button-link">Get it on Github</a>
+  <section id="slippry-slider" class="full-width" style="height: 400px; overflow: hidden;">
+<ul id="demo1">
+  <li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="images/image-1.jpg" alt="demo1_1"></a></li>
+<!--   <li title="This is caption 2"><a href="#slide2"><img src="images/image-2.jpg"  alt="demo1_2"></a></li>
+  <li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="images/image-3.jpg" alt="demo1_3"></a></li>
+  <li title="And this is some very long caption for slide 4."><a href="#slide4"><img src="images/image-4.jpg" alt="demo1_4"></a></li> -->
+</ul>
 </section>
 
-<section class="setup">
+<section class="restricted-width">
+  <div class="third sub-section">
+    <hgroup>
+      <h2>Responsive</h2>
+      <h3>Buzzword? Yes. Important? Very.</h3>
+    </hgroup>
+    <p>
+        We got frustrated at the lack of responsive sliders, so we wrote our own. Sure, there are some out there, but we found out the hard way, they use soon-to-be-deprecated functions.</p><p>Oops.
+    </p>
+  </div>
+  <div class="third sub-section">
+    <hgroup>
+      <h2>Modern</h2>
+      <h3>HTML5 + CSS3 + jQuery</h3>
+    </hgroup>
+    <p>
+      Slippry is written with the future in mind, not the past. We wrote it to work on the latest jQuery functions, CSS3 tricks and HTML5 elements. We support death with dignity for techology.</p><p>But don't worry, it still downgrades gracefully.
+    </p>
+  </div>
+  <div class="third sub-section">
+    <hgroup>
+      <h2>Simple</h2>
+      <h3>Or complex. You choose.</h3>
+    </hgroup>
+    <p>
+      Isn't it great when you just need a simple slider? Not so great when the design needs captions in random places, something else or something else. Slippry offers a heap of settings you actually need, and with the included CSS and Sass you can make Slippry look just how you need it.
+    </p>
+  </div>
+</section>
+
+<section class="setup restricted-width">
   <h2>Get Started</h2>
-  1. Upload the files to your site's javascript directory (usually 'js' or 'javascript')
-  2. include the files in your sites <head> section. Copy the code below:
-  <code>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="/js/slippry.js"></script>
-    <script src="/js/scripts.js"></script>
-  </code>
-  3. call the script in your scripts.js file
-  <code>
-    $('selector').slippry()
-  </code>
-  4. Done! You can customise the script options or styling with the included stylesheets and function parameters.
-</section>
-<section> 
-Slippry.
-The stuff you need without the stuff you don't.
-</section>
-
-<section>
-  <div>
-Responsive. Industry buzzword overkill? Almost certainly. Although it turns out finding a truly responsive slider isn't that easy…
-</div>
-
-<div>CSS & jQuery. Support your grandad's computer or only your hip friends?</div>
-
-<div>Complex? Nahhh. Just need a slider that works out of the box? Slippry can do that. The provided SASS stylesheet and script options means you can have a beautifully minimal slider working in no time. </div>
-
+  <span class="big-number">1</span>
+  <div class="get-started">
+    <a href="" class="github-download button-link">Get it on Github</a>
+  </div>
   
-  <footer id="footer">
-  A booncon ROCKETS creation. &copy; booncon oy
+  <span class="big-number">2</span>
+  <div class="get-started">
+    <h3>Link these files</h3>
+    <p>Use the following code in your HTML document's <code class="inline">&lt;head&gt;</code> as a starter:</p>
+    <code>
+      &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;<br/>
+      &lt;script src="/js/slippry.js"&gt;&lt;/script&gt;<br/>
+      &lt;link rel="stylesheet" href="/css/slippry.css" /&gt;<br/>
+    </code>
+  </div>
+  
+  <span class="big-number">3</span>
+  <div class="get-started">
+    <h3>Write some HTML:</h3>
+    <p></p>
+    <code>
+      <pre>
+&lt;ul id="slippry-demo"&gt;
+  &lt;li title="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
+    &lt;a href="#slide1"&gt;&lt;img src="images/image-1.jpg" alt="demo1_1"&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="This is caption 2"&gt;
+    &lt;a href="#slide2"&gt;&lt;img src="images/image-2.jpg"  alt="demo1_2"&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="And this is some very long caption for slide 3. Yes, really long."&gt;
+    &lt;a href="#slide3"&gt;&lt;img src="images/image-3.jpg" alt="demo1_3"&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="And this is some very long caption for slide 4."&gt;
+    &lt;a href="#slide4"&gt;&lt;img src="images/image-4.jpg" alt="demo1_4"&gt;&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+    </code>
+  </div>
+  
+  <span class="big-number">4</span> 
+  <div class="get-started">
+    <h3>Call Slippry slider</h3>
+    <p>Make sure it's called within <code class="inline">$(document).ready()</code>!</p>
+    <code>
+      <pre>
+jQuery(document).ready(function(){
+  jQuery('selector').slippry()
+});</pre>
+    </code>
+    <p><h2>Done!</h2> Give your self a pat on the back, then have a tinker with Slippry's <a href="/settings">settings</a>, have a look at the <a href="/examples">examples</a> or dig into the CSS and style to your heart's content.<p>
+  </div>
+</section>
+  
+  <footer id="footer" class="full-width">
+  <div class="made-with">Made with<br> love by</div><a href="http://www.booncon.com" class="block-link"><img src="/images/logo_bc-rockets.svg" class="rockets-logo"/></a>
 </footer>
 </body>
 </html>

@@ -222,25 +222,25 @@
   transition: left 1.2s ease;
 }
 /* line 85, ../scss/slippry.scss */
-.slippry_box .slide_box .slippry_list li {
+.slippry_box .slide_box .slippry_list li, .slippry_box .slide_box .slippry_list article {
   position: absolute;
   width: 100%;
   z-index: 2;
 }
 /* line 90, ../scss/slippry.scss */
-.slippry_box .slide_box .slippry_list li.fade.useCSS.transition {
+.slippry_box .slide_box .slippry_list li.fade.useCSS.transition, .slippry_box .slide_box .slippry_list article.fade.useCSS.transition {
   -webkit-transition: opacity 1.2s ease;
   -moz-transition: opacity 1.2s ease;
   -o-transition: opacity 1.2s ease;
   transition: opacity 1.2s ease;
 }
 /* line 93, ../scss/slippry.scss */
-.slippry_box .slide_box .slippry_list li.kenburns {
+.slippry_box .slide_box .slippry_list li.kenburns, .slippry_box .slide_box .slippry_list article.kenburns {
   width: 140%;
   left: -20%;
 }
 /* line 98, ../scss/slippry.scss */
-.slippry_box .slide_box .slippry_list li.kenburns.useCSS.ken:nth-child(1n) {
+.slippry_box .slide_box .slippry_list li.kenburns.useCSS.ken:nth-child(1n), .slippry_box .slide_box .slippry_list article.kenburns.useCSS.ken:nth-child(1n) {
   -webkit-animation-delay: 0;
   -webkit-animation-duration: 10s;
   -webkit-animation-name: left-right;
@@ -263,7 +263,7 @@
   /* this prevents the animation from restarting! */
 }
 /* line 101, ../scss/slippry.scss */
-.slippry_box .slide_box .slippry_list li.kenburns.useCSS.ken:nth-child(2n) {
+.slippry_box .slide_box .slippry_list li.kenburns.useCSS.ken:nth-child(2n), .slippry_box .slide_box .slippry_list article.kenburns.useCSS.ken:nth-child(2n) {
   -webkit-animation-delay: 0;
   -webkit-animation-duration: 10s;
   -webkit-animation-name: right-left;
@@ -286,25 +286,23 @@
   /* this prevents the animation from restarting! */
 }
 /* line 105, ../scss/slippry.scss */
-.slippry_box .slide_box .slippry_list li.kenburns.useCSS.transition {
+.slippry_box .slide_box .slippry_list li.kenburns.useCSS.transition, .slippry_box .slide_box .slippry_list article.kenburns.useCSS.transition {
   -webkit-transition: opacity 1.2s ease;
   -moz-transition: opacity 1.2s ease;
   -o-transition: opacity 1.2s ease;
   transition: opacity 1.2s ease;
 }
 /* line 110, ../scss/slippry.scss */
-.slippry_box .slide_box .slippry_list li.active {
+.slippry_box .slide_box .slippry_list li.active, .slippry_box .slide_box .slippry_list article.active {
   z-index: 3;
 }
 /* line 113, ../scss/slippry.scss */
-.slippry_box .slide_box .slippry_list li a {
-  margin: 0;
-  padding: 0;
-  display: block;
-  width: 100%;
+.slippry_box .slide_box .slippry_list li a, .slippry_box .slide_box .slippry_list article a {
+  display: inline-block;
+  width: auto;
 }
 /* line 118, ../scss/slippry.scss */
-.slippry_box .slide_box .slippry_list li a img {
+.slippry_box .slide_box .slippry_list li a img, .slippry_box .slide_box .slippry_list article a img {
   margin: 0;
   padding: 0;
   display: block;
@@ -370,7 +368,7 @@
 /* line 177, ../scss/slippry.scss */
 .slippry_box .slide_box .controls li a:after {
   content: "";
-  background-image: url(arrows.svg);
+  background-image: url("/images/arrows.svg");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;

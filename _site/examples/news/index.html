@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Examples - News reel - Slippry - A responsive slider by booncon.</title>
+  <script src="//use.edgefonts.net/cabin:n4,i4,n7,i7;source-sans-pro:n3,i3.js"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/js/slippry.min.js"></script>
+  <script src="/js/scripts.js"></script>
+</head>
+<body>
+  <header id="header">
+  <div class="restricted-width">
+    <h1 id="site-name"><a href="/" id="logo-link">Slippry</a></h1>
+    <a href="https://github.com/booncon/slippry" class="github-link"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <nav id="main-menu">
+      <li><a href="/settings" class="button-link">Settings</a></li>
+      <li><a href="/examples" class="button-link">Examples</a></li>
+      <li><a href="https://www.github.com/booncon/slippry/archive/master.zip" title="Download this repository as a zip file" rel="nofollow" class="button-link">Download</a></li>
+    </nav>
+  </div>
+</header>
+  
+  <section class="restricted-width news">
+  <h2>News</h2>
+  <p>Here's an example we created that you might use for displaying the latest posts or news items on your site. It uses HTML5 elements such as <code class="inline">article</code>. We've obviously styled the HTML inline content a little and have added media queries so the content doesn't become ridiculously large.
+  </p>
+  <section id="news-demo">
+    <article>
+      <div class="text-content">
+        <h2>Article title</h2>
+        <p>Some text intro to this thing that happened sometime</p>
+        <a href="#!" class="button-link">read more</a>
+      </div>
+      <div class="image-content"><img src="/images/image-1.jpg" alt="demo1_1"></div>
+    </article>
+    <article>
+      <div class="text-content">
+        <h2>Article title</h2>
+        <p>Some text intro to this thing that happened sometime</p>
+        <a href="#!" class="button-link">read more</a>
+      </div>
+      <div class="image-content"><img src="/images/image-2.jpg" alt="demo1_1"></div>
+    </article>
+    <article>
+      <div class="text-content">
+        <h2>Article title</h2>
+        <p>Some text intro to this thing that happened sometime</p>
+        <a href="#!" class="button-link">read more</a>
+      </div>
+      <div class="image-content"><img src="/images/image-3.jpg" alt="demo1_1"></div>
+    </article>
+  </section>
+</section>
+
+<section class="markup restricted-width">
+  <h3 class="collapsible">HTML Markup</h3>
+  <code>
+    <pre>
+&lt;section id="news-demo"&gt;
+  &lt;article&gt;
+    &lt;div class="text-content"&gt;
+      &lt;h2&gt;Article title&lt;/h2&gt;
+      &lt;p&gt;Some text intro to this thing that happened sometime&lt;/p&gt;
+      &lt;a href="#!" class="button-link"&gt;read more&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="image-content"&gt;
+      &lt;img src="/images/image-1.jpg" alt="demo1_1"&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  &lt;article&gt;
+    &lt;div class="text-content"&gt;
+      &lt;h2&gt;Article title&lt;/h2&gt;
+      &lt;p&gt;Some text intro to this thing that happened sometime&lt;/p&gt;
+      &lt;a href="#!" class="button-link"&gt;read more&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="image-content"&gt;&lt;img src="/images/image-2.jpg" alt="demo1_1"&gt;&lt;/div&gt;
+  &lt;/article&gt;
+  &lt;article&gt;
+    &lt;div class="text-content"&gt;
+      &lt;h2&gt;Article title&lt;/h2&gt;
+      &lt;p&gt;Some text intro to this thing that happened sometime&lt;/p&gt;
+      &lt;a href="#!" class="button-link"&gt;read more&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="image-content"&gt;
+      &lt;img src="/images/image-3.jpg" alt="demo1_1"&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</pre>
+  </code>
+</section>
+
+<section class="jquery restricted-width">
+  <h3>jQuery</h3>
+  <code>
+    <pre>
+jQuery('#news-demo').slippry({
+  // general elements &amp; wrapper
+  slippryWrapper: '&lt;div class="slippry_box news-slider" /&gt;',
+  elements: 'article',
+
+  // options
+  adaptHeight: false,
+
+  // pager
+  pagerClass: 'news-pager',
+
+  // transitions
+  transition: 'horizontal',
+  useCSS: true,
+
+  // slideshow
+  autoDirection: 'prev'
+});</pre>
+  </code>
+</section>
+
+<section class="css restricted-width">
+  <h3>CSS (created by Sass)</h3>
+  <code>
+    <pre>
+/* News */
+.news-slider {
+  /* Style the actual content */
+}
+.news-slider .text-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1em;
+  width: 30%;
+  height: 100%;
+}
+.news-slider .text-content p {
+  margin: 1em 0;
+}
+.news-slider .text-content a.button-link {
+  padding: 0.25em 0.5em;
+  float: right;
+}
+.news-slider .image-content {
+  line-height: 0;
+}
+.news-slider .image-content img {
+  max-width: 100%;
+}
+.news-slider .pager {
+  /* change the pager */
+  text-align: right;
+}
+.news-slider .pager li {
+  margin: 0 0 0 1em;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+.news-slider .pager li a {
+  text-indent: 9999px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}</pre>
+  </code>
+</section>
+
+<section class="restricted-width example-tiles">
+<a class="tile" href="/examples/out-of-the-box">Out-of-the-box</a><a class="tile" href="/examples/pictures">Pictures</a><a class="tile" href="/examples/portfolio">Portfolio</a><a class="tile" href="/examples/news">News</a><a class="tile" href="/examples/shop">Shop</a><a class="tile" href="/examples/css-vs-jquery">CSS vs jQuery</a></section>
+  
+  <footer id="footer" class="full-width">
+  <div class="made-with">Made with<br> love by</div><a href="http://www.booncon.com" class="block-link"><img src="/images/logo_bc-rockets.svg" class="rockets-logo"/></a>
+</footer>
+</body>
+</html>

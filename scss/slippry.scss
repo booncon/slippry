@@ -82,7 +82,7 @@ $trans_ease: ease;
       margin: 0;
       padding: 0;
       position: absolute;
-      li {
+      li, article {
         // display: none;
         position: absolute;       
         width: 100%;
@@ -110,11 +110,11 @@ $trans_ease: ease;
         &.active {
           z-index: 3;
         }
-        a {
-          margin: 0;
-          padding: 0;
-          display: block;
-          width: 100%;
+        a { // needs to somehow be not applied if inline html content. T.H. Or then we just rely on user to override styles later on?
+          //margin: 0; //can we remove this since it is universally declared above? Yes we can!
+          //padding: 0; //can we remove this since it is universally declared above? Yes we can!
+          display: inline-block;// block; make this inline block? T.H.
+          width: auto;//100%; // make this auto? T.H. 
           img {
             margin: 0;
             padding: 0;
@@ -176,7 +176,7 @@ $trans_ease: ease;
           }
           &:after {
             content: "";
-            background-image: url(arrows.svg);
+            background-image: url('/images/arrows.svg');
             background-repeat: no-repeat;
             @include background-size(cover);
             text-align: center;
@@ -253,5 +253,5 @@ $trans_ease: ease;
         @include border-radius(50%);
       }
     }    
-  }  
+  } 
 }
