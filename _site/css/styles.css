@@ -1226,3 +1226,35 @@ section.settings h3 {
     width: 50%;
   }
 }
+
+/* line 670, ../scss/styles.scss */
+body, html {
+  height: 100%;
+}
+
+/* line 673, ../scss/styles.scss */
+#teaser {
+  height: 100%;
+  position: relative;
+}
+/* line 676, ../scss/styles.scss */
+#teaser .center {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  margin-top: -7.5em;
+  left: 50%;
+  margin-left: -14.25em;
+}
+/* line 678, ../scss/styles.scss */
+#teaser .center h1 {
+  font-size: 10em;
+  margin: 0;
+  line-height: 1;
+}
+/* line 683, ../scss/styles.scss */
+#teaser .center p {
+  font-size: 2em;
+  margin-bottom: 0;
+  padding-left: 0.25em;
+}
