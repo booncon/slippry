@@ -709,14 +709,36 @@ a:hover {
 }
 /* line 196, ../scss/styles.scss */
 #header nav {
+  list-style: none;
   float: right;
-  display: inline-block;
-  margin: 3em 0;
-  padding-right: 149px;
+  margin: 1.5em 0;
+  text-align: right;
 }
-/* line 200, ../scss/styles.scss */
-#header nav li {
-  display: inline-block;
+@media only screen and (min-width: 381px) {
+  /* line 196, ../scss/styles.scss */
+  #header nav {
+    list-style: none;
+    float: right;
+    margin: 3em 0;
+    text-align: right;
+  }
+  /* line 206, ../scss/styles.scss */
+  #header nav li {
+    display: inline-block;
+  }
+}
+@media only screen and (min-width: 601px) {
+  /* line 196, ../scss/styles.scss */
+  #header nav {
+    float: right;
+    display: inline-block;
+    margin: 3em 0;
+    padding-right: 149px;
+  }
+  /* line 214, ../scss/styles.scss */
+  #header nav li {
+    display: inline-block;
+  }
 }
 @media only screen and (min-width: 1480px) {
   /* line 196, ../scss/styles.scss */
@@ -724,7 +746,13 @@ a:hover {
     padding-right: 0;
   }
 }
-/* line 210, ../scss/styles.scss */
+@media only screen and (max-width: 600px) {
+  /* line 223, ../scss/styles.scss */
+  #header .github-link {
+    display: none;
+  }
+}
+/* line 228, ../scss/styles.scss */
 #header .github-link img {
   position: absolute;
   top: 0;
@@ -733,31 +761,31 @@ a:hover {
 }
 
 /* Content */
-/* line 222, ../scss/styles.scss */
+/* line 240, ../scss/styles.scss */
 .third {
   display: inline-block;
   width: 100%;
 }
 @media only screen and (min-width: 680px) {
-  /* line 222, ../scss/styles.scss */
+  /* line 240, ../scss/styles.scss */
   .third {
     width: 33%;
   }
-  /* line 227, ../scss/styles.scss */
+  /* line 245, ../scss/styles.scss */
   .third:nth-child(1) {
     padding-right: 1em;
   }
-  /* line 228, ../scss/styles.scss */
+  /* line 246, ../scss/styles.scss */
   .third:nth-child(2) {
     padding: 0 0.5em;
   }
-  /* line 229, ../scss/styles.scss */
+  /* line 247, ../scss/styles.scss */
   .third:nth-child(3) {
     padding-left: 1em;
   }
 }
 
-/* line 233, ../scss/styles.scss */
+/* line 251, ../scss/styles.scss */
 a.github-download {
   font-size: 2em;
   font-weight: 700;
@@ -766,7 +794,7 @@ a.github-download {
   width: 12em;
 }
 
-/* line 241, ../scss/styles.scss */
+/* line 259, ../scss/styles.scss */
 .big-number {
   font-size: 6em;
   font-weight: 700;
@@ -779,18 +807,18 @@ a.github-download {
   display: none;
 }
 
-/* line 253, ../scss/styles.scss */
+/* line 271, ../scss/styles.scss */
 .get-started {
   overflow: hidden;
   *zoom: 1;
   margin: 1em 0;
 }
-/* line 259, ../scss/styles.scss */
+/* line 277, ../scss/styles.scss */
 .get-started h3 {
   margin-top: 0;
 }
 
-/* line 264, ../scss/styles.scss */
+/* line 282, ../scss/styles.scss */
 code {
   font-family: monospace;
   padding: 0.5em;
@@ -800,7 +828,7 @@ code {
   whitespace: pre;
   overflow-x: auto;
 }
-/* line 276, ../scss/styles.scss */
+/* line 294, ../scss/styles.scss */
 code.inline {
   background-color: transparent;
   display: inline;
@@ -811,7 +839,7 @@ code.inline {
 }
 
 /* Footer */
-/* line 288, ../scss/styles.scss */
+/* line 306, ../scss/styles.scss */
 #footer {
   background-color: white;
   padding-top: 2em;
@@ -819,48 +847,48 @@ code.inline {
   color: #3b454f;
   text-align: center;
 }
-/* line 295, ../scss/styles.scss */
+/* line 313, ../scss/styles.scss */
 #footer .made-with {
   display: inline-block;
   margin-right: 0.5em;
 }
-/* line 300, ../scss/styles.scss */
+/* line 318, ../scss/styles.scss */
 #footer .block-link {
   display: inline-block;
 }
-/* line 303, ../scss/styles.scss */
+/* line 321, ../scss/styles.scss */
 #footer .rockets-logo {
   height: 4em;
   margin-top: -0.5em;
 }
 
 /* Settings */
-/* line 311, ../scss/styles.scss */
+/* line 329, ../scss/styles.scss */
 #settings-jump {
   /* Settings jump menu */
 }
 @media only screen and (min-width: 550px) {
-  /* line 311, ../scss/styles.scss */
+  /* line 329, ../scss/styles.scss */
   #settings-jump {
     float: right;
   }
 }
-/* line 315, ../scss/styles.scss */
+/* line 333, ../scss/styles.scss */
 #settings-jump li {
   height: 2em;
   border-top: 1px solid white;
 }
-/* line 318, ../scss/styles.scss */
+/* line 336, ../scss/styles.scss */
 #settings-jump li.default {
   height: 1.6em;
   border-top: 0;
 }
-/* line 322, ../scss/styles.scss */
+/* line 340, ../scss/styles.scss */
 #settings-jump li #select-setting {
   position: relative;
   text-transform: uppercase;
 }
-/* line 325, ../scss/styles.scss */
+/* line 343, ../scss/styles.scss */
 #settings-jump li #select-setting:after {
   content: ' ';
   display: inline-block;
@@ -873,11 +901,11 @@ code.inline {
   margin-right: 0.5em;
   margin-top: 0.5em;
 }
-/* line 338, ../scss/styles.scss */
+/* line 356, ../scss/styles.scss */
 #settings-jump li.section-head {
   padding: 0.25em 0.5em;
 }
-/* line 342, ../scss/styles.scss */
+/* line 360, ../scss/styles.scss */
 #settings-jump li a {
   text-decoration: none;
   display: block;
@@ -887,37 +915,37 @@ code.inline {
   color: white;
   text-align: left;
 }
-/* line 352, ../scss/styles.scss */
+/* line 370, ../scss/styles.scss */
 #settings-jump.closed {
   height: 2em;
   overflow: hidden;
 }
-/* line 356, ../scss/styles.scss */
+/* line 374, ../scss/styles.scss */
 #settings-jump.closed #select-setting:after {
   border-top: 0.5em solid white;
 }
-/* line 361, ../scss/styles.scss */
+/* line 379, ../scss/styles.scss */
 #settings-jump.open {
   height: auto;
   background-color: white;
 }
-/* line 365, ../scss/styles.scss */
+/* line 383, ../scss/styles.scss */
 #settings-jump.open #select-setting:after {
   border-bottom: 0.5em solid white;
 }
 
-/* line 398, ../scss/styles.scss */
+/* line 416, ../scss/styles.scss */
 section.settings h4 {
   margin-top: 1.5em;
 }
-/* line 401, ../scss/styles.scss */
+/* line 419, ../scss/styles.scss */
 section.settings h3 {
   margin-top: 2em;
   border-bottom: 1px solid #bcc5cd;
 }
 
 /* Examples */
-/* line 410, ../scss/styles.scss */
+/* line 428, ../scss/styles.scss */
 .example-tiles .tile {
   display: inline-block;
   padding: 0.8em 1em;
@@ -931,43 +959,43 @@ section.settings h3 {
   text-align: center;
 }
 @media only screen and (min-width: 411px) {
-  /* line 410, ../scss/styles.scss */
+  /* line 428, ../scss/styles.scss */
   .example-tiles .tile {
     width: 49%;
   }
-  /* line 423, ../scss/styles.scss */
+  /* line 441, ../scss/styles.scss */
   .example-tiles .tile:nth-child(2n+1) {
     margin: 1% 1% 1% 0;
   }
-  /* line 426, ../scss/styles.scss */
+  /* line 444, ../scss/styles.scss */
   .example-tiles .tile:nth-child(2n+2) {
     margin: 1% 0 1% 1%;
   }
 }
 @media only screen and (min-width: 631px) {
-  /* line 410, ../scss/styles.scss */
+  /* line 428, ../scss/styles.scss */
   .example-tiles .tile {
     width: 32%;
   }
-  /* line 432, ../scss/styles.scss */
+  /* line 450, ../scss/styles.scss */
   .example-tiles .tile:nth-child(3n+1) {
     margin: 1% 1% 1% 0;
   }
-  /* line 435, ../scss/styles.scss */
+  /* line 453, ../scss/styles.scss */
   .example-tiles .tile:nth-child(3n+2) {
     margin: 1%;
   }
-  /* line 438, ../scss/styles.scss */
+  /* line 456, ../scss/styles.scss */
   .example-tiles .tile:nth-child(3n+3) {
     margin: 1% 0 1% 1%;
   }
 }
-/* line 442, ../scss/styles.scss */
+/* line 460, ../scss/styles.scss */
 .example-tiles .tile:hover {
   background-color: #1c91c4;
   color: white;
 }
-/* line 446, ../scss/styles.scss */
+/* line 464, ../scss/styles.scss */
 .example-tiles .tile.active {
   background-color: #1880ae;
 }
@@ -975,22 +1003,22 @@ section.settings h3 {
 /* Out-of-the-box */
 /* Pictures */
 /* Portfolio */
-/* line 467, ../scss/styles.scss */
+/* line 485, ../scss/styles.scss */
 .portfolio .pager {
   margin: 1.5em 0;
 }
-/* line 470, ../scss/styles.scss */
+/* line 488, ../scss/styles.scss */
 .portfolio .external-captions {
   background-color: #fff;
   padding: 1em;
 }
 
 /* News */
-/* line 478, ../scss/styles.scss */
+/* line 496, ../scss/styles.scss */
 .news-slider {
   /* Style the actual content */
 }
-/* line 480, ../scss/styles.scss */
+/* line 498, ../scss/styles.scss */
 .news-slider .text-content {
   position: absolute;
   top: 0;
@@ -1001,29 +1029,29 @@ section.settings h3 {
   width: 30%;
   height: 100%;
 }
-/* line 489, ../scss/styles.scss */
+/* line 507, ../scss/styles.scss */
 .news-slider .text-content p {
   margin: 1em 0;
 }
-/* line 492, ../scss/styles.scss */
+/* line 510, ../scss/styles.scss */
 .news-slider .text-content a.button-link {
   padding: 0.25em 0.5em;
   float: right;
 }
-/* line 497, ../scss/styles.scss */
+/* line 515, ../scss/styles.scss */
 .news-slider .image-content {
   line-height: 0;
 }
-/* line 499, ../scss/styles.scss */
+/* line 517, ../scss/styles.scss */
 .news-slider .image-content img {
   max-width: 100%;
 }
-/* line 503, ../scss/styles.scss */
+/* line 521, ../scss/styles.scss */
 .news-slider .pager {
   /* change the pager */
   text-align: right;
 }
-/* line 505, ../scss/styles.scss */
+/* line 523, ../scss/styles.scss */
 .news-slider .pager li {
   margin: 0 0 0 1em;
   -webkit-border-radius: 0;
@@ -1032,7 +1060,7 @@ section.settings h3 {
   -o-border-radius: 0;
   border-radius: 0;
 }
-/* line 508, ../scss/styles.scss */
+/* line 526, ../scss/styles.scss */
 .news-slider .pager li a {
   text-indent: 9999px;
   -webkit-border-radius: 0;
@@ -1043,17 +1071,17 @@ section.settings h3 {
 }
 
 /* Shop */
-/* line 518, ../scss/styles.scss */
+/* line 536, ../scss/styles.scss */
 .shop-slider {
   overflow: hidden;
 }
-/* line 520, ../scss/styles.scss */
+/* line 538, ../scss/styles.scss */
 .shop-slider .slide_box {
   overflow: visible;
   width: 100%;
 }
 @media only screen and (min-width: 401px) {
-  /* line 520, ../scss/styles.scss */
+  /* line 538, ../scss/styles.scss */
   .shop-slider .slide_box {
     min-width: 400px;
     max-width: 590px;
@@ -1061,11 +1089,11 @@ section.settings h3 {
   }
 }
 @media only screen and (max-width: 500px) {
-  /* line 530, ../scss/styles.scss */
+  /* line 548, ../scss/styles.scss */
   .shop-slider .slide_box .controls li {
     min-width: 2.4em;
   }
-  /* line 532, ../scss/styles.scss */
+  /* line 550, ../scss/styles.scss */
   .shop-slider .slide_box .controls li a:after {
     line-height: 1.4em;
     height: 1.4em;
@@ -1075,25 +1103,25 @@ section.settings h3 {
   }
 }
 @media only screen and (min-width: 501px) {
-  /* line 542, ../scss/styles.scss */
+  /* line 560, ../scss/styles.scss */
   .shop-slider .slide_box .controls li {
     width: 100%;
   }
-  /* line 544, ../scss/styles.scss */
+  /* line 562, ../scss/styles.scss */
   .shop-slider .slide_box .controls li.slip_prev {
     left: -100%;
   }
-  /* line 547, ../scss/styles.scss */
+  /* line 565, ../scss/styles.scss */
   .shop-slider .slide_box .controls li.slip_next {
     right: -100%;
   }
-  /* line 550, ../scss/styles.scss */
+  /* line 568, ../scss/styles.scss */
   .shop-slider .slide_box .controls li a:after {
     background-image: none;
     background-color: transparent;
   }
 }
-/* line 558, ../scss/styles.scss */
+/* line 576, ../scss/styles.scss */
 .shop-slider article {
   opacity: 0.6;
   -webkit-transition: opacity 1s;
@@ -1101,7 +1129,7 @@ section.settings h3 {
   -o-transition: opacity 1s;
   transition: opacity 1s;
 }
-/* line 561, ../scss/styles.scss */
+/* line 579, ../scss/styles.scss */
 .shop-slider article .product-info {
   position: absolute;
   top: 0;
@@ -1110,69 +1138,69 @@ section.settings h3 {
   padding: 1em;
 }
 @media only screen and (max-width: 500px) {
-  /* line 561, ../scss/styles.scss */
+  /* line 579, ../scss/styles.scss */
   .shop-slider article .product-info {
     padding: 1em 2.4em;
   }
 }
-/* line 570, ../scss/styles.scss */
+/* line 588, ../scss/styles.scss */
 .shop-slider article .product-info p {
   margin-bottom: 1em;
 }
-/* line 573, ../scss/styles.scss */
+/* line 591, ../scss/styles.scss */
 .shop-slider article .product-info p, .shop-slider article .product-info .button-link {
   opacity: 0;
 }
-/* line 577, ../scss/styles.scss */
+/* line 595, ../scss/styles.scss */
 .shop-slider article .product-info .button-link {
   position: absolute;
   bottom: 1em;
 }
-/* line 581, ../scss/styles.scss */
+/* line 599, ../scss/styles.scss */
 .shop-slider article .product-info .buy-now {
   right: 1em;
 }
 @media only screen and (max-width: 500px) {
-  /* line 581, ../scss/styles.scss */
+  /* line 599, ../scss/styles.scss */
   .shop-slider article .product-info .buy-now {
     right: 2.4em;
   }
 }
-/* line 587, ../scss/styles.scss */
+/* line 605, ../scss/styles.scss */
 .shop-slider article .product-info .more-info {
   left: 1em;
 }
 @media only screen and (max-width: 500px) {
-  /* line 587, ../scss/styles.scss */
+  /* line 605, ../scss/styles.scss */
   .shop-slider article .product-info .more-info {
     left: 2.4em;
   }
 }
-/* line 594, ../scss/styles.scss */
+/* line 612, ../scss/styles.scss */
 .shop-slider article .image-content {
   line-height: 0;
 }
-/* line 596, ../scss/styles.scss */
+/* line 614, ../scss/styles.scss */
 .shop-slider article .image-content .product-image {
   max-width: 100%;
 }
-/* line 601, ../scss/styles.scss */
+/* line 619, ../scss/styles.scss */
 .shop-slider article.active {
   opacity: 1;
 }
-/* line 604, ../scss/styles.scss */
+/* line 622, ../scss/styles.scss */
 .shop-slider article.active .buy-now {
   opacity: 1;
 }
-/* line 609, ../scss/styles.scss */
+/* line 627, ../scss/styles.scss */
 .shop-slider article.active:hover .product-image {
   opacity: 0.2;
 }
-/* line 614, ../scss/styles.scss */
+/* line 632, ../scss/styles.scss */
 .shop-slider article.active:hover .product-info p, .shop-slider article.active:hover .product-info .button-link {
   opacity: 1;
 }
-/* line 633, ../scss/styles.scss */
+/* line 651, ../scss/styles.scss */
 .shop-slider article .product-info p,
 .shop-slider article .product-info .button-link,
 .shop-slider article .product-image, .shop-slider article.active, .shop-slider article.active .buy-now, .shop-slider article.active:hover .product-image, .shop-slider article.active:hover .product-info p, .shop-slider article.active:hover .product-info .button-link, .shop-slider article.active.transition {
@@ -1182,7 +1210,7 @@ section.settings h3 {
   transition: opacity 1s;
 }
 
-/* line 639, ../scss/styles.scss */
+/* line 657, ../scss/styles.scss */
 .product-name,
 .shop-slider .slide_box {
   width: 100%;
@@ -1190,7 +1218,7 @@ section.settings h3 {
   margin-right: auto;
 }
 @media only screen and (min-width: 401px) {
-  /* line 639, ../scss/styles.scss */
+  /* line 657, ../scss/styles.scss */
   .product-name,
   .shop-slider .slide_box {
     min-width: 400px;
