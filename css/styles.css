@@ -857,7 +857,7 @@ code.inline {
   display: inline-block;
 }
 /* line 321, ../scss/styles.scss */
-#footer .rockets-logo {
+#footer .rockets-logo, #footer .pixels-logo {
   height: 4em;
   margin-top: -0.5em;
 }
