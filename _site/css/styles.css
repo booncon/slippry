@@ -1258,3 +1258,11 @@ body, html {
   margin-bottom: 0;
   padding-left: 0.25em;
 }
+
+/* line 696, ../scss/styles.scss */
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
