@@ -1232,13 +1232,13 @@ body, html {
   height: 100%;
 }
 
-/* line 673, ../scss/styles.scss */
-#teaser {
+/* line 674, ../scss/styles.scss */
+.teaser-page #teaser {
   height: 100%;
   position: relative;
 }
-/* line 676, ../scss/styles.scss */
-#teaser .center {
+/* line 677, ../scss/styles.scss */
+.teaser-page #teaser .center {
   display: inline-block;
   position: absolute;
   top: 50%;
@@ -1246,21 +1246,20 @@ body, html {
   left: 50%;
   margin-left: -14.25em;
 }
-/* line 678, ../scss/styles.scss */
-#teaser .center h1 {
+/* line 679, ../scss/styles.scss */
+.teaser-page #teaser .center h1 {
   font-size: 10em;
   margin: 0;
   line-height: 1;
 }
-/* line 683, ../scss/styles.scss */
-#teaser .center p {
+/* line 684, ../scss/styles.scss */
+.teaser-page #teaser .center p {
   font-size: 2em;
   margin-bottom: 0;
   padding-left: 0.25em;
 }
-
-/* line 696, ../scss/styles.scss */
-#footer {
+/* line 697, ../scss/styles.scss */
+.teaser-page #footer {
   position: absolute;
   bottom: 0;
   left: 0;
