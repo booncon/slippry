@@ -107,4 +107,13 @@ jQuery(document).ready(function(){
     adaptHeight: false, // height of the sliders adapts to current slide
     useCSS: false, // true, false -> fallback to js if no browser support
   });
+
+  jQuery('#select-setting').click( function() {
+    if(jQuery('#settings-jump').hasClass('open')) {
+      jQuery('#settings-jump').switchClass('open','closed',1000);
+    } else if(jQuery('#settings-jump').hasClass('closed')) {
+      jQuery('#settings-jump').switchClass('closed','open',1000);
+    } 
+    return false;
+  });
 });

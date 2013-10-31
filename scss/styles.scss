@@ -220,11 +220,14 @@ a {
 /* Content */
 
 .third {
-  width: 33%;
   display: inline-block;
-  &:nth-child(1) { padding-right: 1em; }
-  &:nth-child(2) { padding: 0 0.5em; }
-  &:nth-child(3) { padding-left: 1em; }
+  width: 100%;
+  @media only screen and (min-width: 680px) {
+    width: 33%;
+    &:nth-child(1) { padding-right: 1em; }
+    &:nth-child(2) { padding: 0 0.5em; }
+    &:nth-child(3) { padding-left: 1em; }
+  }
 }
 
 a.github-download {
@@ -305,6 +308,92 @@ code {
 
 /* Settings */
 
+#settings-jump { /* Settings jump menu */
+  @media only screen and (min-width: 550px) {
+    float: right;
+  }
+  li {
+    height: 2em;
+    border-top: 1px solid $white;
+    &.default {
+      height: 1.6em;
+      border-top: 0;
+    }
+    #select-setting {
+      position: relative;
+      text-transform: uppercase;
+      &:after {
+        content: ' ';
+        display: inline-block;
+        height: 0;
+        width: 0;
+        border-left: 0.4em solid transparent;
+        border-right: 0.4em solid transparent;
+        position: absolute;
+        right: 0;
+        margin-right: 0.5em;
+        margin-top: 0.5em
+      }
+    }
+    &.section-head {
+      padding: 0.25em 0.5em;
+
+    }
+    a {
+      text-decoration: none;
+      display: block;
+      height: 2em;
+      background-color: $bc-rk-blue;
+      padding: 0.25em 0.5em;
+      color: $white;
+      text-align: left;
+    }
+  }
+  &.closed {
+    height: 2em;
+    overflow: hidden;
+    #select-setting {
+      &:after {
+        border-top: 0.5em solid white;
+      }
+    }
+  }
+  &.open {
+    height: auto;
+    background-color: $white;
+    #select-setting {
+      &:after {
+        border-bottom: 0.5em solid white;
+      }
+    }
+  }
+  // width: auto;
+  // min-height: 2em;
+  // li {
+  //   display: none;
+
+  //   &.default {
+  //     display: block;
+  //   }
+  //   &.section-head {}
+  //   a {}
+  // }
+  // li {
+  //   display: inline-block;
+  //   padding: 0;
+  //   margin: 0;
+  //   &.section-head {
+  //     color: $white;
+  //     background-color: $bc-grey;
+  //     padding: 0.25em 0.5em;
+  //   }
+  //   a {
+  //     color: $white;
+  //     background-color: $bc-rk-blue;
+  //     padding: 0.25em 0.5em;
+  //   }
+  // }
+}
 section.settings {
   h4 {
     margin-top: 1.5em;
@@ -353,6 +442,9 @@ section.settings {
     &:hover {
       background-color: darken($bc-rk-blue, 10%);
       color: $white;
+    }
+    &.active {
+      background-color: darken($bc-rk-blue, 15%);
     }
   }
 }
