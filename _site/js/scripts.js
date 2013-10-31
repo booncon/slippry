@@ -116,4 +116,9 @@ jQuery(document).ready(function(){
     } 
     return false;
   });
+  jQuery('#settings-jump a').click( function () {
+    if(jQuery('#settings-jump').hasClass('open')) {
+      jQuery('#settings-jump').switchClass('open','closed',1000);
+    }
+  });
 });
