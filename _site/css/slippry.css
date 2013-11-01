@@ -184,7 +184,7 @@
 }
 /* line 86, ../scss/slippry.scss */
 .slippry_box.loading {
-  background: url(../images/sy-loader.gif) 50% 50% no-repeat;
+  background: url(/images/sy-loader.gif) 50% 50% no-repeat;
   min-height: 40px;
 }
 /* line 87, ../scss/slippry.scss */
@@ -353,7 +353,7 @@
 /* line 204, ../scss/slippry.scss */
 .slippry_box .slide_box .controls li a:after {
   content: "";
-  background-image: url(../images/arrows.svg);
+  background-image: url(/images/arrows.svg);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
