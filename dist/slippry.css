@@ -184,7 +184,7 @@
 }
 /* line 86, ../src/slippry.scss */
 .slippry_box.loading {
-  background: url(bx_loader.gif) 50% 50% no-repeat;
+  background: url(sy-loader.gif) 50% 50% no-repeat;
   min-height: 40px;
 }
 /* line 87, ../src/slippry.scss */
