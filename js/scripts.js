@@ -1,5 +1,7 @@
 jQuery(document).ready(function(){
-  jQuery('#demo1').slippry();
+  jQuery('#demo1').slippry({
+    slippryWrapper: '<div class="slippry_box front-page" />'
+  });
 
   // Generic
   jQuery('#out-of-the-box-demo').slippry({
@@ -98,6 +100,7 @@ jQuery(document).ready(function(){
     // options
     adaptHeight: true, // height of the sliders adapts to current slide
     useCSS: true, // true, false -> fallback to js if no browser support
+    autoHover: false,
   });
 
   jQuery('#jquery-demo').slippry({
@@ -106,6 +109,7 @@ jQuery(document).ready(function(){
     // options
     adaptHeight: false, // height of the sliders adapts to current slide
     useCSS: false, // true, false -> fallback to js if no browser support
+    autoHover: false,
   });
 
   jQuery('#select-setting').click( function() {

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Examples - Slippry - A responsive slider by booncon.
+title: Examples - Portfolio
 ---
 <section class="restricted-width portfolio">
-  <h2>Portfolio</h2>
+  <h2 class="slider-title">Portfolio</h2>
   <ul id="portfolio-demo">
     <li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="/images/image-1.jpg" alt="demo1_1"></a></li>
     <li title="This is caption 2"><a href="#slide2"><img src="/images/image-2.jpg"  alt="demo1_2"></a></li>
@@ -69,14 +69,23 @@ jQuery('#portfolio-demo').slippry({
   </code>
 </section>
 
-<!-- <section class="css restricted-width">
+<section class="css restricted-width">
   <h3>CSS</h3>
   <code>
     <pre>
-
-    </pre>
+/* Portfolio */
+.portfolio .slide_box .controls {
+  display: block;
+}
+.portfolio .pager {
+  margin: 1.5em 0;
+}
+.portfolio .external-captions {
+  background-color: #fff;
+  padding: 1em;
+}</pre>
   </code>
-</section> -->
+</section>
 
 <section class="restricted-width example-tiles">
 <a class="tile" href="/examples/out-of-the-box">Out-of-the-box</a><a class="tile" href="/examples/pictures">Pictures</a><a class="tile active" href="/examples/portfolio">Portfolio</a><a class="tile" href="/examples/news">News</a><a class="tile" href="/examples/shop">Shop</a><a class="tile" href="/examples/css-vs-jquery">CSS vs jQuery</a></section>

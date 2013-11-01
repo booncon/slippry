@@ -237,6 +237,9 @@ a {
 
 /* Content */
 
+h2.slider-title {
+  margin-top: 0;
+}
 .third {
   display: inline-block;
   width: 100%;
@@ -324,6 +327,13 @@ code {
   }
 }
 
+/* Frontpage */
+
+.front-page {/* This is the front page slider class */
+  .slide_box {
+    max-height: 500px;
+  }
+}
 /* Settings */
 
 #settings-jump { /* Settings jump menu */
@@ -482,6 +492,9 @@ section.settings {
 /* Portfolio */
 
 .portfolio {
+  .slide_box .controls {
+    display: block;
+  }
   .pager {
     margin: 1.5em 0;
   }
