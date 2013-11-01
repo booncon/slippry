@@ -691,13 +691,26 @@ body,html {
     margin-top: -7.5em;
     left: 50%;
     margin-left: -14.25em;
+    @media only screen and (max-width: 570px), only screen and (max-height: 550px) {
+      h1 {
+        font-size: 5em;
+      }
+      p {
+        font-size: 1em;
+      }
+      margin-top: -3.75em;
+      margin-left: -7.125em;
+    }
   }
 }
 
-#footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
+  #footer {
+    position: absolute;
+    // @media only screen and (max-height: 550px) {
+    //   position: relative;
+    // }
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }

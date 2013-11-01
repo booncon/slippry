@@ -1258,7 +1258,22 @@ body, html {
   margin-bottom: 0;
   padding-left: 0.25em;
 }
-/* line 697, ../scss/styles.scss */
+@media only screen and (max-width: 570px), only screen and (max-height: 550px) {
+  /* line 677, ../scss/styles.scss */
+  .teaser-page #teaser .center {
+    margin-top: -3.75em;
+    margin-left: -7.125em;
+  }
+  /* line 695, ../scss/styles.scss */
+  .teaser-page #teaser .center h1 {
+    font-size: 5em;
+  }
+  /* line 698, ../scss/styles.scss */
+  .teaser-page #teaser .center p {
+    font-size: 1em;
+  }
+}
+/* line 707, ../scss/styles.scss */
 .teaser-page #footer {
   position: absolute;
   bottom: 0;
