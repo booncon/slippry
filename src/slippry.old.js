@@ -1,5 +1,5 @@
 /**
- * slippry v1.0rc1 - Simple responsive content slider
+ * slippry v1.0 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -30,8 +30,8 @@
     adaptiveHeight: true, // height of the sliders adapts to current slide
     start: 1, // num (starting from 1), random
     loop: true, // first -> last & last -> first arrows
-    captionsSrc: 'img', // img, el [img takes caption from alt or title, el from title of slide element]
     captions: 'overlay', // Position: overlay, below, custom, false
+    captionsSrc: 'img',
     captionsClass: 'caption',
     initSingle: true, // initialise even if there is only one slide
     responsive: true,
@@ -50,11 +50,11 @@
     hideOnEnd: true,
 
     // transitions
-    transition: 'fade', // fade, horizontal, kenburns, false
-    kenZoom: 1.2,
+    transition: 'horizontal', // fade, horizontal, kenburns, false
+    kenZoom: 1.4,
     slideMargin: 0, // spacing between slides (in %)
-    transClass: 'transition', // [Class applied to [element] while a transition is taking place.]
-    speed: 800, // time the transition takes (ms)
+    transClass: 'transition', // [Class applied to [element] when a transition is taking place.]
+    transTime: 1200, // time the transition takes (ms)
     transEase: 'swing', // easing to use in the animation [(see... [jquery www])]
     continuous: true, // seamless first/ last transistion, only works with loop
     useCSS: true, // true, false -> fallback to js if no browser support
@@ -65,7 +65,7 @@
     autoHover: true,
     autoHoverDelay: 100,
     autoDelay: 500,
-    pause: 4000,
+    pause: 3000,
 
     // callback functions
     onSliderLoad: function () { // before page transition starts
@@ -80,7 +80,7 @@
   };
 
   $.fn.slippry = function (options) {
-    var slip, el, prepareFiller, getFillerProportions, init, updateCaption, initPager, initControls, ready, transitionDone, whichTransitionEvent,
+    var slip, el, prepareFiller, getFillerProportions, init, updateCaption, initPager, initControls, ready, transitionDone,
       initCaptions, updatePager, setFillerProportions, doTransition, updateSlide, updateControls, updatePos, supports, preload, start;
 
     // reference to the object calling the function
@@ -101,23 +101,6 @@
     // variable to access the slider settings across the plugin
     slip = {};
     slip.vars = {};
-
-    whichTransitionEvent = function () { // Thanks! http://stackoverflow.com/a/18672988
-      var t, el, transitions;
-      el = document.createElement('fakeelement');
-      transitions = {
-        'WebkitTransition' :'webkitTransitionEnd',
-        'MozTransition'    :'transitionend',
-        'MSTransition'     :'msTransitionEnd',
-        'OTransition'      :'oTransitionEnd',
-        'transition'       :'transitionEnd'
-      }
-      for(t in transitions){
-        if( el.style[t] !== undefined ){
-          return transitions[t];
-        }
-      }
-    };
 
     supports = (function () {  // Thanks! http://net.tutsplus.com/tutorials/html-css-techniques/quick-tip-detect-css-support-in-browsers-with-javascript/
       var div = document.createElement('div'),
@@ -164,12 +147,12 @@
     // gets the aspect ratio of the filler element
     getFillerProportions = function ($slide) {
       var width, height;
-      if (($('img', $slide).attr("src") !== undefined) && ($slide.text().replace(/^\s+|\s+$/g, '') === '')) {
-        $("<img/>").load(function () {
+      if (($('img', $slide).attr("src") !== undefined) && ($slide.text().replace(/^\s+|\s+$/g,'') === '')) {
+        $("<img/>").attr("src", $('img', $slide).attr("src")).load(function() {
           width = this.width;
           height = this.height;
           setFillerProportions(width, height);
-        }).attr("src", $('img', $slide).attr("src"));
+        });
       } else {
         width = $slide.width();
         height = $slide.height();
@@ -185,18 +168,20 @@
       if (slip.settings.adaptiveHeight === true) {  // if the slides shoud alwas adapt to their content
         getFillerProportions($('.' + slip.settings.activeClass, el));  // set the filler height on the active element
       } else {  // otherwise get the highest element
-        var $highest, height, loop;
+        var slides, $highest, height, count, loop;
+        slides = $(slip.settings.elements, el);
         height = 0;
         loop = 0;
-        $(slip.vars.slides).each(function () {
+        count = slides.length;
+        $(slides).each(function () {   
           if ($(this).height() > height) {
             $highest = $(this);
             height = $highest.height();
           }
           loop = loop + 1;
-          if (loop === slip.vars.count) {
+          if (loop === count) {
             if ($highest === undefined) {
-              $highest = $($(slip.vars.slides)[0]);
+              $highest = $($(slides)[0]);
             }
             getFillerProportions($highest);
           }
@@ -224,14 +209,14 @@
         if (slip.settings.captionsSrc !== 'img') {
           caption = slip.vars.active.attr('title');
         } else {
-          caption = $('img', slip.vars.active).attr('title') !== undefined ? $('img', slip.vars.active).attr('title') : $('img', slip.vars.active).attr('alt');
+          caption = $('img', slip.vars.active).attr('alt');
         }
         if (slip.settings.captions !== 'custom') {
           wrapper = $('.' + slip.settings.captionsClass, slip.vars.slippryWrapper);
         } else {
           wrapper = $('.' + slip.settings.captionsClass);
         }
-        if ((caption !== undefined) && (caption !== '')) {
+        if (caption !== undefined) {
           wrapper.html(caption).show();
         } else {
           wrapper.hide();
@@ -272,7 +257,7 @@
 
     // refreshes the already initialised slider
     el.refresh = function () {
-      slip.vars.slides.removeClass(slip.settings.activeClass);
+      $(slip.settings.elements, el).removeClass(slip.settings.activeClass);
       slip.vars.active.addClass(slip.settings.activeClass);
       if (slip.settings.responsive) {
         prepareFiller();
@@ -290,68 +275,86 @@
 
     transitionDone = function () {
       slip.vars.moving = false;
-      slip.vars.slides.removeClass(slip.settings.transClass);
-      slip.vars.old.removeClass('sy-ken');
       slip.settings.onSlideAfter.call(undefined, slip.vars.active, slip.vars.old.index(), slip.vars.active.index());
     };
 
     doTransition = function () {
-      var pos, jump, old_left, old_pos, kenZoom, kenStart, kenX, kenY, kenTime, animProp, cssProp;
+      var pos, jump, old_left, old_pos, kenZoom, kenStart, kenX, kenY, animProp, cssProp;
       slip.settings.onSlideBefore.call(undefined, slip.vars.active, slip.vars.old.index(), slip.vars.active.index());
       if (slip.settings.transition !== false) {
         slip.vars.moving = true;
-        if ((slip.settings.transition === 'fade') || (slip.settings.transition === 'kenburns')) {
-          if (slip.settings.transition === 'kenburns') {
-            kenTime = slip.settings.pause + slip.settings.speed * 2;
-            if (!slip.settings.useCSS) {
-              animProp = {};
-              cssProp = {};
-              slip.vars.active.css({top: 'auto', left: 'auto', bottom: 'auto', right: 'auto'});
-              kenX = slip.vars.active.index() % 2 === 0 ? 'left' : 'right';
-              kenY = slip.vars.active.index() % 2 === 0 ? 'top' : 'bottom';
-              kenZoom = 100 * slip.settings.kenZoom;
-              kenStart = 100 - kenZoom;
-              cssProp[kenX] = kenStart + '%';
-              cssProp[kenY] = kenStart + '%';
-              cssProp.width = kenZoom + '%';
-              animProp[kenX] = '0%';
-              animProp[kenY] = '0%';
-              slip.vars.active.css(cssProp).animate(animProp, {duration: kenTime, queue: false });
-            }
+        if (slip.settings.transition === 'kenburns') {
+          if (!slip.settings.useCSS) {
+            animProp = {};
+            cssProp = {};
+            slip.vars.active.css({top: 'auto', left: 'auto', bottom: 'auto', right: 'auto'});
+            kenX = slip.vars.active.index() % 2 === 0 ? 'left' : 'right';
+            kenY = slip.vars.active.index() % 2 === 0 ? 'top' : 'bottom';
+            kenZoom = 100 * slip.settings.kenZoom;
+            kenStart = 100 - kenZoom;
+            cssProp[kenX] = kenStart + '%';
+            cssProp[kenY] = kenStart + '%';
+            cssProp.width = kenZoom + '%';
+            animProp[kenX] = '0%';
+            animProp[kenY] = '0%';
+            slip.vars.active.css(cssProp).animate(animProp, {duration: slip.settings.pause + (slip.settings.transTime * 2), queue: false });
           }
           if (slip.vars.fresh) {
-            slip.vars.slides.css({transitionDuration: slip.settings.speed + 'ms', opacity: 0});
+            $($(slip.settings.elements, el)).css('opacity', 0);
+            slip.vars.active.css('opacity', 1).addClass('ken');
+            slip.vars.moving = false;
+          } else {
+            if (slip.settings.useCSS) {
+              slip.vars.old.addClass(slip.settings.transClass).css('opacity', 0);
+              slip.vars.active.addClass(slip.settings.transClass).css('opacity', 1).addClass('ken');
+              slip.vars.old.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+                slip.vars.old.removeClass(slip.settings.transClass).removeClass('ken');
+                slip.vars.active.removeClass(slip.settings.transClass);
+                transitionDone();
+                return this;
+              });
+            } else {
+              slip.vars.old.addClass(slip.settings.transClass).animate({
+                opacity: 0
+              }, {duration: slip.settings.transTime, queue: false, easing: slip.settings.transEase, complete: function () {
+                $(this).removeClass(slip.settings.transClass);
+                transitionDone();
+              }});
+              slip.vars.active.addClass(slip.settings.transClass).css('opacity', 0).animate({
+                opacity: 1
+              }, {duration: slip.settings.transTime, queue: false, easing: slip.settings.transEase, complete: function () {
+                $(this).removeClass(slip.settings.transClass);
+              }});
+            }
+          }
+          updateSlide();
+        } else if (slip.settings.transition === 'fade') {
+          if (slip.vars.fresh) {
+            $($(slip.settings.elements, el)).css('opacity', 0);
             slip.vars.active.css('opacity', 1);
-            if (slip.settings.transition === 'kenburns') {
-              if (slip.settings.useCSS) {
-                slip.vars.slides.css({animationDuration: kenTime + 'ms'});
-              }
-              slip.vars.active.addClass('sy-ken');
-            }  
             transitionDone();
           } else {
             if (slip.settings.useCSS) {
               slip.vars.old.addClass(slip.settings.transClass).css('opacity', 0);
               slip.vars.active.addClass(slip.settings.transClass).css('opacity', 1);
-              if (slip.settings.transition === 'kenburns') {
-                slip.vars.active.addClass('sy-ken');
-              }
-              $(window).off('focus').on('focus', function() { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
-                slip.vars.old.trigger(slip.vars.transition);
-              });
-              slip.vars.old.one(slip.vars.transition, function () {
+              slip.vars.old.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+                slip.vars.old.removeClass(slip.settings.transClass);
+                slip.vars.active.removeClass(slip.settings.transClass);
                 transitionDone();
                 return this;
               });
             } else {
               slip.vars.old.addClass(slip.settings.transClass).stop().animate({
                 opacity: 0
-              }, slip.settings.speed, slip.settings.transEase, function () {
+              }, slip.settings.transTime, slip.settings.transEase, function () {
+                $(this).removeClass(slip.settings.transClass);
                 transitionDone();
               });
               slip.vars.active.addClass(slip.settings.transClass).css('opacity', 0).stop().animate({
                 opacity: 1
-              }, slip.settings.speed, slip.settings.transEase);
+              }, slip.settings.transTime, slip.settings.transEase, function () {
+                $(this).removeClass(slip.settings.transClass);
+              });
             }
           }
           updateSlide();
@@ -379,15 +382,12 @@
             slip.vars.active.addClass(slip.settings.transClass);
             if (slip.settings.useCSS) {
               el.addClass(slip.settings.transition);
-              el.css({left: pos, transitionDuration: slip.settings.speed + 'ms'});
-              $(window).off('focus').on('focus', function() { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
-                el.trigger(slip.vars.transition);
-              });
+              el.css({left: pos, transitionDuration: slip.settings.transTime + 'ms'});
               el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
-                el.removeClass(slip.settings.transition);
+                el.removeClass(slip.settings.transition); // Thanks! http://blog.teamtreehouse.com/using-jquery-to-detect-when-css3-animations-and-transitions-end
                 if (jump) {
                   slip.vars.active.css('left', old_left);
-                  el.css({left: old_pos, transitionDuration: '0ms'});
+                  el.css({left: old_pos, transitionDuration: 0 + 'ms'});
                 }
                 transitionDone();
                 return this;
@@ -395,7 +395,7 @@
             } else {
               el.stop().animate({
                 left: pos
-              }, slip.settings.speed, slip.settings.transEase, function () {
+              }, slip.settings.transTime, slip.settings.transEase, function () {
                 if (jump) {
                   slip.vars.active.css('left', old_left);
                   el.css('left', old_pos);
@@ -443,10 +443,10 @@
           slide = slide - 1;
         }
         slip.vars.jump = false;
-        if ((slide !== 'prev') && (slide !== 'next') && ((slide !== current) || (slip.vars.fresh))) {
+        if ((slide !== 'prev') && (slide !== 'next')) {
           updatePos(slide);
           slip.vars.old = slip.vars.active;
-          slip.vars.active = $(slip.vars.slides[slide]);
+          slip.vars.active = $($(slip.settings.elements, el)[slide]);
           if (((current === 0) && (slide === slip.vars.count - 1)) || ((current === slip.vars.count - 1) && (slide === 0))) {
             slip.vars.jump = true;
           }
@@ -466,7 +466,7 @@
     initPager = function () {
       if ((slip.settings.pager) && (slip.vars.count > 1)) {
         var count, loop, pager;
-        count = slip.vars.slides.length;
+        count = $(slip.settings.elements, el).length;
         pager = $('<ul class="' + slip.settings.pagerClass + '" />');
         for (loop = 1; loop < count + 1; loop = loop + 1) {
           pager.append($('<li />').append($('<a href="#' + loop + '">' + loop + '</a>')));
@@ -547,7 +547,7 @@
       if (slip.vars.fresh === false) {
         el.stopAuto();
         slip.vars.moving = false;
-        slip.vars.slides.each(function () {
+        $(slip.settings.elements, el).each(function () {
           if ($(this).data("cssBckup") !== undefined) {
             $(this).attr("style", $(this).data("cssBckup"));
           } else {
@@ -584,21 +584,20 @@
     init = function () {
       var first;
       slip.settings = $.extend({}, defaults, options);
-      slip.vars.slides = $(slip.settings.elements, el);
-      slip.vars.count = slip.vars.slides.length;
+      slip.vars.count = $(slip.settings.elements, el).length;
       if (slip.settings.useCSS) { // deactivate css transitions on unsupported browsers
         if (!supports('transition')) {
           slip.settings.useCSS = false;
         }
-        slip.vars.transition = whichTransitionEvent();
       }
       el.data('cssBckup', el.attr('style'));
       el.data('classBackup', el.attr('class'));
       el.addClass(slip.settings.boxClass).wrap(slip.settings.slippryWrapper).wrap(slip.settings.slideWrapper).wrap(slip.settings.slideCrop);
       slip.vars.slideWrapper = el.parent().parent();
       slip.vars.slippryWrapper = slip.vars.slideWrapper.parent().addClass(slip.settings.loadingClass);
-      slip.vars.fresh = true;      
-      slip.vars.slides.each(function () {
+      slip.vars.fresh = true;
+      $(slip.settings.elements, el).each(function () {
+        
         $(this).addClass('slippry_slide ' + slip.settings.transition);
         if (slip.settings.useCSS) {
           $(this).addClass('useCSS');
@@ -616,14 +615,15 @@
           } else {
             first = 0;
           }
-          slip.vars.active = $(slip.vars.slides[first]).addClass(slip.settings.activeClass);
+          $($(slip.settings.elements, el)[first]).addClass(slip.settings.activeClass);
+          slip.vars.active = $($(slip.settings.elements, el)[first]);
         } else {
           slip.vars.active = $('.' + slip.settings.activeClass, el);
         }
         initControls();
         initPager();
         initCaptions();
-        preload(slip.vars.slides);
+        preload($(slip.settings.elements, el));
       } else {
         return this;
       }
