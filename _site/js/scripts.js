@@ -1,11 +1,11 @@
 jQuery(document).ready(function(){
-  jQuery('#demo1').slippry({
+  jQuery('#slippry-demo').slippry({
     slippryWrapper: '<div class="slippry_box front-page" />'
   });
 
   // Generic
   jQuery('#out-of-the-box-demo').slippry({
-    //adaptHeight: false
+    
   });
   
   // Pictures Slider
@@ -38,6 +38,7 @@ jQuery(document).ready(function(){
     adaptHeight: false, // height of the sliders adapts to current slide
     start: 'random', // num (starting from 1), random
     loop: false, // first -> last & last -> first arrows
+    captionsSrc: 'li',
     captions: 'custom', // Position: overlay, below, custom, false
     captionsClass: 'external-captions',
 
@@ -57,7 +58,8 @@ jQuery(document).ready(function(){
     elements: 'article', // elments cointaining slide content
 
     // options
-    adaptHeight: false, // height of the sliders adapts to current slide
+    adaptHeight: false, // height of the sliders adapts to current 
+    captions: false,
 
     // pager
     // pagerClass: 'news-pager',
@@ -80,6 +82,7 @@ jQuery(document).ready(function(){
     adaptHeight: false, // height of the sliders adapts to current slide
     start: 2, // num (starting from 1), random
     loop: false, // first -> last & last -> first arrows
+    captionsSrc: 'article',
     captions: 'custom', // Position: overlay, below, custom, false
     captionsClass: 'product-name',
 
@@ -89,6 +92,7 @@ jQuery(document).ready(function(){
     // transitions
     slideMargin: 20, // spacing between slides (in %)
     useCSS: true,
+    transition: 'horizontal',
 
     //slideshow
     auto: false,
@@ -101,6 +105,7 @@ jQuery(document).ready(function(){
     adaptHeight: true, // height of the sliders adapts to current slide
     useCSS: true, // true, false -> fallback to js if no browser support
     autoHover: false,
+    transition: 'horizontal',
   });
 
   jQuery('#jquery-demo').slippry({
@@ -110,6 +115,7 @@ jQuery(document).ready(function(){
     adaptHeight: false, // height of the sliders adapts to current slide
     useCSS: false, // true, false -> fallback to js if no browser support
     autoHover: false,
+    transition: 'horizontal',
   });
 
   jQuery('#select-setting').click( function() {

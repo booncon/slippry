@@ -1,5 +1,5 @@
 /**
- * slippry v0.96 - Simple responsive content slider
+ * slippry v1.0 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -12,18 +12,46 @@
  */
  
 @import "compass";
-@import "mixins";
 
 $color_high: #e24b70;
 $color_gray: #ccc;
 $controls_size: 2.8em;
 $pager_size: 1.2em;
-
-$filler_time: 0.74s;
-$filler_ease: ease;
-
-$trans_time: 1.2s;
 $trans_ease: ease;
+
+/* -------------------------- MIXINS ---------------------------------- */
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+@mixin animation ($delay, $animation) {
+  -webkit-animation-delay: $delay;
+  -webkit-animation-name: $animation;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-delay: $delay;
+  -moz-animation-name: $animation;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-delay: $delay;
+  -o-animation-name: $animation;
+  -o-animation-fill-mode: forwards;
+  animation-delay: $delay;
+  animation-name: $animation;
+  animation-fill-mode: forwards;
+}
+
+/* -------------------------- END MIXINS ---------------------------------- */
 
 @include keyframes(left-right) {
   0% {
@@ -42,13 +70,7 @@ $trans_ease: ease;
   }
 }
 
-
 .slippry_box {
-  * {
-    margin: 0;
-    padding: 0;
-    @include box-sizing(border-box);
-  }
   .caption {
     a {
       &:link, &:visited {
@@ -61,20 +83,26 @@ $trans_ease: ease;
       }
     }
   }
-  visibility: visible;
   &.loading {
-    visibility: hidden;
+    .slide_box {
+      visibility: hidden;
+    }
+    background: url(../images/sy-loader.gif) 50% 50% no-repeat;
+    min-height: 40px;
   }
   .slide_box {
     position: relative;
     height: 100%;
     width: 100%;
-    overflow: hidden;
-    -webkit-backface-visibility: hidden;
-    -webkit-transition: translate3d(0,0,0);
+    .slippry_slide_crop {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      overflow: hidden;
+    }
     .slippry_list {
       &.horizontal {
-        @include transition(left $trans_time $trans_ease);
+        @include transition(left $trans_ease);
       }
       width: 100%;
       height: 100%;
@@ -82,40 +110,39 @@ $trans_ease: ease;
       margin: 0;
       padding: 0;
       position: absolute;
-      li, article {
-        // display: none;
+      .slippry_slide {
         position: absolute;       
         width: 100%;
         z-index: 2;
         &.fade.useCSS.transition {
-          @include transition(opacity $trans_time $trans_ease);            
+          @include transition(opacity $trans_ease);            
         }
         &.kenburns {
           width: 140%;
           left: -20%;
           &.useCSS {
-            &.ken {
+            &.sy-ken {
               &:nth-child(1n) {
-                @include animation(0, 10s, left-right);
+                @include animation(0, left-right);
               }
               &:nth-child(2n) {
-                @include animation(0, 10s, right-left);
+                @include animation(0, right-left);
               }
             }  
             &.transition {
-              @include transition(opacity $trans_time $trans_ease);
+              @include transition(opacity $trans_ease);
             }
           }  
         }
         &.active {
           z-index: 3;
         }
-        a { // needs to somehow be not applied if inline html content. T.H. Or then we just rely on user to override styles later on?
-          //margin: 0; //can we remove this since it is universally declared above? Yes we can!
-          //padding: 0; //can we remove this since it is universally declared above? Yes we can!
-          display: inline-block;// block; make this inline block? T.H.
-          width: auto;//100%; // make this auto? T.H. 
-          img {
+        >a {
+          margin: 0;
+          padding: 0;
+          display: block;
+          width: 100%;
+          >img {
             margin: 0;
             padding: 0;
             display: block;
@@ -176,7 +203,7 @@ $trans_ease: ease;
           }
           &:after {
             content: "";
-            background-image: url('/images/arrows.svg');
+            background-image: url(../images/arrows.svg);
             background-repeat: no-repeat;
             @include background-size(cover);
             text-align: center;
@@ -200,7 +227,7 @@ $trans_ease: ease;
     .filler {
       width: 100%;
       &.ready {
-        @include transition(padding $filler_time $filler_ease);
+        @include transition(padding 600ms ease);
       }
     }
     .caption_wrap {
@@ -253,5 +280,5 @@ $trans_ease: ease;
         @include border-radius(50%);
       }
     }    
-  } 
+  }  
 }

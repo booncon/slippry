@@ -555,6 +555,10 @@ section.settings {
       min-width: 400px;
       max-width: 590px;
       width: 50%;
+      .slippry_slide_crop {
+    overflow: visible;
+        
+      }
     }
     .controls {    
       @media only screen and (max-width: 500px) {
@@ -586,7 +590,7 @@ section.settings {
       }
     }
   }
-  article {
+  .slippry_slide {
     opacity: 0.6;
     @include transition(opacity 1s);
     .product-info {
