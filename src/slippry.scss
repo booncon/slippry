@@ -70,19 +70,72 @@ $trans_ease: ease;
   }
 }
 
-.slippry_box {
-  .caption {
-    a {
-      &:link, &:visited {
-        color: $color_high;
-        font-weight: 600;
-        text-decoration: none;
+
+  .caption_wrap {
+    position: absolute;
+    bottom: 2em;
+    z-index: 12;
+    left: 50%;
+    .sy-caption {
+      position: relative;
+      left: -50%;
+      background-color: rgba(0,0,0,0.54);
+      color: #fff;        
+      padding: 0.4em 1em;
+      @include border-radius(1.2em);      
+      a {
+        &:link, &:visited {
+          color: $color_high;
+          font-weight: 600;
+          text-decoration: none;
+        }
+        &:hover, &:focus {
+          text-decoration: underline;
+        }
       }
-      &:hover, &:focus {
-        text-decoration: underline;
+    }  
+  }
+
+
+.sy-pager {
+  display: block;
+  width: 100%;
+  margin: 1em 0 0;
+  padding: 0;
+  list-style: none;
+  @include clearfix;
+  text-align: center;
+  li {
+    display: inline-block;
+    width: $pager_size;
+    height: $pager_size;
+    margin: 0 1em 0 0;
+    @include border-radius(50%);
+    &.active {
+      a {
+        background-color: $color_high;
       }
     }
-  }
+    a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background-color: $color_gray;
+      text-indent: -9999px;
+      &:link, &:visited {
+        opacity: 1.0;
+      }
+      &:hover, &:focus {
+        opacity: 0.6;
+      }
+      @include background-size(2em);
+      @include border-radius(50%);
+    }
+  }    
+}   
+
+.slippry_box {
+  
   &.loading {
     .slide_box {
       visibility: hidden;
@@ -230,55 +283,5 @@ $trans_ease: ease;
         @include transition(padding 600ms ease);
       }
     }
-    .caption_wrap {
-      position: absolute;
-      bottom: 2em;
-      z-index: 12;
-      left: 50%;
-      .caption {
-        position: relative;
-        left: -50%;
-        background-color: rgba(0,0,0,0.54);
-        color: #fff;        
-        padding: 0.4em 1em;
-        @include border-radius(1.2em);      
-      }
-    }  
-  }
-  .pager {
-    display: block;
-    width: 100%;
-    margin: 1em 0 0;
-    padding: 0;
-    list-style: none;
-    @include clearfix;
-    text-align: center;
-    li {
-      display: inline-block;
-      width: $pager_size;
-      height: $pager_size;
-      margin: 0 1em 0 0;
-      @include border-radius(50%);
-      &.active {
-        a {
-          background-color: $color_high;
-        }
-      }
-      a {
-        width: 100%;
-        height: 100%;
-        display: block;
-        background-color: $color_gray;
-        text-indent: -9999px;
-        &:link, &:visited {
-          opacity: 1.0;
-        }
-        &:hover, &:focus {
-          opacity: 0.6;
-        }
-        @include background-size(2em);
-        @include border-radius(50%);
-      }
-    }    
   }  
 }

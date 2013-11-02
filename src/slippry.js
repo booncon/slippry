@@ -32,13 +32,13 @@
     loop: true, // first -> last & last -> first arrows
     captionsSrc: 'img', // img, el [img takes caption from alt or title, el from title of slide element]
     captions: 'overlay', // Position: overlay, below, custom, false
-    captionsClass: 'caption',
+    captionsClass: 'sy-caption',
     initSingle: true, // initialise even if there is only one slide
     responsive: true,
 
     // pager
     pager: true,
-    pagerClass: 'pager',
+    pagerClass: 'sy-pager',
 
     // controls
     controls: true,
@@ -206,8 +206,8 @@
 
     updatePager = function () {
       if (slip.settings.pager) {
-        $('.pager li', slip.vars.slippryWrapper).removeClass('active');
-        $($('.pager li', slip.vars.slippryWrapper)[slip.vars.active.index()]).addClass(slip.settings.activeClass);
+        $('.' + slip.settings.pagerClass + ' li', slip.vars.slippryWrapper).removeClass('active');
+        $($('.' + slip.settings.pagerClass + ' li', slip.vars.slippryWrapper)[slip.vars.active.index()]).addClass(slip.settings.activeClass);
       }
     };
 
@@ -290,8 +290,8 @@
 
     transitionDone = function () {
       slip.vars.moving = false;
-      slip.vars.slides.removeClass(slip.settings.transClass);
-      slip.vars.old.removeClass('sy-ken');
+      slip.vars.active.removeClass(slip.settings.transClass);
+      slip.vars.old.removeClass('sy-ken' + slip.settings.transClass);
       slip.settings.onSlideAfter.call(undefined, slip.vars.active, slip.vars.old.index(), slip.vars.active.index());
     };
 
