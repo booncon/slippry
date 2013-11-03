@@ -1,4 +1,4 @@
-slippry 1.0rc1
+slippry 1.0rc2
 ========
 
 Responsive slider plugin for jQuery.
