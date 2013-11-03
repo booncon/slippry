@@ -70,8 +70,168 @@ $trans_ease: ease;
   }
 }
 
-.slippry_box {
-  .caption {
+.sy-box {
+  &.sy-loading {
+    .sy-slides-wrap, .sy-pager {
+      visibility: hidden;
+    }
+    background: url(sy-loader.gif) 50% 50% no-repeat;
+    min-height: 40px;
+  }
+}
+
+.sy-slides-wrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  &:hover {
+    .sy-controls {
+      display: block;
+    }
+  }
+}
+
+.sy-slides-crop {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+.sy-list {
+  &.horizontal {
+    @include transition(left $trans_ease);
+  }
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;  
+}
+
+.sy-slide {
+  position: absolute;       
+  width: 100%;
+  z-index: 2;
+  &.fade.useCSS.transition {
+    @include transition(opacity $trans_ease);            
+  }
+  &.kenburns {
+    width: 140%;
+    left: -20%;
+    &.useCSS {
+      &.sy-ken {
+        &:nth-child(1n) {
+          @include animation(0, left-right);
+        }
+        &:nth-child(2n) {
+          @include animation(0, right-left);
+        }
+      }  
+      &.transition {
+        @include transition(opacity $trans_ease);
+      }
+    }  
+  }
+  &.sy-active {
+    z-index: 3;
+  }
+  >a { // styling for link on whole slide
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    >img { // with one image as content -> full size
+      margin: 0;
+      padding: 0;
+      display: block;
+      width: 100%;
+      border: 0;
+    }
+  }
+}
+
+.sy-controls {
+  display: none;
+  list-style: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  li {
+    position: absolute;
+    width: 10%;
+    min-width: $controls_size * 1.5;
+    height: 100%;
+    z-index: 33;
+    &.sy-prev {
+      left: 0;
+      top: 0;
+      a {
+        &:after {
+          background-position: -5% 0;
+        }
+      }
+    }
+    &.sy-next {
+      right: 0;
+      top: 0;
+      a {
+        &:after {
+          background-position: 105% 0;
+        }
+      }
+    }
+    a {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: block;
+      text-indent: -9999px;
+      &:link, &:visited {
+        opacity: 0.4;
+      }
+      &:hover, &:focus {
+        opacity: 0.8;
+      }
+      &:after {
+        content: "";
+        background-image: url(arrows.svg);
+        background-repeat: no-repeat;
+        @include background-size(cover);
+        text-align: center;
+        text-indent: 0;
+        line-height: $controls_size;
+        color: #111;
+        font-weight: 800;
+        position: absolute;
+        background-color: #fff;
+        width: $controls_size;
+        height: $controls_size;
+        left: 50%;
+        top: 50%;
+        margin-top: -$controls_size / 2;
+        margin-left: -$controls_size / 2;
+        @include border-radius(50%);
+      }
+    }
+  }  
+}
+
+.sy-caption-wrap {
+  position: absolute;
+  bottom: 2em;
+  z-index: 12;
+  left: 50%;
+  .sy-caption {
+    position: relative;
+    left: -50%;
+    background-color: rgba(0,0,0,0.54);
+    color: #fff;        
+    padding: 0.4em 1em;
+    @include border-radius(1.2em);      
     a {
       &:link, &:visited {
         color: $color_high;
@@ -82,203 +242,49 @@ $trans_ease: ease;
         text-decoration: underline;
       }
     }
-  }
-  &.loading {
-    .slide_box {
-      visibility: hidden;
-    }
-    background: url(sy-loader.gif) 50% 50% no-repeat;
-    min-height: 40px;
-  }
-  .slide_box {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    .slippry_slide_crop {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      overflow: hidden;
-    }
-    .slippry_list {
-      &.horizontal {
-        @include transition(left $trans_ease);
-      }
-      width: 100%;
-      height: 100%;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      .slippry_slide {
-        position: absolute;       
-        width: 100%;
-        z-index: 2;
-        &.fade.useCSS.transition {
-          @include transition(opacity $trans_ease);            
-        }
-        &.kenburns {
-          width: 140%;
-          left: -20%;
-          &.useCSS {
-            &.sy-ken {
-              &:nth-child(1n) {
-                @include animation(0, left-right);
-              }
-              &:nth-child(2n) {
-                @include animation(0, right-left);
-              }
-            }  
-            &.transition {
-              @include transition(opacity $trans_ease);
-            }
-          }  
-        }
-        &.active {
-          z-index: 3;
-        }
-        >a {
-          margin: 0;
-          padding: 0;
-          display: block;
-          width: 100%;
-          >img {
-            margin: 0;
-            padding: 0;
-            display: block;
-            width: 100%;
-            border: 0;
-          }
-        }
-      }
-    }
-    &:hover {
-      .controls {
-        display: block;
-      }
-    }
-    .controls {
-      display: none;
-      list-style: none;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      padding: 0;
-      margin: 0;
-      li {
-        position: absolute;
-        width: 10%;
-        min-width: $controls_size * 1.5;
-        height: 100%;
-        z-index: 33;
-        &.slip_prev {
-          left: 0;
-          top: 0;
-          a {
-            &:after {
-              background-position: -5% 0;
-            }
-          }
-        }
-        &.slip_next {
-          right: 0;
-          top: 0;
-          a {
-            &:after {
-              background-position: 105% 0;
-            }
-          }
-        }
-        a {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          display: block;
-          text-indent: -9999px;
-          &:link, &:visited {
-            opacity: 0.4;
-          }
-          &:hover, &:focus {
-            opacity: 0.8;
-          }
-          &:after {
-            content: "";
-            background-image: url(arrows.svg);
-            background-repeat: no-repeat;
-            @include background-size(cover);
-            text-align: center;
-            text-indent: 0;
-            line-height: $controls_size;
-            color: #111;
-            font-weight: 800;
-            position: absolute;
-            background-color: #fff;
-            width: $controls_size;
-            height: $controls_size;
-            left: 50%;
-            top: 50%;
-            margin-top: -$controls_size / 2;
-            margin-left: -$controls_size / 2;
-            @include border-radius(50%);
-          }
-        }
-      }  
-    }
-    .filler {
-      width: 100%;
-      &.ready {
-        @include transition(padding 600ms ease);
-      }
-    }
-    .caption_wrap {
-      position: absolute;
-      bottom: 2em;
-      z-index: 12;
-      left: 50%;
-      .caption {
-        position: relative;
-        left: -50%;
-        background-color: rgba(0,0,0,0.54);
-        color: #fff;        
-        padding: 0.4em 1em;
-        @include border-radius(1.2em);      
-      }
-    }  
-  }
-  .pager {
-    display: block;
-    width: 100%;
-    margin: 1em 0 0;
-    padding: 0;
-    list-style: none;
-    @include clearfix;
-    text-align: center;
-    li {
-      display: inline-block;
-      width: $pager_size;
-      height: $pager_size;
-      margin: 0 1em 0 0;
-      @include border-radius(50%);
-      &.active {
-        a {
-          background-color: $color_high;
-        }
-      }
-      a {
-        width: 100%;
-        height: 100%;
-        display: block;
-        background-color: $color_gray;
-        text-indent: -9999px;
-        &:link, &:visited {
-          opacity: 1.0;
-        }
-        &:hover, &:focus {
-          opacity: 0.6;
-        }
-        @include background-size(2em);
-        @include border-radius(50%);
-      }
-    }    
   }  
+}
+
+.sy-pager {
+  @include clearfix;
+  display: block;
+  width: 100%;
+  margin: 1em 0 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  li {
+    display: inline-block;
+    width: $pager_size;
+    height: $pager_size;
+    margin: 0 1em 0 0;
+    @include border-radius(50%);
+    &.sy-active {
+      a {
+        background-color: $color_high;
+      }
+    }
+    a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background-color: $color_gray;
+      text-indent: -9999px;
+      &:link, &:visited {
+        opacity: 1.0;
+      }
+      &:hover, &:focus {
+        opacity: 0.6;
+      }
+      @include background-size(2em);
+      @include border-radius(50%);
+    }
+  }    
+}
+
+.sy-filler {
+  width: 100%;
+  &.ready {
+    @include transition(padding 600ms ease);
+  }
 }
