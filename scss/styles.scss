@@ -511,19 +511,38 @@ section.settings {
   /* Style the actual content */
   .text-content {
     position: absolute;
-    top: 0;
+    //top: 0;
     left: 0;
-    right: 0;
     background-color: rgba(255,255,255,0.9);
     padding: 1em;
-    width: 30%;
+    // below are media based, start with 'mobile'
+    width: 40%;
+    font-size: 0.75em;
     height: 100%;
-    p {
-      margin: 1em 0;  
+    padding: 0 1em;
+    h2 {
+      display: inline-block;
     }
-    a.button-link {
-      padding: 0.25em 0.5em;
+    p {
+      display: none;
+    }
+    .read-more {
       float: right;
+      position: absolute;
+      bottom: 1em;
+      right: 1em;
+    }
+    @media only screen and (min-width: 481px) {
+      font-size: 1em;
+    }
+    @media only screen and (min-width: 769px) {
+      width: 35%;
+      p {
+        display: block;
+      }
+    }
+    @media only screen and (min-width: 960px) {
+      width: 30%;
     }
   }
   .image-content {

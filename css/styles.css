@@ -1034,37 +1034,65 @@ section.settings h3 {
 /* line 512, ../scss/styles.scss */
 .news-slider .text-content {
   position: absolute;
-  top: 0;
   left: 0;
-  right: 0;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 1em;
-  width: 30%;
+  width: 40%;
+  font-size: 0.75em;
   height: 100%;
+  padding: 0 1em;
 }
-/* line 521, ../scss/styles.scss */
+/* line 523, ../scss/styles.scss */
+.news-slider .text-content h2 {
+  display: inline-block;
+}
+/* line 526, ../scss/styles.scss */
 .news-slider .text-content p {
-  margin: 1em 0;
-}
-/* line 524, ../scss/styles.scss */
-.news-slider .text-content a.button-link {
-  padding: 0.25em 0.5em;
-  float: right;
+  display: none;
 }
 /* line 529, ../scss/styles.scss */
+.news-slider .text-content .read-more {
+  float: right;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+@media only screen and (min-width: 481px) {
+  /* line 512, ../scss/styles.scss */
+  .news-slider .text-content {
+    font-size: 1em;
+  }
+}
+@media only screen and (min-width: 769px) {
+  /* line 512, ../scss/styles.scss */
+  .news-slider .text-content {
+    width: 35%;
+  }
+  /* line 540, ../scss/styles.scss */
+  .news-slider .text-content p {
+    display: block;
+  }
+}
+@media only screen and (min-width: 960px) {
+  /* line 512, ../scss/styles.scss */
+  .news-slider .text-content {
+    width: 30%;
+  }
+}
+/* line 548, ../scss/styles.scss */
 .news-slider .image-content {
   line-height: 0;
 }
-/* line 531, ../scss/styles.scss */
+/* line 550, ../scss/styles.scss */
 .news-slider .image-content img {
   max-width: 100%;
 }
-/* line 535, ../scss/styles.scss */
+/* line 554, ../scss/styles.scss */
 .news-slider .sy-pager {
   /* change the pager */
   text-align: right;
 }
-/* line 537, ../scss/styles.scss */
+/* line 556, ../scss/styles.scss */
 .news-slider .sy-pager li {
   margin: 0 0 0 1em;
   -webkit-border-radius: 0;
@@ -1073,7 +1101,7 @@ section.settings h3 {
   -o-border-radius: 0;
   border-radius: 0;
 }
-/* line 540, ../scss/styles.scss */
+/* line 559, ../scss/styles.scss */
 .news-slider .sy-pager li a {
   text-indent: 9999px;
   -webkit-border-radius: 0;
@@ -1084,33 +1112,33 @@ section.settings h3 {
 }
 
 /* Shop */
-/* line 550, ../scss/styles.scss */
+/* line 569, ../scss/styles.scss */
 .shop-slider {
   overflow: hidden;
 }
-/* line 552, ../scss/styles.scss */
+/* line 571, ../scss/styles.scss */
 .shop-slider .sy-slides-wrap {
   overflow: visible;
   width: 100%;
 }
 @media only screen and (min-width: 401px) {
-  /* line 552, ../scss/styles.scss */
+  /* line 571, ../scss/styles.scss */
   .shop-slider .sy-slides-wrap {
     min-width: 400px;
     max-width: 590px;
     width: 50%;
   }
-  /* line 559, ../scss/styles.scss */
+  /* line 578, ../scss/styles.scss */
   .shop-slider .sy-slides-wrap .sy-slides-crop {
     overflow: visible;
   }
 }
 @media only screen and (max-width: 500px) {
-  /* line 566, ../scss/styles.scss */
+  /* line 585, ../scss/styles.scss */
   .shop-slider .sy-slides-wrap .sy-controls li {
     min-width: 2.4em;
   }
-  /* line 568, ../scss/styles.scss */
+  /* line 587, ../scss/styles.scss */
   .shop-slider .sy-slides-wrap .sy-controls li a:after {
     line-height: 1.4em;
     height: 1.4em;
@@ -1120,25 +1148,25 @@ section.settings h3 {
   }
 }
 @media only screen and (min-width: 501px) {
-  /* line 578, ../scss/styles.scss */
+  /* line 597, ../scss/styles.scss */
   .shop-slider .sy-slides-wrap .sy-controls li {
     width: 100%;
   }
-  /* line 580, ../scss/styles.scss */
+  /* line 599, ../scss/styles.scss */
   .shop-slider .sy-slides-wrap .sy-controls li.sy-prev {
     left: -100%;
   }
-  /* line 583, ../scss/styles.scss */
+  /* line 602, ../scss/styles.scss */
   .shop-slider .sy-slides-wrap .sy-controls li.sy-next {
     right: -100%;
   }
-  /* line 586, ../scss/styles.scss */
+  /* line 605, ../scss/styles.scss */
   .shop-slider .sy-slides-wrap .sy-controls li a:after {
     background-image: none;
     background-color: transparent;
   }
 }
-/* line 594, ../scss/styles.scss */
+/* line 613, ../scss/styles.scss */
 .shop-slider .sy-slide {
   opacity: 0.6;
   -webkit-transition: opacity 1s;
@@ -1146,7 +1174,7 @@ section.settings h3 {
   -o-transition: opacity 1s;
   transition: opacity 1s;
 }
-/* line 597, ../scss/styles.scss */
+/* line 616, ../scss/styles.scss */
 .shop-slider .sy-slide .product-info {
   position: absolute;
   top: 0;
@@ -1155,69 +1183,69 @@ section.settings h3 {
   padding: 1em;
 }
 @media only screen and (max-width: 500px) {
-  /* line 597, ../scss/styles.scss */
+  /* line 616, ../scss/styles.scss */
   .shop-slider .sy-slide .product-info {
     padding: 1em 2.4em;
   }
 }
-/* line 606, ../scss/styles.scss */
+/* line 625, ../scss/styles.scss */
 .shop-slider .sy-slide .product-info p {
   margin-bottom: 1em;
 }
-/* line 609, ../scss/styles.scss */
+/* line 628, ../scss/styles.scss */
 .shop-slider .sy-slide .product-info p, .shop-slider .sy-slide .product-info .button-link {
   opacity: 0;
 }
-/* line 613, ../scss/styles.scss */
+/* line 632, ../scss/styles.scss */
 .shop-slider .sy-slide .product-info .button-link {
   position: absolute;
   bottom: 1em;
 }
-/* line 617, ../scss/styles.scss */
+/* line 636, ../scss/styles.scss */
 .shop-slider .sy-slide .product-info .buy-now {
   right: 1em;
 }
 @media only screen and (max-width: 500px) {
-  /* line 617, ../scss/styles.scss */
+  /* line 636, ../scss/styles.scss */
   .shop-slider .sy-slide .product-info .buy-now {
     right: 2.4em;
   }
 }
-/* line 623, ../scss/styles.scss */
+/* line 642, ../scss/styles.scss */
 .shop-slider .sy-slide .product-info .more-info {
   left: 1em;
 }
 @media only screen and (max-width: 500px) {
-  /* line 623, ../scss/styles.scss */
+  /* line 642, ../scss/styles.scss */
   .shop-slider .sy-slide .product-info .more-info {
     left: 2.4em;
   }
 }
-/* line 630, ../scss/styles.scss */
+/* line 649, ../scss/styles.scss */
 .shop-slider .sy-slide .image-content {
   line-height: 0;
 }
-/* line 632, ../scss/styles.scss */
+/* line 651, ../scss/styles.scss */
 .shop-slider .sy-slide .image-content .product-image {
   max-width: 100%;
 }
-/* line 637, ../scss/styles.scss */
+/* line 656, ../scss/styles.scss */
 .shop-slider .sy-slide.sy-active {
   opacity: 1;
 }
-/* line 640, ../scss/styles.scss */
+/* line 659, ../scss/styles.scss */
 .shop-slider .sy-slide.sy-active .buy-now {
   opacity: 1;
 }
-/* line 645, ../scss/styles.scss */
+/* line 664, ../scss/styles.scss */
 .shop-slider .sy-slide.sy-active:hover .product-image {
   opacity: 0.2;
 }
-/* line 650, ../scss/styles.scss */
+/* line 669, ../scss/styles.scss */
 .shop-slider .sy-slide.sy-active:hover .product-info p, .shop-slider .sy-slide.sy-active:hover .product-info .button-link {
   opacity: 1;
 }
-/* line 669, ../scss/styles.scss */
+/* line 688, ../scss/styles.scss */
 .shop-slider .sy-slide .product-info p,
 .shop-slider .sy-slide .product-info .button-link,
 .shop-slider .sy-slide .product-image, .shop-slider .sy-slide.active, .shop-slider .sy-slide.active .buy-now, .shop-slider .sy-slide.active:hover .product-image, .shop-slider .sy-slide.active:hover .product-info p, .shop-slider .sy-slide.active:hover .product-info .button-link, .shop-slider .sy-slide.active.transition {
@@ -1227,7 +1255,7 @@ section.settings h3 {
   transition: opacity 1s;
 }
 
-/* line 675, ../scss/styles.scss */
+/* line 694, ../scss/styles.scss */
 .product-name,
 .shop-slider .sy-slides-wrap {
   width: 100%;
@@ -1235,7 +1263,7 @@ section.settings h3 {
   margin-right: auto;
 }
 @media only screen and (min-width: 401px) {
-  /* line 675, ../scss/styles.scss */
+  /* line 694, ../scss/styles.scss */
   .product-name,
   .shop-slider .sy-slides-wrap {
     min-width: 400px;
@@ -1244,17 +1272,17 @@ section.settings h3 {
   }
 }
 
-/* line 688, ../scss/styles.scss */
+/* line 707, ../scss/styles.scss */
 body, html {
   height: 100%;
 }
 
-/* line 692, ../scss/styles.scss */
+/* line 711, ../scss/styles.scss */
 .teaser-page #teaser {
   height: 100%;
   position: relative;
 }
-/* line 695, ../scss/styles.scss */
+/* line 714, ../scss/styles.scss */
 .teaser-page #teaser .center {
   display: inline-block;
   position: absolute;
@@ -1263,34 +1291,34 @@ body, html {
   left: 50%;
   margin-left: -14.25em;
 }
-/* line 697, ../scss/styles.scss */
+/* line 716, ../scss/styles.scss */
 .teaser-page #teaser .center h1 {
   font-size: 10em;
   margin: 0;
   line-height: 1;
 }
-/* line 702, ../scss/styles.scss */
+/* line 721, ../scss/styles.scss */
 .teaser-page #teaser .center p {
   font-size: 2em;
   margin-bottom: 0;
   padding-left: 0.25em;
 }
 @media only screen and (max-width: 570px), only screen and (max-height: 550px) {
-  /* line 695, ../scss/styles.scss */
+  /* line 714, ../scss/styles.scss */
   .teaser-page #teaser .center {
     margin-top: -3.75em;
     margin-left: -7.125em;
   }
-  /* line 713, ../scss/styles.scss */
+  /* line 732, ../scss/styles.scss */
   .teaser-page #teaser .center h1 {
     font-size: 5em;
   }
-  /* line 716, ../scss/styles.scss */
+  /* line 735, ../scss/styles.scss */
   .teaser-page #teaser .center p {
     font-size: 1em;
   }
 }
-/* line 725, ../scss/styles.scss */
+/* line 744, ../scss/styles.scss */
 .teaser-page #footer {
   position: absolute;
   bottom: 0;
