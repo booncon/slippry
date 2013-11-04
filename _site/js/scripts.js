@@ -25,7 +25,7 @@ jQuery(document).ready(function(){
 
     // transitions
     transition: 'kenburns', // fade, horizontal, kenburns, false
-    kenZoom: 1.4,
+    kenZoom: 140,
     transTime: 2000, // time the transition takes (ms)
   });
 
@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
     loop: false, // first -> last & last -> first arrows
     captionsSrc: 'li',
     captions: 'custom', // Position: overlay, below, custom, false
-    captionsClass: 'external-captions',
+    captionsEl: '.external-captions',
 
     // transitions
     transition: 'fade', // fade, horizontal, kenburns, false

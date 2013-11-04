@@ -492,10 +492,10 @@ section.settings {
 /* Portfolio */
 
 .portfolio {
-  .slide_box .controls {
+  .sy-slides-wrap .sy-controls {
     display: block;
   }
-  .pager {
+  .sy-pager {
     margin: 1.5em 0;
   }
   .external-captions {
@@ -531,7 +531,7 @@ section.settings {
       max-width: 100%;
     }
   }
-  .pager { /* change the pager */ // This should be changed to a custom class to completely override the pager, but have to wait for fix so active class is applied to li items when UL has a custom class.
+  .sy-pager { /* change the pager */ // This should be changed to a custom class to completely override the pager, but have to wait for fix so active class is applied to li items when UL has a custom class.
     text-align: right;
     li {
       margin: 0 0 0 1em;
@@ -548,19 +548,19 @@ section.settings {
 
 .shop-slider {
   overflow: hidden;
-  .slide_box {
+  .sy-slides-wrap {
     overflow: visible;
     width: 100%;
     @media only screen and (min-width: 401px) {
       min-width: 400px;
       max-width: 590px;
       width: 50%;
-      .slippry_slide_crop {
+      .sy-slides-crop {
     overflow: visible;
         
       }
     }
-    .controls {    
+    .sy-controls {    
       @media only screen and (max-width: 500px) {
         li {
           min-width: 2.4em;
@@ -576,10 +576,10 @@ section.settings {
       @media only screen and (min-width: 501px) {
         li {
           width: 100%;
-          &.slip_prev {
+          &.sy-prev {
             left: -100%;
           }
-          &.slip_next {
+          &.sy-next {
             right: -100%;
           }
           a:after {
@@ -590,7 +590,7 @@ section.settings {
       }
     }
   }
-  .slippry_slide {
+  .sy-slide {
     opacity: 0.6;
     @include transition(opacity 1s);
     .product-info {
@@ -633,7 +633,7 @@ section.settings {
         //@include transition(opacity 1s);
       }
     }
-    &.active {
+    &.sy-active {
       opacity: 1;
       //@include transition(opacity 1s);
       .buy-now {
@@ -671,7 +671,7 @@ section.settings {
   }
 }
 .product-name, 
-.shop-slider .slide_box {
+.shop-slider .sy-slides-wrap {
   width: 100%;
   @media only screen and (min-width: 401px) {
     min-width: 400px;
