@@ -66,7 +66,8 @@ jQuery(document).ready(function(){
 
     // transitions
     transition: 'horizontal', // fade, horizontal, kenburns, false
-    useCSS: true, // true, false -> fallback to js if no browser support
+    useCSS: true, // true, false -> fallback to js if no browser support\
+    speed: 2000,
 
     // slideshow
     autoDirection: 'prev',
