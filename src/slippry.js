@@ -186,10 +186,10 @@
     // gets the aspect ratio of the filler element
     getFillerProportions = function ($slide) {
       var width, height;
-      if (($('img', $slide).attr("src") !== undefined) && ($slide.text().replace(/^\s+|\s+$/g, '') === '')) {
-        $("<img/>").load(function () {
-          width = this.width;
-          height = this.height;
+      if (($('img', $slide).attr("src") !== undefined)) {
+        $("<img />").load(function () {
+          width = $slide.width();
+          height = $slide.height();
           setFillerProportions(width, height);
         }).attr("src", $('img', $slide).attr("src"));
       } else {

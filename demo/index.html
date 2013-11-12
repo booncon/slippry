@@ -7,6 +7,115 @@
 		<script src="//use.edgefonts.net/cabin;source-sans-pro:n2,i2,n3,n4,n6,n7,n9.js"></script>
     <link rel="stylesheet" href="demo.css">
     <link rel="stylesheet" href="../dist/slippry.css">
+    <style type="text/css">
+    	/* News */
+			.news-slider {
+			  /* Style the actual content */
+			}
+			.news-slider .text-content {
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  right: 0;
+			  background-color: rgba(255, 255, 255, 0.9);
+			  padding: 1em;
+			  width: 30%;
+			  height: 100%;
+			}
+			.news-slider .text-content h2 {
+			  margin: 0;
+			}
+			.news-slider .text-content p {
+			  margin: 1em 0;
+			}
+			.news-slider .text-content a.button-link {
+			  padding: 0.25em 0.5em;
+			  position: absolute;
+			  bottom: 1em;
+			  right: 1em;
+			}
+			.news-slider .image-content {
+			  line-height: 0;
+			}
+			.news-slider .image-content img {
+			  max-width: 100%;
+			}
+
+			/* line 20, ../../sass/content-types/intro.scss */
+.node-intro.node-teaser .field {
+  display: inline-block;
+  padding: 0 10px;
+}
+/* line 24, ../../sass/content-types/intro.scss */
+.node-intro.node-teaser .field-name-field-image {
+  width: 20%;
+  vertical-align: middle;
+}
+/* line 27, ../../sass/content-types/intro.scss */
+.node-intro.node-teaser .field-name-field-image img {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 31, ../../sass/content-types/intro.scss */
+.node-intro.node-teaser .field-name-body {
+  width: 50%;
+  color: #677889;
+  font-weight: 300;
+  vertical-align: middle;
+  font-family: "Helia", Arial, Helvetica, "Nimbus Sans L", sans-serif, Verdana, Tahoma, "DejaVu Sans", sans-serif;
+}
+@media only screen and (min-width: 481px) {
+  /* line 37, ../../sass/content-types/intro.scss */
+  .node-intro.node-teaser .field-name-body p {
+    font-size: 1.8em;
+    line-height: 1.2em;
+  }
+}
+/* line 44, ../../sass/content-types/intro.scss */
+.node-intro.node-teaser .field-name-field-link {
+  width: 25%;
+  text-align: center;
+}
+/* line 47, ../../sass/content-types/intro.scss */
+.node-intro.node-teaser .field-name-field-link .button-link {
+  font-size: 1.33em;
+  vertical-align: middle;
+}
+@media only screen and (max-width: 768px) {
+  /* line 53, ../../sass/content-types/intro.scss */
+  .node-intro.node-teaser .field-name-field-image {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+  /* line 56, ../../sass/content-types/intro.scss */
+  .node-intro.node-teaser .field-name-body {
+    width: 60%;
+  }
+  /* line 59, ../../sass/content-types/intro.scss */
+  .node-intro.node-teaser .field-name-field-link {
+    width: 39%;
+  }
+}
+@media only screen and (max-width: 550px) {
+  /* line 64, ../../sass/content-types/intro.scss */
+  .node-intro.node-teaser .field-name-body {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+  /* line 67, ../../sass/content-types/intro.scss */
+  .node-intro.node-teaser .field-name-field-link {
+    width: 100%;
+  }
+}
+
+    </style>
 	</head>
 	<body>		
 		<section class="demo_wrapper">
@@ -15,22 +124,23 @@
 				<a href="#glob" class='prev'>Prev</a> / <a href="#glob" class='next'>Next</a> 
 		|| <a href="#glob" class='init'>Init</a> | <a href="#glob" class='reset'>Destroy</a> | <a href="#glob" class='reload'>Reload</a>
 		|| <a href="#glob" class='stop'>Stop</a> | <a href="#glob" class='start'>Start</a>
-					<ul id="demo1">
-						<li><a href="#slide1"><img src="img/demo1_1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>"></a></li>
-						<li><a href="#slide2"><img src="img/demo1_2.jpg"  alt="This is caption 2"></a></li>
-						<li><a href="#slide3"><img src="img/demo1_3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."></a></li>
-					</ul>
+			<ul id="demo1">
+				<li><a href="#slide1"><img src="img/demo1_1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>"></a></li>
+				<li><a href="#slide2"><img src="img/demo1_2.jpg"  alt="This is caption 2"></a></li>
+				<li><a href="#slide3"><img src="img/demo1_3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."></a></li>
+			</ul>
 			</article>
 		</section>
+
+		
+
 		<script>
 			$(function() {
 				var demo1 = $("#demo1").slippry({
-					transition: 'fade',
+					transition: 'horizontal',
 					useCSS: true,
 					speed: 600,
-					pause: 3000,
-					start: 'random',
-					auto: false
+					pause: 3000
 				});
 
 				$('.stop').click(function () {
