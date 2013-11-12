@@ -52,16 +52,16 @@ jQuery('#portfolio-demo').slippry({
   slippryWrapper: '&lt;div class="slippry_box portfolio-slider" /&gt;',
 
   // options
-  adaptHeight: false,
+  adaptiveHeight: false,
   start: 'random',
   loop: false,
   captionsSrc: 'li',
   captions: 'custom',
-  captionsClass: 'external-captions',
+  captionsEl: '.external-captions',
 
   // transitions
   transition: 'fade',
-  transEase: 'linear',
+  easing: 'linear',
   continuous: false,
 
   //slideshow
@@ -75,10 +75,10 @@ jQuery('#portfolio-demo').slippry({
   <code>
     <pre>
 /* Portfolio */
-.portfolio .slide_box .controls {
+.portfolio .sy-controls {
   display: block;
 }
-.portfolio .pager {
+.portfolio .sy-pager {
   margin: 1.5em 0;
 }
 .portfolio .external-captions {

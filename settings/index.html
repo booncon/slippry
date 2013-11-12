@@ -6,7 +6,7 @@ title: Settings
   <h2 class="page-title">Control freak? Then you'll love this part.</h2>
   <p>We've packed a heaps of settings into Slippry, from simple transition styles, to timing, to changing the HTML wrappers.</p>
   <p>So what are you waiting for? Have a look!
-  <ul id="settings-jump" class="closed"><li class="default"><a href="#!" id="select-setting" class="button-link">jump to a setting</a></li><li class="section-head">general elements &amp; wrapper</li><li><a href="#slippryWrapper">slippryWrapper</a></li><li><a href="#slideWrapper">slideWrapper</a></li><li><a href="#boxClass">boxClass</a></li><li><a href="#elements">elements</a></li><li><a href="#activeClass">activeClass</a></li><li><a href="#fillerClass">fillerClass</a></li><li><a href="#loadingClass">loadingClass</a></li><li class="section-head">options</li><li><a href="#adaptHeight">adaptHeight</a></li><li><a href="#start">start</a></li><li><a href="#loop">loop</a></li><li><a href="#captionsSrc">captionsSrc</a></li><li><a href="#captions">captions</a></li><li><a href="#captionsClass">captionsClass</a></li><li><a href="#initSingle">initSingle</a></li><li><a href="#responsive">responsive</a></li><li class="section-head">pager</li><li><a href="#usePager">usePager</a></li><li><a href="#pagerClass">pagerClass</a></li><li class="section-head">controls</li><li><a href="#useControls">useControls</a></li><li><a href="#controlClass">controlClass</a></li><li><a href="#prevClass">prevClass</a></li><li><a href="#prevText">prevText</a></li><li><a href="#nextClass">nextClass</a></li><li><a href="#nextText">nextText</a></li><li><a href="#hideOnEnd">hideOnEnd</a></li><li class="section-head">transitions</li><li><a href="#transition">transition</a></li><li><a href="#kenZoom">kenZoom</a></li><li><a href="#slideMargin">slideMargin</a></li><li><a href="#transClass">transClass</a></li><li><a href="#transTime">transTime</a></li><li><a href="#transEase">transEase</a></li><li><a href="#continuous">continuous</a></li><li><a href="#useCSS">useCSS</a></li><li class="section-head">slideshow</li><li><a href="#auto">auto</a></li><li><a href="#autoDirection">autoDirection</a></li><li><a href="#autoHover">autoHover</a></li><li><a href="#autoHoverDelay">autoHoverDelay</a></li><li><a href="#autoDelay">autoDelay</a></li><li><a href="#pause">pause</a></li><li class="section-head">callback functions</li><li><a href="#onSliderLoad">onSliderLoad</a></li><li><a href="#onSliderBefore">onSliderBefore</a></li><li><a href="#onSliderAfter">onSliderAfter</a></li></ul>
+  <ul id="settings-jump" class="closed"><li class="default"><a href="#!" id="select-setting" class="button-link">jump to a setting</a></li><li class="section-head">general elements &amp; wrapper</li><li><a href="#slippryWrapper">slippryWrapper</a></li><li><a href="#slideWrapper">slideWrapper</a></li><li><a href="#boxClass">boxClass</a></li><li><a href="#elements">elements</a></li><li><a href="#activeClass">activeClass</a></li><li><a href="#fillerClass">fillerClass</a></li><li><a href="#loadingClass">loadingClass</a></li><li class="section-head">options</li><li><a href="#adaptiveHeight">adaptiveHeight</a></li><li><a href="#start">start</a></li><li><a href="#loop">loop</a></li><li><a href="#captionsSrc">captionsSrc</a></li><li><a href="#captions">captions</a></li><li><a href="#captionsEl">captionsEl</a></li><li><a href="#initSingle">initSingle</a></li><li><a href="#responsive">responsive</a></li><li class="section-head">pager</li><li><a href="#usePager">usePager</a></li><li><a href="#pagerClass">pagerClass</a></li><li class="section-head">controls</li><li><a href="#useControls">useControls</a></li><li><a href="#controlClass">controlClass</a></li><li><a href="#prevClass">prevClass</a></li><li><a href="#prevText">prevText</a></li><li><a href="#nextClass">nextClass</a></li><li><a href="#nextText">nextText</a></li><li><a href="#hideOnEnd">hideOnEnd</a></li><li class="section-head">transitions</li><li><a href="#transition">transition</a></li><li><a href="#kenZoom">kenZoom</a></li><li><a href="#slideMargin">slideMargin</a></li><li><a href="#transClass">transClass</a></li><li><a href="#speed">speed</a></li><li><a href="#easing">easing</a></li><li><a href="#continuous">continuous</a></li><li><a href="#useCSS">useCSS</a></li><li class="section-head">slideshow</li><li><a href="#auto">auto</a></li><li><a href="#autoDirection">autoDirection</a></li><li><a href="#autoHover">autoHover</a></li><li><a href="#autoHoverDelay">autoHoverDelay</a></li><li><a href="#autoDelay">autoDelay</a></li><li><a href="#pause">pause</a></li><li class="section-head">callback functions</li><li><a href="#onSliderLoad">onSliderLoad</a></li><li><a href="#onSliderBefore">onSliderBefore</a></li><li><a href="#onSliderAfter">onSliderAfter</a></li></ul>
 </p>
 </section>
 
@@ -63,7 +63,7 @@ The class applied to `slippry_wrapper` while Slippry slider is being loaded.
 accepts: Any string that is valid as a class in CSS.</pre></code>
 
 <h3>options</h3>
-<h4 id="adaptHeight">adaptHeight</h4>
+<h4 id="adaptiveHeight">adaptiveHeight</h4>
 
 The slider height should change on the fly according to the current slide.
 
@@ -98,7 +98,7 @@ Specifies the position of captions or no captions at all. *Custom allows you to 
 <code><pre>default: 'overlay'
 accepts: 'overlay', 'below', 'custom', false</pre></code>
 
-<h4 id="captionsClass">captionsClass</h4>
+<h4 id="captionsEl">captionsEl</h4>
 
 The class for the captions. Note, this can be a box outside of <code class="inline">.slippry_box</code>.
 
@@ -216,14 +216,14 @@ The class applied to the slide element when a transition is in progress.
 <code><pre>default: 'transition'
 accepts: Any string that is valid as a class in CSS.</pre></code>
   
-<h4 id="transTime">transTime</h4>
+<h4 id="speed">speed</h4>
 
 The time the transition takes to complete.
 
 <code><pre>default: 1200 
 accepts: any number (in milliseconds).</pre></code>
     
-<h4 id="transEase">transEase</h4>
+<h4 id="easing">easing</h4>
 
 The easing effect to use for the selected transition.
 

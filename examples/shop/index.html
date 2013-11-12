@@ -15,7 +15,7 @@ title: Examples - Shop product display
     <article title="White flowers">
       <div class="image-content"><img src="/images/image-6.jpg" alt="demo1_2" class="product-image"></div>
       <div class="product-info">
-        <p>White flowers are for peace, so if you're fighting with someone, nmaybe you should buy them this?</p>
+        <p>White flowers are for peace, so if you're fighting with someone, maybe you should buy them this?</p>
         <a href="#!" class="button-link more-info">More information</a><a href="#!" class="button-link buy-now">Buy now</a>
       </div>
     </article>
@@ -85,18 +85,17 @@ jQuery('#shop-demo').slippry({
   elements: 'article',
 
   // options
-  adaptHeight: false,
+  adaptiveHeight: false,
   start: 2,
   loop: false,
   captions: 'custom',
-  captionsClass: 'product-name',
+  captionsEl: '.product-name',
 
   // pager
-  usePager: false,
+  pager: false,
 
   // transitions
   slideMargin: 20,
-  useCSS: true,
 
   //slideshow
   auto: false,
@@ -105,14 +104,137 @@ jQuery('#shop-demo').slippry({
   </code>
 </section>
 
-<!-- <section class="css restricted-width">
+<section class="css restricted-width">
   <h3>CSS</h3>
   <code>
     <pre>
-
+      /* Shop */
+      @media only screen and (min-width: 401px) {
+        .shop .sy-box .sy-slides-wrap {
+          min-width: 400px;
+          max-width: 590px;
+          width: 50%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      .shop .sy-box .sy-slides-crop {
+        overflow: visible;
+      }
+      @media only screen and (max-width: 500px) {
+        .shop .sy-box .sy-controls li {
+          min-width: 2.4em;
+        }
+        .shop .sy-box .sy-controls li a:after {
+          line-height: 1.4em;
+          height: 1.4em;
+          width: 1.4em;
+          margin-top: -0.7em;
+          margin-left: -0.7em;
+        }
+      }
+      @media only screen and (min-width: 501px) {
+        .shop .sy-box .sy-controls li {
+          width: 100%;
+        }
+        .shop .sy-box .sy-controls li.sy-prev {
+          left: -100%;
+        }
+        .shop .sy-box .sy-controls li.sy-next {
+          right: -100%;
+        }
+        .shop .sy-box .sy-controls li a:after {
+          background: none;
+        }
+      }
+      .shop .sy-box .sy-slide {
+        opacity: 0.6;
+        -webkit-transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -o-transition: opacity 1s;
+        transition: opacity 1s;
+      }
+      .shop .sy-box .sy-slide .product-info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 1em;
+      }
+      @media only screen and (max-width: 500px) {
+        .shop .sy-box .sy-slide .product-info {
+          padding: 1em 2.4em;
+        }
+      }
+      .shop .sy-box .sy-slide .product-info p {
+        margin-bottom: 1em;
+      }
+      .shop .sy-box .sy-slide .product-info p, .shop .sy-box .sy-slide .product-info .button-link {
+        opacity: 0;
+      }
+      .shop .sy-box .sy-slide .product-info .button-link {
+        position: absolute;
+        bottom: 1em;
+      }
+      .shop .sy-box .sy-slide .product-info .buy-now {
+        right: 1em;
+      }
+      @media only screen and (max-width: 500px) {
+        .shop .sy-box .sy-slide .product-info .buy-now {
+          right: 2.4em;
+        }
+      }
+      .shop .sy-box .sy-slide .product-info .more-info {
+        left: 1em;
+      }
+      @media only screen and (max-width: 500px) {
+        .shop .sy-box .sy-slide .product-info .more-info {
+          left: 2.4em;
+        }
+      }
+      .shop .sy-box .sy-slide .image-content {
+        line-height: 0;
+      }
+      .shop .sy-box .sy-slide .image-content .product-image {
+        max-width: 100%;
+      }
+      .shop .sy-box .sy-slide.sy-active {
+        opacity: 1;
+      }
+      .shop .sy-box .sy-slide.sy-active .buy-now {
+        opacity: 1;
+      }
+      .shop .sy-box .sy-slide.sy-active:hover .product-image {
+        opacity: 0.2;
+      }
+      .shop .sy-box .sy-slide.sy-active:hover .product-info p, .shop .sy-box .sy-slide.sy-active:hover .product-info .button-link {
+        opacity: 1;
+      }
+      .shop .sy-box .sy-slide .product-info p,
+      .shop .sy-box .sy-slide .product-info .button-link,
+      .shop .sy-box .sy-slide .product-image, .shop .sy-box .sy-slide.sy-active, .shop .sy-box .sy-slide.sy-active .buy-now, .shop .sy-box .sy-slide.sy-active:hover .product-image, .shop .sy-box .sy-slide.sy-active:hover .product-info p, .shop .sy-box .sy-slide.sy-active:hover .product-info .button-link, .shop .sy-box .sy-slide.sy-active.transition {
+        -webkit-transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -o-transition: opacity 1s;
+        transition: opacity 1s;
+      }
+      .product-name,
+      .shop-slider .slide_box {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media only screen and (min-width: 401px) {
+        .product-name,
+        .shop-slider .slide_box {
+          min-width: 400px;
+          max-width: 590px;
+          width: 50%;
+        }
+      }
     </pre>
   </code>
-</section> -->
+</section>
 
 <section class="restricted-width example-tiles">
 <a class="tile" href="/examples/out-of-the-box">Out-of-the-box</a><a class="tile" href="/examples/pictures">Pictures</a><a class="tile" href="/examples/portfolio">Portfolio</a><a class="tile" href="/examples/news">News</a><a class="tile active" href="/examples/shop">Shop</a><a class="tile" href="/examples/css-vs-jquery">CSS vs jQuery</a></section>

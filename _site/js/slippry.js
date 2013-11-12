@@ -1,5 +1,5 @@
 /**
- * slippry v1.0rc1 - Simple responsive content slider
+ * slippry v1.0rc2 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -17,14 +17,14 @@
 
   defaults = {
     // general elements & wrapper
-    slippryWrapper: '<div class="slippry_box" />', // wrapper to wrap everything, including pager
-    slideWrapper: '<div class="slide_box" />', // wrapper to wrap sildes & controls
-    slideCrop: '<div class="slippry_slide_crop" />', //additional wrapper around just the slides
-    boxClass: 'slippry_list', // class that goes to original element
+    slippryWrapper: '<div class="sy-box" />', // wrapper to wrap everything, including pager
+    slideWrapper: '<div class="sy-slides-wrap" />', // wrapper to wrap sildes & controls
+    slideCrop: '<div class="sy-slides-crop" />', //additional wrapper around just the slides
+    boxClass: 'sy-list', // class that goes to original element
     elements: 'li', // elments cointaining slide content
-    activeClass: 'active', // class for current slide
-    fillerClass: 'filler', // class for element that acts as intrinsic placholder
-    loadingClass: 'loading',
+    activeClass: 'sy-active', // class for current slide
+    fillerClass: 'sy-filler', // class for element that acts as intrinsic placholder
+    loadingClass: 'sy-loading',
 
     // options
     adaptiveHeight: true, // height of the sliders adapts to current slide
@@ -32,30 +32,30 @@
     loop: true, // first -> last & last -> first arrows
     captionsSrc: 'img', // img, el [img takes caption from alt or title, el from title of slide element]
     captions: 'overlay', // Position: overlay, below, custom, false
-    captionsClass: 'caption',
+    captionsEl: '.sy-caption', // $ selector for captions wrapper
     initSingle: true, // initialise even if there is only one slide
     responsive: true,
 
     // pager
     pager: true,
-    pagerClass: 'pager',
+    pagerClass: 'sy-pager',
 
     // controls
     controls: true,
-    controlClass: 'controls',
-    prevClass: 'slip_prev',
+    controlClass: 'sy-controls',
+    prevClass: 'sy-prev',
     prevText: 'Previous',
-    nextClass: 'slip_next',
+    nextClass: 'sy-next',
     nextText: 'Next',
     hideOnEnd: true,
 
     // transitions
     transition: 'fade', // fade, horizontal, kenburns, false
-    kenZoom: 1.2,
+    kenZoom: 120, // max zoom for kenburns (in %)
     slideMargin: 0, // spacing between slides (in %)
     transClass: 'transition', // [Class applied to [element] while a transition is taking place.]
     speed: 800, // time the transition takes (ms)
-    transEase: 'swing', // easing to use in the animation [(see... [jquery www])]
+    easing: 'swing', // easing to use in the animation [(see... [jquery www])]
     continuous: true, // seamless first/ last transistion, only works with loop
     useCSS: true, // true, false -> fallback to js if no browser support
 
@@ -68,20 +68,20 @@
     pause: 4000,
 
     // callback functions
-    onSliderLoad: function () { // before page transition starts
+    onSliderLoad: function () { // when slider loaded
       return this;
     },
     onSlideBefore: function () { // before page transition starts
       return this;
     },
-    onSlideAfter: function () {  // after page tarnsition happened
+    onSlideAfter: function () {  // after page transition happened
       return this;
     }
   };
 
   $.fn.slippry = function (options) {
     var slip, el, prepareFiller, getFillerProportions, init, updateCaption, initPager, initControls, ready, transitionDone, whichTransitionEvent,
-      initCaptions, updatePager, setFillerProportions, doTransition, updateSlide, updateControls, updatePos, supports, preload, start;
+      initCaptions, updatePager, setFillerProportions, doTransition, updateSlide, updateControls, updatePos, supports, preload, start, elFromSel;
 
     // reference to the object calling the function
     el = this;
@@ -103,17 +103,17 @@
     slip.vars = {};
 
     whichTransitionEvent = function () { // Thanks! http://stackoverflow.com/a/18672988
-      var t, el, transitions;
-      el = document.createElement('fakeelement');
+      var t, div, transitions;
+      div = document.createElement('div');
       transitions = {
-        'WebkitTransition' :'webkitTransitionEnd',
-        'MozTransition'    :'transitionend',
-        'MSTransition'     :'msTransitionEnd',
-        'OTransition'      :'oTransitionEnd',
-        'transition'       :'transitionEnd'
-      }
-      for(t in transitions){
-        if( el.style[t] !== undefined ){
+        'WebkitTransition' : 'webkitTransitionEnd',
+        'MozTransition'    : 'transitionend',
+        'MSTransition'     : 'msTransitionEnd',
+        'OTransition'      : 'oTransitionEnd',
+        'transition'       : 'transitionEnd'
+      };
+      for (t in transitions) {
+        if (div.style[t] !== undefined) {
           return transitions[t];
         }
       }
@@ -138,6 +138,28 @@
         return false;
       };
     }());
+
+    elFromSel = function (sel, prop) {
+      var props, newelement, id, className;
+      props = prop.split('.');
+      newelement = $(sel);
+      id = '';
+      className = '';
+      $.each(props, function (i, val) {
+        if (val.indexOf('#') >= 0) {
+          id += val.replace(/^#/, '');
+        } else {
+          className += val + ' ';
+        }
+      });
+      if (id.length) {
+        newelement.attr('id', id);
+      }
+      if (className.length) {
+        newelement.attr('class', className.trim());
+      }
+      return newelement;
+    };
 
     ready = function () {
       if (slip.vars.fresh) {
@@ -206,8 +228,8 @@
 
     updatePager = function () {
       if (slip.settings.pager) {
-        $('.pager li', slip.vars.slippryWrapper).removeClass('active');
-        $($('.pager li', slip.vars.slippryWrapper)[slip.vars.active.index()]).addClass(slip.settings.activeClass);
+        $('.' + slip.settings.pagerClass + ' li', slip.vars.slippryWrapper).removeClass(slip.settings.activeClass);
+        $($('.' + slip.settings.pagerClass + ' li', slip.vars.slippryWrapper)[slip.vars.active.index()]).addClass(slip.settings.activeClass);
       }
     };
 
@@ -227,9 +249,9 @@
           caption = $('img', slip.vars.active).attr('title') !== undefined ? $('img', slip.vars.active).attr('title') : $('img', slip.vars.active).attr('alt');
         }
         if (slip.settings.captions !== 'custom') {
-          wrapper = $('.' + slip.settings.captionsClass, slip.vars.slippryWrapper);
+          wrapper = $($(slip.settings.captionsEl), slip.vars.slippryWrapper);
         } else {
-          wrapper = $('.' + slip.settings.captionsClass);
+          wrapper = $(slip.settings.captionsEl);
         }
         if ((caption !== undefined) && (caption !== '')) {
           wrapper.html(caption).show();
@@ -290,13 +312,13 @@
 
     transitionDone = function () {
       slip.vars.moving = false;
-      slip.vars.slides.removeClass(slip.settings.transClass);
-      slip.vars.old.removeClass('sy-ken');
+      slip.vars.active.removeClass(slip.settings.transClass);
+      slip.vars.old.removeClass('sy-ken' + slip.settings.transClass);
       slip.settings.onSlideAfter.call(undefined, slip.vars.active, slip.vars.old.index(), slip.vars.active.index());
     };
 
     doTransition = function () {
-      var pos, jump, old_left, old_pos, kenZoom, kenStart, kenX, kenY, kenTime, animProp, cssProp;
+      var pos, jump, old_left, old_pos, kenStart, kenX, kenY, kenTime, animProp, cssProp;
       slip.settings.onSlideBefore.call(undefined, slip.vars.active, slip.vars.old.index(), slip.vars.active.index());
       if (slip.settings.transition !== false) {
         slip.vars.moving = true;
@@ -309,11 +331,10 @@
               slip.vars.active.css({top: 'auto', left: 'auto', bottom: 'auto', right: 'auto'});
               kenX = slip.vars.active.index() % 2 === 0 ? 'left' : 'right';
               kenY = slip.vars.active.index() % 2 === 0 ? 'top' : 'bottom';
-              kenZoom = 100 * slip.settings.kenZoom;
-              kenStart = 100 - kenZoom;
+              kenStart = 100 - slip.settings.kenZoom;
               cssProp[kenX] = kenStart + '%';
               cssProp[kenY] = kenStart + '%';
-              cssProp.width = kenZoom + '%';
+              cssProp.width = slip.settings.kenZoom + '%';
               animProp[kenX] = '0%';
               animProp[kenY] = '0%';
               slip.vars.active.css(cssProp).animate(animProp, {duration: kenTime, queue: false });
@@ -327,7 +348,7 @@
                 slip.vars.slides.css({animationDuration: kenTime + 'ms'});
               }
               slip.vars.active.addClass('sy-ken');
-            }  
+            }
             transitionDone();
           } else {
             if (slip.settings.useCSS) {
@@ -336,7 +357,7 @@
               if (slip.settings.transition === 'kenburns') {
                 slip.vars.active.addClass('sy-ken');
               }
-              $(window).off('focus').on('focus', function() { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
+              $(window).off('focus').on('focus', function () { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
                 slip.vars.old.trigger(slip.vars.transition);
               });
               slip.vars.old.one(slip.vars.transition, function () {
@@ -346,12 +367,12 @@
             } else {
               slip.vars.old.addClass(slip.settings.transClass).stop().animate({
                 opacity: 0
-              }, slip.settings.speed, slip.settings.transEase, function () {
+              }, slip.settings.speed, slip.settings.easing, function () {
                 transitionDone();
               });
               slip.vars.active.addClass(slip.settings.transClass).css('opacity', 0).stop().animate({
                 opacity: 1
-              }, slip.settings.speed, slip.settings.transEase);
+              }, slip.settings.speed, slip.settings.easing);
             }
           }
           updateSlide();
@@ -380,7 +401,7 @@
             if (slip.settings.useCSS) {
               el.addClass(slip.settings.transition);
               el.css({left: pos, transitionDuration: slip.settings.speed + 'ms'});
-              $(window).off('focus').on('focus', function() { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
+              $(window).off('focus').on('focus', function () { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
                 el.trigger(slip.vars.transition);
               });
               el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
@@ -395,7 +416,7 @@
             } else {
               el.stop().animate({
                 left: pos
-              }, slip.settings.speed, slip.settings.transEase, function () {
+              }, slip.settings.speed, slip.settings.easing, function () {
                 if (jump) {
                   slip.vars.active.css('left', old_left);
                   el.css('left', old_pos);
@@ -500,9 +521,9 @@
     initCaptions = function () {
       if (slip.settings.captions !== false) {
         if (slip.settings.captions === 'overlay') {
-          slip.vars.slideWrapper.append('<div class="caption_wrap"><div class="' + slip.settings.captionsClass + '"></div></div>');
+          slip.vars.slideWrapper.append($('<div class="sy-caption-wrap" />').html(elFromSel('<div />', slip.settings.captionsEl)));
         } else if (slip.settings.captions === 'below') {
-          slip.vars.slippryWrapper.append('<div class="' + slip.settings.captionsClass + '" />');
+          slip.vars.slippryWrapper.append($('<div class="sy-caption-wrap" />').html(elFromSel('<div />', slip.settings.captionsEl)));
         }
       }
     };
@@ -548,24 +569,24 @@
         el.stopAuto();
         slip.vars.moving = false;
         slip.vars.slides.each(function () {
-          if ($(this).data("cssBckup") !== undefined) {
-            $(this).attr("style", $(this).data("cssBckup"));
+          if ($(this).data("sy-cssBckup") !== undefined) {
+            $(this).attr("style", $(this).data("sy-cssBckup"));
           } else {
             $(this).removeAttr('style');
           }
-          if ($(this).data("classBckup") !== undefined) {
-            $(this).attr("class", $(this).data("classBckup"));
+          if ($(this).data("sy-classBckup") !== undefined) {
+            $(this).attr("class", $(this).data("sy-classBckup"));
           } else {
             $(this).removeAttr('class');
           }
         });
-        if (el.data("cssBckup") !== undefined) {
-          el.attr("style", el.data("cssBckup"));
+        if (el.data("sy-cssBckup") !== undefined) {
+          el.attr("style", el.data("sy-cssBckup"));
         } else {
           el.removeAttr('style');
         }
-        if (el.data("classBckup") !== undefined) {
-          el.attr("class", el.data("classBckup"));
+        if (el.data("sy-classBckup") !== undefined) {
+          el.attr("class", el.data("sy-classBckup"));
         } else {
           el.removeAttr('class');
         }
@@ -592,14 +613,14 @@
         }
         slip.vars.transition = whichTransitionEvent();
       }
-      el.data('cssBckup', el.attr('style'));
-      el.data('classBackup', el.attr('class'));
+      el.data('sy-cssBckup', el.attr('style'));
+      el.data('sy-classBackup', el.attr('class'));
       el.addClass(slip.settings.boxClass).wrap(slip.settings.slippryWrapper).wrap(slip.settings.slideWrapper).wrap(slip.settings.slideCrop);
       slip.vars.slideWrapper = el.parent().parent();
       slip.vars.slippryWrapper = slip.vars.slideWrapper.parent().addClass(slip.settings.loadingClass);
-      slip.vars.fresh = true;      
+      slip.vars.fresh = true;
       slip.vars.slides.each(function () {
-        $(this).addClass('slippry_slide ' + slip.settings.transition);
+        $(this).addClass('sy-slide ' + slip.settings.transition);
         if (slip.settings.useCSS) {
           $(this).addClass('useCSS');
         }

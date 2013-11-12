@@ -133,6 +133,26 @@ h4 { font-size: 1.1em; }
 h5 { font-size: 0.87em; }
 h6 { font-size: 0.63em; }
 
+
+
+@-webkit-keyframes jumpings {
+  0%   { top: 2.4%; }
+  100% { top: 30%; }
+}
+@-moz-keyframes jumpings {
+  0%   { top: 2.4%; }
+  100% { top: 30%; }
+}
+@-o-keyframes jumpings {
+  0%   { top: 2.4%; }
+  100% { top: 30%; }
+}
+@keyframes jumpings {
+  0%   { top: 2.4%; }
+  100% { top: 30%; }
+}
+
+
 .full-width {
   //width: 100%;
 }
@@ -158,6 +178,28 @@ a.button-link {
   font-size: 0.8em;
   letter-spacing: 0.1em;
   vertical-align: text-bottom;
+  &.download {
+    position: relative;
+    background: none;
+    color: $bc-rk-blue;
+    padding-right: 1.54em;
+    &:after {
+      position: absolute;
+      content: '⬇';
+      top: 15.4%;
+      right: 4%;
+    }
+    &:hover {
+      background: none;
+      color: $bc-rk-blue;
+      &:after {
+        -webkit-animation: jumpings 0.8s linear infinite; /* Safari 4+ */
+        -moz-animation:    jumpings 0.8s linear infinite; /* Fx 5+ */
+        -o-animation:      jumpings 0.8s linear infinite; /* Opera 12+ */
+        animation:         jumpings 0.8s linear infinite; /* IE 10+ */
+      }
+    }
+  }
   &:hover {
     background-color: darken($bc-rk-blue, 10%);
     color: $white;
@@ -311,20 +353,28 @@ code {
   padding-top: 2em;
   padding-bottom: 1em;
   color: $bc-grey;
-  //font-size: em;
-  text-align: center;
-  .made-with {
-    display: inline-block;
-    margin-right: 0.5em;
-    //vertical-align: text-bottom;
-  }
-  .block-link {
-    display: inline-block;
-  }
-  .rockets-logo, .pixels-logo {
-    height: 4em;
-    margin-top: -0.5em;
-  }
+  .footer-content {
+    @include clearfix;
+    text-align: center;
+    .githubs {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+    .made-with {
+      display: inline-block;
+      margin-right: 0.36em;
+      margin-top: 0.36em;
+      font-size: 0.92em;
+    }
+    .block-link {
+      display: inline-block;
+    }
+    .rockets-logo, .pixels-logo {
+      height: 3.6em;
+    }
+  }  
 }
 
 /* Frontpage */
@@ -446,6 +496,17 @@ section.settings {
     width: 100%;
     margin: 1% 0;
     text-align: center;
+    &.large {
+      padding: 1.6em 1em;      
+      @include background-size(cover);
+      background-position: 50% 50%;
+      text-shadow: 0 0 0.1em rgba(0,0,0,0.4);
+      opacity: 0.8;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    
     @media only screen and (min-width: 411px) {
       width: 49%;
       &:nth-child(2n+1) {
@@ -492,10 +553,10 @@ section.settings {
 /* Portfolio */
 
 .portfolio {
-  .slide_box .controls {
+  .sy-controls {
     display: block;
   }
-  .pager {
+  .sy-pager {
     margin: 1.5em 0;
   }
   .external-captions {
@@ -517,12 +578,17 @@ section.settings {
     padding: 1em;
     width: 30%;
     height: 100%;
+    h2 {
+      margin: 0;
+    }
     p {
       margin: 1em 0;  
     }
     a.button-link {
       padding: 0.25em 0.5em;
-      float: right;
+      position: absolute;
+      bottom: 1em;
+      right: 1em;
     }
   }
   .image-content {
@@ -531,36 +597,47 @@ section.settings {
       max-width: 100%;
     }
   }
-  .pager { /* change the pager */ // This should be changed to a custom class to completely override the pager, but have to wait for fix so active class is applied to li items when UL has a custom class.
+  .news-pager {
     text-align: right;
+    display: block;
+    margin: 0.2em 0 0;
+    padding: 0;
+    list-style: none;
     li {
+      display: inline-block;
+      padding: 0.6em;
       margin: 0 0 0 1em;
-      @include border-radius(0);
-      a {
-        text-indent: 9999px;
-        @include border-radius(0);
+      &.sy-active {
+        a {
+          color: $bc-rk-blue;
+        }
       }
-    }    
+      a {
+        font-weight: 500;
+        text-decoration: none;
+        display: block;
+        color: #222;
+      }
+    }
   }
 }
 
 /* Shop */
-
-.shop-slider {
-  overflow: hidden;
-  .slide_box {
-    overflow: visible;
-    width: 100%;
-    @media only screen and (min-width: 401px) {
-      min-width: 400px;
-      max-width: 590px;
-      width: 50%;
-      .slippry_slide_crop {
-    overflow: visible;
-        
+.shop {
+  .sy-box {    
+    .sy-slides-wrap {
+      @media only screen and (min-width: 401px) {
+        min-width: 400px;
+        max-width: 590px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
-    .controls {    
+    .sy-slides-crop {
+      overflow: visible;
+    }    
+    .sy-controls {
       @media only screen and (max-width: 500px) {
         li {
           min-width: 2.4em;
@@ -576,99 +653,89 @@ section.settings {
       @media only screen and (min-width: 501px) {
         li {
           width: 100%;
-          &.slip_prev {
+          &.sy-prev {
             left: -100%;
           }
-          &.slip_next {
+          &.sy-next {
             right: -100%;
           }
           a:after {
-            background-image: none;
-            background-color: transparent;
+            background: none;
           }
         }
       }
     }
-  }
-  .slippry_slide {
-    opacity: 0.6;
-    @include transition(opacity 1s);
-    .product-info {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      padding: 1em;
-      @media only screen and (max-width: 500px) {
-        padding: 1em 2.4em;
-      }
-      p {
-        margin-bottom: 1em;
-      }
-      p, .button-link {
-        opacity: 0;
-        //@include transition(opacity 1s);
-      }
-      .button-link {
-        position: absolute;
-        bottom: 1em;
-      }
-      .buy-now {
-        right: 1em;
-        @media only screen and (max-width: 500px) {
-          right: 2.4em;
-        }
-      }
-      .more-info {
-        left: 1em;
-        @media only screen and (max-width: 500px) {
-          left: 2.4em;
-        }
-      }
-    }
-    .image-content {
-      line-height: 0;
-      .product-image {
-        max-width: 100%;
-        //@include transition(opacity 1s);
-      }
-    }
-    &.active {
-      opacity: 1;
-      //@include transition(opacity 1s);
-      .buy-now {
-        opacity: 1;
-        //@include transition(opacity 1s);
-      }
-      &:hover {
-        .product-image {
-          opacity: 0.2;
-          //@include transition(opacity 1s);
-        }
-        .product-info {
-          p, .button-link {
-            opacity: 1;
-            //@include transition(opacity 1s);
-          }
-        }
-      }
-      &.transition {
-        //@include transition(opacity 1s);
-      }
-    }
-    // Bulk add transitions:
-    .product-info p, 
-    .product-info .button-link,
-    .product-image,
-    &.active,
-    &.active .buy-now,
-    &.active:hover .product-image,
-    &.active:hover .product-info p,
-    &.active:hover .product-info .button-link,
-    &.active.transition {
+    .sy-slide {
+      opacity: 0.6;
       @include transition(opacity 1s);
+      .product-info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 1em;
+        @media only screen and (max-width: 500px) {
+          padding: 1em 2.4em;
+        }
+        p {
+          margin-bottom: 1em;
+        }
+        p, .button-link {
+          opacity: 0;
+        }
+        .button-link {
+          position: absolute;
+          bottom: 1em;
+        }
+        .buy-now {
+          right: 1em;
+          @media only screen and (max-width: 500px) {
+            right: 2.4em;
+          }
+        }
+        .more-info {
+          left: 1em;
+          @media only screen and (max-width: 500px) {
+            left: 2.4em;
+          }
+        }
+      }
+      .image-content {
+        line-height: 0;
+        .product-image {
+          max-width: 100%;
+        }
+      }
+      &.sy-active {
+        opacity: 1;
+        .buy-now {
+          opacity: 1;
+        }
+        &:hover {
+          .product-image {
+            opacity: 0.2;
+          }
+          .product-info {
+            p, .button-link {
+              opacity: 1;
+            }
+          }
+        }
+      }
+      // Bulk add transitions:
+      .product-info p, 
+      .product-info .button-link,
+      .product-image,
+      &.sy-active,
+      &.sy-active .buy-now,
+      &.sy-active:hover .product-image,
+      &.sy-active:hover .product-info p,
+      &.sy-active:hover .product-info .button-link,
+      &.sy-active.transition {
+        @include transition(opacity 1s);
+      }
     }
-  }
+  }  
 }
 .product-name, 
 .shop-slider .slide_box {
