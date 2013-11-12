@@ -174,7 +174,7 @@
 
 /* line 74, ../scss/slippry.scss */
 .sy-box.sy-loading {
-  background: url(sy-loader.gif) 50% 50% no-repeat;
+  background: url(../images/sy-loader.gif) 50% 50% no-repeat;
   min-height: 40px;
 }
 /* line 75, ../scss/slippry.scss */
