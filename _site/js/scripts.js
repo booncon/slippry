@@ -7,6 +7,13 @@ jQuery(document).ready(function(){
   jQuery('#out-of-the-box-demo').slippry({
     
   });
+
+  $('#settings-jump a:not(#select-setting)').click(function () {
+    $('body').animate({
+      scrollTop: $($(this).attr('href')).offset().top
+    }, 600);
+    return false;
+  });
   
   // Pictures Slider
   jQuery('#pictures-demo').slippry({
@@ -25,7 +32,7 @@ jQuery(document).ready(function(){
 
     // transitions
     transition: 'kenburns', // fade, horizontal, kenburns, false
-    kenZoom: 1.4,
+    kenZoom: 140,
     speed: 2000, // time the transition takes (ms)
   });
 

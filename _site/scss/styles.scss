@@ -426,6 +426,9 @@ code {
       padding: 0.25em 0.5em;
       color: $white;
       text-align: left;
+      &:hover {
+        background-color: darken($bc-rk-blue, 10%);
+      }
     }
   }
   &.closed {
