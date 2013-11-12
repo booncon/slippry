@@ -631,7 +631,7 @@
       if ((slip.vars.count > 1) || (slip.settings.initSingle)) {
         if ($('.' + slip.settings.activeClass, el).index() === -1) {
           if (slip.settings.start === 'random') {
-            first = Math.round(Math.random() * (slip.vars.count));
+            first = Math.round(Math.random() * (slip.vars.count - 1));
           } else if (slip.settings.start > 0 && slip.settings.start <= slip.vars.count) {
             first = slip.settings.start - 1;
           } else {
