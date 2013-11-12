@@ -33,390 +33,380 @@
 </section>
 
 <section class="restricted-width settings">
-  <h3>general elements &amp; wrapper</h3>
-  <h4 id="slippryWrapper">slippryWrapper</h4>
+<h3>general elements &amp; wrapper</h3>
+<h4 id="slippryWrapper">slippryWrapper</h4>
 
-  Markup to be used for the entire slider (including the pager).
-       
-  <code><pre>default: '&lt;div class="sy-box" /&gt;'
-  accepts: Any valid HTML element (almost) can be used, but we recommend &lt;div&gt;, &lt;section&gt;.</pre></code>
+Markup to be used for the entire slider (including the pager).
+     
+<code><pre>default: '&lt;div class="sy-box" /&gt;'
+accepts: Any valid HTML element (almost) can be used, but we recommend &lt;div&gt;, &lt;section&gt;.</pre></code>
 
-       
-  <h4 id="slideWrapper">slideWrapper</h4>
+     
+<h4 id="slideWrapper">slideWrapper</h4>
 
-  Markup to be used to wrap the slides and controls (think of it as the viewport)
+Markup to be used to wrap the slides and controls (think of it as the viewport)
 
-  <code><pre>default: '&lt;div class="sy-slides-wrap" /&gt;'
-  accepts: Any valid HTML element (almost) can be used, but we recommend &lt;div&gt;, &lt;section&gt;.</pre></code>
+<code><pre>default: '&lt;div class="sy-slides-wrap" /&gt;'
+accepts: Any valid HTML element (almost) can be used, but we recommend &lt;div&gt;, &lt;section&gt;.</pre></code>
 
-  <h4 id="slideCrop">slideCrop</h4>
+<h4 id="slideCrop">slideCrop</h4>
 
-  Markup to be used to wrap just the slides.
+Markup to be used to wrap just the slides.
 
-  <code><pre>default: &lt;div class="sy-slides-crop" /&gt;
-  accepts: Any valid HTML element (almost) can be used, but we recommend &lt;div&gt;, &lt;section&gt;.</pre></code>
+<code><pre>default: &lt;div class="sy-slides-crop" /&gt;
+accepts: Any valid HTML element (almost) can be used, but we recommend &lt;div&gt;, &lt;section&gt;.</pre></code>
 
-  <h4 id="boxClass">boxClass</h4>
+<h4 id="boxClass">boxClass</h4>
 
-  The class that is applied to the original slide parent element (e.g. the <code class="inline">&lt;ul&gt;</code> element).
+The class that is applied to the original slide parent element (e.g. the <code class="inline">&lt;ul&gt;</code> element).
 
-  <code><pre>default: 'sy-list'
-  accepts: Any string that is valid as a class in CSS.</pre></code>
+<code><pre>default: 'sy-list'
+accepts: Any string that is valid as a class in CSS.</pre></code>
 
-  <h4 id="elements">elements</h4>
+<h4 id="elements">elements</h4>
 
-  HTML element used for each slide.
+HTML element used for each slide.
 
-  <code><pre>default: 'li'
-  accepts: Any HTML element that is styled as a block element. We recommend &lt;li&gt;, &lt;div&gt;, &lt;article&gt; or &lt;section&gt;.</pre></code>
+<code><pre>default: 'li'
+accepts: Any HTML element that is styled as a block element. We recommend &lt;li&gt;, &lt;div&gt;, &lt;article&gt; or &lt;section&gt;.</pre></code>
 
-  <h4 id="activeClass">activeClass</h4>
+<h4 id="activeClass">activeClass</h4>
 
-  The class applied to the current (visible) slide.
+The class applied to the current (visible) slide.
 
-  <code><pre>default: 'sy-active'
-  accepts: Any string that is valid as a class in CSS.</pre></code>
+<code><pre>default: 'sy-active'
+accepts: Any string that is valid as a class in CSS.</pre></code>
 
-  <h4 id="fillerClass">fillerClass</h4>
+<h4 id="fillerClass">fillerClass</h4>
 
-  The class for the element that acts as an intrinsic placeholder (basically the element which makes sure the slider is sized correctly).
+The class for the element that acts as an intrinsic placeholder (basically the element which makes sure the slider is sized correctly).
 
-  <code><pre>default: 'sy-filler'
-  accepts: Any string that is valid as a class in CSS.</pre></code>
-      
-  <h4 id="loadingClass">loadingClass</h4>
-
-  The class applied to `slippry_wrapper` while Slippry slider is being loaded.
-
-  <code><pre>default: 'sy-loading'
-  accepts: Any string that is valid as a class in CSS.</pre></code>
-
-  <h3>options</h3>
-  <h4 id="adaptiveHeight">adaptiveHeight</h4>
-
-  The slider height should change on the fly according to the current slide.
-
-  <code><pre>default: true
-  accepts: true, false</pre></code>
-
-  <h4 id="start">start</h4>
-
-  The slide number that should be displayed first.
-
-  <code><pre>default: 1
-  accepts: integer (1 = first slide), random</pre></code>
-
-  <h4 id="loop">loop</h4>
-
-  Whether the slider should loop (i.e. the first slide goes to the last, the last slide goes to the first).
-
-  <code><pre>default: true
-  accepts: true, false</pre></code>
-
-  <h4 id="captionsSrc">captionsSrc</h4>
-
-  Specifies the source of the captions. When <code class="inline">img</code>, captions will be taken from the <code class="inline">title</code> or <code class="inline">alt</code> attributes, when any other element it will be taken from the <code class="inline">title</code> attribute.
-
-  <code><pre>default: 'img'
-  accepts: 'img' or any element.</pre></code>
-
-  <h4 id="captions">captions</h4>
-
-  Specifies the position of captions or no captions at all. *Custom allows you to specify the class of an element in which to insert the captions.
-
-  <code><pre>default: 'overlay'
-  accepts: 'overlay', 'below', 'custom', false</pre></code>
-
-  <h4 id="captionsEl">captionsEl</h4>
-
-  The element for the captions. Note, this can be a box outside of <code class="inline">.slippry_box</code>.
-
-  <code><pre>default: '.sy-caption'
-  accepts: Any jQuery selector.</pre></code>
-
-  <h4 id="initSingle">initSingle</h4>
-
-  Whether the slider should initialise even if there is only one slide element.
-
-  <code><pre>default: true
-  accepts: true, false</pre></code>
-
-  <h4 id="responsive">responsive</h4>
-
-  Whether the slider should be responsive.
-
-  <code><pre>default: true
-  accepts: true, false</pre></code>
-
-
-  <h3>pager</h3>
-  <h4 id="pager">pager</h4>
-
-  Whether the slider should have a pager.
-
-  <code><pre>default: true
-  accepts: true, false</pre></code>
-
-  <h4 id="pagerClass">pagerClass</h4>
-
-  The class given to the slider container.
-
-  <code><pre>default: 'sy-pager'
-  accepts: Any string that is valid as a class in CSS.</pre></code>
-
-
-  <h3>controls</h3>
-  <h4 id="controls">controls</h4>
-
-  Whether the slider should have controls (next, previous arrows).
-
-  <code><pre>default: true
-  accepts: true, false</pre></code>
-
-  <h4 id="controlClass">controlClass</h4>
-
-  The class for the controls container.
-
-  <code><pre>default: 'sy-controls'
-  accepts: Any string that is valid as a class in CSS.</pre></code>
-
-  <h4 id="prevClass">prevClass</h4>
-
-  The class for the anchor tag to go to the previous slide (left).
-
-  <code><pre>default: 'sy-prev'
-  accepts: Any string that is valid as a class in CSS.</pre></code>
-
-  <h4 id="prevText">prevText</h4>
-
-  The text for the previous slide control (important for screen readers).
-
-  <code><pre>default: 'Previous'
-  accepts: Any text string.</pre></code>
-
-  <h4 id="nextClass">nextClass</h4>
-
-  The class for the anchor tag to go to the previous slide (right).
-
-  <code><pre>default: 'sy-next'
-  accepts: Any string that is valid as a class in CSS.</pre></code>
-
-  <h4 id="nextText">nextText</h4>
-
-  The text for the next slide control (important for screen readers).
-
-  <code><pre>default: 'Next'
-  accepts: Any text string.</pre></code>
-
-  <h4 id="hideOnEnd">hideOnEnd</h4>
-
-  Hide the previous or next control when it reaches the first or last slide respectively.
-
-  <code><pre>default: true
-  accepts: true, false</pre></code>
-
-
-  <h3>transitions</h3>
-  <h4 id="transition">transition</h4>
-
-  Transition type to use, or no transitions.
-
-  <code><pre>default: 'fade'
-  accepts: 'fade', 'horizontal', 'kenburns', false</pre></code>
-      
-  <h4 id="kenZoom">kenZoom</h4>
-
-  Max zoom level use for the Ken Burns transition.
-
-  <code><pre>default: 120
-  accepts: any percentage value.</pre></code>
-      
-  <h4 id="slideMargin">slideMargin</h4>
-
-  The spacing between slides.
-
-  <code><pre>default: 0
-  accepts: any value as a percentage of the slippry_box (viewport).</pre></code>
-      
-  <h4 id="transClass">transClass</h4>
-
-  The class applied to the slide element when a transition is in progress.
-
-  <code><pre>default: 'transition'
-  accepts: Any string that is valid as a class in CSS.</pre></code>
+<code><pre>default: 'sy-filler'
+accepts: Any string that is valid as a class in CSS.</pre></code>
     
-  <h4 id="speed">speed</h4>
+<h4 id="loadingClass">loadingClass</h4>
 
-  The time the transition takes to complete.
+The class applied to `slippry_wrapper` while Slippry slider is being loaded.
 
-  <code><pre>default: 800 
-  accepts: any number (in milliseconds).</pre></code>
-      
-  <h4 id="easing">easing</h4>
+<code><pre>default: 'sy-loading'
+accepts: Any string that is valid as a class in CSS.</pre></code>
 
-  The easing effect to use for the selected transition.
+<h3>options</h3>
+<h4 id="adaptiveHeight">adaptiveHeight</h4>
 
-  <code><pre>default: 'swing'
-  accepts: any easing effect See <a href="http://jqueryui.com/resources/demos/effect/easing.html">jQuery UI</a></pre></code>
-      
-  <h4 id="continuous">continuous</h4>
+The slider height should change on the fly according to the current slide.
 
-  Whether the slider should run continuously (seamless transition between the first and last slides).
+<code><pre>default: true
+accepts: true, false</pre></code>
 
-  <code><pre>default: true
-  accepts: true, false</pre></code>
+<h4 id="start">start</h4>
 
-  <h4 id="useCSS">useCSS</h4>
+The slide number that should be displayed first.
 
-  Whether the slider should use CSS transitions. If the user's browser doesn't support CSS transitions the slider will fallback to jQuery.
+<code><pre>default: 1
+accepts: integer (1 = first slide), random</pre></code>
 
-  <code><pre>default: false
-  accepts: true, false</pre></code>
+<h4 id="loop">loop</h4>
 
-  <h3>slideshow</h3>
-  <h4 id="auto">auto</h4>
+Whether the slider should loop (i.e. the first slide goes to the last, the last slide goes to the first).
 
-  Whether the slider should run automatically on load.
+<code><pre>default: true
+accepts: true, false</pre></code>
 
-  <code><pre>default: true
-  accepts: true, false</pre></code>
+<h4 id="captionsSrc">captionsSrc</h4>
 
-  <h4 id="autoDirection">autoDirection</h4>
+Specifies the source of the captions. When <code class="inline">img</code>, captions will be taken from the <code class="inline">title</code> or <code class="inline">alt</code> attributes, when any other element it will be taken from the <code class="inline">title</code> attribute.
 
-  Which direction the slider should move in if in auto mode.
+<code><pre>default: 'img'
+accepts: 'img' or any element.</pre></code>
 
-  <code><pre>default: 'next'
-  accepts: 'next', 'prev'</pre></code>
+<h4 id="captions">captions</h4>
 
-  <h4 id="autoHover">autoHover</h4>
+Specifies the position of captions or no captions at all. *Custom allows you to specify the class of an element in which to insert the captions.
 
-  Whether the slideshow should pause automatically on hover.
+<code><pre>default: 'overlay'
+accepts: 'overlay', 'below', 'custom', false</pre></code>
 
-  <code><pre>default: true
-  accepts: true, false</pre></code>
+<h4 id="captionsEl">captionsEl</h4>
 
-  <h4 id="autoHoverDelay">autoHoverDelay</h4>
+The element for the captions. Note, this can be a box outside of <code class="inline">.slippry_box</code>.
 
-  The delay (if any) before the slider resumes automatically after hover.
+<code><pre>default: '.sy-caption'
+accepts: Any jQuery selector.</pre></code>
 
-  <code><pre>default: 100
-  accepts: any number (in milliseconds).</pre></code>
+<h4 id="initSingle">initSingle</h4>
 
-  <h4 id="autoDelay">autoDelay</h4>
+Whether the slider should initialise even if there is only one slide element.
 
-  The delay (if any) before the slider runs automatically on load.
+<code><pre>default: true
+accepts: true, false</pre></code>
 
-  <code><pre>default: 500
-  accepts: any number (in milliseconds).</pre></code>
+<h4 id="responsive">responsive</h4>
 
-  <h4 id="pause">pause</h4>
+Whether the slider should be responsive.
 
-  The time a slide lasts.
-
-  <code><pre>default: 3000
-  accepts: any number (in milliseconds).</pre></code>
+<code><pre>default: true
+accepts: true, false</pre></code>
 
 
-  <h3>callback functions</h3>
-  <h4 id="onSliderLoad">onSliderLoad</h4>
+<h3>pager</h3>
+<h4 id="pager">pager</h4>
 
-  Runs when the slider has loaded.
+Whether the slider should have a pager.
 
-  <code><pre>default: function () {
-           return this;
-       },
-  accepts: any valid function.</pre></code>
-      
-  <h4 id="onSlideBefore">onSlideBefore</h4>
+<code><pre>default: true
+accepts: true, false</pre></code>
 
-  Runs before the slide transition starts.
+<h4 id="pagerClass">pagerClass</h4>
 
-  <code><pre>default: function () {
-         return this;
-       },
-  accepts: any valid function.</pre></code>
-      
-  <h4 id="onSlideAfter">onSlideAfter</h4>
+The class given to the slider container.
 
-  Runs after the slide transition has completed.
+<code><pre>default: 'sy-pager'
+accepts: Any string that is valid as a class in CSS.</pre></code>
 
-  <code><pre>default: function () {
-         return this;
-       }
-  accepts: any valid function.</pre></code>
 
-  <h3>public functions</h3>
-  <h4 id="getCurrentSlide">getCurrentSlide</h4>
-  Returns the jQuery object of the current slide;
-  <code>
-    <pre>
-      el.getCurrentSlide();
-    </pre>
-  </code>
-  <h4 id="getSlideCount">getSlideCount</h4>
-  Returns the number of slides;
-  <code>
-    <pre>
-      el.getSlideCount();
-    </pre>
-  </code>
-  <h4 id="goToSlide">goToSlide</h4>
-  Goes to #slide.
-  <code>
-    <pre>
-      el.goToSlide(slide);
-    </pre>
-  </code>
-  <h4 id="goToNextSlide">goToNextSlide</h4>
-  Goes to next slide.
-  <code>
-    <pre>
-      el.goToNextSlide();
-    </pre>
-  </code>
-  <h4 id="goToPrevSlide">goToPrevSlide</h4>
-  Goes to previous slide.
-  <code>
-    <pre>
-      el.goToPrevSlide();
-    </pre>
-  </code>
-  <h4 id="startAuto">startAuto</h4>
-  Starts the automatic slide changes.
-  <code>
-    <pre>
-      el.startAuto();
-    </pre>
-  </code>
-  <h4 id="stopAuto">stopAuto</h4>
-  Stops the automatic slide changes.
-  <code>
-    <pre>
-      el.stopAuto();
-    </pre>
-  </code>
-  <h4 id="refresh">refresh</h4>
-  Re-initialises the already initialised slider.<br>
-  Useful when adding slides dynaimcally.
-  <code>
-    <pre>
-      el.refresh();
-    </pre>
-  </code>
-  <h4 id="destroySlider">destroySlider</h4>
-  Destroys the Slippry slider and puts the original markup back.
-  <code>
-    <pre>
-      el.destroySlider();
-    </pre>
-  </code>
-  <h4 id="reloadSlider">reloadSlider</h4>
-  Destroys the Slippry slider and initialises it again.
-  <code>
-    <pre>
-      el.reloadSlider();
-    </pre>
-  </code>
+<h3>controls</h3>
+<h4 id="controls">controls</h4>
+
+Whether the slider should have controls (next, previous arrows).
+
+<code><pre>default: true
+accepts: true, false</pre></code>
+
+<h4 id="controlClass">controlClass</h4>
+
+The class for the controls container.
+
+<code><pre>default: 'sy-controls'
+accepts: Any string that is valid as a class in CSS.</pre></code>
+
+<h4 id="prevClass">prevClass</h4>
+
+The class for the anchor tag to go to the previous slide (left).
+
+<code><pre>default: 'sy-prev'
+accepts: Any string that is valid as a class in CSS.</pre></code>
+
+<h4 id="prevText">prevText</h4>
+
+The text for the previous slide control (important for screen readers).
+
+<code><pre>default: 'Previous'
+accepts: Any text string.</pre></code>
+
+<h4 id="nextClass">nextClass</h4>
+
+The class for the anchor tag to go to the previous slide (right).
+
+<code><pre>default: 'sy-next'
+accepts: Any string that is valid as a class in CSS.</pre></code>
+
+<h4 id="nextText">nextText</h4>
+
+The text for the next slide control (important for screen readers).
+
+<code><pre>default: 'Next'
+accepts: Any text string.</pre></code>
+
+<h4 id="hideOnEnd">hideOnEnd</h4>
+
+Hide the previous or next control when it reaches the first or last slide respectively.
+
+<code><pre>default: true
+accepts: true, false</pre></code>
+
+
+<h3>transitions</h3>
+<h4 id="transition">transition</h4>
+
+Transition type to use, or no transitions.
+
+<code><pre>default: 'fade'
+accepts: 'fade', 'horizontal', 'kenburns', false</pre></code>
+    
+<h4 id="kenZoom">kenZoom</h4>
+
+Max zoom level use for the Ken Burns transition.
+
+<code><pre>default: 120
+accepts: any percentage value.</pre></code>
+    
+<h4 id="slideMargin">slideMargin</h4>
+
+The spacing between slides.
+
+<code><pre>default: 0
+accepts: any value as a percentage of the slippry_box (viewport).</pre></code>
+    
+<h4 id="transClass">transClass</h4>
+
+The class applied to the slide element when a transition is in progress.
+
+<code><pre>default: 'transition'
+accepts: Any string that is valid as a class in CSS.</pre></code>
+  
+<h4 id="speed">speed</h4>
+
+The time the transition takes to complete.
+
+<code><pre>default: 800 
+accepts: any number (in milliseconds).</pre></code>
+    
+<h4 id="easing">easing</h4>
+
+The easing effect to use for the selected transition.
+
+<code><pre>default: 'swing'
+accepts: any easing effect See <a href="http://jqueryui.com/resources/demos/effect/easing.html">jQuery UI</a></pre></code>
+    
+<h4 id="continuous">continuous</h4>
+
+Whether the slider should run continuously (seamless transition between the first and last slides).
+
+<code><pre>default: true
+accepts: true, false</pre></code>
+
+<h4 id="useCSS">useCSS</h4>
+
+Whether the slider should use CSS transitions. If the user's browser doesn't support CSS transitions the slider will fallback to jQuery.
+
+<code><pre>default: false
+accepts: true, false</pre></code>
+
+<h3>slideshow</h3>
+<h4 id="auto">auto</h4>
+
+Whether the slider should run automatically on load.
+
+<code><pre>default: true
+accepts: true, false</pre></code>
+
+<h4 id="autoDirection">autoDirection</h4>
+
+Which direction the slider should move in if in auto mode.
+
+<code><pre>default: 'next'
+accepts: 'next', 'prev'</pre></code>
+
+<h4 id="autoHover">autoHover</h4>
+
+Whether the slideshow should pause automatically on hover.
+
+<code><pre>default: true
+accepts: true, false</pre></code>
+
+<h4 id="autoHoverDelay">autoHoverDelay</h4>
+
+The delay (if any) before the slider resumes automatically after hover.
+
+<code><pre>default: 100
+accepts: any number (in milliseconds).</pre></code>
+
+<h4 id="autoDelay">autoDelay</h4>
+
+The delay (if any) before the slider runs automatically on load.
+
+<code><pre>default: 500
+accepts: any number (in milliseconds).</pre></code>
+
+<h4 id="pause">pause</h4>
+
+The time a slide lasts.
+
+<code><pre>default: 3000
+accepts: any number (in milliseconds).</pre></code>
+
+
+<h3>callback functions</h3>
+<h4 id="onSliderLoad">onSliderLoad</h4>
+
+Runs when the slider has loaded.
+
+<code><pre>default: function () {
+  return this;
+},
+accepts: any valid function.</pre></code>
+    
+<h4 id="onSlideBefore">onSlideBefore</h4>
+
+Runs before the slide transition starts.
+
+<code><pre>default: function () {
+  return this;
+},
+accepts: any valid function.</pre></code>
+    
+<h4 id="onSlideAfter">onSlideAfter</h4>
+
+Runs after the slide transition has completed.
+
+<code><pre>default: function () {
+  return this;
+}
+accepts: any valid function.</pre></code>
+
+<h3>public functions</h3>
+<h4 id="getCurrentSlide">getCurrentSlide</h4>
+Returns the jQuery object of the current slide;
+<code>
+  <pre>
+el.getCurrentSlide();</pre>
+</code>
+<h4 id="getSlideCount">getSlideCount</h4>
+Returns the number of slides;
+<code>
+  <pre>
+el.getSlideCount();</pre>
+</code>
+<h4 id="goToSlide">goToSlide</h4>
+Goes to #slide.
+<code>
+  <pre>
+el.goToSlide(slide);</pre>
+</code>
+<h4 id="goToNextSlide">goToNextSlide</h4>
+Goes to next slide.
+<code>
+  <pre>
+el.goToNextSlide();</pre>
+</code>
+<h4 id="goToPrevSlide">goToPrevSlide</h4>
+Goes to previous slide.
+<code>
+  <pre>
+el.goToPrevSlide();</pre>
+</code>
+<h4 id="startAuto">startAuto</h4>
+Starts the automatic slide changes.
+<code>
+  <pre>
+el.startAuto();</pre>
+</code>
+<h4 id="stopAuto">stopAuto</h4>
+Stops the automatic slide changes.
+<code>
+  <pre>
+el.stopAuto();</pre>
+</code>
+<h4 id="refresh">refresh</h4>
+Re-initialises the already initialised slider.<br>
+Useful when adding slides dynaimcally.
+<code>
+  <pre>
+el.refresh();</pre>
+</code>
+<h4 id="destroySlider">destroySlider</h4>
+Destroys the Slippry slider and puts the original markup back.
+<code>
+  <pre>
+el.destroySlider();</pre>
+</code>
+<h4 id="reloadSlider">reloadSlider</h4>
+Destroys the Slippry slider and initialises it again.
+<code>
+  <pre>
+el.reloadSlider();</pre>
+</code>
 </section>
   
   <footer id="footer" class="full-width">
