@@ -1,5 +1,5 @@
 /**
- * slippry v1.0rc2 - Simple responsive content slider
+ * slippry v1.0rc3 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -186,10 +186,10 @@
     // gets the aspect ratio of the filler element
     getFillerProportions = function ($slide) {
       var width, height;
-      if (($('img', $slide).attr("src") !== undefined) && ($slide.text().replace(/^\s+|\s+$/g, '') === '')) {
-        $("<img/>").load(function () {
-          width = this.width;
-          height = this.height;
+      if (($('img', $slide).attr("src") !== undefined)) {
+        $("<img />").load(function () {
+          width = $slide.width();
+          height = $slide.height();
           setFillerProportions(width, height);
         }).attr("src", $('img', $slide).attr("src"));
       } else {
@@ -631,7 +631,7 @@
       if ((slip.vars.count > 1) || (slip.settings.initSingle)) {
         if ($('.' + slip.settings.activeClass, el).index() === -1) {
           if (slip.settings.start === 'random') {
-            first = Math.round(Math.random() * (slip.vars.count));
+            first = Math.round(Math.random() * (slip.vars.count - 1));
           } else if (slip.settings.start > 0 && slip.settings.start <= slip.vars.count) {
             first = slip.settings.start - 1;
           } else {
