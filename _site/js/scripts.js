@@ -73,7 +73,8 @@ jQuery(document).ready(function(){
 
     // transitions
     transition: 'horizontal', // fade, horizontal, kenburns, false
-    speed: 2000,
+    speed: 1200,
+    pause: 8000,
 
     // slideshow
     autoDirection: 'prev',
