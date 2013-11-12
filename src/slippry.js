@@ -1,5 +1,5 @@
 /**
- * slippry v1.0rc3 - Simple responsive content slider
+ * slippry v1.0.1 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -358,7 +358,9 @@
                 slip.vars.active.addClass('sy-ken');
               }
               $(window).off('focus').on('focus', function () { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
-                slip.vars.old.trigger(slip.vars.transition);
+                if (slip.vars.moving) {
+                  slip.vars.old.trigger(slip.vars.transition);
+                }
               });
               slip.vars.old.one(slip.vars.transition, function () {
                 transitionDone();
@@ -402,9 +404,11 @@
               el.addClass(slip.settings.transition);
               el.css({left: pos, transitionDuration: slip.settings.speed + 'ms'});
               $(window).off('focus').on('focus', function () { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
-                el.trigger(slip.vars.transition);
+                if (slip.vars.moving) {
+                  el.trigger(slip.vars.transition);
+                }
               });
-              el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+              el.one(slip.vars.transition, function () {
                 el.removeClass(slip.settings.transition);
                 if (jump) {
                   slip.vars.active.css('left', old_left);
