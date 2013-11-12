@@ -1,5 +1,5 @@
 /**
- * slippry v1.0rc2 - Simple responsive content slider
+ * slippry v1.0.1 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -186,10 +186,10 @@
     // gets the aspect ratio of the filler element
     getFillerProportions = function ($slide) {
       var width, height;
-      if (($('img', $slide).attr("src") !== undefined) && ($slide.text().replace(/^\s+|\s+$/g, '') === '')) {
-        $("<img/>").load(function () {
-          width = this.width;
-          height = this.height;
+      if (($('img', $slide).attr("src") !== undefined)) {
+        $("<img />").load(function () {
+          width = $slide.width();
+          height = $slide.height();
           setFillerProportions(width, height);
         }).attr("src", $('img', $slide).attr("src"));
       } else {
@@ -358,7 +358,9 @@
                 slip.vars.active.addClass('sy-ken');
               }
               $(window).off('focus').on('focus', function () { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
-                slip.vars.old.trigger(slip.vars.transition);
+                if (slip.vars.moving) {
+                  slip.vars.old.trigger(slip.vars.transition);
+                }
               });
               slip.vars.old.one(slip.vars.transition, function () {
                 transitionDone();
@@ -402,9 +404,11 @@
               el.addClass(slip.settings.transition);
               el.css({left: pos, transitionDuration: slip.settings.speed + 'ms'});
               $(window).off('focus').on('focus', function () { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
-                el.trigger(slip.vars.transition);
+                if (slip.vars.moving) {
+                  el.trigger(slip.vars.transition);
+                }
               });
-              el.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+              el.one(slip.vars.transition, function () {
                 el.removeClass(slip.settings.transition);
                 if (jump) {
                   slip.vars.active.css('left', old_left);
@@ -631,7 +635,7 @@
       if ((slip.vars.count > 1) || (slip.settings.initSingle)) {
         if ($('.' + slip.settings.activeClass, el).index() === -1) {
           if (slip.settings.start === 'random') {
-            first = Math.round(Math.random() * (slip.vars.count));
+            first = Math.round(Math.random() * (slip.vars.count - 1));
           } else if (slip.settings.start > 0 && slip.settings.start <= slip.vars.count) {
             first = slip.settings.start - 1;
           } else {
