@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="description" content="Slippry is a responsive slider by booncon ROCKETS. This example displays a set of photos, without controls and using the Ken Burns effect." />
   <title>Examples - Picture slider with Ken Burns effect | Slippry - A responsive slider by booncon ROCKETS</title>
   <script src="//use.edgefonts.net/cabin:n4,i4,n7,i7;source-sans-pro:n3,i3.js"></script>
   <link rel="stylesheet" href="/css/styles.css" />
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <script src="/js/slippry.js"></script>
+  <script src="/js/slippry.min.js"></script>
   <script src="/js/scripts.js"></script>
 </head>
 <body>
@@ -18,7 +19,7 @@
     <nav id="main-menu">
       <li><a href="/settings" class="button-link">Settings</a></li>
       <li><a href="/examples" class="button-link">Examples</a></li>
-      <li><a href="https://github.com/booncon/slippry/archive/1.0rc1.zip" title="Download this repository as a zip file" rel="nofollow" class="button-link download">Download</a></li>
+      <li><a href="https://github.com/booncon/slippry/archive/1.0rc2.zip" title="Download this repository as a zip file" rel="nofollow" class="button-link download">Download</a></li>
     </nav>
   </div>
 </header>
@@ -85,8 +86,13 @@ jQuery('#pictures-demo').slippry({
 
   // transitions
   transition: 'kenburns',
+<<<<<<< HEAD
   kenZoom: 1.4,
   speed: 2000,
+=======
+  kenZoom: 140,
+  transTime: 2000,
+>>>>>>> 4b2971c90e5fa7335f212a7befcedd54be305cf4
 });</pre>
   </code>
 </section>

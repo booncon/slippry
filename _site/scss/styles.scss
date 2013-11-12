@@ -247,6 +247,7 @@ a {
       text-align: right;
       li {
         display: inline-block;
+        margin-left: 0.25em;
       }
     }
     @media only screen and (min-width: 601px) {
@@ -445,32 +446,6 @@ code {
       }
     }
   }
-  // width: auto;
-  // min-height: 2em;
-  // li {
-  //   display: none;
-
-  //   &.default {
-  //     display: block;
-  //   }
-  //   &.section-head {}
-  //   a {}
-  // }
-  // li {
-  //   display: inline-block;
-  //   padding: 0;
-  //   margin: 0;
-  //   &.section-head {
-  //     color: $white;
-  //     background-color: $bc-grey;
-  //     padding: 0.25em 0.5em;
-  //   }
-  //   a {
-  //     color: $white;
-  //     background-color: $bc-rk-blue;
-  //     padding: 0.25em 0.5em;
-  //   }
-  // }
 }
 section.settings {
   h4 {
@@ -571,24 +546,43 @@ section.settings {
   /* Style the actual content */
   .text-content {
     position: absolute;
-    top: 0;
     left: 0;
-    right: 0;
     background-color: rgba(255,255,255,0.9);
     padding: 1em;
-    width: 30%;
+    // below are media based, start with 'mobile'
+    width: 40%;
+    font-size: 0.75em;
     height: 100%;
     h2 {
       margin: 0;
+      padding: 0 1em;
     }
     p {
-      margin: 1em 0;  
+      display: none;
     }
     a.button-link {
       padding: 0.25em 0.5em;
       position: absolute;
       bottom: 1em;
       right: 1em;
+    }
+    .read-more {
+      float: right;
+      position: absolute;
+      bottom: 1em;
+      right: 1em;
+    }
+    @media only screen and (min-width: 481px) {
+      font-size: 1em;
+    }
+    @media only screen and (min-width: 769px) {
+      width: 35%;
+      p {
+        display: block;
+      }
+    }
+    @media only screen and (min-width: 960px) {
+      width: 30%;
     }
   }
   .image-content {
@@ -624,7 +618,8 @@ section.settings {
 
 /* Shop */
 .shop {
-  .sy-box {    
+  .sy-box {
+    overflow: hidden;
     .sy-slides-wrap {
       @media only screen and (min-width: 401px) {
         min-width: 400px;
@@ -736,65 +731,15 @@ section.settings {
       }
     }
   }  
-}
-.product-name, 
-.shop-slider .slide_box {
-  width: 100%;
-  @media only screen and (min-width: 401px) {
-    min-width: 400px;
-    max-width: 590px;
-    width: 50%;
-  }
-  margin-left: auto;
-  margin-right: auto;
-}
-
-// Teaser
-
-body,html {
-  height: 100%;
-}
-.teaser-page {
-#teaser {
-  height: 100%;
-  position: relative;
-  .center {
-    display: inline-block;
-    h1 {
-      font-size: 10em;
-      margin: 0;
-      line-height: 1;
+  .product-name, 
+  .shop-slider .sy-slides-wrap {
+    width: 100%;
+    @media only screen and (min-width: 401px) {
+      min-width: 400px;
+      max-width: 590px;
+      width: 50%;
     }
-    p {
-      font-size: 2em;
-      margin-bottom: 0;
-      padding-left: 0.25em;
-    }
-    position: absolute;
-    top: 50%;
-    margin-top: -7.5em;
-    left: 50%;
-    margin-left: -14.25em;
-    @media only screen and (max-width: 570px), only screen and (max-height: 550px) {
-      h1 {
-        font-size: 5em;
-      }
-      p {
-        font-size: 1em;
-      }
-      margin-top: -3.75em;
-      margin-left: -7.125em;
-    }
-  }
-}
-
-  #footer {
-    position: absolute;
-    // @media only screen and (max-height: 550px) {
-    //   position: relative;
-    // }
-    bottom: 0;
-    left: 0;
-    right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

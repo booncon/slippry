@@ -66,6 +66,7 @@ jQuery(document).ready(function(){
 
     // transitions
     transition: 'horizontal', // fade, horizontal, kenburns, false
+    speed: 2000,
 
     // slideshow
     autoDirection: 'prev',
