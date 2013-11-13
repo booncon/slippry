@@ -313,7 +313,7 @@
     transitionDone = function () {
       slip.vars.moving = false;
       slip.vars.active.removeClass(slip.settings.transClass);
-      slip.vars.old.removeClass('sy-ken' + slip.settings.transClass);
+      slip.vars.old.removeClass('sy-ken ' + slip.settings.transClass);
       slip.settings.onSlideAfter.call(undefined, slip.vars.active, slip.vars.old.index(), slip.vars.active.index());
     };
 
@@ -346,6 +346,8 @@
             if (slip.settings.transition === 'kenburns') {
               if (slip.settings.useCSS) {
                 slip.vars.slides.css({animationDuration: kenTime + 'ms'});
+              } else {
+                slip.vars.slides.css({animationDuration: '0ms'});
               }
               slip.vars.active.addClass('sy-ken');
             }
