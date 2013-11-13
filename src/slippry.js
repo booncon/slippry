@@ -1,5 +1,5 @@
 /**
- * slippry v1.0.1 - Simple responsive content slider
+ * slippry v1.0.2 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -81,7 +81,7 @@
 
   $.fn.slippry = function (options) {
     var slip, el, prepareFiller, getFillerProportions, init, updateCaption, initPager, initControls, ready, transitionDone, whichTransitionEvent,
-      initCaptions, updatePager, setFillerProportions, doTransition, updateSlide, updateControls, updatePos, supports, preload, start, elFromSel;
+      initCaptions, updatePager, setFillerProportions, doTransition, updateSlide, updateControls, updatePos, supports, preload, start, elFromSel, doKens;
 
     // reference to the object calling the function
     el = this;
@@ -161,12 +161,37 @@
       return newelement;
     };
 
+    doKens = function () {
+      var kenStart, kenTime, animProp, cssProp;
+      animProp = {};
+      cssProp = {};
+      kenStart = 100 - slip.settings.kenZoom;
+      cssProp.width = slip.settings.kenZoom + '%';
+      if (slip.vars.active.index() % 2 === 0) {
+        cssProp.left = kenStart + '%';
+        cssProp.top = kenStart + '%';
+        animProp.left = '0%';
+        animProp.top = '0%';
+      } else {
+        cssProp.left = '0%';
+        cssProp.top = '0%';
+        animProp.left = kenStart + '%';
+        animProp.top = kenStart + '%';
+      }
+      kenTime = slip.settings.pause + slip.settings.speed * 2;
+      slip.vars.active.css(cssProp);
+      slip.vars.active.animate(animProp, {duration: kenTime, easing: slip.settings.easing, queue: false});
+    };
+
     ready = function () {
       if (slip.vars.fresh) {
         slip.vars.slippryWrapper.removeClass(slip.settings.loadingClass);
         slip.vars.fresh = false;
         if (slip.settings.auto) {
           el.startAuto();
+        }
+        if (!slip.settings.useCSS) {
+          doKens();
         }
         slip.settings.onSliderLoad.call(undefined, slip.vars.active.index());
       } else {
@@ -313,43 +338,32 @@
     transitionDone = function () {
       slip.vars.moving = false;
       slip.vars.active.removeClass(slip.settings.transClass);
-      slip.vars.old.removeClass('sy-ken ' + slip.settings.transClass);
+      if (!slip.vars.fresh) {
+        slip.vars.old.removeClass('sy-ken');
+      }
+      slip.vars.old.removeClass(slip.settings.transClass);
       slip.settings.onSlideAfter.call(undefined, slip.vars.active, slip.vars.old.index(), slip.vars.active.index());
     };
 
     doTransition = function () {
-      var pos, jump, old_left, old_pos, kenStart, kenX, kenY, kenTime, animProp, cssProp;
+      var pos, jump, old_left, old_pos, kenTime;
       slip.settings.onSlideBefore.call(undefined, slip.vars.active, slip.vars.old.index(), slip.vars.active.index());
       if (slip.settings.transition !== false) {
         slip.vars.moving = true;
         if ((slip.settings.transition === 'fade') || (slip.settings.transition === 'kenburns')) {
-          if (slip.settings.transition === 'kenburns') {
-            kenTime = slip.settings.pause + slip.settings.speed * 2;
-            if (!slip.settings.useCSS) {
-              animProp = {};
-              cssProp = {};
-              slip.vars.active.css({top: 'auto', left: 'auto', bottom: 'auto', right: 'auto'});
-              kenX = slip.vars.active.index() % 2 === 0 ? 'left' : 'right';
-              kenY = slip.vars.active.index() % 2 === 0 ? 'top' : 'bottom';
-              kenStart = 100 - slip.settings.kenZoom;
-              cssProp[kenX] = kenStart + '%';
-              cssProp[kenY] = kenStart + '%';
-              cssProp.width = slip.settings.kenZoom + '%';
-              animProp[kenX] = '0%';
-              animProp[kenY] = '0%';
-              slip.vars.active.css(cssProp).animate(animProp, {duration: kenTime, queue: false });
-            }
-          }
           if (slip.vars.fresh) {
-            slip.vars.slides.css({transitionDuration: slip.settings.speed + 'ms', opacity: 0});
+            if (slip.settings.useCSS) {
+              slip.vars.slides.css({transitionDuration: slip.settings.speed + 'ms', opacity: 0});
+            } else {
+              slip.vars.slides.css({opacity: 0});
+            }
             slip.vars.active.css('opacity', 1);
             if (slip.settings.transition === 'kenburns') {
               if (slip.settings.useCSS) {
+                kenTime = slip.settings.pause + slip.settings.speed * 2;
                 slip.vars.slides.css({animationDuration: kenTime + 'ms'});
-              } else {
-                slip.vars.slides.css({animationDuration: '0ms'});
+                slip.vars.active.addClass('sy-ken');
               }
-              slip.vars.active.addClass('sy-ken');
             }
             transitionDone();
           } else {
@@ -369,12 +383,13 @@
                 return this;
               });
             } else {
-              slip.vars.old.addClass(slip.settings.transClass).stop().animate({
+              doKens();
+              slip.vars.old.addClass(slip.settings.transClass).animate({
                 opacity: 0
               }, slip.settings.speed, slip.settings.easing, function () {
                 transitionDone();
               });
-              slip.vars.active.addClass(slip.settings.transClass).css('opacity', 0).stop().animate({
+              slip.vars.active.addClass(slip.settings.transClass).css('opacity', 0).animate({
                 opacity: 1
               }, slip.settings.speed, slip.settings.easing);
             }
