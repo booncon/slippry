@@ -8,10 +8,10 @@ description: This example displays a set of photos, without controls and using t
   <p>In this example we have selected the 'Ken Burns' transition type, and increased the zoom factor. Since we want this to focus on images, we've disabled the pager and controls. Also note that even though captions have been included in the HTML Markup, we have disabled the captions also, so they don't show regardless.
   </p>
   <ul id="pictures-demo">
-    <li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="/images/image-1.jpg" alt="demo1_1"></a></li>
-    <li title="This is caption 2"><a href="#slide2"><img src="/images/image-2.jpg"  alt="demo1_2"></a></li>
-    <li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="/images/image-3.jpg" alt="demo1_3"></a></li>
-    <li title="And this is some very long caption for slide 4."><a href="#slide4"><img src="/images/image-4.jpg" alt="demo1_4"></a></li>
+    <li title="This is caption 1 <a href='#link'>Even with links!</a>"><img src="/assets/img/image-1.jpg" alt="demo1_1"></li>
+    <li title="This is caption 2"><img src="/assets/img/image-2.jpg"  alt="demo1_2"></li>
+    <li title="And this is some very long caption for slide 3. Yes, really long."><img src="/assets/img/image-3.jpg" alt="demo1_3"></li>
+    <li title="And this is some very long caption for slide 4."><img src="/assets/img/image-4.jpg" alt="demo1_4"></li>
   </ul>
 </section>
 
@@ -21,24 +21,16 @@ description: This example displays a set of photos, without controls and using t
     <pre>
 &lt;ul id="pictures-demo"&gt;
   &lt;li title="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
-    &lt;a href="#slide1"&gt;
-      &lt;img src="/images/image-1.jpg" alt="demo1_1"&gt;
-    &lt;/a&gt;
+    &lt;img src="/assets/img/image-1.jpg" alt="demo1_1"&gt;
   &lt;/li&gt;
   &lt;li title="This is caption 2"&gt;
-    &lt;a href="#slide2"&gt;
-      &lt;img src="/images/image-2.jpg" alt="demo1_2"&gt;
-    &lt;/a&gt;
+    &lt;img src="/assets/img/image-2.jpg" alt="demo1_2"&gt;
   &lt;/li&gt;
   &lt;li title="And this is some very long caption for slide 3. Yes, really long."&gt;
-    &lt;a href="#slide3"&gt;
-      &lt;img src="/images/image-3.jpg" alt="demo1_3"&gt;
-    &lt;/a&gt;
+    &lt;img src="/assets/img/image-3.jpg" alt="demo1_3"&gt;
   &lt;/li&gt;
   &lt;li title="And this is some very long caption for slide 4."&gt;
-    &lt;a href="#slide4"&gt;
-      &lt;img src="/images/image-4.jpg" alt="demo1_4"&gt;
-    &lt;/a&gt;
+    &lt;img src="/assets/img/image-4.jpg" alt="demo1_4"&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 </pre>
@@ -62,6 +54,7 @@ jQuery('#pictures-demo').slippry({
   
   // controls
   controls: false,
+  autoHover: false,
 
   // transitions
   transition: 'kenburns',

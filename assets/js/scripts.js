@@ -29,6 +29,7 @@ jQuery(document).ready(function(){
     
     // controls
     controls: false,
+    autoHover: false,
 
     // transitions
     transition: 'kenburns', // fade, horizontal, kenburns, false
