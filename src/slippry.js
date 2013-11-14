@@ -1,5 +1,5 @@
 /**
- * slippry v1.0.2 - Simple responsive content slider
+ * slippry v1.0.3 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -190,7 +190,7 @@
         if (slip.settings.auto) {
           el.startAuto();
         }
-        if (!slip.settings.useCSS) {
+        if (!slip.settings.useCSS && slip.settings.transition === 'kenburns') {
           doKens();
         }
         slip.settings.onSliderLoad.call(undefined, slip.vars.active.index());
@@ -383,7 +383,9 @@
                 return this;
               });
             } else {
-              doKens();
+              if (slip.settings.transition === 'kenburns') {
+                doKens();
+              }
               slip.vars.old.addClass(slip.settings.transClass).animate({
                 opacity: 0
               }, slip.settings.speed, slip.settings.easing, function () {

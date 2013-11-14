@@ -1,5 +1,5 @@
 /**
- * slippry v1.0.1 - Simple responsive content slider
+ * slippry v1.0.3 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak
@@ -345,8 +345,9 @@
 /* line 197, ../src/slippry.scss */
 .sy-controls li a:hover, .sy-controls li a:focus {
   opacity: 0.8;
+  outline: none;
 }
-/* line 200, ../src/slippry.scss */
+/* line 201, ../src/slippry.scss */
 .sy-controls li a:after {
   content: "";
   background-image: url(arrows.svg);
@@ -375,14 +376,14 @@
   border-radius: 50%;
 }
 
-/* line 224, ../src/slippry.scss */
+/* line 225, ../src/slippry.scss */
 .sy-caption-wrap {
   position: absolute;
   bottom: 2em;
   z-index: 12;
   left: 50%;
 }
-/* line 229, ../src/slippry.scss */
+/* line 230, ../src/slippry.scss */
 .sy-caption-wrap .sy-caption {
   position: relative;
   left: -50%;
@@ -395,18 +396,18 @@
   -o-border-radius: 1.2em;
   border-radius: 1.2em;
 }
-/* line 237, ../src/slippry.scss */
+/* line 238, ../src/slippry.scss */
 .sy-caption-wrap .sy-caption a:link, .sy-caption-wrap .sy-caption a:visited {
   color: #e24b70;
   font-weight: 600;
   text-decoration: none;
 }
-/* line 242, ../src/slippry.scss */
+/* line 243, ../src/slippry.scss */
 .sy-caption-wrap .sy-caption a:hover, .sy-caption-wrap .sy-caption a:focus {
   text-decoration: underline;
 }
 
-/* line 249, ../src/slippry.scss */
+/* line 250, ../src/slippry.scss */
 .sy-pager {
   overflow: hidden;
   *zoom: 1;
@@ -417,7 +418,7 @@
   list-style: none;
   text-align: center;
 }
-/* line 257, ../src/slippry.scss */
+/* line 258, ../src/slippry.scss */
 .sy-pager li {
   display: inline-block;
   width: 1.2em;
@@ -429,11 +430,11 @@
   -o-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 264, ../src/slippry.scss */
+/* line 265, ../src/slippry.scss */
 .sy-pager li.sy-active a {
   background-color: #e24b70;
 }
-/* line 268, ../src/slippry.scss */
+/* line 269, ../src/slippry.scss */
 .sy-pager li a {
   width: 100%;
   height: 100%;
@@ -450,20 +451,20 @@
   -o-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 274, ../src/slippry.scss */
+/* line 275, ../src/slippry.scss */
 .sy-pager li a:link, .sy-pager li a:visited {
   opacity: 1.0;
 }
-/* line 277, ../src/slippry.scss */
+/* line 278, ../src/slippry.scss */
 .sy-pager li a:hover, .sy-pager li a:focus {
   opacity: 0.6;
 }
 
-/* line 286, ../src/slippry.scss */
+/* line 287, ../src/slippry.scss */
 .sy-filler {
   width: 100%;
 }
-/* line 288, ../src/slippry.scss */
+/* line 289, ../src/slippry.scss */
 .sy-filler.ready {
   -webkit-transition: padding 600ms ease;
   -moz-transition: padding 600ms ease;
