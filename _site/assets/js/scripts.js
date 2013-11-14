@@ -4,12 +4,10 @@ jQuery(document).ready(function(){
   });
 
   // Generic
-  jQuery('#out-of-the-box-demo').slippry({
-    
-  });
+  jQuery('#out-of-the-box-demo').slippry();
 
-  $('#settings-jump a:not(#select-setting)').click(function () {
-    $('body').animate({
+  jQuery('#settings-jump a:not(#select-setting)').click(function () {
+    jQuery('body').animate({
       scrollTop: $($(this).attr('href')).offset().top
     }, 600);
     return false;
