@@ -3,6 +3,10 @@ jQuery(document).ready(function(){
     slippryWrapper: '<div class="sy-box front-page" />'
   });
 
+  jQuery('.button-link.download, .button-link.github-download').click(function () {
+    ga('send', 'event', 'Download', 'Click', 'Slippry(zip)');
+  })
+
   // Generic
   jQuery('#out-of-the-box-demo').slippry();
 
