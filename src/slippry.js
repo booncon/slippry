@@ -1,5 +1,5 @@
 /**
- * slippry v1.0.3 - Simple responsive content slider
+ * slippry v1.0.4 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -274,7 +274,7 @@
           caption = $('img', slip.vars.active).attr('title') !== undefined ? $('img', slip.vars.active).attr('title') : $('img', slip.vars.active).attr('alt');
         }
         if (slip.settings.captions !== 'custom') {
-          wrapper = $($(slip.settings.captionsEl), slip.vars.slippryWrapper);
+          wrapper = $(slip.settings.captionsEl, slip.vars.slippryWrapper);
         } else {
           wrapper = $(slip.settings.captionsEl);
         }
