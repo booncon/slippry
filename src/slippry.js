@@ -1,5 +1,5 @@
 /**
- * slippry v1.0.4 - Simple responsive content slider
+ * slippry v1.0.5 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -110,7 +110,7 @@
         'MozTransition'    : 'transitionend',
         'MSTransition'     : 'msTransitionEnd',
         'OTransition'      : 'oTransitionEnd',
-        'transition'       : 'transitionEnd'
+        'transition'       : 'transitionEnd transitionend'
       };
       for (t in transitions) {
         if (div.style[t] !== undefined) {
