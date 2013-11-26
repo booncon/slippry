@@ -365,7 +365,7 @@
 /* line 202, ../scss/slippry.scss */
 .sy-controls li a:after {
   content: "";
-  background-image: url(arrows.svg);
+  background-image: url(../img/arrows.svg);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
