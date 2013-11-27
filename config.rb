@@ -1,24 +1,73 @@
-# Require any additional compass plugins here.
+###
+# Compass
+###
 
-# Set this to the root of your project when deployed:
-http_path = "/"
-css_dir = "assets/css"
-sass_dir = "assets/scss"
-images_dir = "assets/img"
-javascripts_dir = "assets/js"
+# Change Compass configuration
+# compass_config do |config|
+#   config.output_style = :compact
+# end
 
-# You can select your preferred output style here (can be overridden via the command line):
-# output_style = :expanded or :nested or :compact or :compressed
+###
+# Page options, layouts, aliases and proxies
+###
 
-# To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+# Per-page layout changes:
+#
+# With no layout
+# page "/path/to/file.html", :layout => false
+#
+# With alternative layout
+# page "/path/to/file.html", :layout => :otherlayout
+#
+# A path which all have the same layout
+# with_layout :admin do
+#   page "/admin/*"
+# end
 
-# To disable debugging comments that display the original location of your selectors. Uncomment:
-# line_comments = false
+# Proxy pages (http://middlemanapp.com/dynamic-pages/)
+# proxy "/this-page-has-no-template.html", "/template-file.html", :locals => {
+#  :which_fake_page => "Rendering a fake page with a local variable" }
 
+###
+# Helpers
+###
 
-# If you prefer the indented syntax, you might want to regenerate this
-# project again passing --syntax sass, or you can uncomment this:
-# preferred_syntax = :sass
-# and then run:
-# sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+# Automatic image dimensions on image_tag helper
+# activate :automatic_image_sizes
+
+# Reload the browser automatically whenever files change
+activate :livereload
+
+# Methods defined in the helpers block are available in templates
+helpers do
+  def nav_link(link_text, url, options = {})  
+    options[:class] ||= ""
+    options[:class] << " active" if url == current_page.url
+    link_to(link_text, url, options)
+  end 
+
+end
+
+set :css_dir, 'assets/css'
+set :js_dir, 'assets/js'
+set :images_dir, 'assets/img'
+
+# Build-specific configuration
+configure :build do
+  # For example, change the Compass output style for deployment
+  # activate :minify_css
+
+  # Minify Javascript on build
+  # activate :minify_javascript
+
+  # Enable cache buster
+  activate :asset_hash
+
+  # Use relative URLs
+  # activate :relative_assets
+end
+
+activate :deploy do |deploy|
+  deploy.method = :git
+  deploy.build_before = true
+end

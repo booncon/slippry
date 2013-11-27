@@ -1,0 +1,102 @@
+---
+title: 
+---
+<section id="slippry-slider" class="full-width">
+<ul id="slippry-demo">
+  <li><a href="#slide1"><img src="assets/img/slippry-01.jpg" alt="Welcome to Slippry!"></a></li>
+  <li><a href="#slide2"><img src="assets/img/slippry-02.jpg"  alt="This is an awesome jQuery slider plugin."></a></li>
+  <li><a href="#slide3"><img src="assets/img/slippry-03.jpg" alt="Check it out, you are going to <span class='red'>♥</span> it :)"></a></li>
+</ul>
+</section>
+
+<section class="restricted-width">
+  <div class="third sub-section">
+    <hgroup>
+      <h2>Responsive</h2>
+      <h3>Buzzword? Yes. Important? Very.</h3>
+    </hgroup>
+    <p>
+        We got frustrated at the lack of free, responsive sliders, so we wrote our own. Sure, there are some out there, but we found out the hard way, they have two settings or they use soon-to-be-deprecated functions.</p><p>Oops.
+    </p>
+  </div>
+  <div class="third sub-section">
+    <hgroup>
+      <h2>Modern</h2>
+      <h3>HTML5 + CSS3 + jQuery</h3>
+    </hgroup>
+    <p>
+      Slippry is written with the future in mind, not the past. We wrote it to work on the latest jQuery functions, CSS3 tricks and HTML5 elements. We support death with dignity for technology.</p><p>But don't worry, it still downgrades gracefully.
+    </p>
+  </div>
+  <div class="third sub-section">
+    <hgroup>
+      <h2>Simple</h2>
+      <h3>Or complex. You choose.</h3>
+    </hgroup>
+    <p>
+      Isn't it great when you just need a simple slider? How about when the design needs captions in random places, Reeeeaaallllyyyy slooowwwww speeds or an annoying pop-up each time you change slide? Yeah, not so great.</p><p>Slippry offers a heap of settings you actually need, and with the included CSS and Sass you can make Slippry look just how you need it.
+    </p>
+  </div>
+</section>
+
+<section class="setup restricted-width">
+  <h2>Get Started</h2>
+  <span class="big-number">1</span>
+  <div class="get-started">
+    <a href="<%= partial "dl-link" %>" target="nofollow" class="github-download button-link">Download (.zip)</a>
+  </div>
+  
+  <span class="big-number">2</span>
+  <div class="get-started">
+    <h3>Link these files</h3>
+    <p>Use the following code in your HTML document's <code class="inline">&lt;head&gt;</code> as a starter:</p>
+    <code>
+      &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;<br/>
+      &lt;script src="/js/slippry.min.js"&gt;&lt;/script&gt;<br/>
+      &lt;link rel="stylesheet" href="/css/slippry.css" /&gt;<br/>
+    </code>
+  </div>
+  
+  <span class="big-number">3</span>
+  <div class="get-started">
+    <h3>Write some HTML:</h3>
+    <p></p>
+    <code>
+      <pre>
+&lt;ul id="slippry-demo"&gt;
+  &lt;li&gt;
+    &lt;a href="#slide1"&gt;
+      &lt;img src="/assets/img/image-1.jpg" alt="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#slide2"&gt;
+      &lt;img src="/assets/img/image-2.jpg"  alt="This is caption 2"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#slide3"&gt;
+      &lt;img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#slide4"&gt;
+      &lt;img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+    </code>
+  </div>  
+  <span class="big-number">4</span> 
+  <div class="get-started">
+    <h3>Call Slippry slider</h3>
+    <p>Make sure it's called within <code class="inline">$(document).ready()</code>!</p>
+    <code>
+      <pre>
+jQuery(document).ready(function(){
+  jQuery('selector').slippry()
+});</pre>
+    </code>
+    <p><h2>Done!</h2> Give your self a pat on the back, then have a tinker with Slippry's <a href="/settings">settings</a>, have a look at the <a href="/examples">examples</a> or dig into the CSS and style to your heart's content.<p>
+  </div>
+</section>

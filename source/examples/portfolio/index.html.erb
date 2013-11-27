@@ -1,0 +1,91 @@
+---
+title: Examples - Portfolio
+description: This example displays a portfolio with captions set in a container totally separate of the main slider.
+---
+<section class="restricted-width portfolio">
+  <h2 class="slider-title">Portfolio</h2>
+  <ul id="portfolio-demo">
+    <li title="This is caption 1 <a href='#link'>Even with links!</a>"><a href="#slide1"><img src="/assets/img/slippry-portf-001.jpg" alt="demo1_1"></a></li>
+    <li title="This is caption 2"><a href="#slide2"><img src="/assets/img/slippry-portf-002.jpg"  alt="demo1_2"></a></li>
+    <li title="And this is some very long caption for slide 3. Yes, really long."><a href="#slide3"><img src="/assets/img/slippry-portf-003.jpg" alt="demo1_3"></a></li>
+    <li title="And this is some very long caption for slide 4."><a href="#slide4"><img src="/assets/img/slippry-portf-004.jpg" alt="demo1_4"></a></li>
+  </ul>
+  <div class="external-captions"></div>
+</section>
+
+<section class="markup restricted-width">
+  <h3>HTML Markup</h3>
+  <code>
+    <pre>
+&lt;ul id="portfolio-demo"&gt;
+  &lt;li title="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
+    &lt;a href="#slide1"&gt;
+      &lt;img src="/assets/img/image-1.jpg" alt="demo1_1"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="This is caption 2"&gt;
+    &lt;a href="#slide2"&gt;
+      &lt;img src="/assets/img/image-2.jpg"  alt="demo1_2"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="And this is some very long caption for slide 3. Yes, really long."&gt;
+    &lt;a href="#slide3"&gt;
+      &lt;img src="/assets/img/image-3.jpg" alt="demo1_3"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li title="And this is some very long caption for slide 4."&gt;
+    &lt;a href="#slide4"&gt;
+      &lt;img src="/assets/img/image-4.jpg" alt="demo1_4"&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="external-captions"&gt;&lt;/div&gt;</pre>
+  </code>
+</section>
+
+<section class="jquery restricted-width">
+  <h3>jQuery</h3>
+  <code>
+    <pre>
+jQuery('#portfolio-demo').slippry({
+  // general elements &amp; wrapper
+  slippryWrapper: '&lt;div class="slippry_box portfolio-slider" /&gt;',
+
+  // options
+  adaptiveHeight: false,
+  start: 'random',
+  loop: false,
+  captionsSrc: 'li',
+  captions: 'custom',
+  captionsEl: '.external-captions',
+
+  // transitions
+  transition: 'fade',
+  easing: 'linear',
+  continuous: false,
+
+  //slideshow
+  auto: false,
+});</pre>
+  </code>
+</section>
+
+<section class="css restricted-width">
+  <h3>CSS</h3>
+  <code>
+    <pre>
+/* Portfolio */
+.portfolio .sy-controls {
+  display: block;
+}
+.portfolio .sy-pager {
+  margin: 1.5em 0;
+}
+.portfolio .external-captions {
+  background-color: #fff;
+  padding: 1em;
+}</pre>
+  </code>
+</section>
+
+<%= partial "../example-tiles" %>
