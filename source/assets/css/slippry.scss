@@ -165,13 +165,13 @@ $mobile-break: 600px;
   @media only screen and (min-width: $mobile-break) {
     display: none;
   }  
-  @media only screen and (max-width: $mobile-break) {
-    $controls_size: $controls_size / 2;
-  } 
   li {
     position: absolute;
     width: 10%;
     min-width: $controls_size * 1.5;
+    @media only screen and (max-width: $mobile-break) {
+      min-width: $controls_size / 2 * 1.5;
+    }  
     height: 100%;
     z-index: 33;
     &.sy-prev {
@@ -219,10 +219,18 @@ $mobile-break: 600px;
         background-color: #fff; 
         width: $controls_size;
         height: $controls_size;
+        @media only screen and (max-width: $mobile-break) {          
+          width: $controls_size / 2;
+          height: $controls_size / 2;
+        }  
         left: 50%;
         top: 50%;
         margin-top: -$controls_size / 2;
         margin-left: -$controls_size / 2;
+        @media only screen and (max-width: $mobile-break) {
+          margin-top: -$controls_size / 4;
+          margin-left: -$controls_size / 4;
+        }  
         @include border-radius(50%);
       }
     }
@@ -273,13 +281,16 @@ $mobile-break: 600px;
   list-style: none;
   text-align: center;
   @media only screen and (max-width: $mobile-break) {
-    $pager_size: $pager_size / 1.4;
     margin-top: 0.6em;
   }
   li {
-    display: inline-block; 
+    display: inline-block;
     width: $pager_size;
     height: $pager_size;
+    @media only screen and (max-width: $mobile-break) {
+      width: $pager_size / 1.4;
+      height: $pager_size / 1.4;
+    }
     margin: 0 1em 0 0;
     @include border-radius(50%);
     &.sy-active {
