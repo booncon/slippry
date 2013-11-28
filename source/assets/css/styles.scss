@@ -26,6 +26,8 @@ $title-fonts: source-sans-pro, Verdana, sans-serif;
 $serif: Georgia, Times, serif;
 $base-font-size: 16px;
 
+$mobile: 600px;
+
 /* 2. Resets */
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -182,6 +184,9 @@ a.button-link {
   letter-spacing: 0.1em;
   vertical-align: text-bottom;
   &.download {
+    @media only screen and (max-width: $mobile) {
+      display: none;
+    }  
     position: relative;
     background: none;
     color: $bc-rk-blue;
@@ -211,6 +216,9 @@ a.button-link {
 
 section {
   margin: 0 0 1em;
+  @media only screen and (max-width: $mobile) {
+    margin-bottom: 0;
+  }  
 }
 
 a {
@@ -243,15 +251,13 @@ a {
     float: right;
     margin: 1.5em 0;
     text-align: right;
-    @media only screen and (min-width: 381px) {
-      list-style: none;
-      float: right;
-      margin: 3em 0;
-      text-align: right;
-      li {
-        display: inline-block;
-        margin-left: 0.25em;
-      }
+    list-style: none;
+    float: right;
+    margin: 3.2em 0;
+    text-align: right;
+    li {
+      display: inline-block;
+      margin-left: 0.25em;
     }
     @media only screen and (min-width: 601px) {
       float: right;
@@ -260,9 +266,9 @@ a {
       li {
         display: inline-block;
       }
-      padding-right: 149px;
+      padding-right: 126px;
     }
-    @media only screen and (min-width: 1480px) {
+    @media only screen and (min-width: 1280px) {
       padding-right: 0;
     }
   }
@@ -294,7 +300,7 @@ h2.slider-title {
 .third {
   display: inline-block;
   width: 100%;
-  @media only screen and (min-width: 680px) {
+  @media only screen and (min-width: $mobile) {
     width: 33%;
     &:nth-child(1) { padding-right: 1em; }
     &:nth-child(2) { padding: 0 0.5em; }
@@ -308,6 +314,10 @@ a.github-download {
   margin: 0.25em auto;
   display: block;
   width: 12em;
+  @media only screen and (max-width: $mobile) {
+    width: 100%;
+    font-size: 1.6em;
+  }  
 }
 
 .big-number {
@@ -345,6 +355,9 @@ code {
   color: $bc-grey;
   whitespace: pre;
   overflow-x: auto;
+  @media only screen and (max-width: $mobile) {
+    font-size: 0.8em;
+  }  
   &.inline {
     background-color: transparent;
     display: inline;
@@ -383,6 +396,17 @@ code {
     .rockets-logo, .pixels-logo {
       height: 3.6em;
     }
+    @media only screen and (max-width: $mobile) {
+      .made-with {
+        font-size: 0.68em;
+      }  
+      .rockets-logo, .pixels-logo {
+        height: 2.2em;
+      }  
+      .right {
+        float: none;
+      }
+    }  
   }  
 }
 
@@ -491,8 +515,7 @@ section.settings {
       &:hover {
         opacity: 1;
       }
-    }
-    
+    }    
     @media only screen and (min-width: 411px) {
       width: 49%;
       &:nth-child(2n+1) {
@@ -644,6 +667,7 @@ section.settings {
     }    
     .sy-controls {
       @media only screen and (max-width: 500px) {
+        display: block;
         li {
           min-width: 2.4em;
           a:after {
@@ -751,5 +775,37 @@ section.settings {
     }
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* Thumbnails */
+.thumb-box {
+  padding: 1.4em 0 1em;
+  margin-left: -1%;
+  width: 102%;
+  .thumbs {
+    @include clearfix;
+    li {
+      float: left;
+      width: 25%;
+      text-align: center;
+      padding: 0 1%;
+      img {
+        width: 100%;
+        opacity: .8;
+        @include transition(opacity .32s);
+        border-bottom: 4px solid transparent;
+        &.active {
+          border-color: $bc-rk-blue;
+          opacity: 1;
+        }
+      }
+      &:hover {
+        img {
+          opacity: 1;
+          @include transition(opacity .2s);
+        }
+      }
+    }
   }
 }

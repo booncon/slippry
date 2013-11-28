@@ -19,6 +19,7 @@ $color_gray: #ccc;
 $controls_size: 2.8em;
 $pager_size: 1.2em;
 $trans_ease: ease;
+$mobile-break: 600px;
 
 /* -------------------------- MIXINS ---------------------------------- */
 
@@ -155,13 +156,18 @@ $trans_ease: ease;
 }
 
 .sy-controls {
-  display: none;
   list-style: none;
   height: 100%;
   width: 100%;
   position: absolute;
   padding: 0;
   margin: 0;
+  @media only screen and (min-width: $mobile-break) {
+    display: none;
+  }  
+  @media only screen and (max-width: $mobile-break) {
+    $controls_size: $controls_size / 2;
+  } 
   li {
     position: absolute;
     width: 10%;
@@ -210,7 +216,7 @@ $trans_ease: ease;
         color: #111;
         font-weight: 800;
         position: absolute;
-        background-color: #fff;
+        background-color: #fff; 
         width: $controls_size;
         height: $controls_size;
         left: 50%;
@@ -228,13 +234,23 @@ $trans_ease: ease;
   bottom: 2em;
   z-index: 12;
   left: 50%;
+  @media only screen and (max-width: $mobile-break) {
+    left: 0;
+    bottom: 0.4em;
+  }
   .sy-caption {
     position: relative;
     left: -50%;
     background-color: rgba(0,0,0,0.54);
     color: #fff;        
     padding: 0.4em 1em;
-    @include border-radius(1.2em);      
+    @include border-radius(1.2em);
+    @media only screen and (max-width: $mobile-break) {
+      font-size: 0.88em;
+      left: 0;
+      padding: 0.2em 0.6em;
+      @include border-radius(0);
+    }
     a {
       &:link, &:visited {
         color: $color_high;
@@ -256,8 +272,12 @@ $trans_ease: ease;
   padding: 0;
   list-style: none;
   text-align: center;
+  @media only screen and (max-width: $mobile-break) {
+    $pager_size: $pager_size / 1.4;
+    margin-top: 0.6em;
+  }
   li {
-    display: inline-block;
+    display: inline-block; 
     width: $pager_size;
     height: $pager_size;
     margin: 0 1em 0 0;

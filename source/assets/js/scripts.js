@@ -1,3 +1,5 @@
+//= require_tree .
+
 jQuery(document).ready(function(){
   jQuery('#slippry-demo').slippry({
     slippryWrapper: '<div class="sy-box front-page" />'
@@ -6,6 +8,10 @@ jQuery(document).ready(function(){
   jQuery('.button-link.download, .button-link.github-download').click(function () {
     ga('send', 'event', 'Download', 'Click', 'Slippry(zip)');
   })
+
+  jQuery('.github-link').click(function () {
+    ga('send', 'event', 'Github', 'Click', 'Ribbon');
+  });
 
   // Generic
   jQuery('#out-of-the-box-demo').slippry();
@@ -109,6 +115,26 @@ jQuery(document).ready(function(){
     auto: false,
   });
   
+  // thumbnails
+  var thumbs = jQuery('#thumbnails').slippry({
+    // general elements & wrapper
+    slippryWrapper: '<div class="sy-box thumbnails" />', // wrapper to wrap everything, including pager
+    // options
+    transition: 'horizontal',
+    pager: false,
+    auto: false,
+    onSlideBefore: function (el, index_old, index_new) {
+      jQuery('.thumbs a img').removeClass('active');
+      jQuery('img', jQuery('.thumbs a')[index_new]).addClass('active');
+    }
+  });
+
+  jQuery('.thumbs a').click(function () {
+    thumbs.goToSlide($(this).data('slide'));
+    return false;
+  });
+
+  // CSS vs jQuery
   jQuery('#css-demo').slippry({
     // general elements & wrapper
     slippryWrapper: '<div class="sy-box css-demo" />', // wrapper to wrap everything, including pager

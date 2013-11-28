@@ -4,25 +4,16 @@
     <meta charset="utf-8">
     <meta name="description" content="Slippry is a responsive content slider by booncon ROCKETS. <%= current_page.data.description || 'Slippry is truly responsive, built on modern web standards and is packed with options, so it can be as simple or complex as you want, so give it a go!' %>" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width">
     <title><%= current_page.data.title || "Slippry - A responsive slider by booncon ROCKETS" %></title>
     <script src="//use.edgefonts.net/cabin:n4,i4,n7,i7;source-sans-pro:n3,i3.js"></script>
     <%= stylesheet_link_tag "styles" %>
-  </head>
-  
+  </head>  
   <body class="<%= page_classes %>">
     <%= partial "header" %>
     <%= yield %>
     <%= partial "footer" %>
-    <%= javascript_include_tag  "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", "//code.jquery.com/ui/1.10.3/jquery-ui.js", "all" %>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-38942381-5', 'slippry.com');
-      ga('send', 'pageview');
-
-    </script>
+    <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", "//code.jquery.com/ui/1.10.3/jquery-ui.js", "scripts" %>
+    <%= partial(:ga, :locals => {:id => "'UA-38942381-5'", :domain => "'slippry.com'"}) %>
   </body>
 </html>
