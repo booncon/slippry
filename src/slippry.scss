@@ -22,7 +22,6 @@ $trans_ease: ease;        // easing for the transitions
 $mobile_break: 600px;     // breakpoint to use some special mobile styling
 
 /* -------------------------- MIXINS ---------------------------------- */
-
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
     @content; 
@@ -48,7 +47,6 @@ $mobile_break: 600px;     // breakpoint to use some special mobile styling
   animation-name: $animation;
   animation-fill-mode: forwards;
 }
-
 /* -------------------------- END MIXINS ---------------------------------- */
 
 /* kenBurns animations, very basic */
@@ -114,9 +112,6 @@ $mobile_break: 600px;     // breakpoint to use some special mobile styling
   position: absolute;
   width: 100%;
   z-index: 2;
-  &.fade.useCSS.transition {
-    @include transition(opacity $trans_ease);
-  }
   &.kenburns {
     width: 140%;
     left: -20%;
@@ -128,10 +123,8 @@ $mobile_break: 600px;     // breakpoint to use some special mobile styling
         &:nth-child(2n) {
           @include animation(right-left);
         }
-      }  
-      &.transition {
-        @include transition(opacity $trans_ease);
       }
+      @include transition-property(opacity);
     }  
   }
   &.sy-active {
