@@ -1,5 +1,5 @@
 /**
- * slippry v1.1 - Simple responsive content slider
+ * slippry v1.1.1 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak
@@ -14,15 +14,14 @@
  
 @import "compass";
 
-$color_high: #e24b70;
-$color_gray: #ccc;
-$controls_size: 2.8em;
-$pager_size: 1.2em;
-$trans_ease: ease;
-$mobile-break: 600px;
+$color_high: #e24b70;     // highlight colour
+$color_gray: #ccc;        // neutral colour
+$controls_size: 2.8em;    // size of the next/ prev buttons
+$pager_size: 1.2em;       // size of the pager bubbles
+$trans_ease: ease;        // easing for the transitions
+$mobile_break: 600px;     // breakpoint to use some special mobile styling
 
 /* -------------------------- MIXINS ---------------------------------- */
-
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
     @content; 
@@ -38,23 +37,19 @@ $mobile-break: 600px;
   } 
 }
 
-@mixin animation ($delay, $animation) {
-  -webkit-animation-delay: $delay;
+@mixin animation ($animation) {
   -webkit-animation-name: $animation;
   -webkit-animation-fill-mode: forwards;
-  -moz-animation-delay: $delay;
   -moz-animation-name: $animation;
   -moz-animation-fill-mode: forwards;
-  -o-animation-delay: $delay;
   -o-animation-name: $animation;
   -o-animation-fill-mode: forwards;
-  animation-delay: $delay;
   animation-name: $animation;
   animation-fill-mode: forwards;
 }
-
 /* -------------------------- END MIXINS ---------------------------------- */
 
+/* kenBurns animations, very basic */
 @include keyframes(left-right) {
   0% {
     @include transform(translateY(-20%) translateX(-10%));
@@ -71,18 +66,18 @@ $mobile-break: 600px;
     @include transform(translateY(-20%) translateX(-10%));
   }
 }
-
+/* added to the original element calling slippry */
 .sy-box {
   &.sy-loading {
     .sy-slides-wrap, .sy-pager {
       visibility: hidden;
     }
-    background: url(../img/sy-loader.gif) 50% 50% no-repeat;
+    background: url(assets/img/sy-loader.gif) 50% 50% no-repeat;
     @include background-size(32px);
     min-height: 40px;
   }
 }
-
+/* element that wraps the slides */
 .sy-slides-wrap {
   position: relative;
   height: 100%;
@@ -93,14 +88,14 @@ $mobile-break: 600px;
     }
   }
 }
-
+/* element that crops the visible area to the slides */
 .sy-slides-crop {
   height: 100%;
   width: 100%;
   position: absolute;
   overflow: hidden;
 }
-
+/* list containing the slides */
 .sy-list {
   &.horizontal {
     @include transition(left $trans_ease);
@@ -110,31 +105,26 @@ $mobile-break: 600px;
   list-style: none;
   margin: 0;
   padding: 0;
-  position: absolute;  
+  position: absolute;
 }
-
+/* single slide */
 .sy-slide {
-  position: absolute;       
+  position: absolute;
   width: 100%;
   z-index: 2;
-  &.fade.useCSS.transition {
-    @include transition(opacity $trans_ease);            
-  }
   &.kenburns {
     width: 140%;
     left: -20%;
     &.useCSS {
       &.sy-ken {
         &:nth-child(1n) {
-          @include animation(0, left-right);
+          @include animation(left-right);
         }
         &:nth-child(2n) {
-          @include animation(0, right-left);
+          @include animation(right-left);
         }
-      }  
-      &.transition {
-        @include transition(opacity $trans_ease);
       }
+      @include transition-property(opacity);
     }  
   }
   &.sy-active {
@@ -154,24 +144,19 @@ $mobile-break: 600px;
     }
   }
 }
-
+/* next/ prev buttons, with arrows and clickable area a lot larger than the visible buttons */
 .sy-controls {
+  display: none;
   list-style: none;
   height: 100%;
   width: 100%;
   position: absolute;
   padding: 0;
   margin: 0;
-  @media only screen and (min-width: $mobile-break) {
-    display: none;
-  }  
   li {
     position: absolute;
     width: 10%;
     min-width: $controls_size * 1.5;
-    @media only screen and (max-width: $mobile-break) {
-      min-width: $controls_size / 2 * 1.5;
-    }  
     height: 100%;
     z-index: 33;
     &.sy-prev {
@@ -207,7 +192,7 @@ $mobile-break: 600px;
       }
       &:after {
         content: "";
-        background-image: url(../img/arrows.svg);
+        background-image: url(assets/img/arrows.svg);
         background-repeat: no-repeat;
         @include background-size(cover);
         text-align: center;
@@ -216,36 +201,39 @@ $mobile-break: 600px;
         color: #111;
         font-weight: 800;
         position: absolute;
-        background-color: #fff; 
+        background-color: #fff;
         width: $controls_size;
         height: $controls_size;
-        @media only screen and (max-width: $mobile-break) {          
-          width: $controls_size / 2;
-          height: $controls_size / 2;
-        }  
         left: 50%;
         top: 50%;
         margin-top: -$controls_size / 2;
         margin-left: -$controls_size / 2;
-        @media only screen and (max-width: $mobile-break) {
-          margin-top: -$controls_size / 4;
-          margin-left: -$controls_size / 4;
-        }  
         @include border-radius(50%);
       }
     }
   }  
+  @media only screen and (max-device-width : $mobile_break) {
+    display: block;
+    $controls_size: $controls_size / 2;
+    li {
+      min-width: $controls_size * 1.5;
+      a {
+        &:after {
+          width: $controls_size;
+          height: $controls_size;
+          margin-top: -$controls_size / 2;
+          margin-left: -$controls_size / 2;
+        }
+      }
+    }
+  }
 }
-
+/* captions, styled fo the overlay variant */
 .sy-caption-wrap {
   position: absolute;
   bottom: 2em;
   z-index: 12;
   left: 50%;
-  @media only screen and (max-width: $mobile-break) {
-    left: 0;
-    bottom: 0.4em;
-  }
   .sy-caption {
     position: relative;
     left: -50%;
@@ -253,12 +241,6 @@ $mobile-break: 600px;
     color: #fff;        
     padding: 0.4em 1em;
     @include border-radius(1.2em);
-    @media only screen and (max-width: $mobile-break) {
-      font-size: 0.88em;
-      left: 0;
-      padding: 0.2em 0.6em;
-      @include border-radius(0);
-    }
     a {
       &:link, &:visited {
         color: $color_high;
@@ -269,9 +251,19 @@ $mobile-break: 600px;
         text-decoration: underline;
       }
     }
+  }
+  @media only screen and (max-device-width : $mobile_break), screen and (max-width : $mobile_break) {
+    left: 0;
+    bottom: 0.4em;
+    .sy-caption {
+      left: 0;
+      padding: 0.2em 0.4em;
+      font-size: 0.92em;
+      @include border-radius(0);
+    }  
   }  
 }
-
+/* pager bubbles */
 .sy-pager {
   @include clearfix;
   display: block;
@@ -280,17 +272,10 @@ $mobile-break: 600px;
   padding: 0;
   list-style: none;
   text-align: center;
-  @media only screen and (max-width: $mobile-break) {
-    margin-top: 0.6em;
-  }
   li {
     display: inline-block;
     width: $pager_size;
     height: $pager_size;
-    @media only screen and (max-width: $mobile-break) {
-      width: $pager_size / 1.4;
-      height: $pager_size / 1.4;
-    }
     margin: 0 1em 0 0;
     @include border-radius(50%);
     &.sy-active {
@@ -313,9 +298,9 @@ $mobile-break: 600px;
       @include background-size(2em);
       @include border-radius(50%);
     }
-  }    
+  }
 }
-
+/* element to "keep/ fill" the space of the content, gets intrinsic height via js */
 .sy-filler {
   width: 100%;
   &.ready {
