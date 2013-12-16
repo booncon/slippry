@@ -1,7 +1,7 @@
 # Slippry
 
 Responsive slider plugin for jQuery.
-Intrinsic trick to enable respinsive resizing without js!
+Intrinsic trick to enable responsive resizing without js!
 
 ## Responsive
 ### Buzzword? Yes. Important? Very.
