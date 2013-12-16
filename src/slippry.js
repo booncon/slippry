@@ -1,5 +1,5 @@
 /**
- * slippry v1.1 - Simple responsive content slider
+ * slippry v1.1.1 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -290,7 +290,10 @@
       if ((slip.vars.timer === undefined) && (slip.vars.delay === undefined)) {
         slip.vars.delay = window.setTimeout(function () {
           slip.vars.autodelay = false;
-          slip.vars.timer = window.setInterval(function () {el.goToSlide(slip.settings.autoDirection); }, slip.settings.pause);
+          slip.vars.timer = window.setInterval(function () {
+            slip.vars.trigger = 'auto';
+            el.goToSlide(slip.settings.autoDirection);
+          }, slip.settings.pause);
         }, slip.vars.autodelay ? slip.settings.autoHoverDelay : slip.settings.autoDelay);
       }
       if (slip.settings.autoHover) {
@@ -404,7 +407,7 @@
             transitionDone();
           } else {
             if (slip.settings.continuous) {
-              if (slip.vars.jump && (slip.vars.trigger !== 'pager')) {
+              if (slip.vars.jump && ((slip.vars.trigger === 'controls') || (slip.vars.trigger === 'auto'))) {
                 jump = true;
                 old_pos = pos;
                 if (slip.vars.first) {

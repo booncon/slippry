@@ -1,5 +1,5 @@
 /**
- * slippry v1.1 - Simple responsive content slider
+ * slippry v1.1.1 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak
@@ -76,7 +76,7 @@ $trans_ease: ease;
     .sy-slides-wrap, .sy-pager {
       visibility: hidden;
     }
-    background: url(sy-loader.gif) 50% 50% no-repeat;
+    background: url(assets/sy-loader.gif) 50% 50% no-repeat;
     @include background-size(32px);
     min-height: 40px;
   }
@@ -201,7 +201,7 @@ $trans_ease: ease;
       }
       &:after {
         content: "";
-        background-image: url(arrows.svg);
+        background-image: url(assets/arrows.svg);
         background-repeat: no-repeat;
         @include background-size(cover);
         text-align: center;

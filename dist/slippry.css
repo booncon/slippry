@@ -1,5 +1,5 @@
 /**
- * slippry v1.1 - Simple responsive content slider
+ * slippry v1.1.1 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak
@@ -175,7 +175,7 @@
 
 /* line 75, ../src/slippry.scss */
 .sy-box.sy-loading {
-  background: url(sy-loader.gif) 50% 50% no-repeat;
+  background: url(assets/sy-loader.gif) 50% 50% no-repeat;
   -webkit-background-size: 32px;
   -moz-background-size: 32px;
   -o-background-size: 32px;
@@ -354,7 +354,7 @@
 /* line 202, ../src/slippry.scss */
 .sy-controls li a:after {
   content: "";
-  background-image: url(arrows.svg);
+  background-image: url(assets/arrows.svg);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
