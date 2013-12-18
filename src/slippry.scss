@@ -1,5 +1,5 @@
 /**
- * slippry v1.1.1 - Simple responsive content slider
+ * slippry v1.2 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak
@@ -99,6 +99,9 @@ $mobile_break: 600px;     // breakpoint to use some special mobile styling
 .sy-list {
   &.horizontal {
     @include transition(left $trans_ease);
+  }
+  &.vertical {
+    @include transition(top $trans_ease);
   }
   width: 100%;
   height: 100%;

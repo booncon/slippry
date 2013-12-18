@@ -1,5 +1,5 @@
 /**
- * slippry v1.1.1 - Simple responsive content slider
+ * slippry v1.2 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -35,6 +35,7 @@
     captionsEl: '.sy-caption', // $ selector for captions wrapper
     initSingle: true, // initialise even if there is only one slide
     responsive: true,
+    preload: 'visible', // visible, all | resources to wait for until showing slider
 
     // pager
     pager: true,
@@ -50,7 +51,7 @@
     hideOnEnd: true,
 
     // transitions
-    transition: 'fade', // fade, horizontal, kenburns, false
+    transition: 'fade', // fade, horizontal, vertical, kenburns, false
     kenZoom: 120, // max zoom for kenburns (in %)
     slideMargin: 0, // spacing between slides (in %)
     transClass: 'transition', // [Class applied to [element] while a transition is taking place.]
@@ -349,7 +350,7 @@
     };
 
     doTransition = function () {
-      var pos, jump, old_left, old_pos, kenTime;
+      var pos, jump, old_left, old_pos, kenTime, ref, cssProp;
       slip.settings.onSlideBefore.call(undefined, slip.vars.active, slip.vars.old.index(), slip.vars.active.index());
       if (slip.settings.transition !== false) {
         slip.vars.moving = true;
@@ -400,31 +401,35 @@
             }
           }
           updateSlide();
-        } else if (slip.settings.transition === 'horizontal') {
+        } else if ((slip.settings.transition === 'horizontal') || (slip.settings.transition === 'vertical')) {
+          ref = (slip.settings.transition === 'horizontal') ? 'left' : 'top';
           pos = '-' + slip.vars.active.index() * (100 + slip.settings.slideMargin) + '%';
           if (slip.vars.fresh) {
-            el.css('left', pos);
+            el.css(ref, pos);
             transitionDone();
-          } else {
+          } else {            
+            cssProp = {};
             if (slip.settings.continuous) {
               if (slip.vars.jump && ((slip.vars.trigger === 'controls') || (slip.vars.trigger === 'auto'))) {
                 jump = true;
                 old_pos = pos;
                 if (slip.vars.first) {
                   old_left = 0;
-                  slip.vars.active.css('left', slip.vars.count * (100 + slip.settings.slideMargin) + '%');
+                  slip.vars.active.css(ref, slip.vars.count * (100 + slip.settings.slideMargin) + '%');
                   pos = '-' + slip.vars.count * (100 + slip.settings.slideMargin) + '%';
                 } else {
                   old_left = (slip.vars.count - 1) * (100 + slip.settings.slideMargin) + '%';
-                  slip.vars.active.css('left', -(100 + slip.settings.slideMargin) + '%');
+                  slip.vars.active.css(ref, -(100 + slip.settings.slideMargin) + '%');
                   pos = (100 + slip.settings.slideMargin) + '%';
                 }
               }
             }
             slip.vars.active.addClass(slip.settings.transClass);
             if (slip.settings.useCSS) {
+              cssProp[ref] = pos;
+              cssProp['transitionDuration'] = slip.settings.speed + 'ms';
               el.addClass(slip.settings.transition);
-              el.css({left: pos, transitionDuration: slip.settings.speed + 'ms'});
+              el.css(cssProp);
               $(window).off('focus').on('focus', function () { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
                 if (slip.vars.moving) {
                   el.trigger(slip.vars.transition);
@@ -433,19 +438,20 @@
               el.one(slip.vars.transition, function () {
                 el.removeClass(slip.settings.transition);
                 if (jump) {
-                  slip.vars.active.css('left', old_left);
-                  el.css({left: old_pos, transitionDuration: '0ms'});
+                  slip.vars.active.css(ref, old_left);
+                  cssProp[ref] = old_pos;
+                  cssProp['transitionDuration'] = '0ms';
+                  el.css(cssProp);
                 }
                 transitionDone();
                 return this;
               });
             } else {
-              el.stop().animate({
-                left: pos
-              }, slip.settings.speed, slip.settings.easing, function () {
+              cssProp[ref] = pos;
+              el.stop().animate(cssProp, slip.settings.speed, slip.settings.easing, function () {
                 if (jump) {
-                  slip.vars.active.css('left', old_left);
-                  el.css('left', old_pos);
+                  slip.vars.active.css(ref, old_left);
+                  el.css(ref, old_pos);
                 }
                 transitionDone();
                 return this;
@@ -561,8 +567,9 @@
 
     // wait for images, iframes to be loaded
     preload = function (slides) {
-      var count, loop, elements;
-      elements = $('img, iframe', slides);
+      var count, loop, elements, container;
+      container = (slip.settings.preload === 'all') ? slides : slip.vars.active;
+      elements = $('img, iframe', container);
       count = elements.length;
       if (count === 0) {
         start();
@@ -571,8 +578,8 @@
       loop = 0;
       elements.each(function () {
         $(this).one('load error', function () {
-          if (++loop === count) {
-            start();
+          if (++loop === count) {            
+            start();            
           }
         }).each(function () {
           if (this.complete) {
@@ -652,6 +659,8 @@
         }
         if (slip.settings.transition === 'horizontal') {
           $(this).css('left', $(this).index() * (100 + slip.settings.slideMargin) + '%');
+        } else if (slip.settings.transition === 'vertical') {
+          $(this).css('top', $(this).index() * (100 + slip.settings.slideMargin) + '%');
         }
       });
       if ((slip.vars.count > 1) || (slip.settings.initSingle)) {

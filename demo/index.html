@@ -27,11 +27,12 @@
 		<script>
 			$(function() {
 				var demo1 = $("#demo1").slippry({
-					transition: 'kenburns',
+					transition: 'fade',
 					useCSS: true,
 					speed: 1000,
 					pause: 3000,
-					auto: true
+					auto: true,
+					preload: 'visible'
 				});
 
 				$('.stop').click(function () {
