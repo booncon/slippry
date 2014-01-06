@@ -38,6 +38,8 @@
 # Reload the browser automatically whenever files change
 activate :livereload
 
+activate :syntax
+
 # Methods defined in the helpers block are available in templates
 helpers do
   def nav_link(link_text, url, options = {})  

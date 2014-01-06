@@ -1,5 +1,11 @@
 //= require_tree .
 
+function smoothScroll(el) {
+  jQuery('body,html').animate({
+    scrollTop: $($(el).attr('href')).offset().top
+  }, 600);
+}
+
 jQuery(document).ready(function(){
   jQuery('#slippry-demo').slippry({
     slippryWrapper: '<div class="sy-box front-page" />'
@@ -17,10 +23,11 @@ jQuery(document).ready(function(){
   jQuery('#out-of-the-box-demo').slippry();
 
   jQuery('#settings-jump a:not(#select-setting)').click(function () {
-    jQuery('body').animate({
-      scrollTop: $($(this).attr('href')).offset().top
-    }, 600);
-    return false;
+    smoothScroll(this);
+  });
+
+  jQuery('#front-link').click(function () {
+    smoothScroll(this);
   });
   
   // Pictures Slider
@@ -42,7 +49,7 @@ jQuery(document).ready(function(){
     // transitions
     transition: 'kenburns', // fade, horizontal, kenburns, false
     kenZoom: 140,
-    speed: 2000, // time the transition takes (ms)
+    speed: 2000 // time the transition takes (ms)
   });
 
   // Portfolio
@@ -63,8 +70,8 @@ jQuery(document).ready(function(){
     easing: 'linear', // easing to use in the animation [(see... [jquery www])]
     continuous: false,
 
-    //slideshow
-    auto: false,
+    // slideshow
+    auto: false
   });
 
   // News
@@ -86,7 +93,7 @@ jQuery(document).ready(function(){
     pause: 8000,
 
     // slideshow
-    autoDirection: 'prev',
+    autoDirection: 'prev'
   });
 
   // Shop
@@ -111,8 +118,8 @@ jQuery(document).ready(function(){
     useCSS: true,
     transition: 'horizontal',
 
-    //slideshow
-    auto: false,
+    // slideshow
+    auto: false
   });
   
   // thumbnails
@@ -142,7 +149,7 @@ jQuery(document).ready(function(){
     adaptiveHeight: true, // height of the sliders adapts to current slide
     useCSS: true, // true, false -> fallback to js if no browser support
     autoHover: false,
-    transition: 'horizontal',
+    transition: 'horizontal'
   });
 
   jQuery('#jquery-demo').slippry({
@@ -152,7 +159,7 @@ jQuery(document).ready(function(){
     adaptiveHeight: false, // height of the sliders adapts to current slide
     useCSS: false, // true, false -> fallback to js if no browser support
     autoHover: false,
-    transition: 'horizontal',
+    transition: 'horizontal'
   });
 
   jQuery('#select-setting').click( function() {

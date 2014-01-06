@@ -15,65 +15,53 @@ description: This example displays a portfolio with captions set in a container 
 
 <section class="markup restricted-width">
   <h3>HTML Markup</h3>
-  <code>
-    <pre>
-&lt;ul id="portfolio-demo"&gt;
-  &lt;li title="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
-    &lt;a href="#slide1"&gt;
-      &lt;img src="/assets/img/image-1.jpg" alt="demo1_1"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li title="This is caption 2"&gt;
-    &lt;a href="#slide2"&gt;
-      &lt;img src="/assets/img/image-2.jpg"  alt="demo1_2"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li title="And this is some very long caption for slide 3. Yes, really long."&gt;
-    &lt;a href="#slide3"&gt;
-      &lt;img src="/assets/img/image-3.jpg" alt="demo1_3"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li title="And this is some very long caption for slide 4."&gt;
-    &lt;a href="#slide4"&gt;
-      &lt;img src="/assets/img/image-4.jpg" alt="demo1_4"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="external-captions"&gt;&lt;/div&gt;</pre>
-  </code>
+<% code("html") do %>
+<ul id="portfolio-demo">
+    <li title="This is caption 1 <a href='#link'>Even with links!</a>">
+      <a href="#slide1"><img src="/assets/img/slippry-portf-001.jpg" alt="demo1_1"></a>
+    </li>
+    <li title="This is caption 2">
+      <a href="#slide2"><img src="/assets/img/slippry-portf-002.jpg"  alt="demo1_2"></a>
+    </li>
+    <li title="And this is some very long caption for slide 3. Yes, really long.">
+      <a href="#slide3"><img src="/assets/img/slippry-portf-003.jpg" alt="demo1_3"></a>
+    </li>
+    <li title="And this is some very long caption for slide 4.">
+      <a href="#slide4"><img src="/assets/img/slippry-portf-004.jpg" alt="demo1_4"></a>
+    </li>
+  </ul>
+<% end %>
 </section>
 
 <section class="jquery restricted-width">
   <h3>jQuery</h3>
-  <code>
-    <pre>
+<% code("js") do %>
 jQuery('#portfolio-demo').slippry({
-  // general elements &amp; wrapper
-  slippryWrapper: '&lt;div class="slippry_box portfolio-slider" /&gt;',
+  // general elements & wrapper
+  slippryWrapper: '<div class="sy-box portfolio-slider" />', // wrapper to wrap everything, including pager
 
   // options
-  adaptiveHeight: false,
-  start: 'random',
-  loop: false,
+  adaptiveHeight: false, // height of the sliders adapts to current slide
+  start: 'random', // num (starting from 1), random
+  loop: false, // first -> last & last -> first arrows
   captionsSrc: 'li',
-  captions: 'custom',
+  captions: 'custom', // Position: overlay, below, custom, false
   captionsEl: '.external-captions',
 
   // transitions
-  transition: 'fade',
-  easing: 'linear',
+  transition: 'fade', // fade, horizontal, kenburns, false
+  easing: 'linear', // easing to use in the animation [(see... [jquery www])]
   continuous: false,
 
-  //slideshow
-  auto: false,
-});</pre>
-  </code>
+  // slideshow
+  auto: false
+});
+<% end %>
 </section>
 
 <section class="css restricted-width">
   <h3>CSS</h3>
-  <code>
-    <pre>
+<% code("css") do %>
 /* Portfolio */
 .portfolio .sy-controls {
   display: block;
@@ -84,8 +72,8 @@ jQuery('#portfolio-demo').slippry({
 .portfolio .external-captions {
   background-color: #fff;
   padding: 1em;
-}</pre>
-  </code>
+}
+<% end %>
 </section>
 
 <%= partial "../example-tiles" %>

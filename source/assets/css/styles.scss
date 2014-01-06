@@ -10,7 +10,7 @@
  */
 
 @import "slippry";
-
+@import "syntax";
 
 /* 1. Variables */
 $bc-rk-blue: #31ACE2;
@@ -344,29 +344,10 @@ a.github-download {
 }
 
 code {
-  // font-size: 12px;
-  //border: 1px solid grey;
   font-family: monospace;
-  padding: 0.5em;
-  display: block;
-  //width: 100%;
-  //margin: 0 1em;
+  padding: 0.1em 0.2em;
   background-color: lighten($bc-grey,60%);//$white;
   color: $bc-grey;
-  whitespace: pre;
-  overflow-x: auto;
-  @media only screen and (max-width: $mobile) {
-    font-size: 0.8em;
-  }  
-  &.inline {
-    background-color: transparent;
-    display: inline;
-    border: 0;
-    padding: 0;
-    color: $bc-grey;
-    margin: 0;
-    // font-size: 16px;
-  }
 }
 /* Footer */
 

@@ -22,72 +22,79 @@ title: Examples - CSS vs jQuery transitions
 
 <section class="markup restricted-width">
   <h3>HTML Markup</h3>
-  <code>
-    <pre>
-&lt;h3&gt;CSS&lt;/h3&gt;
-&lt;ul id="css-demo"&gt;
-  &lt;li&gt;
-    &lt;a href="#slide1"&gt;
-      &lt;img src="/assets/img/image-1.jpg" alt="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide2"&gt;
-      &lt;img src="/assets/img/image-2.jpg"  alt="This is caption 2"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide3"&gt;
-      &lt;img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide4"&gt;
-      &lt;img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;jQuery&lt;/h3&gt;
-&lt;ul id="jquery-demo"&gt;
-  &lt;li&gt;
-    &lt;a href="#slide1"&gt;
-      &lt;img src="/assets/img/image-1.jpg" alt="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide2"&gt;
-      &lt;img src="/assets/img/image-2.jpg"  alt="This is caption 2"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide3"&gt;
-      &lt;img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide4"&gt;
-      &lt;img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</pre>
-  </code>
+<% code("html") do %>
+<h3>CSS</h3>
+<ul id="css-demo">
+  <li>
+    <a href="#slide1">
+      <img src="/assets/img/image-1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>">
+    </a>
+  </li>
+  <li>
+    <a href="#slide2">
+      <img src="/assets/img/image-2.jpg"  alt="This is caption 2">
+    </a>
+  </li>
+  <li>
+    <a href="#slide3">
+      <img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long.">
+    </a>
+  </li>
+  <li>
+    <a href="#slide4">
+      <img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4.">
+    </a>
+  </li>
+</ul>
+<h3>jQuery</h3>
+<ul id="jquery-demo">
+  <li>
+    <a href="#slide1">
+      <img src="/assets/img/image-1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>">
+    </a>
+  </li>
+  <li>
+    <a href="#slide2">
+      <img src="/assets/img/image-2.jpg"  alt="This is caption 2">
+    </a>
+  </li>
+  <li>
+    <a href="#slide3">
+      <img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long.">
+    </a>
+  </li>
+  <li>
+    <a href="#slide4">
+      <img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4.">
+    </a>
+  </li>
+</ul>
+<% end %>
 </section>
 
 <section class="jquery restricted-width">
   <h3>jQuery</h3>
-  <code>
-    <pre>
+<% code("js") do %>
 jQuery('#css-demo').slippry({
+  // general elements & wrapper
+  slippryWrapper: '<div class="sy-box css-demo" />', // wrapper to wrap everything, including pager
   // options
-  transition: 'horizontal',
+  adaptiveHeight: true, // height of the sliders adapts to current slide
+  useCSS: true, // true, false -> fallback to js if no browser support
+  autoHover: false,
+  transition: 'horizontal'
 });
 
 jQuery('#jquery-demo').slippry({
+  // general elements & wrapper
+  slippryWrapper: '<div class="sy-box jquery-demo" />', // wrapper to wrap everything, including pager
   // options
-  useCSS: false,
-  transition: 'horizontal',
-});</pre>
-  </code>
+  adaptiveHeight: false, // height of the sliders adapts to current slide
+  useCSS: false, // true, false -> fallback to js if no browser support
+  autoHover: false,
+  transition: 'horizontal'
+});
+<% end %>
 </section>
-<section class="restricted-width example-tiles">
-<a class="tile" href="/examples/out-of-the-box">Out-of-the-box</a><a class="tile" href="/examples/pictures">Pictures</a><a class="tile" href="/examples/portfolio">Portfolio</a><a class="tile" href="/examples/news">News</a><a class="tile" href="/examples/shop">Shop</a><a class="tile active" href="/examples/css-vs-jquery">CSS vs jQuery</a></section>
+
+<%= partial "../example-tiles" %>

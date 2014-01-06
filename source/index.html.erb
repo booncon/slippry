@@ -3,9 +3,9 @@ title:
 ---
 <section id="slippry-slider" class="full-width">
 <ul id="slippry-demo">
-  <li><a href="#slide1"><img src="assets/img/slippry-01.jpg" alt="Welcome to Slippry!"></a></li>
-  <li><a href="#slide2"><img src="assets/img/slippry-02.jpg"  alt="This is an awesome jQuery slider plugin."></a></li>
-  <li><a href="#slide3"><img src="assets/img/slippry-03.jpg" alt="Check it out, you are going to <span class='red'>♥</span> it :)"></a></li>
+  <li><a href="#get-started" id="front-link"><img src="assets/img/slippry-01.jpg" alt="Welcome to Slippry!"></a></li>
+  <li><a href="/examples"><img src="assets/img/slippry-02.jpg"  alt="This is an awesome jQuery slider plugin."></a></li>
+  <li><a href="/settings"><img src="assets/img/slippry-03.jpg" alt="Check it out, you are going to <span class='red'>♥</span> it :)"></a></li>
 </ul>
 </section>
 
@@ -40,7 +40,7 @@ title:
 </section>
 
 <section class="setup restricted-width">
-  <h2>Get Started</h2>
+  <h2 id="get-started">Get Started</h2>
   <span class="big-number">1</span>
   <div class="get-started">
     <a href="<%= partial "dl-link" %>" target="nofollow" class="github-download button-link">Download (.zip)</a>
@@ -50,53 +50,40 @@ title:
   <div class="get-started">
     <h3>Link these files</h3>
     <p>Use the following code in your HTML document's <code class="inline">&lt;head&gt;</code> as a starter:</p>
-    <code>
-      &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;<br/>
-      &lt;script src="/js/slippry.min.js"&gt;&lt;/script&gt;<br/>
-      &lt;link rel="stylesheet" href="/css/slippry.css" /&gt;<br/>
-    </code>
+<% code("html") do %>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="/js/slippry.min.js"></script>
+<link rel="stylesheet" href="/css/slippry.css" />
+<% end %>
   </div>
   
   <span class="big-number">3</span>
   <div class="get-started">
     <h3>Write some HTML:</h3>
     <p></p>
-    <code>
-      <pre>
-&lt;ul id="slippry-demo"&gt;
-  &lt;li&gt;
-    &lt;a href="#slide1"&gt;
-      &lt;img src="/assets/img/image-1.jpg" alt="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide2"&gt;
-      &lt;img src="/assets/img/image-2.jpg"  alt="This is caption 2"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide3"&gt;
-      &lt;img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide4"&gt;
-      &lt;img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</pre>
-    </code>
+<% code("html") do %>
+<ul id="slippry-demo">
+  <li>
+    <a href="#slide1"><img src="assets/img/slippry-01.jpg" alt="Welcome to Slippry!"></a>
+  </li>
+  <li>
+    <a href="#slide2"><img src="assets/img/slippry-02.jpg"  alt="This is an awesome jQuery slider plugin."></a>
+  </li>
+  <li>
+    <a href="#slide3"><img src="assets/img/slippry-03.jpg" alt="Check it out, you are going to <span class='red'>♥</span> it :)"></a>
+  </li>
+</ul>
+<% end %>
   </div>  
   <span class="big-number">4</span> 
   <div class="get-started">
     <h3>Call Slippry slider</h3>
     <p>Make sure it's called within <code class="inline">$(document).ready()</code>!</p>
-    <code>
-      <pre>
+<% code("js") do %>
 jQuery(document).ready(function(){
   jQuery('selector').slippry()
-});</pre>
-    </code>
+});
+<% end %>
     <p><h2>Done!</h2> Give your self a pat on the back, then have a tinker with Slippry's <a href="/settings">settings</a>, have a look at the <a href="/examples">examples</a> or dig into the CSS and style to your heart's content.<p>
   </div>
 </section>

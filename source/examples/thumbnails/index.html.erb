@@ -23,66 +23,38 @@ description: This examples shows Slippry with custom coded thumbnails as a pager
 
 <section class="markup restricted-width">
   <h3>HTML Markup</h3>
-  <code>
-    <pre>
-&lt;ul id="thumbnails"&gt;
-  &lt;li&gt;
-    &lt;a href="#slide1"&gt;
-      &lt;img src="/assets/img/image-1.jpg" alt="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide2"&gt;
-      &lt;img src="/assets/img/image-2.jpg"  alt="This is caption 2"&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide3"&gt;
-      &lt;img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#slide4"&gt;
-      &lt;img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."&gt;
-    &lt;/a&gt;
-  &lt;/li&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="thumb-box"&gt;
-  &lt;ul class="thumbs"&gt;
-    &lt;li&gt;
-      &lt;a href="#slide1" data-slide="1"&gt;
-        &lt;img src="/assets/img/image-1.jpg" alt="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
-      &lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;a href="#slide2" data-slide="2"&gt;
-        &lt;img src="/assets/img/image-2.jpg"  alt="This is caption 2"&gt;
-      &lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;a href="#slide3" data-slide="3"&gt;
-        &lt;img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."&gt;
-      &lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;a href="#slide4" data-slide="4"&gt;
-        &lt;img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."&gt;
-      &lt;/a&gt;
-    &lt;/li&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</pre>
-  </code>
+<% code("html") do %>
+<ul id="thumbnails">
+ <li>
+    <a href="#slide1">
+      <img src="/assets/img/image-1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>">
+    </a>
+  </li>
+  <li>
+    <a href="#slide2">
+      <img src="/assets/img/image-2.jpg"  alt="This is caption 2">
+    </a>
+  </li>
+  <li>
+    <a href="#slide3">
+      <img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long.">
+    </a>
+  </li>
+  <li>
+    <a href="#slide4">
+      <img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4.">
+    </a>
+  </li>
+</ul>  
+<% end %>
 </section>
 
 <section class="jquery restricted-width">
   <h3>jQuery</h3>
-  <code>
-    <pre>
+<% code("js") do %>
 var thumbs = jQuery('#thumbnails').slippry({
-  // general elements &amp; wrapper
-  slippryWrapper: '&lt;div class="slippry_box thumbnails" /&gt;',
+  // general elements & wrapper
+  slippryWrapper: '<div class="slippry_box thumbnails" />',
   // options
   transition: 'horizontal',
   pager: false,
@@ -96,8 +68,8 @@ var thumbs = jQuery('#thumbnails').slippry({
 jQuery('.thumbs a').click(function () {
   thumbs.goToSlide($(this).data('slide'));
   return false;
-});</pre>
-  </code>
+});
+<% end %>
 </section>
 
 <%= partial "../example-tiles" %>

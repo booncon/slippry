@@ -16,37 +16,34 @@ description: This example displays a set of photos, without controls and using t
 
 <section class="markup restricted-width">
   <h3>HTML Markup</h3>
-  <code>
-    <pre>
-&lt;ul id="pictures-demo"&gt;
-  &lt;li title="This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"&gt;
-    &lt;img src="/assets/img/image-1.jpg" alt="demo1_1"&gt;
-  &lt;/li&gt;
-  &lt;li title="This is caption 2"&gt;
-    &lt;img src="/assets/img/image-2.jpg" alt="demo1_2"&gt;
-  &lt;/li&gt;
-  &lt;li title="And this is some very long caption for slide 3. Yes, really long."&gt;
-    &lt;img src="/assets/img/image-3.jpg" alt="demo1_3"&gt;
-  &lt;/li&gt;
-  &lt;li title="And this is some very long caption for slide 4."&gt;
-    &lt;img src="/assets/img/image-4.jpg" alt="demo1_4"&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-  </code>
+<% code("html") do %>
+<ul id="pictures-demo">
+  <li title="This is caption 1 <a href='#link'>Even with links!</a>">
+    <img src="/assets/img/image-1.jpg" alt="demo1_1">
+  </li>
+  <li title="This is caption 2">
+    <img src="/assets/img/image-2.jpg"  alt="demo1_2">
+  </li>
+  <li title="And this is some very long caption for slide 3. Yes, really long.">
+    <img src="/assets/img/image-3.jpg" alt="demo1_3">
+  </li>
+  <li title="And this is some very long caption for slide 4.">
+    <img src="/assets/img/image-4.jpg" alt="demo1_4">
+  </li>
+</ul>
+<% end %>
 </section>
 
 <section class="jquery restricted-width">
   <h3>jQuery</h3>
-  <code>
-    <pre>
+<% code("js") do %>
 jQuery('#pictures-demo').slippry({
-  // general elements &amp; wrapper
-  slippryWrapper: '&lt;div class="slippry_box pictures-slider" /&gt;',
+  // general elements & wrapper
+  slippryWrapper: '<div class="sy-box pictures-slider" />', // wrapper to wrap everything, including pager
 
   // options
-  adaptiveHeight: false,
-  captions: false,
+  adaptiveHeight: false, // height of the sliders adapts to current slide
+  captions: false, // Position: overlay, below, custom, false
 
   // pager
   pager: false,
@@ -56,11 +53,11 @@ jQuery('#pictures-demo').slippry({
   autoHover: false,
 
   // transitions
-  transition: 'kenburns',
+  transition: 'kenburns', // fade, horizontal, kenburns, false
   kenZoom: 140,
-  speed: 2000,
-});</pre>
-  </code>
+  speed: 2000 // time the transition takes (ms)
+});
+<% end %>
 </section>
 
 <%= partial "../example-tiles" %>
