@@ -1,0 +1,44 @@
+--- slippry-1.2/src/slippry.js	2013-12-18 16:35:29.000000000 +0100
++++ js/slippry.js	2014-02-13 10:56:22.570741754 +0100
+@@ -51,8 +51,9 @@
+     hideOnEnd: true,
+ 
+     // transitions
+     transition: 'fade', // fade, horizontal, vertical, kenburns, false
++    kenPan: 120,  // max pan for kenburns (in %)
+     kenZoom: 120, // max zoom for kenburns (in %)
+     slideMargin: 0, // spacing between slides (in %)
+     transClass: 'transition', // [Class applied to [element] while a transition is taking place.]
+     speed: 800, // time the transition takes (ms)
+@@ -162,23 +163,28 @@
+       return newelement;
+     };
+ 
+     doKens = function () {
+-      var kenStart, kenTime, animProp, cssProp;
++      var kenStart, kenZoom, kenTime, animProp, cssProp;
+       animProp = {};
+       cssProp = {};
+-      kenStart = 100 - slip.settings.kenZoom;
+-      cssProp.width = slip.settings.kenZoom + '%';
++      kenStart = 100 - slip.settings.kenPan;
++      kenZoom = slip.settings.kenZoom - 100;
++      cssProp.width = slip.settings.kenPan + '%';
+       if (slip.vars.active.index() % 2 === 0) {
+         cssProp.left = kenStart + '%';
+         cssProp.top = kenStart + '%';
+         animProp.left = '0%';
+         animProp.top = '0%';
++        animProp.width = '+=' + kenZoom + '%';
++        animProp.height = '+=' + kenZoom + '%';
+       } else {
+         cssProp.left = '0%';
+         cssProp.top = '0%';
+         animProp.left = kenStart + '%';
+         animProp.top = kenStart + '%';
++        animProp.width = '+=' + kenZoom + '%';
++        animProp.height = '+=' + kenZoom + '%';
+       }
+       kenTime = slip.settings.pause + slip.settings.speed * 2;
+       slip.vars.active.css(cssProp);
+       slip.vars.active.animate(animProp, {duration: kenTime, easing: slip.settings.easing, queue: false});

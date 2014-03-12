@@ -1,5 +1,7 @@
 /**
- * slippry v1.2 - Simple responsive content slider
+ * @preserve
+ *
+ * slippry v1.2.1 - Simple responsive content slider
  * http://slippry.com
  *
  * Author(s): Lukas Jakob Hafner - @saftsaak 
@@ -157,7 +159,7 @@
         newelement.attr('id', id);
       }
       if (className.length) {
-        newelement.attr('class', className.trim());
+        newelement.attr('class', $.trim(className));
       }
       return newelement;
     };
@@ -407,7 +409,7 @@
           if (slip.vars.fresh) {
             el.css(ref, pos);
             transitionDone();
-          } else {            
+          } else {
             cssProp = {};
             if (slip.settings.continuous) {
               if (slip.vars.jump && ((slip.vars.trigger === 'controls') || (slip.vars.trigger === 'auto'))) {
@@ -427,7 +429,7 @@
             slip.vars.active.addClass(slip.settings.transClass);
             if (slip.settings.useCSS) {
               cssProp[ref] = pos;
-              cssProp['transitionDuration'] = slip.settings.speed + 'ms';
+              cssProp.transitionDuration = slip.settings.speed + 'ms';
               el.addClass(slip.settings.transition);
               el.css(cssProp);
               $(window).off('focus').on('focus', function () { // bugfix for safari 7 which doesn't always trigger ontransitionend when switching tab
@@ -440,7 +442,7 @@
                 if (jump) {
                   slip.vars.active.css(ref, old_left);
                   cssProp[ref] = old_pos;
-                  cssProp['transitionDuration'] = '0ms';
+                  cssProp.transitionDuration = '0ms';
                   el.css(cssProp);
                 }
                 transitionDone();
@@ -578,8 +580,8 @@
       loop = 0;
       elements.each(function () {
         $(this).one('load error', function () {
-          if (++loop === count) {            
-            start();            
+          if (++loop === count) {
+            start();
           }
         }).each(function () {
           if (this.complete) {
