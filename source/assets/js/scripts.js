@@ -1,9 +1,16 @@
 //= require_tree .
 
-function smoothScroll(el) {
-  jQuery('body,html').animate({
-    scrollTop: $($(el).attr('href')).offset().top
-  }, 600);
+function smoothScroll(el) {  
+  // store hash
+  var hash = el.hash;
+  // animate
+  $('html, body').animate({
+    scrollTop: $(el.hash).offset().top - 50,
+  }, 600, function(){
+    // when done, add hash to url
+   // (default click behaviour)
+    window.location.hash = hash;
+  });
 }
 
 jQuery(document).ready(function(){
@@ -22,11 +29,13 @@ jQuery(document).ready(function(){
   // Generic
   jQuery('#out-of-the-box-demo').slippry();
 
-  jQuery('#settings-jump a:not(#select-setting)').click(function () {
+  jQuery('#settings-jump a:not(#select-setting)').click(function (e) {
+    e.preventDefault();
     smoothScroll(this);
   });
 
-  jQuery('#front-link').click(function () {
+  jQuery('#front-link').click(function (e) {
+    e.preventDefault();
     smoothScroll(this);
   });
   
