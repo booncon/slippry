@@ -6,7 +6,6 @@
 .LSOverride
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -17,3 +16,7 @@ Icon
 ### SASS ###
 ### SASS Ignores - "Sassy CSS" http://sass-lang.com/
 *.sass-cache
+
+node_modules
+
+dist/slippry.min.map

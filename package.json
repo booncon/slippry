@@ -1,0 +1,29 @@
+{
+  "name": "slippry",
+  "version": "v1.2.0",
+  "author": "Lukas Jakob Hafner <luki@booncon.com>",
+  "homepage": "http://slippry.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/booncon/slippry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/booncon/slippry/issues"
+  },
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
+  }],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-less": "~0.8.1",
+    "grunt-contrib-sass": "~0.7.3"
+  }
+}
