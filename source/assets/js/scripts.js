@@ -1,5 +1,7 @@
+//= require slippry
 //= require_tree .
 
+// smooth scroll animation to given element
 function smoothScroll(el) {  
   // store hash
   var hash = el.hash;

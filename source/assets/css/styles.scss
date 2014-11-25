@@ -9,6 +9,7 @@
  * Url: rockets.booncon.com
  */
 
+@import "compass";
 @import "slippry";
 @import "syntax";
 
@@ -354,7 +355,7 @@ code {
 #footer {
   background-color: $white;
   padding-top: 2em;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
   color: $bc-grey;
   .footer-content {
     @include clearfix;
@@ -365,29 +366,26 @@ code {
     .right {
       float: right;
     }
-    .made-with {
-      display: inline-block;
-      margin-right: 0.36em;
-      margin-top: 0.36em;
-      font-size: 0.92em;
-    }
     .block-link {
       display: inline-block;
+      text-decoration: none;
+      font-weight: 200;
     }
-    .rockets-logo, .pixels-logo {
-      height: 3.6em;
+    .pixels-logo {
+      height: 1.6em;
+      vertical-align: middle;
     }
-    @media only screen and (max-width: $mobile) {
-      .made-with {
-        font-size: 0.68em;
-      }  
-      .rockets-logo, .pixels-logo {
-        height: 2.2em;
-      }  
-      .right {
+    .twitter-share-button {
+      width: 92px !important;
+    }
+    @media only screen and (max-width: 550px) {
+      .right, .githubs {
         float: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1em;
       }
-    }  
+    }
   }  
 }
 

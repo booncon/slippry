@@ -10,3 +10,5 @@ gem "middleman-livereload", "~> 3.1.0"
 gem "middleman-syntax"
 
 gem "middleman-deploy"
+
+gem 'middleman-sprockets'
