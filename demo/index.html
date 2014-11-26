@@ -12,7 +12,7 @@
 	<body>		
 		<section class="demo_wrapper">
 			<article class="demo_block">
-				<h1>Simple demo with default setups</h1>
+				<h1 id="main-title">Simple demo with default config</h1>
 				<a href="#glob" class='prev'>Prev</a> / <a href="#glob" class='next'>Next</a> 
 		|| <a href="#glob" class='init'>Init</a> | <a href="#glob" class='reset'>Destroy</a> | <a href="#glob" class='reload'>Reload</a>
 		|| <a href="#glob" class='stop'>Stop</a> | <a href="#glob" class='start'>Start</a>
@@ -27,12 +27,13 @@
 		<script>
 			$(function() {
 				var demo1 = $("#demo1").slippry({
-					transition: 'fade',
-					useCSS: true,
-					speed: 1000,
-					pause: 3000,
-					auto: true,
-					preload: 'visible'
+					// transition: 'fade',
+					// useCSS: true,
+					// speed: 1000,
+					// pause: 3000,
+					// auto: true,
+					// preload: 'visible',
+					// autoHover: false
 				});
 
 				$('.stop').click(function () {

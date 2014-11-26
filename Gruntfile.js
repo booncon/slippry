@@ -14,8 +14,9 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         options: {
-          style: 'expanded',
-          compass: true
+          style: 'nested',
+          compass: true,
+          'sourcemap=none': true
         },
         files: {
           'dist/slippry.css': [
@@ -32,13 +33,18 @@ module.exports = function(grunt) {
           ]
         },
         options: {
-          sourceMap: true,
+          sourceMap: false,
           preserveComments: 'some'
         }
       }
     },
     watch: {
       sass: {
+        options: {
+          style: 'nested',
+          compass: true,
+          'sourcemap=none': true
+        },
         files: [
           'src/*.scss'
         ],
