@@ -1,9 +1,9 @@
 {
   "name": "slippry",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "homepage": "http://slippry.com",
   "authors": [
-    "Lukas Jakob Hafner - @saftsaak"
+    "Lukas Jakob Hafner - @saftsaak",
     "Thomas Hurd - @SeenNotHurd"
   ],
   "description": "Responsive content slider for jQuery",
