@@ -15,6 +15,7 @@
 
 /* 1. Variables */
 $bc-rk-blue: #31ACE2;
+$bc-px-pink: #e24b70;
 $bc-grey: #3B454F;
 $white: #fff;
 $black: #202123;
@@ -298,6 +299,16 @@ a {
 h2.slider-title {
   margin-top: 0;
 }
+.half {
+  display: inline-block;
+  width: 100%;
+  @media only screen and (min-width: $mobile) {
+    width: 49.8%;
+    &:nth-child(1) { padding-right: 1em; }
+    &:nth-child(2) { padding-left: 1em; }
+  }
+}
+
 .third {
   display: inline-block;
   width: 100%;
@@ -786,5 +797,29 @@ section.settings {
         }
       }
     }
+  }
+}
+
+.newsletter {
+  border: 2px solid $bc-px-pink;
+  padding: 10px 15px;
+  h3 {
+    margin: 0;
+  }
+}
+
+#mc-embedded-subscribe {
+  float: right;
+}
+
+#mc_embed_signup {
+  form {
+    padding: 8px 0 0 !important;
+  }
+  input.email, #mc-embedded-subscribe {
+    margin-bottom: 0 !important;
+    height: 48px;
+    font-size: 18px;
+    min-width: auto;
   }
 }
