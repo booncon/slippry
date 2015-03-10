@@ -1,12 +1,12 @@
 /**
  *
- * slippry v1.2.7 - Responsive content slider for jQuery
+ * slippry v1.2.8 - Responsive content slider for jQuery
  * http://slippry.com
  *
  * Authors: Lukas Jakob Hafner - @saftsaak
  *          Thomas Hurd - @SeenNotHurd
  *
- * Copyright 2014, booncon oy - http://booncon.com
+ * Copyright 2015, booncon oy - http://booncon.com
  *
  *
  * Released under the MIT license - http://opensource.org/licenses/MIT
@@ -20,7 +20,8 @@ $controls_size: 2.8em !default;    // size of the next/ prev buttons
 $pager_size: 1.2em !default;       // size of the pager bubbles
 $trans_ease: ease !default;        // easing for the transitions
 $mobile_break: 600px !default;     // breakpoint to use some special mobile styling
-
+$spinner_url: '/images/sy-loader.gif' !default;
+$arrows_url: '/images/arrows.svg' !default;
 
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
@@ -72,7 +73,7 @@ $mobile_break: 600px !default;     // breakpoint to use some special mobile styl
     .sy-slides-wrap, .sy-pager {
       visibility: hidden;
     }
-    background: url(/images/sy-loader.gif) 50% 50% no-repeat;
+    background: url($spinner_url) 50% 50% no-repeat;
     @include background-size(32px);
     min-height: 40px;
   }
@@ -195,7 +196,7 @@ $mobile_break: 600px !default;     // breakpoint to use some special mobile styl
       }
       &:after {
         content: "";
-        background-image: url(/images/arrows.svg);
+        background-image: url($arrows_url);
         background-repeat: no-repeat;
         @include background-size(cover);
         text-align: center;

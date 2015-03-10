@@ -1,12 +1,12 @@
 /** @preserve
  *
- * slippry v1.2.7 - Responsive content slider for jQuery
+ * slippry v1.2.8 - Responsive content slider for jQuery
  * http://slippry.com
  *
  * Authors: Lukas Jakob Hafner - @saftsaak
  *          Thomas Hurd - @SeenNotHurd
  *
- * Copyright 2014, booncon oy - http://booncon.com
+ * Copyright 2015, booncon oy - http://booncon.com
  *
  *
  * Released under the MIT license - http://opensource.org/licenses/MIT
