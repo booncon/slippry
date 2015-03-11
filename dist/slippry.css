@@ -1,6 +1,6 @@
 /**
  *
- * slippry v1.2.8 - Responsive content slider for jQuery
+ * slippry v1.2.9 - Responsive content slider for jQuery
  * http://slippry.com
  *
  * Authors: Lukas Jakob Hafner - @saftsaak
@@ -178,6 +178,12 @@
         animation-fill-mode: forwards; }
   .sy-slide.sy-active {
     z-index: 3; }
+  .sy-slide > img {
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    border: 0; }
   .sy-slide > a {
     margin: 0;
     padding: 0;

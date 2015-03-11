@@ -1,6 +1,6 @@
 /**
  *
- * slippry v1.2.8 - Responsive content slider for jQuery
+ * slippry v1.2.9 - Responsive content slider for jQuery
  * http://slippry.com
  *
  * Authors: Lukas Jakob Hafner - @saftsaak
@@ -134,12 +134,19 @@ $arrows_url: '/images/arrows.svg' !default;
   &.sy-active {
     z-index: 3;
   }
-  >a { // styling for link on whole slide
+  > img { // with one image as content -> full size
     margin: 0;
     padding: 0;
     display: block;
     width: 100%;
-    >img { // with one image as content -> full size
+    border: 0;
+  }
+  > a { // styling for link on whole slide
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    > img { // with one image as content -> full size
       margin: 0;
       padding: 0;
       display: block;
