@@ -12,60 +12,58 @@
  * Released under the MIT license - http://opensource.org/licenses/MIT
  */
  
-@import "compass";
+@color_high: #e24b70;     // highlight colour
+@color_gray: #ccc;        // neutral colour
+@controls_size: 2.8em;    // size of the next/ prev buttons
+@pager_size: 1.2em;       // size of the pager bubbles
+@trans_ease: ease;        // easing for the transitions
+@mobile_break: 600px;     // breakpoint to use some special mobile styling
+@spinner_url: "/images/sy-loader.gif";
+@arrows_url: "/images/arrows.svg";
 
-$color_high: #e24b70 !default;     // highlight colour
-$color_gray: #ccc !default;        // neutral colour
-$controls_size: 2.8em !default;    // size of the next/ prev buttons
-$pager_size: 1.2em !default;       // size of the pager bubbles
-$trans_ease: ease !default;        // easing for the transitions
-$mobile_break: 600px !default;     // breakpoint to use some special mobile styling
-$spinner_url: '/images/sy-loader.gif' !default;
-$arrows_url: '/images/arrows.svg' !default;
+// @mixin keyframes(@name) {
+//   @-webkit-keyframes #{@name} {
+//     @content; 
+//   }
+//   @-moz-keyframes #{@name} {
+//     @content;
+//   }
+//   @-ms-keyframes #{@name} {
+//     @content;
+//   }
+//   @keyframes #{@name} {
+//     @content;
+//   } 
+// }
 
-@mixin keyframes($name) {
-  @-webkit-keyframes #{$name} {
-    @content; 
-  }
-  @-moz-keyframes #{$name} {
-    @content;
-  }
-  @-ms-keyframes #{$name} {
-    @content;
-  }
-  @keyframes #{$name} {
-    @content;
-  } 
-}
+// @mixin animation (@animation) {
+//   -webkit-animation-name: @animation;
+//   -webkit-animation-fill-mode: forwards;
+//   -moz-animation-name: @animation;
+//   -moz-animation-fill-mode: forwards;
+//   -o-animation-name: @animation;
+//   -o-animation-fill-mode: forwards;
+//   animation-name: @animation;
+//   animation-fill-mode: forwards;
+// }
 
-@mixin animation ($animation) {
-  -webkit-animation-name: $animation;
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-name: $animation;
-  -moz-animation-fill-mode: forwards;
-  -o-animation-name: $animation;
-  -o-animation-fill-mode: forwards;
-  animation-name: $animation;
-  animation-fill-mode: forwards;
-}
-
-/* kenBurns animations, very basic */
-@include keyframes(left-right) {
-  0% {
-    @include transform(translateY(-20%) translateX(-10%));
-  }
-  100% {
-    @include transform(translateY(0%) translateX(10%));
-  }
-}
-@include keyframes(right-left) {
-  0% {
-    @include transform(translateY(0%) translateX(10%));
-  }
-  100% {
-    @include transform(translateY(-20%) translateX(-10%));
-  }
-}
+// /* kenBurns animations, very basic */
+// @include keyframes(left-right) {
+//   0% {
+//     @include transform(translateY(-20%) translateX(-10%));
+//   }
+//   100% {
+//     @include transform(translateY(0%) translateX(10%));
+//   }
+// }
+// @include keyframes(right-left) {
+//   0% {
+//     @include transform(translateY(0%) translateX(10%));
+//   }
+//   100% {
+//     @include transform(translateY(-20%) translateX(-10%));
+//   }
+// }
 
 /* added to the original element calling slippry */
 .sy-box {
@@ -73,8 +71,8 @@ $arrows_url: '/images/arrows.svg' !default;
     .sy-slides-wrap, .sy-pager {
       visibility: hidden;
     }
-    background: url($spinner_url) 50% 50% no-repeat;
-    @include background-size(32px);
+    background: url(@spinner_url) 50% 50% no-repeat;
+    // @include background-size(32px);
     min-height: 40px;
   }
 }
@@ -99,10 +97,10 @@ $arrows_url: '/images/arrows.svg' !default;
 /* list containing the slides */
 .sy-list {
   &.horizontal {
-    @include transition(left $trans_ease);
+    // @include transition(left @trans_ease);
   }
   &.vertical {
-    @include transition(top $trans_ease);
+    // @include transition(top @trans_ease);
   }
   width: 100%;
   height: 100%;
@@ -122,13 +120,13 @@ $arrows_url: '/images/arrows.svg' !default;
     &.useCSS {
       &.sy-ken {
         &:nth-child(1n) {
-          @include animation(left-right);
+          // @include animation(left-right);
         }
         &:nth-child(2n) {
-          @include animation(right-left);
+          // @include animation(right-left);
         }
       }
-      @include transition-property(opacity);
+      // @include transition-property(opacity);
     }  
   }
   &.sy-active {
@@ -167,7 +165,7 @@ $arrows_url: '/images/arrows.svg' !default;
   li {
     position: absolute;
     width: 10%;
-    min-width: $controls_size * 1.5;
+    min-width: @controls_size * 1.5;
     height: 100%;
     z-index: 33;
     &.sy-prev {
@@ -203,37 +201,37 @@ $arrows_url: '/images/arrows.svg' !default;
       }
       &:after {
         content: "";
-        background-image: url($arrows_url);
+        background-image: url(@arrows_url);
         background-repeat: no-repeat;
-        @include background-size(cover);
+        // @include background-size(cover);
         text-align: center;
         text-indent: 0;
-        line-height: $controls_size;
+        line-height: @controls_size;
         color: #111;
         font-weight: 800;
         position: absolute;
         background-color: #fff;
-        width: $controls_size;
-        height: $controls_size;
+        width: @controls_size;
+        height: @controls_size;
         left: 50%;
         top: 50%;
-        margin-top: -$controls_size / 2;
-        margin-left: -$controls_size / 2;
-        @include border-radius(50%);
+        margin-top: -@controls_size / 2;
+        margin-left: -@controls_size / 2;
+        // @include border-radius(50%);
       }
     }
   }  
-  @media only screen and (max-device-width : $mobile_break) {
+  @media only screen and (max-device-width : @mobile_break) {
     display: block;
-    $controls_size: $controls_size / 2;
+    // @controls_size: @controls_size / 2;
     li {
-      min-width: $controls_size * 1.5;
+      min-width: @controls_size * 1.5;
       a {
         &:after {
-          width: $controls_size;
-          height: $controls_size;
-          margin-top: -$controls_size / 2;
-          margin-left: -$controls_size / 2;
+          width: @controls_size;
+          height: @controls_size;
+          margin-top: -@controls_size / 2;
+          margin-left: -@controls_size / 2;
         }
       }
     }
@@ -251,10 +249,10 @@ $arrows_url: '/images/arrows.svg' !default;
     background-color: rgba(0,0,0,0.54);
     color: #fff;        
     padding: 0.4em 1em;
-    @include border-radius(1.2em);
+    // @include border-radius(1.2em);
     a {
       &:link, &:visited {
-        color: $color_high;
+        color: @color_high;
         font-weight: 600;
         text-decoration: none;
       }
@@ -263,20 +261,20 @@ $arrows_url: '/images/arrows.svg' !default;
       }
     }
   }
-  @media only screen and (max-device-width : $mobile_break), screen and (max-width : $mobile_break) {
+  @media only screen and (max-device-width : @mobile_break), screen and (max-width : @mobile_break) {
     left: 0;
     bottom: 0.4em;
     .sy-caption {
       left: 0;
       padding: 0.2em 0.4em;
       font-size: 0.92em;
-      @include border-radius(0);
+      // @include border-radius(0);
     }  
   }  
 }
 /* pager bubbles */
 .sy-pager {
-  @include clearfix;
+  // @include clearfix;
   display: block;
   width: 100%;
   margin: 1em 0 0;
@@ -285,20 +283,20 @@ $arrows_url: '/images/arrows.svg' !default;
   text-align: center;
   li {
     display: inline-block;
-    width: $pager_size;
-    height: $pager_size;
+    width: @pager_size;
+    height: @pager_size;
     margin: 0 1em 0 0;
-    @include border-radius(50%);
+    // @include border-radius(50%);
     &.sy-active {
       a {
-        background-color: $color_high;
+        background-color: @color_high;
       }
     }
     a {
       width: 100%;
       height: 100%;
       display: block;
-      background-color: $color_gray;
+      background-color: @color_gray;
       text-indent: -9999px;
       &:link, &:visited {
         opacity: 1.0;
@@ -306,8 +304,8 @@ $arrows_url: '/images/arrows.svg' !default;
       &:hover, &:focus {
         opacity: 0.6;
       }
-      @include background-size(2em);
-      @include border-radius(50%);
+      // @include background-size(2em);
+      // @include border-radius(50%);
     }
   }
 }
@@ -315,6 +313,6 @@ $arrows_url: '/images/arrows.svg' !default;
 .sy-filler {
   width: 100%;
   &.ready {
-    @include transition(padding 600ms ease);
+    // @include transition(padding 600ms ease);
   }
 }
