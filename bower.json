@@ -1,10 +1,11 @@
 {
   "name": "slippry",
-  "version": "1.2.9",
+  "version": "2.0b1",
   "homepage": "http://slippry.com",
   "authors": [
     "Lukas Jakob Hafner - @saftsaak",
-    "Thomas Hurd - @SeenNotHurd"
+    "Thomas Hurd - @SeenNotHurd",
+    "booncon PIXELS – @boonconPIXELS"
   ],
   "description": "Responsive content slider for jQuery",
   "main": [
@@ -23,13 +24,14 @@
   ],
   "license": "MIT",
   "ignore": [
-    "demo",
     "node_modules",
     ".gitignore",
     ".jshintrc",
     "config.rb",
     "Gruntfile.js",
+    "package.json",
+    "demo.css",
     "index.html",
-    "package.json"
+    "src/images/demo"
   ]
 }

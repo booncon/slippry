@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "slippry.min.js": {
+      "files": [
+        "slippry.js"
+      ],
+      "main": true
+    },
+    "slippry.css": {
+      "files": [
+        "slippry.scss"
+      ],
+      "main": true
+    }
+  },
+  "paths": {
+    "source": "src/",
+    "dist": "dist/"
+  }
+}
