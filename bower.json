@@ -13,7 +13,7 @@
     "dist/slippry.css",
     "dist/images/arrows.svg",
     "dist/images/sy-loader.gif"
-  ],  
+  ],
   "keywords": [
     "content",
     "slider",
@@ -34,5 +34,8 @@
     "index.html",
     "demo.css",
     "Copyright"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
 }
