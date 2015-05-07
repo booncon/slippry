@@ -1,6 +1,6 @@
 {
   "name": "slippry",
-  "version": "2.0b1",
+  "version": "v2.0.0-beta",
   "homepage": "http://slippry.com",
   "authors": [
     "Lukas Jakob Hafner - @saftsaak",
@@ -11,8 +11,8 @@
   "main": [
     "dist/slippry.min.js",
     "dist/slippry.css",
-    "images/arrows.svg",
-    "images/sy-loader.gif"
+    "dist/images/arrows.svg",
+    "dist/images/sy-loader.gif"
   ],  
   "keywords": [
     "content",
@@ -27,11 +27,12 @@
     "node_modules",
     ".gitignore",
     ".jshintrc",
-    "config.rb",
-    "Gruntfile.js",
+    "gulpfile.js",
     "package.json",
-    "demo.css",
+    "src/images/demo",
+    "dist/images/demo",
     "index.html",
-    "src/images/demo"
+    "demo.css",
+    "Copyright"
   ]
 }

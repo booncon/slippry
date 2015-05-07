@@ -2,16 +2,13 @@
 var argv         = require('minimist')(process.argv.slice(2));
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync  = require('browser-sync');
-var changed      = require('gulp-changed');
 var concat       = require('gulp-concat');
-var flatten      = require('gulp-flatten');
 var gulp         = require('gulp');
 var gulpif       = require('gulp-if');
 var imagemin     = require('gulp-imagemin');
 var jshint       = require('gulp-jshint');
 var lazypipe     = require('lazypipe');
 var merge        = require('merge-stream');
-var minifyCss    = require('gulp-minify-css');
 var plumber      = require('gulp-plumber');
 var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
@@ -52,12 +49,16 @@ var project = manifest.getProjectGlobs();
 
 // CLI options
 var enabled = {
-  // Enable static asset revisioning when `--production`
-  rev: argv.production,
   // Disable source maps when `--production`
   maps: !argv.production,
   // Fail styles task on error when `--production`
   failStyleTask: argv.production
+};
+
+// Get version and header using NodeJs file system
+var headerTasks = function () {
+  var bowerData = JSON.parse(fs.readFileSync('bower.json'));
+  return header(fs.readFileSync('Copyright'), { version: bowerData.version, description: bowerData.description });
 };
 
 // ## Reusable Pipelines
@@ -96,13 +97,6 @@ var cssTasks = function(filename) {
         'android 4',
         'opera 12'
       ]
-    })
-    .pipe(minifyCss, {
-      advanced: false,
-      rebase: false
-    })
-    .pipe(function() {
-      return gulpif(enabled.maps, sourcemaps.write('.'));
     })();
 };
 
@@ -144,6 +138,7 @@ gulp.task('styles', function() {
     }
     merged.add(gulp.src(dep.globs, {base: 'styles'})
       .pipe(cssTasksInstance))
+      .pipe(headerTasks())
       .pipe(gulp.dest(path.dist));
   });
   return merged;
@@ -158,6 +153,7 @@ gulp.task('scripts', ['jshint'], function() {
     merged.add(
       gulp.src(dep.globs, {base: 'scripts'})
         .pipe(jsTasks(dep.name))
+        .pipe(headerTasks())
         .pipe(gulp.dest(path.dist))
     );
   });
@@ -199,7 +195,7 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // See: http://www.browsersync.io
 gulp.task('watch', function() {
   browserSync({
-    files: [path.dist, '{lib,templates}/**/*.php', '*.php'],
+    files: [path.dist + '*.js', path.dist + '*.css', 'index.html'],
     server: {
         baseDir: "./"
     }

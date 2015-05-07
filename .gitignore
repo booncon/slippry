@@ -18,5 +18,4 @@ Icon
 *.sass-cache
 
 node_modules
-source
-build
+dist/*.map

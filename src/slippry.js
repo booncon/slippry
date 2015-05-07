@@ -1,7 +1,4 @@
-/** @preserve
- *
- * slippry v2.0b1 - Responsive content slider for jQuery
- * http://slippry.com
+/**
  *
  * Authors: Lukas Jakob Hafner - @saftsaak
  *          Thomas Hurd - @SeenNotHurd
