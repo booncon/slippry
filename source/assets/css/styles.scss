@@ -323,7 +323,7 @@ h2.slider-title {
 .twothird {
   display: inline-block;
   width: 100%;
-  @media only screen and (min-width: $mobile) {
+  @media only screen and (min-width: 769px) {
     width: 66%;
     &:nth-child(1) { padding-right: 1em; }
     &:nth-child(2) { padding: 0 0.5em; }
