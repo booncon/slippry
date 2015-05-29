@@ -320,6 +320,17 @@ h2.slider-title {
   }
 }
 
+.twothird {
+  display: inline-block;
+  width: 100%;
+  @media only screen and (min-width: $mobile) {
+    width: 66%;
+    &:nth-child(1) { padding-right: 1em; }
+    &:nth-child(2) { padding: 0 0.5em; }
+    &:nth-child(3) { padding-left: 1em; }
+  }
+}
+
 a.github-download {
   font-size: 2em;
   font-weight: 700;
@@ -822,4 +833,48 @@ section.settings {
     font-size: 18px;
     min-width: auto;
   }
+}
+
+.clear {
+  @include clearfix;
+}
+
+.carbonwrap {  
+  border: 2px solid #ccc;
+  padding-bottom: 18px;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }  
+}
+
+#carbonads { 
+  margin: 18px;
+}
+.carbon-poweredby {
+  margin-top: 5px !important;
+  @media only screen and (min-width: 840px) {
+    margin-left: 15px !important;
+  }
+  text-decoration: none;
+  &:before {
+    content: ' ';
+    @include clearfix;
+  }
+}
+.carbon-img {
+  float: left;
+}
+.carbon-text {
+  font-size: 14px;
+  display: block !important;
+  @media only screen and (min-width: 840px) {
+    padding-top: 0 !important;
+    float: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin-left: 145px !important;
+  }
+  margin-bottom: 2px !important;
+  text-decoration: none;
+  text-transform: none;
 }
