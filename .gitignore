@@ -21,3 +21,4 @@ Icon
 build
 node_modules
 source/vendor
+bower_components/
