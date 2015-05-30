@@ -848,10 +848,11 @@ section.settings {
 }
 
 #carbonads { 
-  margin: 18px;
+  margin: 18px 10px;
 }
 .carbon-poweredby {
   margin-top: 5px !important;
+  font-size: 12px;
   @media only screen and (min-width: 840px) {
     margin-left: 15px !important;
   }
@@ -865,7 +866,7 @@ section.settings {
   float: left;
 }
 .carbon-text {
-  font-size: 14px;
+  font-size: 13px;
   display: block !important;
   @media only screen and (min-width: 840px) {
     padding-top: 0 !important;
