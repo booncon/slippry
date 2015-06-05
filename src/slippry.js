@@ -482,19 +482,21 @@
     };
 
     openSlide = function (slide) {
-      var current;
+      var current, direction;
       if (!slip.vars.moving) {
         if (slip.vars.trigger !== 'auto') {
           el.stopAuto();
         }
         current = slip.vars.active.index();
         if (slide === 'prev') {
+          direction = slide;
           if (current > 0) {
             slide = current - 1;
           } else if (slip.settings.loop) {
             slide = slip.vars.count - 1;
           }
         } else if (slide === 'next') {
+          direction = slide;
           if (current < slip.vars.count - 1) {
             slide = current + 1;
           } else if (slip.settings.loop) {
@@ -502,13 +504,14 @@
           }
         } else {
           slide = slide - 1;
+          direction = slide < current ? 'prev' : 'next';
         }
         slip.vars.jump = false;
         if ((slide !== 'prev') && (slide !== 'next') && ((slide !== current) || (slip.vars.fresh))) {
           updatePos(slide);
           slip.vars.old = slip.vars.active;
           slip.vars.active = $(slip.vars.slides[slide]);
-          if (((current === 0) && (slide === slip.vars.count - 1)) || ((current === slip.vars.count - 1) && (slide === 0))) {
+          if (((current === 0) && (direction === 'prev')) || ((current === slip.vars.count - 1) && (direction === 'next'))) {
             slip.vars.jump = true;
           }
           doTransition();
