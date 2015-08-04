@@ -1,4 +1,4 @@
-# Slippry ![Slippry build status](https://travis-ci.org/booncon/slippry.svg?branch=master)
+# Slippry ![Slippry build status](https://travis-ci.org/booncon/slippry.svg?branch=dev)
 
 Responsive slider plugin for jQuery.
 Intrinsic trick to enable responsive resizing without js!
