@@ -1,6 +1,6 @@
 {
   "name": "slippry",
-  "version": "v1.2.9",
+  "version": "v1.3",
   "author": "Lukas Jakob Hafner <luki@booncon.com>",
   "homepage": "http://slippry.com",
   "repository": {
@@ -10,10 +10,7 @@
   "bugs": {
     "url": "https://github.com/booncon/slippry/issues"
   },
-  "licenses": [{
-    "type": "MIT",
-    "url": "http://opensource.org/licenses/MIT"
-  }],
+  "license": "MIT",
   "engines": {
     "node": ">= 0.10.0"
   },

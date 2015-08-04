@@ -1,6 +1,6 @@
 /**
  *
- * slippry v1.2.9 - Responsive content slider for jQuery
+ * slippry v1.3 - Responsive content slider for jQuery
  * http://slippry.com
  *
  * Authors: Lukas Jakob Hafner - @saftsaak
@@ -11,7 +11,7 @@
  *
  * Released under the MIT license - http://opensource.org/licenses/MIT
  */
- 
+
 @import "compass";
 
 $color_high: #e24b70 !default;     // highlight colour
@@ -25,7 +25,7 @@ $arrows_url: '/images/arrows.svg' !default;
 
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
-    @content; 
+    @content;
   }
   @-moz-keyframes #{$name} {
     @content;
@@ -35,7 +35,7 @@ $arrows_url: '/images/arrows.svg' !default;
   }
   @keyframes #{$name} {
     @content;
-  } 
+  }
 }
 
 @mixin animation ($animation) {
@@ -129,7 +129,7 @@ $arrows_url: '/images/arrows.svg' !default;
         }
       }
       @include transition-property(opacity);
-    }  
+    }
   }
   &.sy-active {
     z-index: 3;
@@ -222,7 +222,7 @@ $arrows_url: '/images/arrows.svg' !default;
         @include border-radius(50%);
       }
     }
-  }  
+  }
   @media only screen and (max-device-width : $mobile_break) {
     display: block;
     $controls_size: $controls_size / 2;
@@ -249,7 +249,7 @@ $arrows_url: '/images/arrows.svg' !default;
     position: relative;
     left: -50%;
     background-color: rgba(0,0,0,0.54);
-    color: #fff;        
+    color: #fff;
     padding: 0.4em 1em;
     @include border-radius(1.2em);
     a {
@@ -271,8 +271,8 @@ $arrows_url: '/images/arrows.svg' !default;
       padding: 0.2em 0.4em;
       font-size: 0.92em;
       @include border-radius(0);
-    }  
-  }  
+    }
+  }
 }
 /* pager bubbles */
 .sy-pager {
