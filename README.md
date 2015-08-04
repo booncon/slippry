@@ -1,4 +1,4 @@
-# Slippry
+# Slippry ![Slippry build status](https://travis-ci.org/booncon/slippry.svg?branch=dev)
 
 Responsive slider plugin for jQuery.
 Intrinsic trick to enable responsive resizing without js!
@@ -9,14 +9,14 @@ We got frustrated at the lack of free, responsive sliders, so we wrote our own. 
 
 Oops.
 
- 
+
 ## Modern
 ### HTML5 + CSS3 + jQuery
 Slippry is written with the future in mind, not the past. We wrote it to work on the latest jQuery functions, CSS3 tricks and HTML5 elements. We support death with dignity for technology.
 
 But don't worry, it still downgrades gracefully.
 
- 
+
 ## Simple
 ### Or complex. You choose.
 Isn't it great when you just need a simple slider? How about when the design needs captions in random places, Reeeeaaallllyyyy slooowwwww speeds or an annoying pop-up each time you change slide? Yeah, not so great.
