@@ -10,12 +10,7 @@
   "bugs": {
     "url": "https://github.com/booncon/slippry/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
-    }
-  ],
+  "license": "MIT",
   "engines": {
     "node": ">= 0.12.0"
   },
