@@ -22,7 +22,7 @@ Markup to be used for the entire slider (including the pager).
 default: '<div class="sy-box" />'
 accepts: Any valid HTML element (almost) can be used, but we recommend <div>, <section>.
 <% end %>
-     
+
 <h4 id="slideWrapper">slideWrapper</h4>
 
 Markup to be used to wrap the slides and controls (think of it as the viewport)
@@ -76,7 +76,7 @@ The class for the element that acts as an intrinsic placeholder (basically the e
 default: 'sy-filler'
 accepts: Any string that is valid as a class in CSS.
 <% end %>
-    
+
 <h4 id="loadingClass">loadingClass</h4>
 
 The class applied to `slippry_wrapper` while Slippry slider is being loaded.
@@ -260,7 +260,7 @@ Transition type to use, or no transitions.
 default: 'fade'
 accepts: 'fade', 'horizontal', 'vertical', 'kenburns', false
 <% end %>
-    
+
 <h4 id="kenZoom">kenZoom</h4>
 
 Max zoom level use for the Ken Burns transition.
@@ -269,7 +269,7 @@ Max zoom level use for the Ken Burns transition.
 default: 120
 accepts: any percentage value.
 <% end %>
-    
+
 <h4 id="slideMargin">slideMargin</h4>
 
 The spacing between slides.
@@ -278,7 +278,7 @@ The spacing between slides.
 default: 0
 accepts: any value as a percentage of the slippry_box (viewport).
 <% end %>
-    
+
 <h4 id="transClass">transClass</h4>
 
 The class applied to the slide element when a transition is in progress.
@@ -287,16 +287,16 @@ The class applied to the slide element when a transition is in progress.
 default: 'transition'
 accepts: Any string that is valid as a class in CSS.
 <% end %>
-  
+
 <h4 id="speed">speed</h4>
 
 The time the transition takes to complete.
 
 <% code("html") do %>
-default: 800 
+default: 800
 accepts: any number (in milliseconds).
 <% end %>
-    
+
 <h4 id="easing">easing</h4>
 
 The easing effect to use for the selected transition.
@@ -305,7 +305,7 @@ The easing effect to use for the selected transition.
 default: 'swing'
 accepts: any easing effect. See "http://jqueryui.com/resources/demos/effect/easing.html".
 <% end %>
-    
+
 <h4 id="continuous">continuous</h4>
 
 Whether the slider should run continuously (seamless transition between the first and last slides).
@@ -320,7 +320,7 @@ accepts: true, false
 Whether the slider should use CSS transitions. If the user's browser doesn't support CSS transitions the slider will fallback to jQuery.
 
 <% code("html") do %>
-default: false
+default: true
 accepts: true, false
 <% end %>
 
@@ -390,7 +390,7 @@ default: function (index) {
 },
 accepts: any valid function.
 <% end %>
-    
+
 <h4 id="onSlideBefore">onSlideBefore</h4>
 
 Runs before the slide transition starts.
@@ -401,7 +401,7 @@ default: function (slide, old_index, new_index) {
 },
 accepts: any valid function.
 <% end %>
-    
+
 <h4 id="onSlideAfter">onSlideAfter</h4>
 
 Runs after the slide transition has completed.
