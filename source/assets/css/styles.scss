@@ -32,8 +32,8 @@ $mobile: 600px;
 
 /* 2. Resets */
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0b1 | 201101 
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0b1 | 201101
    NOTE: WORK IN PROGRESS
    USE WITH CAUTION AND TEST WITH ABANDON */
 
@@ -50,7 +50,7 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
+article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
   margin: 0;
@@ -62,7 +62,7 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -82,7 +82,7 @@ q:before, q:after {
   content: none;
 }
 
-/* remember to define visible focus styles! 
+/* remember to define visible focus styles!
 :focus {
   outline: ?????;
 } */
@@ -188,7 +188,7 @@ a.button-link {
   &.download {
     @media only screen and (max-width: $mobile) {
       display: none;
-    }  
+    }
     position: relative;
     background: none;
     color: $bc-rk-blue;
@@ -220,7 +220,7 @@ section {
   margin: 0 0 1em;
   @media only screen and (max-width: $mobile) {
     margin-bottom: 0;
-  }  
+  }
 }
 
 a {
@@ -280,9 +280,9 @@ a {
       display: none;
     }
     img {
-      position: absolute; 
-      top: 0; 
-      right: 0; 
+      position: absolute;
+      top: 0;
+      right: 0;
       border: 0;
       z-index: 12;
     }
@@ -340,7 +340,7 @@ a.github-download {
   @media only screen and (max-width: $mobile) {
     width: 100%;
     font-size: 1.6em;
-  }  
+  }
 }
 
 .big-number {
@@ -408,7 +408,7 @@ code {
         margin-bottom: 1em;
       }
     }
-  }  
+  }
 }
 
 /* Frontpage */
@@ -508,7 +508,7 @@ section.settings {
     margin: 1% 0;
     text-align: center;
     &.large {
-      padding: 1.6em 1em;      
+      padding: 1.6em 1em;
       @include background-size(cover);
       background-position: 50% 50%;
       text-shadow: 0 0 0.1em rgba(0,0,0,0.4);
@@ -516,7 +516,7 @@ section.settings {
       &:hover {
         opacity: 1;
       }
-    }    
+    }
     @media only screen and (min-width: 411px) {
       width: 49%;
       &:nth-child(2n+1) {
@@ -527,7 +527,7 @@ section.settings {
       }
     }
     @media only screen and (min-width: 631px) {
-      width: 32%;
+      width: 31.3%;
       &:nth-child(3n+1) {
         margin: 1% 1% 1% 0;
       }
@@ -620,7 +620,7 @@ section.settings {
     }
   }
   .image-content {
-    line-height: 0; // Stops strange 6px gap at bottom of div.  
+    line-height: 0; // Stops strange 6px gap at bottom of div.
     img {
       max-width: 100%;
     }
@@ -665,7 +665,7 @@ section.settings {
     }
     .sy-slides-crop {
       overflow: visible;
-    }    
+    }
     .sy-controls {
       @media only screen and (max-width: 500px) {
         display: block;
@@ -753,7 +753,7 @@ section.settings {
         }
       }
       // Bulk add transitions:
-      .product-info p, 
+      .product-info p,
       .product-info .button-link,
       .product-image,
       &.sy-active,
@@ -765,8 +765,8 @@ section.settings {
         @include transition(opacity 1s);
       }
     }
-  }  
-  .product-name, 
+  }
+  .product-name,
   .shop-slider .sy-slides-wrap {
     width: 100%;
     @media only screen and (min-width: 401px) {
@@ -839,15 +839,15 @@ section.settings {
   @include clearfix;
 }
 
-.carbonwrap {  
+.carbonwrap {
   border: 2px solid #ccc;
   padding-bottom: 18px;
   @media only screen and (max-width: 768px) {
     display: none;
-  }  
+  }
 }
 
-#carbonads { 
+#carbonads {
   margin: 18px 10px;
 }
 .carbon-poweredby {

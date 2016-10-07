@@ -82,4 +82,41 @@ jQuery('.thumbs a').click(function () {
 <% end %>
 </section>
 
+<section class="jquery restricted-width">
+  <h3>CSS</h3>
+<% code("css") do %>
+/* Thumbnails */
+.thumb-box {
+  padding: 1.4em 0 1em;
+  margin-left: -1%;
+  width: 102%;
+  .thumbs {
+    @include clearfix;
+    li {
+      float: left;
+      width: 25%;
+      text-align: center;
+      padding: 0 1%;
+      img {
+        width: 100%;
+        opacity: .8;
+        @include transition(opacity .32s);
+        border-bottom: 4px solid transparent;
+        &.active {
+          border-color: $bc-rk-blue;
+          opacity: 1;
+        }
+      }
+      &:hover {
+        img {
+          opacity: 1;
+          @include transition(opacity .2s);
+        }
+      }
+    }
+  }
+}
+<% end %>
+</section>
+
 <%= partial "../example-tiles" %>
