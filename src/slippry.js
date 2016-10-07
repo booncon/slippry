@@ -1,12 +1,12 @@
 /** @preserve
  *
- * slippry v1.3.1 - Responsive content slider for jQuery
+ * slippry v1.4.0 - Responsive content slider for jQuery
  * http://slippry.com
  *
  * Authors: Lukas Jakob Hafner - @saftsaak
  *          Thomas Hurd - @SeenNotHurd
  *
- * Copyright 2015, booncon oy - http://booncon.com
+ * Copyright 2016, booncon oy - http://booncon.com
  *
  *
  * Released under the MIT license - http://opensource.org/licenses/MIT
@@ -601,7 +601,7 @@
           }
         }).each(function () {
           if (this.complete) {
-            start();
+            $(this).trigger('load');
           }
         });
       });

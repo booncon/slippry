@@ -11,6 +11,14 @@ module.exports = function(grunt) {
         'src/slippry.js'
       ]
     },
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']
+      },
+      all: {
+        src: 'dist/slippry.css'
+      }
+    },
     sass: {
       dist: {
         options: {
@@ -48,7 +56,7 @@ module.exports = function(grunt) {
         files: [
           'src/*.scss'
         ],
-        tasks: ['sass']
+        tasks: ['sass', 'autoprefixer'],
       },
       js: {
         files: [
@@ -81,11 +89,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-autoprefixer');
 
   // Register tasks
   grunt.registerTask('default', [
     'clean',
     'sass',
+    'autoprefixer',
     'uglify'
   ]);
   grunt.registerTask('dev', [
