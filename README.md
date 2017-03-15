@@ -24,3 +24,7 @@ Isn't it great when you just need a simple slider? How about when the design nee
 Slippry offers a heap of settings you actually need, and with the included CSS and Sass you can make Slippry look just how you need it.
 
 Check it out at http://slippry.com
+
+## jQuery 3.x.x
+### Use jQuery Migrate
+To use Slippry with jQuery 3.x.x you will need jQuery-migrate - https://github.com/jquery/jquery-migrate/#readme
