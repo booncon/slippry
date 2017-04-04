@@ -656,7 +656,7 @@
     init = function () {
       var first;
       slip.settings = $.extend({}, defaults, options);
-      slip.vars.slides = $(slip.settings.elements, el);
+      slip.vars.slides = $(el).children.(slip.settings.elements);
       slip.vars.count = slip.vars.slides.length;
       if (slip.settings.useCSS) { // deactivate css transitions on unsupported browsers
         if (!supports('transition')) {
