@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Slippry is a responsive content slider by booncon PIXELS. Slippry is truly responsive, built on modern web standards and is packed with options, so it can be as simple or complex as you want, so give it a go!" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width">
+    <title>Examples - CSS vs jQuery transitions</title>
+    <script src="//use.edgefonts.net/cabin:n4,i4,n7,i7;source-sans-pro:n3,i3.js"></script>
+    <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css" /><link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+  </head>  
+  <body class="examples examples_css-vs-jquery examples_css-vs-jquery_index">
+    <header id="header">
+  <div class="restricted-width">
+    <h1 id="site-name"><a href="/" id="logo-link">Slippry</a></h1>
+    <a href="https://github.com/booncon/slippry" target="_blank" class="github-link"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <nav id="main-menu">
+      <li><a href="/settings" class="button-link">Settings</a></li>
+      <li><a href="/examples" class="button-link">Examples</a></li>
+      <li><a href="https://github.com/booncon/slippry/archive/v1.4.0.zip
+" title="Download this repository as a zip file" rel="nofollow" class="button-link download">Download</a></li>
+    </nav>
+  </div>
+</header>
+    <section class="restricted-width">
+  <div class="newslettera">
+    <div class="twothird newsletter">
+      <h3>Wish to get notified when we roll out with Slippry 2.0? Sign up and be first to hear about our updates and new features!</h3>
+      <div id="mc_embed_signup">
+        <form action="//booncon.us3.list-manage.com/subscribe/post?u=ce2d86ff7936aa661f3598971&amp;id=632fde4dfd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll">
+            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            <div style="position: absolute; left: -5000px;"><input type="text" name="b_590b042f20dbf5c810b368ef9_f8260fa86b" tabindex="-1" value=""></div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="third">
+      <div class="carbonwrap">
+        <script>
+          if (document.documentElement.clientWidth > 870) {
+            document.write('<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1696&serve=CVYD42T&placement=slipprycom" id="_carbonads_js"><\/script>');
+          }
+        </script>
+        <div class="clear"></div>
+      </script>
+    </div>
+  </div>
+</section>
+
+<section class="restricted-width">
+  <h2 class="slider-title">CSS vs jQuery</h2>
+  <p>This demo shows the differences between using CSS transitions and jQuery transitions. What's the difference? In a nutshell, CSS uses your graphic card to process the transition, where as using jQuery uses your main processor. However jQuery is generally more backwards compatible than CSS. That said, CSS transitions will revert to jQuery if the browser doesn't support CSS transitions.</p>
+  <h3>CSS</h3>
+  <ul id="css-demo">
+    <li><a href="#slide1"><img src="/assets/img/image-1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>"></a></li>
+  <li><a href="#slide2"><img src="/assets/img/image-2.jpg"  alt="This is caption 2"></a></li>
+  <li><a href="#slide3"><img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."></a></li>
+  <li><a href="#slide4"><img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."></a></li>
+  </ul>
+  <h3>jQuery</h3>
+  <ul id="jquery-demo">
+    <li><a href="#slide1"><img src="/assets/img/image-1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>"></a></li>
+  <li><a href="#slide2"><img src="/assets/img/image-2.jpg"  alt="This is caption 2"></a></li>
+  <li><a href="#slide3"><img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."></a></li>
+  <li><a href="#slide4"><img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."></a></li>
+  </ul>
+</section>
+
+<section class="markup restricted-width">
+  <h3>HTML Markup</h3>
+<pre class="highlight html"><code><span class="nt">&lt;h3&gt;</span>CSS<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"css-demo"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-1.jpg"</span> <span class="na">alt=</span><span class="s">"This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide2"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-2.jpg"</span>  <span class="na">alt=</span><span class="s">"This is caption 2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide3"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-3.jpg"</span> <span class="na">alt=</span><span class="s">"And this is some very long caption for slide 3. Yes, really long."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide4"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-4.jpg"</span> <span class="na">alt=</span><span class="s">"And this is some very long caption for slide 4."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;h3&gt;</span>jQuery<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"jquery-demo"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-1.jpg"</span> <span class="na">alt=</span><span class="s">"This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide2"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-2.jpg"</span>  <span class="na">alt=</span><span class="s">"This is caption 2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide3"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-3.jpg"</span> <span class="na">alt=</span><span class="s">"And this is some very long caption for slide 3. Yes, really long."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide4"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-4.jpg"</span> <span class="na">alt=</span><span class="s">"And this is some very long caption for slide 4."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+</section>
+
+<section class="jquery restricted-width">
+  <h3>jQuery</h3>
+<pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">(</span><span class="s1">'#css-demo'</span><span class="p">).</span><span class="nx">slippry</span><span class="p">({</span>
+  <span class="c1">// general elements &amp; wrapper</span>
+  <span class="na">slippryWrapper</span><span class="p">:</span> <span class="s1">'&lt;div class="sy-box css-demo" /&gt;'</span><span class="p">,</span> <span class="c1">// wrapper to wrap everything, including pager</span>
+  <span class="c1">// options</span>
+  <span class="na">adaptiveHeight</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// height of the sliders adapts to current slide</span>
+  <span class="na">useCSS</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// true, false -&gt; fallback to js if no browser support</span>
+  <span class="na">autoHover</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">transition</span><span class="p">:</span> <span class="s1">'horizontal'</span>
+<span class="p">});</span>
+
+<span class="nx">jQuery</span><span class="p">(</span><span class="s1">'#jquery-demo'</span><span class="p">).</span><span class="nx">slippry</span><span class="p">({</span>
+  <span class="c1">// general elements &amp; wrapper</span>
+  <span class="na">slippryWrapper</span><span class="p">:</span> <span class="s1">'&lt;div class="sy-box jquery-demo" /&gt;'</span><span class="p">,</span> <span class="c1">// wrapper to wrap everything, including pager</span>
+  <span class="c1">// options</span>
+  <span class="na">adaptiveHeight</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// height of the sliders adapts to current slide</span>
+  <span class="na">useCSS</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// true, false -&gt; fallback to js if no browser support</span>
+  <span class="na">autoHover</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">transition</span><span class="p">:</span> <span class="s1">'horizontal'</span>
+<span class="p">});</span>
+</code></pre>
+</section>
+
+<section class="restricted-width example-tiles">
+<a class="tile" href="/examples/out-of-the-box/">Out-of-the-box</a>
+<a class="tile" href="/examples/pictures/">Pictures</a>
+<a class="tile" href="/examples/portfolio/">Portfolio</a>
+<a class="tile" href="/examples/news/">News</a>
+<a class="tile" href="/examples/shop/">Shop</a>
+<a class="tile" href="/examples/thumbnails/">Thumbnails</a>
+<a class="tile active" href="/examples/css-vs-jquery/">CSS vs jQuery</a>
+</section>
+    <footer id="footer" class="full-width">
+  <div class="footer-content restricted-width">
+    <div class="githubs">
+      <span class="share-btn"><a href="https://twitter.com/share" class="twitter-share-button" data-via="booncon">Tweet</a></span>     
+      <span class="share-btn"><iframe src="http://ghbtns.com/github-btn.html?user=booncon&repo=slippry&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></span>
+      <span class="share-btn"><iframe src="http://ghbtns.com/github-btn.html?user=booncon&repo=slippry&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></span>   
+    </div>
+    <a href="http://pixels.fi" class="block-link right"><span class="crafted-by">Crafted by</span> <img src="/assets/img/logo_bc-pixels.svg" class="pixels-logo"/></a>
+  </div>
+</footer>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script src="//use.edgefonts.net/source-code-pro:n4,n7.js" type="text/javascript"></script><script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script><script src="//code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><script src="/assets/js/scripts.js" type="text/javascript"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-38942381-5', 'slippry.com');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Slippry is a responsive content slider by booncon PIXELS. This examples shows Slippry with custom coded thumbnails as a pager." />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width">
+    <title>Examples - Thumbnails</title>
+    <script src="//use.edgefonts.net/cabin:n4,i4,n7,i7;source-sans-pro:n3,i3.js"></script>
+    <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css" /><link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+  </head>  
+  <body class="examples examples_thumbnails examples_thumbnails_index">
+    <header id="header">
+  <div class="restricted-width">
+    <h1 id="site-name"><a href="/" id="logo-link">Slippry</a></h1>
+    <a href="https://github.com/booncon/slippry" target="_blank" class="github-link"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <nav id="main-menu">
+      <li><a href="/settings" class="button-link">Settings</a></li>
+      <li><a href="/examples" class="button-link">Examples</a></li>
+      <li><a href="https://github.com/booncon/slippry/archive/v1.4.0.zip
+" title="Download this repository as a zip file" rel="nofollow" class="button-link download">Download</a></li>
+    </nav>
+  </div>
+</header>
+    <section class="restricted-width">
+  <div class="newslettera">
+    <div class="twothird newsletter">
+      <h3>Wish to get notified when we roll out with Slippry 2.0? Sign up and be first to hear about our updates and new features!</h3>
+      <div id="mc_embed_signup">
+        <form action="//booncon.us3.list-manage.com/subscribe/post?u=ce2d86ff7936aa661f3598971&amp;id=632fde4dfd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll">
+            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            <div style="position: absolute; left: -5000px;"><input type="text" name="b_590b042f20dbf5c810b368ef9_f8260fa86b" tabindex="-1" value=""></div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="third">
+      <div class="carbonwrap">
+        <script>
+          if (document.documentElement.clientWidth > 870) {
+            document.write('<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1696&serve=CVYD42T&placement=slipprycom" id="_carbonads_js"><\/script>');
+          }
+        </script>
+        <div class="clear"></div>
+      </script>
+    </div>
+  </div>
+</section>
+
+<section class="restricted-width default">
+  <h2 class="slider-title">Thumbnails</h2>
+  <p>Due to popular demand an example showing how to build a custom pager with thumbnails. Of course this is only one way of doing it :)</p>
+  <ul id="thumbnails">
+    <li><a href="#slide1"><img src="/assets/img/image-1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>"></a></li>
+    <li><a href="#slide2"><img src="/assets/img/image-2.jpg"  alt="This is caption 2"></a></li>
+    <li><a href="#slide3"><img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."></a></li>
+    <li><a href="#slide4"><img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."></a></li>
+  </ul>
+  <div class="thumb-box">
+    <ul class="thumbs">
+      <li><a href="#1" data-slide="1"><img src="/assets/img/image-1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>"></a></li>
+      <li><a href="#2" data-slide="2"><img src="/assets/img/image-2.jpg"  alt="This is caption 2"></a></li>
+      <li><a href="#3" data-slide="3"><img src="/assets/img/image-3.jpg" alt="And this is some very long caption for slide 3. Yes, really long."></a></li>
+      <li><a href="#4" data-slide="4"><img src="/assets/img/image-4.jpg" alt="And this is some very long caption for slide 4."></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="markup restricted-width">
+  <h3>HTML Markup</h3>
+<pre class="highlight html"><code><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"thumbnails"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-1.jpg"</span> <span class="na">alt=</span><span class="s">"This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide2"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-2.jpg"</span>  <span class="na">alt=</span><span class="s">"This is caption 2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide3"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-3.jpg"</span> <span class="na">alt=</span><span class="s">"And this is some very long caption for slide 3. Yes, really long."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#slide4"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-4.jpg"</span> <span class="na">alt=</span><span class="s">"And this is some very long caption for slide 4."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"thumb-box"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"thumbs"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#1"</span> <span class="na">data-slide=</span><span class="s">"1"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-1.jpg"</span> <span class="na">alt=</span><span class="s">"This is caption 1 &lt;a href='#link'&gt;Even with links!&lt;/a&gt;"</span><span class="nt">&gt;&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#2"</span> <span class="na">data-slide=</span><span class="s">"2"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-2.jpg"</span>  <span class="na">alt=</span><span class="s">"This is caption 2"</span><span class="nt">&gt;&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#3"</span> <span class="na">data-slide=</span><span class="s">"3"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-3.jpg"</span> <span class="na">alt=</span><span class="s">"And this is some very long caption for slide 3. Yes, really long."</span><span class="nt">&gt;&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#4"</span> <span class="na">data-slide=</span><span class="s">"4"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-4.jpg"</span> <span class="na">alt=</span><span class="s">"And this is some very long caption for slide 4."</span><span class="nt">&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</section>
+
+<section class="jquery restricted-width">
+  <h3>jQuery</h3>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">thumbs</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">'#thumbnails'</span><span class="p">).</span><span class="nx">slippry</span><span class="p">({</span>
+  <span class="c1">// general elements &amp; wrapper</span>
+  <span class="na">slippryWrapper</span><span class="p">:</span> <span class="s1">'&lt;div class="slippry_box thumbnails" /&gt;'</span><span class="p">,</span>
+  <span class="c1">// options</span>
+  <span class="na">transition</span><span class="p">:</span> <span class="s1">'horizontal'</span><span class="p">,</span>
+  <span class="na">pager</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">auto</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">onSlideBefore</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index_old</span><span class="p">,</span> <span class="nx">index_new</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">'.thumbs a img'</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">'active'</span><span class="p">);</span>
+    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">'img'</span><span class="p">,</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">'.thumbs a'</span><span class="p">)[</span><span class="nx">index_new</span><span class="p">]).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">'active'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">jQuery</span><span class="p">(</span><span class="s1">'.thumbs a'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">thumbs</span><span class="p">.</span><span class="nx">goToSlide</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'slide'</span><span class="p">));</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre>
+</section>
+
+<section class="jquery restricted-width">
+  <h3>CSS</h3>
+<pre class="highlight css"><code><span class="c">/* Thumbnails */</span>
+<span class="nc">.thumb-box</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">1.4em</span> <span class="m">0</span> <span class="m">1em</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">-1%</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">102%</span><span class="p">;</span>
+  <span class="err">.thumbs</span> <span class="err">{</span>
+    <span class="err">@include</span> <span class="err">clearfix;</span>
+    <span class="err">li</span> <span class="err">{</span>
+      <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">25%</span><span class="p">;</span>
+      <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span> <span class="m">1%</span><span class="p">;</span>
+      <span class="err">img</span> <span class="err">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+        <span class="nl">opacity</span><span class="p">:</span> <span class="m">.8</span><span class="p">;</span>
+        <span class="err">@include</span> <span class="err">transition(opacity</span> <span class="err">.32s);</span>
+        <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">4px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+        <span class="err">&amp;.active</span> <span class="err">{</span>
+          <span class="nl">border-color</span><span class="p">:</span> <span class="err">$</span><span class="n">bc-rk-blue</span><span class="p">;</span>
+          <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="err">}</span>
+      <span class="o">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+        <span class="err">img</span> <span class="err">{</span>
+          <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+          <span class="err">@include</span> <span class="err">transition(opacity</span> <span class="err">.2s);</span>
+        <span class="p">}</span>
+      <span class="err">}</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+</code></pre>
+</section>
+
+<section class="restricted-width example-tiles">
+<a class="tile" href="/examples/out-of-the-box/">Out-of-the-box</a>
+<a class="tile" href="/examples/pictures/">Pictures</a>
+<a class="tile" href="/examples/portfolio/">Portfolio</a>
+<a class="tile" href="/examples/news/">News</a>
+<a class="tile" href="/examples/shop/">Shop</a>
+<a class="tile active" href="/examples/thumbnails/">Thumbnails</a>
+<a class="tile" href="/examples/css-vs-jquery/">CSS vs jQuery</a>
+</section>
+
+    <footer id="footer" class="full-width">
+  <div class="footer-content restricted-width">
+    <div class="githubs">
+      <span class="share-btn"><a href="https://twitter.com/share" class="twitter-share-button" data-via="booncon">Tweet</a></span>     
+      <span class="share-btn"><iframe src="http://ghbtns.com/github-btn.html?user=booncon&repo=slippry&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></span>
+      <span class="share-btn"><iframe src="http://ghbtns.com/github-btn.html?user=booncon&repo=slippry&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></span>   
+    </div>
+    <a href="http://pixels.fi" class="block-link right"><span class="crafted-by">Crafted by</span> <img src="/assets/img/logo_bc-pixels.svg" class="pixels-logo"/></a>
+  </div>
+</footer>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script src="//use.edgefonts.net/source-code-pro:n4,n7.js" type="text/javascript"></script><script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script><script src="//code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><script src="/assets/js/scripts.js" type="text/javascript"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-38942381-5', 'slippry.com');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>
