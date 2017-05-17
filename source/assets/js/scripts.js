@@ -1,8 +1,9 @@
-//= require slippry
+//= link slippry
 //= require_tree .
+//= require slippry
 
 // smooth scroll animation to given element
-function smoothScroll(el) {  
+function smoothScroll(el) {
   // store hash
   var hash = el.hash;
   // animate
@@ -40,7 +41,7 @@ jQuery(document).ready(function(){
     e.preventDefault();
     smoothScroll(this);
   });
-  
+
   // Pictures Slider
   jQuery('#pictures-demo').slippry({
     // general elements & wrapper
@@ -52,7 +53,7 @@ jQuery(document).ready(function(){
 
     // pager
     pager: false,
-    
+
     // controls
     controls: false,
     autoHover: false,
@@ -92,7 +93,7 @@ jQuery(document).ready(function(){
     elements: 'article', // elments cointaining slide content
 
     // options
-    adaptiveHeight: false, // height of the sliders adapts to current 
+    adaptiveHeight: false, // height of the sliders adapts to current
     captions: false,
 
     // pager
@@ -132,7 +133,7 @@ jQuery(document).ready(function(){
     // slideshow
     auto: false
   });
-  
+
   // thumbnails
   var thumbs = jQuery('#thumbnails').slippry({
     // general elements & wrapper
@@ -178,7 +179,7 @@ jQuery(document).ready(function(){
       jQuery('#settings-jump').switchClass('open','closed',1000);
     } else if(jQuery('#settings-jump').hasClass('closed')) {
       jQuery('#settings-jump').switchClass('closed','open',1000);
-    } 
+    }
     return false;
   });
   jQuery('#settings-jump a').click( function () {
