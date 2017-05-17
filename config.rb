@@ -12,7 +12,7 @@ activate :syntax
 
 activate :sprockets
 
-sprockets.append_path 'vendor/assets/components'
+sprockets.append_path '../vendor/assets/components'
 sprockets.append_path 'assets/css'
 sprockets.append_path 'assets/js'
 sprockets.append_path 'assets/img'
@@ -20,11 +20,11 @@ sprockets.import_asset 'slippry'
 
 # Methods defined in the helpers block are available in templates
 helpers do
-  def nav_link(link_text, url, options = {})  
+  def nav_link(link_text, url, options = {})
     options[:class] ||= ""
     options[:class] << " active" if url == current_page.url
     link_to(link_text, url, options)
-  end 
+  end
 
 end
 
