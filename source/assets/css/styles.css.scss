@@ -1,22 +1,21 @@
 /**
  * Site: Slippry
- * Description: A responsive slider by booncon PIXELS.
+ * Description: A responsive slider by booncon.
  * Author(s): Lukas Jakob Hafner - @saftsaak
- *            Thomas Hurd - @SeenNotHurd
  *
- * Copyright 2014, booncon PIXELS oy - http://pixels.fi
- *
+ * Copyright 2017, booncon oy - https://booncon.com
  *
  */
 
+//= require "vendor/assets/components/slippry/dist/slippry.css"
+
 @import "compass";
-@import "slippry";
-@import "syntax";
+// @import "syntax";
 
 /* 1. Variables */
-$bc-rk-blue: #31ACE2;
+$bc-rk-blue: #31ace2;
 $bc-px-pink: #e24b70;
-$bc-grey: #3B454F;
+$bc-grey: #3b454f;
 $white: #fff;
 $black: #202123;
 $body-text: #777;
@@ -41,18 +40,84 @@ $mobile: 600px;
   @include box-sizing(border-box);
 }
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -62,22 +127,35 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 body {
   line-height: 1.48;
   -webkit-font-smoothing: antialiased;
 }
-/* ol, */ ul {
+/* ol, */
+ul {
   list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: '';
   content: none;
 }
@@ -105,7 +183,7 @@ table {
 body {
   font-size: $base-font-size;
   font-family: $sans-serif;
-  background-color: #f5f5f5;// */lighten($bc-grey, 60%);
+  background-color: #f5f5f5; // */lighten($bc-grey, 60%);
   margin: 0 auto;
   color: $body-text;
 }
@@ -119,46 +197,76 @@ p {
   margin: 1em 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.5;
   font-weight: 300;
   margin: 0.5em 0;
   font-family: $title-fonts;
-  color: $black;//$bc-grey;
+  color: $black; //$bc-grey;
   a {
-  color: $link-color;//$bc-grey;//$bc-rk-blue;
+    color: $link-color; //$bc-grey;//$bc-rk-blue;
     &:hover {
       color: $link-hover;
     }
   }
 }
 
-h1 { font-size: 2em; }
-h2 { font-size: 1.66em; }
-h3 { font-size: 1.33em; }
-h4 { font-size: 1.1em; }
-h5 { font-size: 0.87em; }
-h6 { font-size: 0.63em; }
-
-
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.66em;
+}
+h3 {
+  font-size: 1.33em;
+}
+h4 {
+  font-size: 1.1em;
+}
+h5 {
+  font-size: 0.87em;
+}
+h6 {
+  font-size: 0.63em;
+}
 
 @-webkit-keyframes jumpings {
-  0%   { top: 2.4%; }
-  100% { top: 30%; }
+  0% {
+    top: 2.4%;
+  }
+  100% {
+    top: 30%;
+  }
 }
 @-moz-keyframes jumpings {
-  0%   { top: 2.4%; }
-  100% { top: 30%; }
+  0% {
+    top: 2.4%;
+  }
+  100% {
+    top: 30%;
+  }
 }
 @-o-keyframes jumpings {
-  0%   { top: 2.4%; }
-  100% { top: 30%; }
+  0% {
+    top: 2.4%;
+  }
+  100% {
+    top: 30%;
+  }
 }
 @keyframes jumpings {
-  0%   { top: 2.4%; }
-  100% { top: 30%; }
+  0% {
+    top: 2.4%;
+  }
+  100% {
+    top: 30%;
+  }
 }
-
 
 .full-width {
   //width: 100%;
@@ -177,7 +285,7 @@ a.button-link {
   display: inline-block;
   color: $white;
   background-color: $bc-rk-blue;
-  padding: 0.25em 0.5em;// 0.15em;
+  padding: 0.25em 0.5em; // 0.15em;
   text-decoration: none;
   text-transform: uppercase;
   text-align: center;
@@ -204,9 +312,9 @@ a.button-link {
       color: $bc-rk-blue;
       &:after {
         -webkit-animation: jumpings 0.8s linear infinite; /* Safari 4+ */
-        -moz-animation:    jumpings 0.8s linear infinite; /* Fx 5+ */
-        -o-animation:      jumpings 0.8s linear infinite; /* Opera 12+ */
-        animation:         jumpings 0.8s linear infinite; /* IE 10+ */
+        -moz-animation: jumpings 0.8s linear infinite; /* Fx 5+ */
+        -o-animation: jumpings 0.8s linear infinite; /* Opera 12+ */
+        animation: jumpings 0.8s linear infinite; /* IE 10+ */
       }
     }
   }
@@ -289,7 +397,6 @@ a {
   }
 }
 
-
 /* Content */
 
 .sy-caption .red {
@@ -304,8 +411,12 @@ h2.slider-title {
   width: 100%;
   @media only screen and (min-width: $mobile) {
     width: 49.8%;
-    &:nth-child(1) { padding-right: 1em; }
-    &:nth-child(2) { padding-left: 1em; }
+    &:nth-child(1) {
+      padding-right: 1em;
+    }
+    &:nth-child(2) {
+      padding-left: 1em;
+    }
   }
 }
 
@@ -314,9 +425,15 @@ h2.slider-title {
   width: 100%;
   @media only screen and (min-width: $mobile) {
     width: 33%;
-    &:nth-child(1) { padding-right: 1em; }
-    &:nth-child(2) { padding: 0 0.5em; }
-    &:nth-child(3) { padding-left: 1em; }
+    &:nth-child(1) {
+      padding-right: 1em;
+    }
+    &:nth-child(2) {
+      padding: 0 0.5em;
+    }
+    &:nth-child(3) {
+      padding-left: 1em;
+    }
   }
 }
 
@@ -325,9 +442,15 @@ h2.slider-title {
   width: 100%;
   @media only screen and (min-width: 769px) {
     width: 66%;
-    &:nth-child(1) { padding-right: 1em; }
-    &:nth-child(2) { padding: 0 0.5em; }
-    &:nth-child(3) { padding-left: 1em; }
+    &:nth-child(1) {
+      padding-right: 1em;
+    }
+    &:nth-child(2) {
+      padding: 0 0.5em;
+    }
+    &:nth-child(3) {
+      padding-left: 1em;
+    }
   }
 }
 
@@ -358,18 +481,20 @@ a.github-download {
 .get-started {
   @include clearfix;
   margin: 1em 0;
-  h3, code, div {
+  h3,
+  code,
+  div {
     //margin-left: 5em;
   }
   h3 {
-    margin-top: 0;//display: inline-block;
+    margin-top: 0; //display: inline-block;
   }
 }
 
 code {
   font-family: monospace;
   padding: 0.1em 0.2em;
-  background-color: lighten($bc-grey,60%);//$white;
+  background-color: lighten($bc-grey, 60%); //$white;
   color: $bc-grey;
 }
 /* Footer */
@@ -401,7 +526,8 @@ code {
       width: 92px !important;
     }
     @media only screen and (max-width: 550px) {
-      .right, .githubs {
+      .right,
+      .githubs {
         float: none;
         width: 100%;
         text-align: center;
@@ -413,14 +539,16 @@ code {
 
 /* Frontpage */
 
-.front-page {/* This is the front page slider class */
+.front-page {
+  /* This is the front page slider class */
   .slide_box {
     max-height: 500px;
   }
 }
 /* Settings */
 
-#settings-jump { /* Settings jump menu */
+#settings-jump {
+  /* Settings jump menu */
   @media only screen and (min-width: 550px) {
     float: right;
   }
@@ -444,12 +572,11 @@ code {
         position: absolute;
         right: 0;
         margin-right: 0.5em;
-        margin-top: 0.5em
+        margin-top: 0.5em;
       }
     }
     &.section-head {
       padding: 0.25em 0.5em;
-
     }
     a {
       text-decoration: none;
@@ -489,7 +616,7 @@ section.settings {
   }
   h3 {
     margin-top: 2em;
-    border-bottom: 1px solid lighten($bc-grey,50%);
+    border-bottom: 1px solid lighten($bc-grey, 50%);
   }
 }
 
@@ -511,7 +638,7 @@ section.settings {
       padding: 1.6em 1em;
       @include background-size(cover);
       background-position: 50% 50%;
-      text-shadow: 0 0 0.1em rgba(0,0,0,0.4);
+      text-shadow: 0 0 0.1em rgba(0, 0, 0, 0.4);
       opacity: 0.8;
       &:hover {
         opacity: 1;
@@ -519,22 +646,22 @@ section.settings {
     }
     @media only screen and (min-width: 411px) {
       width: 49%;
-      &:nth-child(2n+1) {
+      &:nth-child(2n + 1) {
         margin: 1% 1% 1% 0;
       }
-      &:nth-child(2n+2) {
+      &:nth-child(2n + 2) {
         margin: 1% 0 1% 1%;
       }
     }
     @media only screen and (min-width: 631px) {
       width: 31.3%;
-      &:nth-child(3n+1) {
+      &:nth-child(3n + 1) {
         margin: 1% 1% 1% 0;
       }
-      &:nth-child(3n+2) {
+      &:nth-child(3n + 2) {
         margin: 1%;
       }
-      &:nth-child(3n+3) {
+      &:nth-child(3n + 3) {
         margin: 1% 0 1% 1%;
       }
     }
@@ -582,7 +709,7 @@ section.settings {
   .text-content {
     position: absolute;
     left: 0;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 1em;
     // below are media based, start with 'mobile'
     width: 40%;
@@ -710,7 +837,8 @@ section.settings {
         p {
           margin-bottom: 1em;
         }
-        p, .button-link {
+        p,
+        .button-link {
           opacity: 0;
         }
         .button-link {
@@ -746,7 +874,8 @@ section.settings {
             opacity: 0.2;
           }
           .product-info {
-            p, .button-link {
+            p,
+            .button-link {
               opacity: 1;
             }
           }
@@ -827,7 +956,8 @@ section.settings {
   form {
     padding: 8px 0 0 !important;
   }
-  input.email, #mc-embedded-subscribe {
+  input.email,
+  #mc-embedded-subscribe {
     margin-bottom: 0 !important;
     height: 48px;
     font-size: 18px;
