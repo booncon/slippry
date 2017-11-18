@@ -603,10 +603,10 @@
           if (this.complete) {
             $(this).trigger('loads');
           }else{
-			$(this).one('load',function(){
-				$(this).trigger('loads');
-			})
-		  }
+            $(this).one('load',function(){
+              $(this).trigger('loads');
+            })
+          }
         });
       });
     };
