@@ -214,7 +214,7 @@
     getFillerProportions = function ($slide) {
       var width, height;
       if (($('img', $slide).attr("src") !== undefined)) {
-        $("<img />").on("load", function () {
+        $("<img />").on("load loads", function () {
           width = $slide.width();
           height = $slide.height();
           setFillerProportions(width, height);
@@ -595,13 +595,13 @@
       }
       loop = 0;
       elements.each(function () {
-        $(this).one('load error', function () {
+        $(this).one('loads error', function () {
           if (++loop === count) {
             start();
           }
         }).each(function () {
           if (this.complete) {
-            $(this).trigger('load');
+            $(this).trigger('loads');
           }
         });
       });
