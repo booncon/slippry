@@ -1,10 +1,9 @@
 /**
  * Site: Slippry
- * Description: A responsive slider by booncon PIXELS.
+ * Description: A responsive slider by booncon.
  * Author(s): Lukas Jakob Hafner - @saftsaak
- *            Thomas Hurd - @SeenNotHurd
  *
- * Copyright 2014, booncon PIXELS oy - http://pixels.fi
+ * Copyright 2018, booncon oy - https://booncon.com
  *
  *
  */
@@ -12,6 +11,7 @@
 @import "compass";
 @import "slippry";
 @import "syntax";
+@import "cookieconsent.min";
 
 /* 1. Variables */
 $bc-rk-blue: #31ACE2;
@@ -392,13 +392,11 @@ code {
       display: inline-block;
       text-decoration: none;
       font-weight: 200;
+      font-size: 0.8em;
     }
-    .pixels-logo {
-      height: 1.6em;
+    .booncon-logo {
+      height: 1.8em;
       vertical-align: middle;
-    }
-    .twitter-share-button {
-      width: 92px !important;
     }
     @media only screen and (max-width: 550px) {
       .right, .githubs {
