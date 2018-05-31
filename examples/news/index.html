@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Slippry is a responsive content slider by booncon PIXELS. This example displays articles and images as inline html in a slider, perfect for a news or blog website." />
+    <meta name="description" content="Slippry is a responsive content slider by booncon. This example displays articles and images as inline html in a slider, perfect for a news or blog website." />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width">
     <title>Examples - News reel</title>
     <script src="//use.edgefonts.net/cabin:n4,i4,n7,i7;source-sans-pro:n3,i3.js"></script>
-    <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css" /><link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
-  </head>  
+    <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" /><link href="/assets/css/styles.css" rel="stylesheet" />
+  </head>
   <body class="examples examples_news examples_news_index">
     <header id="header">
   <div class="restricted-width">
@@ -22,34 +22,7 @@
     </nav>
   </div>
 </header>
-    <section class="restricted-width">
-  <div class="newslettera">
-    <div class="twothird newsletter">
-      <h3>Wish to get notified when we roll out with Slippry 2.0? Sign up and be first to hear about our updates and new features!</h3>
-      <div id="mc_embed_signup">
-        <form action="//booncon.us3.list-manage.com/subscribe/post?u=ce2d86ff7936aa661f3598971&amp;id=632fde4dfd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-          <div id="mc_embed_signup_scroll">
-            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-            <div style="position: absolute; left: -5000px;"><input type="text" name="b_590b042f20dbf5c810b368ef9_f8260fa86b" tabindex="-1" value=""></div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="third">
-      <div class="carbonwrap">
-        <script>
-          if (document.documentElement.clientWidth > 870) {
-            document.write('<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1696&serve=CVYD42T&placement=slipprycom" id="_carbonads_js"><\/script>');
-          }
-        </script>
-        <div class="clear"></div>
-      </script>
-    </div>
-  </div>
-</section>
-
-<section class="restricted-width news">
+    <section class="restricted-width news">
   <h2 class="slider-title">News</h2>
   <p>Here's an example we created that you might use for displaying the latest posts or news items on your site. It uses HTML5 elements such as <code class="inline">article</code>. We've obviously styled the HTML inline content a little and have added media queries so the content doesn't become ridiculously large.
   </p>
@@ -83,7 +56,7 @@
 
 <section class="markup restricted-width">
   <h3 class="collapsible">HTML Markup</h3>
-<pre class="highlight html"><code><span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">"news-demo"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre class="highlight html"><code><span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">"news-demo"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;article&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-content"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;h2&gt;</span>Boats by the bay<span class="nt">&lt;/h2&gt;</span>
@@ -109,12 +82,11 @@
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"image-content"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/image-3.jpg"</span> <span class="na">alt=</span><span class="s">"demo1_1"</span><span class="nt">&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;/article&gt;</span>
 <span class="nt">&lt;/section&gt;</span>
-</code></pre>
-</section>
+</code></pre></div></section>
 
 <section class="jquery restricted-width">
   <h3>jQuery</h3>
-<pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">(</span><span class="s1">'#news-demo'</span><span class="p">).</span><span class="nx">slippry</span><span class="p">({</span>
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">(</span><span class="s1">'#news-demo'</span><span class="p">).</span><span class="nx">slippry</span><span class="p">({</span>
   <span class="c1">// general elements &amp; wrapper</span>
   <span class="na">slippryWrapper</span><span class="p">:</span> <span class="s1">'&lt;div class="sy-box news-slider" /&gt;'</span><span class="p">,</span> <span class="c1">// wrapper to wrap everything, including pager</span>
   <span class="na">elements</span><span class="p">:</span> <span class="s1">'article'</span><span class="p">,</span> <span class="c1">// elments cointaining slide content</span>
@@ -134,12 +106,11 @@
   <span class="c1">// slideshow</span>
   <span class="na">autoDirection</span><span class="p">:</span> <span class="s1">'prev'</span>
 <span class="p">});</span>
-</code></pre>
-</section>
+</code></pre></div></section>
 
 <section class="css restricted-width">
   <h3>CSS (created by Sass)</h3>
-<pre class="highlight css"><code><span class="c">/* News */</span>
+<div class="highlight"><pre class="highlight css"><code><span class="c">/* News */</span>
 <span class="nc">.news-slider</span> <span class="p">{</span>
   <span class="c">/* Style the actual content */</span>
 <span class="p">}</span>
@@ -192,30 +163,48 @@
   <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
   <span class="nl">color</span><span class="p">:</span> <span class="m">#222</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-</section>
+</code></pre></div></section>
 
 <section class="restricted-width example-tiles">
-<a class="tile" href="/examples/out-of-the-box/">Out-of-the-box</a>
-<a class="tile" href="/examples/pictures/">Pictures</a>
-<a class="tile" href="/examples/portfolio/">Portfolio</a>
-<a class="tile active" href="/examples/news/">News</a>
-<a class="tile" href="/examples/shop/">Shop</a>
-<a class="tile" href="/examples/thumbnails/">Thumbnails</a>
-<a class="tile" href="/examples/css-vs-jquery/">CSS vs jQuery</a>
+<a href="/examples/out-of-the-box/" class="tile">Out-of-the-box</a>
+<a href="/examples/pictures/" class="tile">Pictures</a>
+<a href="/examples/portfolio/" class="tile">Portfolio</a>
+<a href="/examples/news/" class="tile active">News</a>
+<a href="/examples/shop/" class="tile">Shop</a>
+<a href="/examples/thumbnails/" class="tile">Thumbnails</a>
+<a href="/examples/css-vs-jquery/" class="tile">CSS vs jQuery</a>
 </section>
     <footer id="footer" class="full-width">
   <div class="footer-content restricted-width">
     <div class="githubs">
-      <span class="share-btn"><a href="https://twitter.com/share" class="twitter-share-button" data-via="booncon">Tweet</a></span>     
       <span class="share-btn"><iframe src="http://ghbtns.com/github-btn.html?user=booncon&repo=slippry&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></span>
-      <span class="share-btn"><iframe src="http://ghbtns.com/github-btn.html?user=booncon&repo=slippry&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></span>   
+      <span class="share-btn"><iframe src="http://ghbtns.com/github-btn.html?user=booncon&repo=slippry&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></span>
     </div>
-    <a href="http://pixels.fi" class="block-link right"><span class="crafted-by">Crafted by</span> <img src="/assets/img/logo_bc-pixels.svg" class="pixels-logo"/></a>
+    <a href="https://booncon.com" title="booncon" class="block-link"><span class="crafted-by">Crafted by</span> <img src="/assets/img/logo_bc-main.svg" class="booncon-logo"/></a>
+    <a href="/privacy" class="block-link right">Privacy Policy</a>
   </div>
 </footer>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <script src="//use.edgefonts.net/source-code-pro:n4,n7.js" type="text/javascript"></script><script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script><script src="//code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><script src="/assets/js/scripts.js" type="text/javascript"></script>
+<script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#000"
+      },
+      "button": {
+        "background": "#31ACE2",
+        "text": "#ffffff"
+      }
+    },
+    "content": {
+      "href": "/privacy"
+    },
+    "theme": "edgeless",
+    "position": "bottom-left"
+  })});
+</script>
+
+    <script src="//use.edgefonts.net/source-code-pro:n4,n7.js"></script><script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script><script src="/assets/js/scripts.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
