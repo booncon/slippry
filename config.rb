@@ -7,16 +7,17 @@
 
 # Reload the browser automatically whenever files change
 activate :livereload
-
 activate :syntax
-
 activate :sprockets
 
-sprockets.append_path '../vendor/assets/components'
+
 sprockets.append_path 'assets/css'
 sprockets.append_path 'assets/js'
 sprockets.append_path 'assets/img'
-sprockets.import_asset 'slippry'
+
+after_configuration do
+  sprockets.append_path File.join( root, "node_modules/" )
+end
 
 # Methods defined in the helpers block are available in templates
 helpers do
@@ -42,6 +43,6 @@ configure :build do
 end
 
 activate :deploy do |deploy|
-  deploy.method = :git
+  deploy.deploy_method = :git
   deploy.build_before = true
 end
