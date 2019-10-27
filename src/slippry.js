@@ -680,6 +680,8 @@
         } else if (slip.settings.transition === 'vertical') {
           $(this).css('top', $(this).index() * (100 + slip.settings.slideMargin) + '%');
         }
+        $(this).data('sy-cssBckup', $(this).attr('style'));
+        $(this).data('sy-classBckup', $(this).attr('class'));
       });
       if ((slip.vars.count > 1) || (slip.settings.initSingle)) {
         if ($('.' + slip.settings.activeClass, el).index() === -1) {
