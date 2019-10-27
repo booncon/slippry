@@ -665,7 +665,7 @@
         slip.vars.transition = whichTransitionEvent();
       }
       el.data('sy-cssBckup', el.attr('style'));
-      el.data('sy-classBackup', el.attr('class'));
+      el.data('sy-classBckup', el.attr('class'));
       el.addClass(slip.settings.boxClass).wrap(slip.settings.slippryWrapper).wrap(slip.settings.slideWrapper).wrap(slip.settings.slideCrop);
       slip.vars.slideWrapper = el.parent().parent();
       slip.vars.slippryWrapper = slip.vars.slideWrapper.parent().addClass(slip.settings.loadingClass);
