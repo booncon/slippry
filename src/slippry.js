@@ -665,7 +665,7 @@
         slip.vars.transition = whichTransitionEvent();
       }
       el.data('sy-cssBckup', el.attr('style'));
-      el.data('sy-classBackup', el.attr('class'));
+      el.data('sy-classBckup', el.attr('class'));
       el.addClass(slip.settings.boxClass).wrap(slip.settings.slippryWrapper).wrap(slip.settings.slideWrapper).wrap(slip.settings.slideCrop);
       slip.vars.slideWrapper = el.parent().parent();
       slip.vars.slippryWrapper = slip.vars.slideWrapper.parent().addClass(slip.settings.loadingClass);
@@ -680,6 +680,8 @@
         } else if (slip.settings.transition === 'vertical') {
           $(this).css('top', $(this).index() * (100 + slip.settings.slideMargin) + '%');
         }
+        $(this).data('sy-cssBckup', $(this).attr('style'));
+        $(this).data('sy-classBckup', $(this).attr('class'));
       });
       if ((slip.vars.count > 1) || (slip.settings.initSingle)) {
         if ($('.' + slip.settings.activeClass, el).index() === -1) {
