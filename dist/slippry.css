@@ -259,6 +259,7 @@
     .sy-pager li.sy-active a {
       background-color: #e24b70; }
     .sy-pager li a {
+      outline: none;
       width: 100%;
       height: 100%;
       display: block;
